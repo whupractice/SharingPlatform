@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 /**
   * @Author      : Theory
-  * @Description : 学生数据库接口
+  * @Description : 学生表接口
   */
 public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
 

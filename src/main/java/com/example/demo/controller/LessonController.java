@@ -25,7 +25,7 @@ public class LessonController {
     /**
       * @Author      : Theory
       * @Description : 获取所有课程
-      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      * @return      : 所有课程list
       */
     @GetMapping("")
     public List<LessonEntity> getAllLesson(){
@@ -36,7 +36,7 @@ public class LessonController {
     /**
       * @Author      : Theory
       * @Description : 获取精品课程
-      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      * @return      : 精品课程list
       */
     @GetMapping("/excellent")
     public List<LessonEntity> getExcellentLesson(){
@@ -46,7 +46,8 @@ public class LessonController {
     /**
       * @Author      : Theory
       * @Description : 获取热门课程
-      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      * @Param       :  [lessonNum] -- 需要的热门课程数量
+      * @return      : 热门课程list
       */
     @GetMapping("/hot")
     public List<LessonEntity> getHotLesson(@RequestParam("lessonNum") int num){
@@ -57,7 +58,7 @@ public class LessonController {
     /**
       * @Author      : Theory
       * @Description : 向数据库中插入课程
-      * @Param       : [lesson]
+      * @Param       : [lesson] -- 课程
       */
     @PostMapping("")
     public void insertLesson(@RequestBody LessonEntity lesson){
@@ -65,7 +66,27 @@ public class LessonController {
     }
 
 
+    /**
+      * @Author      : Theory
+      * @Description : 更新课程
+      * @Param       : [lesson] -- 课程
+      */
+    @PutMapping("")
+    public void updateLesson(@RequestBody LessonEntity lesson){
+        lessonService.insertLesson(lesson);
+    }
 
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 根据课程id删除课程
+      * @Param       : [lessonId] -- 课程id
+      */
+    @DeleteMapping("")
+    public void deleteLesson(@RequestParam("lessonId") long lessonId){
+        lessonService.deleteLesson(lessonId);
+    }
 
 
 

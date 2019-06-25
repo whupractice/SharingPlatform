@@ -6,6 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+  * @Author      : Theory
+  * @Description : 课程表接口
+  */
 public interface LessonRepository extends JpaRepository<LessonEntity,Long> {
 
     //查询精品课程

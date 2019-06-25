@@ -67,4 +67,16 @@ public class LessonService {
     public void insertLesson(LessonEntity lesson){
         lessonRepository.save(lesson);
     }
+
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 根据课程id删除课程
+      * @Param       : [lessonId] -- 课程id号
+      * @return      : void
+      */
+    public void deleteLesson(long lessonId){
+        lessonRepository.deleteById(lessonId);
+    }
 }

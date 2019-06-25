@@ -21,9 +21,9 @@ public class StudentService {
 
     /**
       * @Author      : Theory
-      * @Description : 通过账号获取学生密码
-      * @Param       : [id]
-      * @return      : java.lang.String
+      * @Description : 判断账号密码是否正确
+      * @Param       : [user,id] -- 用户名、密码
+      * @return      : 是否正确
       */
     public boolean getPwdById(String user,String pwd){
         long username = Long.parseLong(user);
@@ -38,7 +38,7 @@ public class StudentService {
       * @Author      : Theory
       * @Description : 注册账号，返回账号
       * @Param       : [pwd]
-      * @return      : long
+      * @return      : 账号
       */
     public long register(StudentEntity stu){
         studentRepository.save(stu);//向数据库中插入学生
@@ -47,5 +47,33 @@ public class StudentService {
 
 
 
+    /**
+      * @Author      : Theory
+      * @Description : 获取数据库中所有学生
+      * @return      : 所有学生
+      */
+    public List<StudentEntity> getAllStudent(){
+        return studentRepository.findAll();
+    }
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 插入学生记录
+      * @Param       : [stu] -- 学生
+      */
+    public void insertStudent(StudentEntity stu){
+        studentRepository.save(stu);
+    }
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 根据学生账号删除学生id
+      * @Param       : [id] -- 学生账号
+      */
+    public void deleteStudent(long id){
+        studentRepository.deleteById(id);
+    }
 
 }

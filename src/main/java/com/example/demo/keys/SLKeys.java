@@ -1,5 +1,7 @@
 package com.example.demo.keys;
 
+import org.springframework.data.jpa.repository.Query;
+
 import java.io.Serializable;
 
 /**
@@ -30,5 +32,14 @@ public class SLKeys implements Serializable {
 
     public void setLessonId(long lessonId) {
         this.lessonId = lessonId;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        SLKeys objKeys = (SLKeys)obj;
+        if(studentId==objKeys.studentId && lessonId == objKeys.lessonId)
+            return true;
+        else
+            return false;
     }
 }
