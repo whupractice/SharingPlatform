@@ -46,7 +46,7 @@ public class LessonService {
       * @Description : 获取热门课程
       * @return      : java.util.List<com.example.demo.entity.LessonEntity>
       */
-    public List<LessonEntity> getHotClass(int num){
+    public List<LessonEntity> getHotLesson(int num){
         Sort sort = new Sort(Sort.Direction.DESC, "welcome");
         List<LessonEntity> primList = lessonRepository.findAll(sort);//按照热度从高到低排序
         List<LessonEntity> finalList = new ArrayList<>();//最终的热门课程列表
@@ -56,5 +56,15 @@ public class LessonService {
             finalList.add(primList.get(i));
         }
         return finalList;
+    }
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 向数据库中插入课程
+      * @Param       : [lesson]
+      */
+    public void insertLesson(LessonEntity lesson){
+        lessonRepository.save(lesson);
     }
 }

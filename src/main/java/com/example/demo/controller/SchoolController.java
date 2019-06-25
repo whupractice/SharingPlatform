@@ -5,4 +5,6 @@ package com.example.demo.controller;
  * @ Description：院校控制类
  */
 public class SchoolController {
+
+
 }

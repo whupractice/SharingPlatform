@@ -22,6 +22,11 @@ public class LessonController {
     LessonService lessonService;
 
 
+    /**
+      * @Author      : Theory
+      * @Description : 获取所有课程
+      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      */
     @GetMapping("")
     public List<LessonEntity> getAllLesson(){
         return lessonService.getAll();
@@ -45,8 +50,23 @@ public class LessonController {
       */
     @GetMapping("/hot")
     public List<LessonEntity> getHotLesson(@RequestParam("lessonNum") int num){
-        return lessonService.getHotClass(num);
+        return lessonService.getHotLesson(num);
     }
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 向数据库中插入课程
+      * @Param       : [lesson]
+      */
+    @PostMapping("")
+    public void insertLesson(@RequestBody LessonEntity lesson){
+        lessonService.insertLesson(lesson);
+    }
+
+
+
+
 
 
 }
