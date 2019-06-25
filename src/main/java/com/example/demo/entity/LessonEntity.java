@@ -49,6 +49,8 @@ public class LessonEntity {
 
     private int welcome;//火热程度
 
+    private boolean isExcellent = false;//是否精品
+
     private int shareNum;//分享次数
 
 
@@ -173,7 +175,13 @@ public class LessonEntity {
     }
 
 
+    public boolean isExcellent() {
+        return isExcellent;
+    }
 
+    public void setExcellent(boolean excellent) {
+        isExcellent = excellent;
+    }
 
     public int getShareNum() {
         return shareNum;
