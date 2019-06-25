@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,14 +14,20 @@ import javax.persistence.Table;
 @Table(name = "Student")
 public class StudentEntity {
 
+    public StudentEntity() {
+    }
+
+
+
     @Id
+    @GeneratedValue
     private long studentId;//账号
 
     private String nickName;//昵称
 
     private String sex;//性别
 
-    private int birth;//出生年
+    private String birth;//出生年月
 
     private String introduction;//个人介绍
 
@@ -29,8 +36,6 @@ public class StudentEntity {
     private String email;//邮箱
 
     private String phone;//电话号码
-
-    private long schoolId;//学校序号
 
     private String name;//真实姓名
 
@@ -41,6 +46,14 @@ public class StudentEntity {
 
     public void setStudentId(long studentId) {
         this.studentId = studentId;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
     }
 
     public String getNickName() {
@@ -59,13 +72,6 @@ public class StudentEntity {
         this.sex = sex;
     }
 
-    public int getBirth() {
-        return birth;
-    }
-
-    public void setBirth(int birth) {
-        this.birth = birth;
-    }
 
     public String getIntroduction() {
         return introduction;
@@ -97,14 +103,6 @@ public class StudentEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public long getSchoolId() {
-        return schoolId;
-    }
-
-    public void setSchoolId(long schoolId) {
-        this.schoolId = schoolId;
     }
 
     public String getName() {
