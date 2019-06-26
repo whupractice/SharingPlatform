@@ -35,7 +35,7 @@ public class TeacherService {
       * @return      :
       */
     public void insertTeacher(TeacherEntity teacherEntity) {
-        teacherRepository.save(teacherEntity)
+        teacherRepository.save(teacherEntity);
     }
 
     /**
