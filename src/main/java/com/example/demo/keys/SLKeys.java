@@ -18,6 +18,11 @@ public class SLKeys implements Serializable {
     public SLKeys() {
     }
 
+    public SLKeys(long studentId, long lessonId) {
+        this.studentId = studentId;
+        this.lessonId = lessonId;
+    }
+
     public long getStudentId() {
         return studentId;
     }

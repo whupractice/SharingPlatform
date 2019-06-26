@@ -20,5 +20,8 @@ public interface SLRepository extends JpaRepository<SLEntity, SLKeys> {
     List<SLEntity> getAllByStuId(long studentId);
 
 
+    //查询选了这门课的学生数量
+    @Query(value = "SELECT COUNT(student_id) FROM sl WHERE Lesson_id=?1 group by Lesson_id")
+    int getStuNumByLessonId(long lessonId);
 
 }
