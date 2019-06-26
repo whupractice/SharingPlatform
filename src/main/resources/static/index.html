@@ -3,141 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>LC平台——最受学生欢迎的课程管理平台!</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        body,
-        html {
-            font-size: 14px;
-            font-family: 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial', sans-serif;
-        }
-        img {
-            border: 0;
-        }
-        a {
-            color: #fff;
-            text-decoration: none;
-            outline: none;
-        }
-        ol,
-        ul,
-        li {
-            list-style: none;
-        }
-        .head-nav {
-            width: 100%;
-            height: 60px;
-            background: #007130;
-        }
-        .head-nav-con {
-            width: 1200px;
-            height: 60px;
-            margin: auto;
-        }
-        .head-nav-con ul li {
-            width: 170px;
-            float: left;
-            font-size: 20px;
-            text-align: center;
-        }
-        .head-nav-con ul li:hover {
-            background: #ff9c01;
-        }
-        .head-nav-con ul a {
-            display: block;
-            text-decoration: none;
-            text-align: center;
-            line-height: 60px;
-            color: white;
-        }
-        .head-nav-con .drop-down {
-            position: relative;
-        }
-        .head-nav-con .drop-down-content {
-            padding: 0;
-            display: none;
-            position: absolute;
-            z-index: 1;
-            background: #007130;
-        }
-        .head-nav-con .drop-down-content li:hover > a {
-            background-color: #ff9c01;
-        }
-        .head-nav-con .drop-down:hover .drop-down-content {
-            display: block;
-        }
-        .head-nav-con .drop-down-2 {
-            position: relative;
-        }
-        .head-nav-con .drop-down-content-2 {
-            padding: 0;
-            display: none;
-            position: absolute;
-            z-index: 1;
-            background-color: #007130;
-            right: -170px;
-            top: 0;
-        }
-        .head-nav-con .drop-down-content-2 > li {
-            float: none;
-            background-color: #007130;
-        }
-        .head-nav-con .drop-down-content-2 li:hover a {
-            background-color: #ff9c01;
-        }
-        .head-nav-con .drop-down-2:hover .drop-down-content-2 {
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./page/css/index.css">
+    <link rel="stylesheet" type="text/css" href="./shared/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./shared/css/bootstrap/fonts/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 
     <!--导航栏-->
-    <div class="main">
-        <!--头部-->
-        <div class="header">
-            <div class="head-nav">
-                <div class="head-nav-con clearFloat">
-                    <ul>
-                        <li><a href="#">首页</a></li>
-                        <li class="drop-down"><a href="#">二级菜单</a>
-                            <ul class="drop-down-content">
-                                <li><a href="#">二级菜单</a></li>
-                                <li><a href="#">二级菜单</a></li>
-                                <li><a href="#">二级菜单</a></li>
-                                <li><a href="#">二级菜单</a></li>
-                            </ul>
-                        </li>
-                        <li class="drop-down"><a href="#">二级菜单</a>
-                            <ul class="drop-down-content">
-                                <li class="drop-down-2"><a href="#">三级菜单</a>
-                                    <ul class="drop-down-content-2">
-                                        <li><a href="#">三级菜单</a></li>
-                                        <li><a href="#">三级菜单</a></li>
-                                        <li><a href="#">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="drop-down-2"><a href="#">三级菜单</a>
-                                    <ul class="drop-down-content-2">
-                                        <li><a href="#">三级菜单</a></li>
-                                        <li><a href="#">三级菜单</a></li>
-                                        <li><a href="#">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="drop-down-2"><a href="#">三级菜单</a>
-                                    <ul class="drop-down-content-2">
-                                        <li><a href="#">二级菜单</a></li>
-                                        <li><a href="#">二级菜单</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div>
     </div>
     <!--/导航栏-->
 
@@ -146,7 +19,51 @@
 
     </div>
     <!--/轮播图-->
+    <!--登录注册-->
 
+    <div class="wrap" id="wrap">
+        <div class="logGet">
+            <!-- 头部提示信息 -->
+            <div class="logD logDtip">
+                <p class="p1">Welcome</p>
+            </div>
+            <div class="btn-group btn-group-justified">
+                <a type="button" class="btn btn-primary">学生</a>
+                <a type="button" class="btn btn-red">管理员</a>
+            </div>
+            <!-- 输入框 -->
+            <div class="lgD">
+<!--                <img src="img/logName.png" width="20" height="20" alt=""/>-->
+                <div class="input-group transparent">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user">
+                                                </i>
+                                            </span>
+                    <input type="text" class="form-control" placeholder="Username">
+                </div>
+            </div>
+            <div class="lgD">
+                <div class="input-group transparent">
+                    <span class="input-group-addon">
+                        <i class="fa fa-arrow-right"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Password">
+                </div>
+            </div>
+            <div class="logC">
+                <a href="index.html" target="_self"><button>登 录</button></a>
+            </div>
+            <!--忘记密码-->
+            <a class="pull-left" href="#" title="Password Lost and Found">Forgot password?</a>
+            <!--/忘记密码-->
+            <!--注册按钮-->
+            <a class="pull-right" href="ui-register.html" title="Sign Up">Sign Up</a>
+            <!--/注册按钮-->
+                    </div>
+    </div>
+
+
+    <!--/登录注册-->
     <!--产品照片集合-->
     <div>
 
