@@ -19,10 +19,10 @@ import javax.persistence.Table;
 public class TLEntity {
 
     @Id
-    private long lessonId;//课程号
+    private long teacherId;//教师号
 
     @Id
-    private long teacherId;//教师号
+    private long lessonId;//课程号
 
     public TLEntity() {
     }
