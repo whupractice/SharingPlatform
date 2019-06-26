@@ -4,18 +4,22 @@
 }
 #wrap {
     height: 719px;
-    width: 100;
     background-repeat: no-repeat;
     background-position: center center;
     position: relative;
 }
+
+#wrap {
+    width: 100px;
+}
+
 #wrap .logGet {
     height: 408px;
     width: 368px;
     position: absolute;
     background-color: #FFFFFF;
-    top: 20%;
-    right: 15%;
+    top: -65%;
+    right: 200px;
 }
 .logC a button {
     width: 100%;
@@ -63,5 +67,11 @@
     margin-right: auto;
     margin-bottom: 0px;
     margin-left: auto;
+}
+#myCarousel{
+    position: relative;
+    width: auto;
+    left: 200px;
+    top: 15px;
 }
 
