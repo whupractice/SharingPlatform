@@ -5,8 +5,6 @@
 #wrap {
     height: 719px;
     width: 100;
-    background-repeat: no-repeat;
-    background-position: center center;
     position: relative;
 }
 #wrap .logGet {
@@ -27,9 +25,11 @@
 }
 .logGet .logD.logDtip .p1 {
     display: inline-block;
-    font-size: 28px;
-    margin-top: 30px;
-    width: 86%;
+    font-size: 38px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width:50%;
+
 }
 #wrap .logGet .logD.logDtip {
     width: 86%;
@@ -64,4 +64,159 @@
     margin-bottom: 0px;
     margin-left: auto;
 }
+#foot {
+    width: 100;
+    height: 126px;
+    background-color: #CC9933;
+    position: relative;
+}
+.title {
 
+    color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+    font-size: 36px;
+    height: 40px;
+    width: 30%;
+}
+
+.copyright {
+
+    color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+    height: 60px;
+    width: 40%;
+    text-align:center;
+}
+
+
+#foot .copyright .img {
+    width: 100%;
+    height: 24px;
+    position: relative;
+}
+.copyright .img .icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-left: 22px;
+    vertical-align: middle;
+
+    margin-right: 5px;
+}
+
+.copyright .img .icon1 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-left: 22px;
+    vertical-align: middle;
+
+    margin-right: 5px;
+}
+.copyright .img .icon2 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-left: 22px;
+    vertical-align: middle;
+
+
+
+    margin-right: 5px;
+}
+#foot .copyright p {
+    height: 24px;
+    width: 100%;
+}
+#head {
+    height: 120px;
+    width: 100;
+    background-color: #66CCCC;
+    text-align: center;
+    position: relative;
+}
+#foot {
+    width: 100;
+    height: 126px;
+    background-color: #CC9933;
+    position: relative;
+}
+.p2 {
+    display: inline-block;
+    font-size: 38px;
+
+    margin-left: 700px;
+    margin-bottom: 20px;
+    width:50%;
+
+}
+.p3 {
+    display: inline-block;
+    font-size: 38px;
+
+    margin-left: 700px;
+    margin-bottom: 10px;
+    width:50%;
+
+}
+
+.Img0{
+    margin-left: 50px;
+}
+.course0{
+    margin-left: 60px;
+}
+.Img1{
+    margin-left: 400px;
+    margin-top: -320px;
+}
+.course1{
+    margin-left: 500px;
+}
+.Img2{
+    margin-left: 750px;
+    margin-top: -320px;
+}
+.course2{
+    margin-left: 850px;
+}
+.Img3{
+    margin-left: 1150px;
+    margin-top: -320px;
+}
+.course3{
+    margin-left: 1300px;
+}
+.Img4{
+    margin-left: 50px;
+}
+.course4{
+    margin-left: 60px;
+}
+.Img5{
+    margin-left: 400px;
+    margin-top: -320px;
+}
+.course5{
+    margin-left: 500px;
+}
+.Img6{
+    margin-left: 750px;
+    margin-top: -320px;
+}
+.course6{
+    margin-left: 850px;
+}
+.Img7{
+    margin-left: 1150px;
+    margin-top: -320px;
+}
+.course7{
+    margin-left: 1300px;
+}
