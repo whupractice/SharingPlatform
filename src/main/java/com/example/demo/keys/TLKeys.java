@@ -8,12 +8,15 @@ import java.io.Serializable;
  */
 public class TLKeys implements Serializable {
 
-
+    private long teacherId;//老师id
     private long lessonId;//课程号
 
-    private long teacherId;//老师id
-
     public TLKeys() {
+    }
+
+    public TLKeys(long teacherId, long lessonId) {
+        this.teacherId = teacherId;
+        this.lessonId = lessonId;
     }
 
     public long getLessonId() {
@@ -30,5 +33,14 @@ public class TLKeys implements Serializable {
 
     public void setTeacherId(long teacherId) {
         this.teacherId = teacherId;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        TLKeys objKeys = (TLKeys)obj;
+        if(teacherId == objKeys.teacherId && lessonId == objKeys.lessonId)
+            return true;
+        else
+            return false;
     }
 }
