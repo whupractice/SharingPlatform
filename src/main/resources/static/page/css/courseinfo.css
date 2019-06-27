@@ -123,6 +123,9 @@
     .f-fl {
         float: left;
     }
+    .f-self{
+        position: relative;
+    }
     .m-top .course-enroll-info-wrapper .course-title-wrapper .course-title {
         font-size: 24px;
         color: #333333;

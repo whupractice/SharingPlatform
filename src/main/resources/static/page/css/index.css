@@ -127,10 +127,21 @@
 }
 #foot{
     background-position: center;
-    background-color: #eea236;
+    background-color: #0bb453;
 }
 #carousel{
     position: relative;
     left: 200px;
 }
-
+.container2{
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
+}
+.bg-dark-green{
+background-color: rgba(106, 183, 76, 0.59);
+}
+.btn-shouye{
+    background-color: #0bb453;
+    height: 35px;
+}
