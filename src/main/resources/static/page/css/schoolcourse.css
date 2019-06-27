@@ -1,0 +1,163 @@
+.p-university{
+
+}
+.p-university .m-unibg {
+    height: 200px;
+    background: #000;
+}
+.g-wrap {
+    width: 100%;
+    height:200px;
+}
+.p-university .m-unibg .main {
+    width: 1205px;
+}
+.p-university .m-unibg .main {
+    margin: 0 auto;
+    width: 960px;
+    height: 100%;
+}
+.p-university .m-unibg .unimg {
+    margin-left: -37px;
+}
+.unimg {
+    margin-left: 0;
+    width: auto;
+    height: 100%;
+}
+.p-university .g-doc {
+    width: 1205px;
+}
+.f-pr {
+    position: relative;
+    right: 500px;
+    top: 20px;
+}
+.p-university .m-unibg .avatar {
+    position: absolute;
+    border: 6px solid #fff;
+    -webkit-border-radius: 81px;
+    -moz-border-radius: 81px;
+    border-radius: 81px;
+    left: 40px;
+    bottom: -81px;
+    background: #fff;
+}
+img {
+    vertical-align: top;
+}
+img.avatar {
+    width: 150px;
+    height: 150px;
+}
+.p-university .g-doc {
+    width: 1205px;
+}
+.b-20 {
+    height: 20px;
+}
+.p-university .m-cnt h1 {
+    font-size: 20px;
+    line-height: 1.2;
+}
+.f-f1 {
+    font-family: "Arial","Hiragino Sans GB", "SimSun",\5b8b\4f53, "Georgia", "serif";
+}
+.f-fc6 {
+    color: #666;
+}
+.b-30 {
+    height: 30px;
+}
+.p-university .u-utit {
+    padding-top: 40px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.p-university .g-doc {
+    width: 1205px;
+}
+.g-doc, .g-flow {
+    width: 960px;
+    margin: 0 auto;
+}
+#g-container {
+    min-height: 100%;
+    position: relative;
+}
+#g-body {
+    padding-bottom: 20px;
+}
+
+.container2{
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
+}
+.container1{
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1400px;
+}
+.coursename1 {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    width: 347.5px;
+    height: 300px;
+}
+
+.u-liveCard-container {
+    left: 0px;
+    top: 0px;
+    width: auto;
+    height: 150px;
+    z-index: 0;
+    border-radius: 0px;
+    margin: auto;
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    position: relative;
+    background-color: rgba(176, 208, 174, 0.22);
+}
+.u-liveCard-container_a1 {
+    display: inline-block;
+    width: 100%;
+    height: 270px;
+}
+.u-liveCard-school {
+    left: 50px;
+    top: 80px;
+    width: 216px;
+    height: 24px;
+    z-index: 1;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    position: relative;
+    line-height: 24px;
+}
+.u-liveCard-teacher {
+    left: 50px;
+    top: 50px;
+    width: 216px;
+    height: 24px;
+    z-index: 1;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    position: relative;
+    line-height: 24px;
+}
+#foot{
+    background-position: center;
+    background-color: #0bb453;
+}
