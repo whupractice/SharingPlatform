@@ -2,7 +2,7 @@
     margin-bottom: 20px;
 }body {
      background-color: #f1f2f7;
-     color: rgba(118, 118, 118, 1.0);
+     color: rgb(37, 97, 118);
      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
      font-size: 14px;
      padding: 0 !important;
@@ -15,7 +15,7 @@
 html {
     font-size: 100%;
     height: 100%;
-    background-color: #f1f2f7;
+    background-color: #149bdf;
 }input[type=checkbox], input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=radio], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea, .form-control {
      box-shadow: none;
      -webkit-box-shadow: none;

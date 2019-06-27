@@ -2,9 +2,284 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>LC平台——最受学生欢迎的课程资源平台</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/category.css">
+
 </head>
 <body>
+<ul class="nav">
+    <li class="nav-item"><img id="log" class="index-logo-src" src="../img/logo.png" alt="到平台首页" title="到平台首页"></li>
+    <li class="nav-item"><a href="#">首页</a></li>
+    <li class="nav-item">
+        <a href="javascript:showDropmenu()">课程分类</a>
+        <div class="dropmenu">
+            <div class="dropmenu-columns">
+                <div class="dropmenu-column">职场提升</div>
+                <div class="dropmenu-column">编程与开发</div>
+                <div class="dropmenu-column">AI数据科学</div>
+                <div class="dropmenu-column">产品与运营</div>
+                <div class="dropmenu-column">设计创意</div>
+                <div class="dropmenu-column">电商运营</div>
+                <div class="dropmenu-column">语言学习</div>
+            </div>
+            <div class="dropmenu-main"></div>
+        </div>
+        <input type="text" placeholder="搜索..">
+    </li>
+</ul>
+<script src="js/main.js"></script>
 
+<div class="container">
+<div class="m-bread f-f0">
+    <a href="../index.html">首页</a> <span>&gt;</span>
+    <span>全部课程</span>
+</div>
+<div id="j-nav" class="m-nav f-f0"><ul class="u-nav-v1 f-cb">
+    <li><a href="/category/all"><span class="u-nav-name ga-click current"><span class="u-icon-all"></span>全部</span></a></li>
+    <!--Regular list-->
+    <li><a href="/category/guojiajingpin"><span class="u-nav-name f-thide ga-click"><span class="u-icon-elite"></span>国家精品</span></a></li>
+
+    <li><a href="/category/computer"><span class="u-nav-name f-thide ga-click"><span class="u-icon-computer"></span>计算机</span></a></li>
+
+    <li><a href="/category/science"><span class="u-nav-name f-thide ga-click"><span class="u-icon-science"></span>理学</span></a></li>
+
+    <li><a href="/category/foreign-language"><span class="u-nav-name f-thide ga-click"><span class="u-icon-foreign-language"></span>外语</span></a></li>
+
+    <li><a href="/category/ECO"><span class="u-nav-name f-thide ga-click"><span class="u-icon-economics"></span>经济学</span></a></li>
+
+    <li><a href="/category/management theory"><span class="u-nav-name f-thide ga-click"><span class="u-icon-management"></span>管理学</span></a></li>
+
+    <li><a href="/category/biomedicine"><span class="u-nav-name f-thide ga-click"><span class="u-icon-biomedicine"></span>医药卫生</span></a></li>
+
+    <li><a href="/category/literature"><span class="u-nav-name f-thide ga-click"><span class="u-icon-literature"></span>文学文化</span></a></li>
+
+    <li><a href="/category/engineering"><span class="u-nav-name f-thide ga-click"><span class="u-icon-engineering"></span>工学</span></a></li>
+
+    <li><a href="/category/art-design"><span class="u-nav-name f-thide ga-click"><span class="u-icon-art"></span>艺术设计</span></a></li>
+
+    <li><a href="/category/psychology"><span class="u-nav-name f-thide ga-click"><span class="u-icon-psychology"></span>心理学</span></a></li>
+
+    <li><a href="/category/law"><span class="u-nav-name f-thide ga-click"><span class="u-icon-law"></span>法学</span></a></li>
+
+    <li><a href="/category/philosophy"><span class="u-nav-name f-thide ga-click"><span class="u-icon-philosophy"></span>哲学</span></a></li>
+
+    <li><a href="/category/teaching-method"><span class="u-nav-name f-thide ga-click"><span class="u-icon-teaching-method"></span>教育教学</span></a></li>
+
+    <li><a href="/category/historiography"><span class="u-nav-name f-thide ga-click"><span class="u-icon-history"></span>历史</span></a></li>
+
+    <li><a href="/category/agriculture"><span class="u-nav-name f-thide ga-click"><span class="u-icon-agriculture"></span>农林园艺</span></a></li>
+
+    <li class="f-pr more-li"><span class="u-nav-more"><span class="u-icon-more2"></span>其他<span class="u-icon-thin-caret-down"></span></span>
+        <div class="more-box-wrap">
+            <ul class="more-box">
+                <!--Regular list-->
+                <li><a href="//www.icourse163.org/topics/CAPmooc2018summer" target="_blank"><span class="f-thide ga-click">大学先修课</span> <span class="u-icon-caret-right2 f-fr"></span></a></li>
+
+                <li><a href="//www.icourse163.org/vemooc" target="_blank"><span class="f-thide ga-click">职业教育课程</span> <span class="u-icon-caret-right2 f-fr"></span></a></li>
+
+                <li><a href="//www.icourse163.org/topics/teachermooc/" target="_blank"><span class="f-thide ga-click">教师系列MOOC</span> <span class="u-icon-caret-right2 f-fr"></span></a></li>
+
+            </ul></div></li>
+</ul>
+    <!--Regular if6--></div>
+</div>
+<!--排行栏-->
+<div class="m-tag-bar f-cb"><!--Regular if36-->
+    <ul class="u-tag-left f-f0 f-fl f-cb">
+        <!--Regular list-->
+        <li class="f-fl ga-click cur border-right" data-action="课程筛选" id="auto-id-1561612616763">全部<!--Regular if37--></li>
+
+        <li class="f-fl ga-click border-right" data-action="课程筛选" id="auto-id-1561612616748">正在进行<!--Regular if38--></li>
+
+        <li class="f-fl ga-click border-right" data-action="课程筛选" id="auto-id-1561612616750">即将开始<!--Regular if39--></li>
+
+        <li class="f-fl ga-click" data-action="课程筛选" id="auto-id-1561612616753">已结束<!--Regular if40--></li>
+
+    </ul>
+
+    <!--Regular if41-->
+    <!--Regular if42-->
+    <ul class="u-tag-right f-f0 f-fr f-cb">
+        <!--Regular list-->
+        <li class="f-fl ga-click cur border-right" data-action="排序筛选" id="auto-id-1561612616755">综合排序</li>
+
+        <li class="f-fl ga-click border-right" data-action="排序筛选" id="auto-id-1561612616757">热门</li>
+
+        <li class="f-fl ga-click" data-action="排序筛选" id="auto-id-1561612616759">最新</li>
+
+    </ul>
+</div>
+<!--课程-->
+<div class="u-clist f-bgw f-cb f-pr j-href ga-click" data-href="/course/NJUPT-1001639008" data-action="课程点击" data-label="1001639008_1206447217">
+    <div class="g-sd1">
+    <div class="g-mn1">
+        <div class="u-img f-fl">
+            <img src="../img/0.jpg" alt="网络技术与应用" height="150px" width="265px">
+        </div>
+        <div class="g-mn1c">
+            <div class="cnt f-pr">
+    <div class="t1 f-f0 f-cb first-row"><a href="//www.icourse163.org/course/NJUPT-1001639008" target="_blank">
+        <span class=" u-course-name f-thide">网络技术与应用</span></a><a target="_blank" href="http://www.icourse163.org/topics/2018NationalLevelMOOC/" class="tag u-course-tag f-f0 ga-click " data-action="国家精品" style="background-color: #CBA265">
+        <span>国家精品</span><div class="more-tag-info-hover"><div class="more-tag-info">
+        <span>获得国家精品在线开放课程认定的课程</span><div class="tipBg f-pa"></div><div class="tipTp f-pa"></div></div></div></a></div>
+        <div class="t2 f-fc3 f-nowrp f-f0"><a class="t21 f-fc9" href="/university/NJUPT" target="_blank">南京邮电大学</a>
+            <a class="f-fc9" href="/u/mooc1460707219732" target="_blank">杨庚</a>            <span class="f-fc9">、<span>
+                <a class="f-fc9" href="/u/2607013511" target="_blank">胡素君</a>
+                <span class="f-fc9">、<span>
+                    <a class="f-fc9" href="/u/7721995796" target="_blank">李鹏</a>
+                    <span class="f-fc9">、<span>                <a class="f-fc9" href="/u/mooc1457661954719" target="_blank">成卫青</a>
+                        <span class="f-fc9">、<span>                <a class="f-fc9" href="/u/8581144392" target="_blank">王雪梅</a>
+                            <span class="f-fc9">、<span>                <a class="f-fc9" href="/u/2576970318" target="_blank">刘尚东</a>
+                            </span></span></span></span></span></span></span></span></span></span></div>
+                <a href="//www.icourse163.org/course/NJUPT-1001639008" target="_blank"><span class="p5 brief f-ib f-f0 f-cb">本课程已经在中国大学MOOC开课9次，学生通过学习收获了知识，我们通过课程论坛和QQ群认真答疑，使得我们对课程也有了更深入的理解，真正做到了教学相长。我们也根据大家的反馈对课程进行了改进，本课程入…</span></a>
+                <div class="t2 f-fc3 f-nowrp f-f0 margin-top0"><span class="u-icon-person f-fc9"></span><span class="hot">6501人参加</span><div class="over ">
+    <span class="f-icon clock u-icon-clock2"></span><span class="txt">进行至第1周</span>
+            </div>
+            </div>
+
+        </div></div>
+    </div></div></div>
+</div>
+<br></br>
+<div class="u-clist f-bgw f-cb f-pr j-href ga-click" data-href="/course/NJUPT-1001639008" data-action="课程点击" data-label="1001639008_1206447217">
+    <div class="g-sd1">
+        <div class="g-mn1">
+            <div class="u-img f-fl">
+                <img src="../img/0.jpg" alt="网络技术与应用" height="150px" width="265px">
+            </div>
+            <div class="g-mn1c">
+
+                <div class="cnt f-pr">
+
+                    <div class="t1 f-f0 f-cb first-row"><a href="//www.icourse163.org/course/NJUPT-1001639008" target="_blank">
+                        <span class=" u-course-name f-thide">网络技术与应用</span></a><a target="_blank" href="http://www.icourse163.org/topics/2018NationalLevelMOOC/" class="tag u-course-tag f-f0 ga-click " data-action="国家精品" style="background-color: #CBA265">
+                        <span>国家精品</span><div class="more-tag-info-hover"><div class="more-tag-info">
+                        <span>获得国家精品在线开放课程认定的课程</span><div class="tipBg f-pa"></div><div class="tipTp f-pa"></div></div></div></a></div>
+                    <div class="t2 f-fc3 f-nowrp f-f0"><a class="t21 f-fc9" href="/university/NJUPT" target="_blank">南京邮电大学</a>
+                        <a class="f-fc9" href="/u/mooc1460707219732" target="_blank">杨庚</a>            <span class="f-fc9">、<span>
+                <a class="f-fc9" href="/u/2607013511" target="_blank">胡素君</a>
+                <span class="f-fc9">、<span>
+                    <a class="f-fc9" href="/u/7721995796" target="_blank">李鹏</a>
+                    <span class="f-fc9">、<span>                <a class="f-fc9" href="/u/mooc1457661954719" target="_blank">成卫青</a>
+                        <span class="f-fc9">、<span>                <a class="f-fc9" href="/u/8581144392" target="_blank">王雪梅</a>
+                            <span class="f-fc9">、<span>                <a class="f-fc9" href="/u/2576970318" target="_blank">刘尚东</a>
+                            </span></span></span></span></span></span></span></span></span></span></div>
+                    <a href="//www.icourse163.org/course/NJUPT-1001639008" target="_blank"><span class="p5 brief f-ib f-f0 f-cb">本课程已经在中国大学MOOC开课9次，学生通过学习收获了知识，我们通过课程论坛和QQ群认真答疑，使得我们对课程也有了更深入的理解，真正做到了教学相长。我们也根据大家的反馈对课程进行了改进，本课程入…</span></a>
+                    <div class="t2 f-fc3 f-nowrp f-f0 margin-top0"><span class="u-icon-person f-fc9"></span><span class="hot">6501人参加</span><div class="over ">
+                        <span class="f-icon clock u-icon-clock2"></span><span class="txt">进行至第1周</span>
+                    </div>
+                    </div>
+
+                </div></div>
+        </div></div></div>
+</div>
+<br></br>
+<div class="u-clist f-bgw f-cb f-pr j-href ga-click" data-href="/course/NJUPT-1001639008" data-action="课程点击" data-label="1001639008_1206447217">
+    <div class="g-sd1">
+        <div class="g-mn1">
+            <div class="u-img f-fl">
+                <img src="../img/0.jpg" alt="网络技术与应用" height="150px" width="265px">
+            </div>
+            <div class="g-mn1c">
+
+                <div class="cnt f-pr">
+
+                    <div class="t1 f-f0 f-cb first-row"><a href="//www.icourse163.org/course/NJUPT-1001639008" target="_blank">
+                        <span class=" u-course-name f-thide">网络技术与应用</span></a><a target="_blank" href="http://www.icourse163.org/topics/2018NationalLevelMOOC/" class="tag u-course-tag f-f0 ga-click " data-action="国家精品" style="background-color: #CBA265">
+                        <span>国家精品</span><div class="more-tag-info-hover"><div class="more-tag-info">
+                        <span>获得国家精品在线开放课程认定的课程</span><div class="tipBg f-pa"></div><div class="tipTp f-pa"></div></div></div></a></div>
+                    <div class="t2 f-fc3 f-nowrp f-f0"><a class="t21 f-fc9" href="/university/NJUPT" target="_blank">南京邮电大学</a>
+                        <a class="f-fc9" href="/u/mooc1460707219732" target="_blank">杨庚</a>            <span class="f-fc9">、<span>
+                <a class="f-fc9" href="/u/2607013511" target="_blank">胡素君</a>
+                <span class="f-fc9">、<span>
+                    <a class="f-fc9" href="/u/7721995796" target="_blank">李鹏</a>
+                    <span class="f-fc9">、<span>                <a class="f-fc9" href="/u/mooc1457661954719" target="_blank">成卫青</a>
+                        <span class="f-fc9">、<span>                <a class="f-fc9" href="/u/8581144392" target="_blank">王雪梅</a>
+                            <span class="f-fc9">、<span>                <a class="f-fc9" href="/u/2576970318" target="_blank">刘尚东</a>
+                            </span></span></span></span></span></span></span></span></span></span></div>
+                    <a href="//www.icourse163.org/course/NJUPT-1001639008" target="_blank"><span class="p5 brief f-ib f-f0 f-cb">本课程已经在中国大学MOOC开课9次，学生通过学习收获了知识，我们通过课程论坛和QQ群认真答疑，使得我们对课程也有了更深入的理解，真正做到了教学相长。我们也根据大家的反馈对课程进行了改进，本课程入…</span></a>
+                    <div class="t2 f-fc3 f-nowrp f-f0 margin-top0"><span class="u-icon-person f-fc9"></span><span class="hot">6501人参加</span><div class="over ">
+                        <span class="f-icon clock u-icon-clock2"></span><span class="txt">进行至第1周</span>
+                    </div>
+                    </div>
+
+                </div></div>
+        </div></div></div>
+</div>
+<!--分页-->
+<div class="course-card-list-pager ga-click f-f0" data-action="翻页点击" id="auto-id-1561612616761">
+    <ul class="ux-pager">
+        <li class="ux-pager_btn ux-pager_btn__prev">
+            <a class="th-bk-disable-gh">上一页</a>
+        </li>
+        <li class="ux-pager_itm">
+            <a class="th-bk-main">1</a>
+        </li>
+        <!--Regular if44-->
+
+        <!--Regular list-->
+        <li class="ux-pager_itm">
+            <a class="th-bk-main-gh">2</a>
+        </li>
+
+        <li class="ux-pager_itm">
+            <a class="th-bk-main-gh">3</a>
+        </li>
+
+        <li class="ux-pager_itm">
+            <a class="th-bk-main-gh">4</a>
+        </li>
+
+        <li class="ux-pager_itm">
+            <a class="th-bk-main-gh">5</a>
+        </li>
+
+        <li class="ux-pager_itm">
+            <a class="th-bk-main-gh">6</a>
+        </li>
+
+        <!--Regular if45-->
+
+        <li class="ux-pager_sep ux-pager_sep__right">
+            <span>...</span>
+        </li>
+        <!--Regular if46-->
+        <!--Regular if47-->
+        <li class="ux-pager_itm">
+            <a class="th-bk-main-gh">584</a>
+        </li>
+
+        <li class="ux-pager_btn ux-pager_btn__next">
+            <a class="th-bk-main-gh">下一页</a>
+        </li>
+    </ul>
+</div>
+<!--排行榜-->
+<div class="u-hot-course-title f-f0">本周课程热度排行</div><ul class="m-hot-course-box">
+    <!--Regular list-->
+    <!--Regular if25-->
+    <li class="u-hot-course f-cb">
+        <div class="level">1</div>
+        <div class="triangle-topleft"></div>
+        <div class="f-fl">
+            <a target="_blank" href="/course/GXU-1205891801">
+                <img src="http://edu-image.nosdn.127.net/055DC97BA5A84FE97DB080BC37FD0411.jpg?imageView&amp;thumbnail=510y288&amp;quality=100" width="130" height="80">
+            </a>
+        </div>
+        <div class="f-fl">
+            <div class="title f-f0"><a target="_blank" href="/course/GXU-1205891801">木与人类文明</a></div>
+            <div class="count f-f0">14664人参加</div>
+        </div>
+    </li>
+    <!--Regular if26-->
+    <li class="u-hot-course-item f-f0 f-cb">
+        <a target="_blank" href="/course/kaoyan-1003293002" class="title ga-click" data-action="热度排行点击" data-label="高数不挂科-3小时学完高等数学/微积分·下位置（1）">2. <span class="name">高数不挂科-3小时学完高等数学/微积分·下</span></a>
+    </li>
+
+
+
+
+</ul>
 </body>
 </html>
