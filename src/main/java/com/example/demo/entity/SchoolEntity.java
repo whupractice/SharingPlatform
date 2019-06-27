@@ -1,10 +1,7 @@
 package com.example.demo.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @ Author     ：Theory
@@ -22,11 +19,16 @@ public class SchoolEntity {
 
     private String schoolName;//院校名
 
+    @Column(length = 1000)
     private String schoolItro;//院校简介
 
 
     public SchoolEntity() {
 
+    }
+
+    public SchoolEntity(String schoolName) {
+        this.schoolName = schoolName;
     }
 
     public long getSchoolId() {

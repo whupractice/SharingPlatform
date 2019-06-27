@@ -16,6 +16,9 @@ public interface LessonRepository extends JpaRepository<LessonEntity,Long> {
     @Query(value = "SELECT * FROM lesson WHERE is_excellent = 1",nativeQuery = true)
     List<LessonEntity> getExcellentClass();
 
+    //返回最大的课程id（最新加入的课程id）
+    @Query(value = "SELECT MAX(lesson_id) FROM lesson",nativeQuery = true)
+    long getNewLessonId();
 
 
 

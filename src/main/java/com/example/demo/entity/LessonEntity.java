@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @ Author     ：Theory
@@ -17,13 +14,29 @@ public class LessonEntity {
     public LessonEntity() {
     }
 
+    public LessonEntity(String lessonName, String schoolName, String education, String subject, int credit, String startTime, String endTime, String status,  String lessonIntro, int welcome, boolean isExcellent, int shareNum, String imgLink) {
+        this.lessonName = lessonName;
+        this.schoolName = schoolName;
+        this.education = education;
+        this.subject = subject;
+        this.credit = credit;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.status = status;
+        this.lessonIntro = lessonIntro;
+        this.welcome = welcome;
+        this.isExcellent = isExcellent;
+        this.shareNum = shareNum;
+        this.imgLink = imgLink;
+    }
+
     @Id
     @GeneratedValue
     private long lessonId;//课程号
 
     private String lessonName;//课程名
 
-    private long schoolId;//学校序号
+    private String schoolName;//学校名
 
     private String education;//所属学历
 
@@ -37,21 +50,17 @@ public class LessonEntity {
 
     private String status;//状态
 
-    private int studentNum;//学生数量
-
-    private String lessonDir;//课程目录
-
+    @Column(length = 2000)
     private String lessonIntro;//课程简介
-
-    private String lessonOverview;//课程概述
-
-    private String category;//课程类别
 
     private int welcome;//火热程度
 
     private boolean isExcellent = false;//是否精品
 
     private int shareNum;//分享次数
+
+    private String imgLink;//网页图片链接
+
 
 
     public long getLessonId() {
@@ -70,12 +79,12 @@ public class LessonEntity {
         this.lessonName = lessonName;
     }
 
-    public long getSchoolId() {
-        return schoolId;
+    public String getSchoolName() {
+        return schoolName;
     }
 
-    public void setSchoolId(long schoolId) {
-        this.schoolId = schoolId;
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 
     public String getEducation() {
@@ -126,21 +135,6 @@ public class LessonEntity {
         this.status = status;
     }
 
-    public int getStudentNum() {
-        return studentNum;
-    }
-
-    public void setStudentNum(int studentNum) {
-        this.studentNum = studentNum;
-    }
-
-    public String getLessonDir() {
-        return lessonDir;
-    }
-
-    public void setLessonDir(String lessonDir) {
-        this.lessonDir = lessonDir;
-    }
 
     public String getLessonIntro() {
         return lessonIntro;
@@ -150,21 +144,6 @@ public class LessonEntity {
         this.lessonIntro = lessonIntro;
     }
 
-    public String getLessonOverview() {
-        return lessonOverview;
-    }
-
-    public void setLessonOverview(String lessonOverview) {
-        this.lessonOverview = lessonOverview;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public int getWelcome() {
         return welcome;
@@ -189,5 +168,13 @@ public class LessonEntity {
 
     public void setShareNum(int shareNum) {
         this.shareNum = shareNum;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
     }
 }

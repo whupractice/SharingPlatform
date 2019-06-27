@@ -36,7 +36,7 @@ public class TLController {
       * @Param       :
       * @return      :
       */
-    @PutMapping("")
+    @PostMapping("")
     public void insertTL(@RequestBody TLEntity tl) {
         tlService.insertTL(tl);
     }
