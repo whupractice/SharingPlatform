@@ -125,7 +125,10 @@
     position: relative;
     line-height: 24px;
 }
-
+#foot{
+    background-position: center;
+    background-color: #eea236;
+}
 #carousel{
     position: relative;
     left: 200px;

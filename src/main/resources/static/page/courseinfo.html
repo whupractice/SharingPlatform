@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../page/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../page/css/courseinfo.css">
+    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/fonts/font-awesome/css/font-awesome.min.css">
+    <script src="../shared/css/bootstrap/js/jquery-3.2.1.min.js"></script>
+    <script src="../shared/css/bootstrap/js/umd-popper-4.1.0.min.js"></script>
+    <script src="../shared/css/bootstrap/js/4.1.0-bootstrap.min.js"></script>
+    <script type="text/javascript" src="../shared/css/bootstrap/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="../shared/css/bootstrap/js/3.0.3-bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>course information</title>
+    <style type="text/css">
+        .dropdown-submenu {
+            position: relative;
+        }
+        .dropdown-submenu > .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: -10px;
+            -webkit-border-radius: 0 6px 6px 6px;
+            -moz-border-radius: 0 6px 6px;
+            border-radius: 0 6px 6px 6px;
+        }
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+        .dropdown-submenu > a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+        .dropdown-submenu:hover > a:after {
+            border-left-color: #fff;
+        }
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+    </style>
+</head>
+<body>
+
+
+<!--导航栏-->
+<div class="main">
+    <!--头部-->
+    <nav class="nav bar nav bar-expand-sm bg-dark nav bar-dark">
+        <!-- Brand -->
+        <a class="nav bar-brand" href="#"><img src="../img/logo.jpg" class="img-responsive center-block" style="max-width: 50%" alt="Cinque Terre"></a>
+
+        <!-- Links -->
+        <div class="container">
+            <div class="row">
+                <li class="btn btn-primary"><a href="#"> 首页</a></li>
+                <div class="dropdown">
+                    <a id="dLabel1" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
+                       href="javascript:;">
+                        下拉多级菜单 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        <li><a href="javascript:;">一级菜单</a></li>
+                        <li><a href="javascript:;">一级菜单</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="javascript:;">一级菜单</a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="javascript:;">二级菜单</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a href="javascript:;">二级菜单</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:;">三级菜单</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a id="dLabel2" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
+                       href="javascript:;">
+                        下拉多级菜单 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        <li><a href="javascript:;">一级菜单</a></li>
+                        <li><a href="javascript:;">一级菜单</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="javascript:;">一级菜单</a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="javascript:;">二级菜单</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a href="javascript:;">二级菜单</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:;">三级菜单</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!--search-->
+                </div>
+                <nav class="navbar navbar-default" role="navigation">
+                    <a class="navbar-header">
+                        <a class="navbar-brand" href="#">lc平台</a>
+                    </a>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">提交</button>
+                    </form>
+                </nav>
+            </div>
+            <!--search-->
+        </div>
+
+    </nav>
+    <br>
+</div>
+<!--/导航栏-->
+
+<!--课程图片-->
+<div class="m-top f-cb f-pr f-f0">
+    <div class="g-flow">
+        <div id="j-breadcrumb">
+        </div>
+        <div class="g-sd1 video-intro">
+            <div id="j-courseImg" class="m-recimg canlick">
+                <img class="img" id="" src="../img/1.jpg" width="510" height="288" alt="图片">
+                <div class="click-btn-wrapper f-pa">
+                    <a class="clickBtn">
+                        <span class="u-icon-play f-ib f-vam"></span>
+                        <span class="f-ib f-vam">播放视频简介</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="g-mn1 course-enroll-info-wrapper">
+            <div class="title-wrapper">
+                <div class="f-cb f-pr">
+                    <div class="f-fl course-title-wrapper">
+                        <span class="course-title f-ib f-vam">家庭理财</span>
+                        <span id="j-teacherAssistMark" class="f-fcf f-f0 taMark" style="display:none;"></span>
+                    </div>
+                    <div class="f-fr f-f0 f-fs1 course-share f-pa" id="j-coushare">
+                        <span class="f-ib f-vam">分享</span>
+                        <div class="u-share f-cb">
+                            <a class="weixin f-fl f-fc6 solo f-icon u-icon-weixin f-pr" title="分享到微信" rel="weixin" id="auto-id-1561603468061">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="course-enroll-info">
+                    <div class="course-enroll-info">
+                        <div class="course-enroll-info_course-info">
+                          <div class="course-enroll-info_course-info_term-select">
+                            <!--Regular if16-->
+                            <div class="ux-dropdown course-enroll-info_course-info_term-select_dropdown">
+                                <!--inlcude-->
+                                <div class="ux-dropdown_hd f-thide th-bd2" title="第4次开课">
+                                    <i class="ux-icon-caret-down"></i>
+
+                                    <span class="ux-dropdown_cnt th-fs0fc5 ux-btn-toggle">第4次开课 </span>
+                                </div>
+                                <div class="ux-dropdown_bd" style="display: none;">
+                                        <li class="f-thide th-fs0fc5 z-sel" title="第4次开课">
+                                            <!--Regular if22-->
+                                            第4次开课
+
+                                        </li>
+
+                                </div>
+
+                                <!--Regular if23-->
+                            </div>
+
+                        </div>
+                        <div class="course-enroll-info_course-info_term-info">
+                            <div class="course-enroll-info_course-info_term-info_term-time">
+                                <span>开课时间：</span>
+                                <span>2019年06月24日 ~ 2019年08月26日</span>
+                            </div>
+                            <div class="course-enroll-info_course-info_term-info_term-progress ongoing">
+                                进行至第1周，共10周
+                            </div>
+                            <br>
+                            <div class="course-enroll-info_course-info_term-workload">
+                                <span>学时安排：</span>
+                                <span>3-5小时每周</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="course-enroll-info_course-enroll">
+                        <div class="course-enroll-info_course-enroll_price-enroll">
+                            <!--Regular if24-->
+                            <span class="course-enroll-info_course-enroll_price-enroll_enroll-count">已有8202人参加</span>
+                        </div>
+                        <!--Regular if25-->
+                        <div class="course-enroll-info_course-enroll_buttons">
+                            <div class="course-enroll-info_course-enroll_buttons_enroll-btn">
+<span class="ux-btn  ux-btn- ux-btn-w220 ">
+    <!--Regular if26-->
+    立即参加
+
+</span>
+                            </div>
+                            <!--Regular if27-->
+                        </div>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--课程图片-->
+
+<!--课程信息-->　
+<div class="g-flow">
+    <div class="b-40"></div>
+    <div class="g-wrap f-cb">
+        <div class="g-mn2">
+            <div class="g-mn2c f-bgw m-infomation f-f0">
+                <div class="m-infomation_tabs">
+                    <div data-action="点击详情tab" data-label="1206581203" class="ga-click m-infomation_tabs_tab f-ib f-vam selected" id="detail-tag-button">课程详情</div>
+                    <div data-action="点击评价tab" data-label="1206581203" class="ga-click m-infomation_tabs_tab f-ib f-vam" id="review-tag-button">课程评价<span id="review-tag-num">(71)</span></div>
+                </div>
+                <div id="content-section" class="m-infomation_content-section">
+                    <div id="j-rectxt" class="f-dn">spContent=通过对家庭理财理论与方法的学习，能够使学员了解家庭理财的主要观念、理论与方法，学习编制家庭财务报表，根据家庭收支情况以及未来消费支出的时机编制家庭财务预算，规划现金流。</div>
+                    <div id="j-course-heading-intro" class="course-heading-intro">
+                        <div class="course-heading-intro_intro" id="j-rectxt2">通过对家庭理财理论与方法的学习，能够使学员了解家庭理财的主要观念、理论与方法，学习编制家庭财务报表，根据家庭收支情况以及未来消费支出的时机编制家庭财务预算，规划现金流。</div>
+                        <div class="course-heading-intro_team">—— 课程团队</div>
+                    </div>
+                    <div class="category-title f-f0">
+                        <span class="category-title_icon f-ib f-vam u-icon-categories"></span>
+                        <span class="f-ib f-vam">课程概述</span>
+                    </div>
+                    <div class="category-content j-cover-overflow">
+                        <div class="f-richEditorText"><p><span style="font-size:14px;font-family:宋体">《家庭理财》课程对学生管理财富，并提高家庭资产的效能具有重要的实践指导意义。家庭理财这门课是针对社会普通大众开设的一门普及类网络课程，投资理财的根本目的就是让家庭财产保值增值，或者说使家庭财富最大化。通过该课程的学习，提供家庭理财的基本理论与方法，扩展与传播家庭理财的基础知识、风险观念与理财技巧，使社会公众能够学习和领会家庭理财的要旨。</span></p></div>
+                    </div>
+                    <div class="category-title f-f0">
+                        <span class="category-title_icon f-ib f-vam u-icon-scholar"></span>
+                        <span class="f-ib f-vam">授课目标</span>
+                    </div>
+                    <div class="category-content j-cover-overflow">
+                        <div class="f-richEditorText"><p>通过对家庭理财理论与方法的学习，能够使学员了解家庭理财的主要观念、理论与方法，学习编制家庭财务报表，根据家庭收支情况以及未来消费支出的时机编制家庭财务预算，规划现金流。</p></div>
+                    </div>
+                    <div class="category-title f-f0">
+                        <span class="category-title_icon f-ib f-vam u-icon-bookmark"></span>
+                        <span class="f-ib f-vam">课程大纲</span>
+                    </div>
+                    <div class="category-content j-cover-overflow" id="j-course-outline"><div class="outline">
+                        <!--Regular if3-->
+                        <div class="outline__new-outline">
+                            <!--Regular list-->
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">01</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第一章 家庭理财的基础理念</span>
+                                    </div>
+                                    <!--Regular if4-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">1-1 家庭理财的N个误区</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">1-2 家庭理财所涉及的理论学科</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">1-3 家庭理财投资与管理工具概述</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">02</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第二章 家庭理财的理论</span>
+                                    </div>
+                                    <!--Regular if5-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">2-1 专业投资术语</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">2-2 货币时间价值理论：如何正确评价投资回报</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">2-3 利率与通胀率</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">2-4 风险与收益</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">2-5 投资组合理论</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">2-6 与投资相关的税务常识</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">2-7 投资心理学</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">03</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第三章  家庭财务分析的基础知识</span>
+                                    </div>
+                                    <!--Regular if6-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">3-1 会计的概念、对象与基础职能</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">3-2 会计要素、会计科目、会计等式</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">3-3 六大会计要素概述</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">3-4 财务报表概述</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">3-5 流量与存量</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">3-6 权责发生制与收付实现制</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">3-7 借方与贷方</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">04</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第四章  家庭财务报表编制与分析</span>
+                                    </div>
+                                    <!--Regular if7-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">4-1 家庭资产负债表的编制与分析</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">4-2 家庭收支储蓄表的编制与分析</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">4-3 家庭资产负债表与收支储蓄表的比较分析</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">4-4 家庭现金流量表的编制与分析</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">05</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第五章  家庭财务管理的日常分析</span>
+                                    </div>
+                                    <!--Regular if8-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">5-1 记账原则与方法</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">5-2 家庭综合财务比率</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">5-3 情景分析</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">06</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第六章  家庭财务预算与现金流预估</span>
+                                    </div>
+                                    <!--Regular if9-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">6-1 家庭财务预算的编制</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">6-2 现金流量的预估</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">6-3 家庭财务预算与现金流预估的综合案例</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">07</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第七章  家庭理财的投资工具——储蓄与外汇</span>
+                                    </div>
+                                    <!--Regular if10-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">7-1 储蓄——永远不会落伍的投资理财工具</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">7-2 外币储蓄——回避汇率风险的工具</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">7-3 银行理财产品—高于储蓄风险小的理财工具</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">7-4 巧用银行卡之十招秘诀</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">7-5 网上理财—高风险高回报</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">08</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第八章  家庭理财的投资工具——回报稳定的债券</span>
+                                    </div>
+                                    <!--Regular if11-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">8-1 债券的特征种类和构成要素</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">8-2 投资国债的时机与技巧</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">8-3 利率与债券风险回避</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">09</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第九章  家庭理财的投资工具——基金与股票</span>
+                                    </div>
+                                    <!--Regular if12-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">9-1 基金—新基民入门知识</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">9-2 投资基金的时机选择：购买和赎回</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">9-3 股票基础知识</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">9-4 如何控制股票投资风险</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">9-5 作为股东的权利</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">10</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第十章  家庭理财的投资工具————保险</span>
+                                    </div>
+                                    <!--Regular if13-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">10-1 保险—花钱转移风险的双利投资理财工具</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">10-2 人身保险投资与财产保险投资的基本常识</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">10-3 保险疑惑有答案</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">11</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第十一章  家庭理财的投资工具——信托</span>
+                                    </div>
+                                    <!--Regular if14-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">11-1 信托——贵族游戏式的投资理财方式</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">11-2 信托理财知识入门</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">11-3信托理财风险规避</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="outline__new-outline__chapter f-cb">
+                                <div class="outline__new-outline__chapter__number f-fl">12</div>
+                                <div class="outline__new-outline__chapter__content f-fl">
+                                    <div class="outline__new-outline__chapter__content__title">
+                                        <span class="outline__new-outline__chapter__content__title__text">第十二章  家庭理财的实物投资工具</span>
+                                    </div>
+                                    <!--Regular if15-->
+                                    <div class="outline__new-outline__chapter__content__plan">
+                                        <div class="outline__new-outline__chapter__content__plan__title">课时</div>
+                                        <div class="outline__new-outline__chapter__content__plan__lessons">
+                                            <!--Regular list-->
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">12-1 黄金——永不过时的通胀克星</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">12-2 房地产——“黄土”变黄金的魔法游戏</div>
+
+                                            <div class="outline__new-outline__chapter__content__plan__lessons__lesson">12-3 挖掘收藏品中的金矿</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div></div>
+                    <div class="category-title f-f0">
+                        <span class="category-title_icon f-ib f-vam u-icon-scholar"></span>
+                        <span class="f-ib f-vam">预备知识</span>
+                    </div>
+                    <div class="category-content j-cover-overflow">
+                        <div class="f-richEditorText"><p>1.教材：安佳理财．家庭理财（精华版）[M]．北京：清华大学出版社，2016</p><p>2.主要参考书：</p><p>[1] 霍尔曼，诺森布鲁门．个人理财计划[M]．北京：中国财经出版社，2003</p><p>[2] 约翰·特雷恩．投资技巧:行之有效的个人理财策略析[M]．海口：海南出版社，1999</p><p>[3] 彼得·E·高德．如何制定你的退休金计划[M]．北京：中国金融出版社，2000</p><p>[4] 罗伯特·清崎．富爸爸穷爸爸[M]．成都：四川文艺出版社，2014</p><p><br></p></div>
+                    </div>
+                    <div class="category-title f-f0" id="requirements">
+                        <span class="category-title_icon  f-ib f-vam f-15 u-icon-cert2"></span>
+                        <span class="f-ib f-vam">证书要求</span>
+                    </div>
+                    <div class="category-content j-cover-overflow">
+                        <div class="f-richEditorText"><p style="margin-left:28px">（一）<span style="font-variant-numeric: normal;font-stretch: normal;font-size: 9px;line-height: normal;font-family: 'Times New Roman'">&nbsp;&nbsp; </span>练习题：每章节都有相应知识点的练习题，并且根据练习题开发相应思考题，并提供参考答案，帮助学生更好的理解章节里的知识点并实际应用，开拓学生的思考点和思维方式。</p><p style="margin-left:28px">（二）<span style="font-variant-numeric: normal;font-stretch: normal;font-size: 9px;line-height: normal;font-family: 'Times New Roman'">&nbsp;&nbsp; </span>给学生提供当前经济形式的视频资料及相关网址，要求学生通过提供的网址和金融界、搜狐财经等网络媒体渠道，及时了解当前经济热点及与国家家庭财税体制变化或修正或投资等的信息，了解宏观金融形势，对实时发生的与家庭理财现实相关的案例进行搜集，并分享到课堂上进行讨论。</p><p><br></p></div>
+                    </div>
+                    <div class="category-title f-f0">
+                        <span class="category-title_icon f-ib f-vam f-18 u-icon-stacks"></span>
+                        <span class="f-ib f-vam">参考资料</span>
+                    </div>
+                    <div class="category-content j-cover-overflow">
+                        <div class="f-richEditorText"><p>1.教材：安佳理财．家庭理财（精华版）[M]．北京：清华大学出版社，2016</p><p>2.主要参考书：</p><p>[1] 霍尔曼，诺森布鲁门．个人理财计划[M]．北京：中国财经出版社，2003</p><p>[2] 约翰·特雷恩．投资技巧:行之有效的个人理财策略析[M]．海口：海南出版社，1999</p><p>[3] 彼得·E·高德．如何制定你的退休金计划[M]．北京：中国金融出版社，2000</p><p>[4] 罗伯特·清崎．富爸爸穷爸爸[M]．成都：四川文艺出版社，2014</p><p><br></p></div>
+                    </div>
+                </div>
+                <div id="comment-section"></div>
+            </div>
+            <div class="recommend-bottom" id="j-recommend-bottom">
+                <div class="um-recommend um-recommend-bottom">
+                    <div class="um-recommend_hd f-pr">
+                        <!--Regular if283-->
+                        <h3 class="um-recommend_hd_tlt">为你推荐</h3>
+
+                        <!--Regular if284-->
+                    </div>
+                    <div class="um-recommend-list f-cb">
+                        <!--Regular list-->
+                        <!--Regular if285-->
+                        <div class="um-recommend-list_item kaoyan f-fl f-cb f-pr card-big">
+                            <img class="um-recommend-list_item_img f-fl" src="//edu-image.nosdn.127.net/b04249c6-c8ac-4790-8b8e-83640d6ea0b0.png?imageView&amp;quality=100&amp;thumbnail=180y104">
+                            <!--Regular if286-->
+                            <span class="um-recommend-list_item_tag f-pa">专栏</span>
+
+                            <div class="um-recommend-list_item_wrap f-fl">
+                                <h4 class="um-recommend-list_item_name" title="有用又有趣的经济学思维">有用又有趣的经济学思维</h4>
+                                <div class="um-recommend-list_item_school_info">
+                                    <!--Regular if287-->
+                                    <h4 class="um-recommend-list_item_teacher f-ib">文建东</h4>
+
+                                </div>
+                                <!--Regular if288-->
+                                <div class="um-recommend-list_item_count f-pa">
+                                    <span class="u-icon-person f-fc9"></span>
+                                    <span class="hot">3779人参加</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!--Regular if289-->
+                        <div class="um-recommend-list_item kaoyan f-fl f-cb f-pr card-big">
+                            <img class="um-recommend-list_item_img f-fl" src="//edu-image.nosdn.127.net/56f090483e7648aabe8a657539ae09b6.png?imageView&amp;quality=100&amp;thumbnail=180y104">
+                            <!--Regular if290-->
+                            <span class="um-recommend-list_item_tag f-pa">专栏</span>
+
+                            <div class="um-recommend-list_item_wrap f-fl">
+                                <h4 class="um-recommend-list_item_name" title="从0开始，好好理财">从0开始，好好理财</h4>
+                                <div class="um-recommend-list_item_school_info">
+                                    <!--Regular if291-->
+                                </div>
+                                <!--Regular if292-->
+                                <div class="um-recommend-list_item_count f-pa">
+                                    <span class="u-icon-person f-fc9"></span>
+                                    <span class="hot">2264人参加</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--Regular if50--></div>
+        </div>
+        <div class="g-sd2 m-sd2">
+            <div class="m-sdCourse" id="j-sdCourse"></div>
+            <div class="m-sdinfo" id="j-sdinfo">
+                <div id="j-center" class="m-center f-dn"></div>
+                <div class="f-bgw" id="j-teacher">
+                    <div class="m-teachers">
+                        <!--Regular if40-->
+                        <a data-cate="课程介绍页" data-action="点击学校logo" data-label="-大连理工大学" class="ga-click m-teachers_school-img f-ib" href="/university/DLUT" target="_blank">
+                            <img class="u-img" width="220" height="80" alt="大连理工大学" src="http://img2.ph.126.net/Ij8QrPCgSZZ_GECkmQigNA==/6608899412259397493.jpg">
+                        </a>
+
+                        <!--Regular if41-->
+                        <div class="m-teachers_teacher-list">
+                            <div class="t-title f-fc3 f-f0">1位授课老师</div>
+                            <div class="m-teachers_teacher-list_wrap height-auto"><!--Regular if42-->
+                                <div class="um-list-slider f-pr">
+                                    <!--Regular if43-->
+                                    <!--Regular if44-->
+                                    <div class="um-list-slider_con">
+                                        <!--Regular list-->
+                                        <div class="um-list-slider_con_item">
+                                            <!--Regular if45-->
+                                            <!--inlcude--><a data-cate="课程介绍页" data-action="点击课程团队头像" data-label="1206581203-姚宏" class="ga-click u-tchcard f-cb" href="/u/mooc1498021676324" target="_blank">
+                                            <img class="f-fl" src="http://edu-image.nosdn.127.net/FF986E2E4C21C8BEF525F5EA0131BBCA.JPG?imageView&amp;thumbnail=180y180&amp;quality=100" width="55" height="55" alt="姚宏">
+                                            <div class="cnt f-fl">
+                                                <!--Regular if46-->
+                                                <h3 class="f-fc3">姚宏</h3>
+
+                                                <!--Regular if47-->
+                                                <p class="lector-title f-fc9 f-f0">副教授</p>
+
+                                            </div>
+                                        </a>
+
+                                        </div>
+
+                                    </div>
+                                    <!--Regular if48-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--课程信息-->
+<!---->
+
+
+</body>
+</html>
