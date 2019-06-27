@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @ Author     ：Theory
@@ -25,13 +22,24 @@ public class TeacherEntity {
 
     private String job;//教师职称（教授、副教授）
 
-    private String schoolName;//学校名称
+    private String schoolName;//学校名
 
     private String academyName;//院系名称
 
+    @Column(length = 1000)
     private String teacherIntro;//老师简介
 
+    String imgLink;//老师图片链接
 
+
+    public TeacherEntity(String teacherName, String job, String schoolName, String academyName, String teacherIntro, String imgLink) {
+        this.teacherName = teacherName;
+        this.job = job;
+        this.schoolName = schoolName;
+        this.academyName = academyName;
+        this.teacherIntro = teacherIntro;
+        this.imgLink = imgLink;
+    }
 
     public long getTeacherId() {
         return teacherId;
@@ -57,6 +65,8 @@ public class TeacherEntity {
         this.job = job;
     }
 
+
+
     public String getSchoolName() {
         return schoolName;
     }
@@ -64,6 +74,7 @@ public class TeacherEntity {
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
     }
+
 
     public String getAcademyName() {
         return academyName;
@@ -81,5 +92,11 @@ public class TeacherEntity {
         this.teacherIntro = teacherIntro;
     }
 
+    public String getImgLink() {
+        return imgLink;
+    }
 
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
+    }
 }

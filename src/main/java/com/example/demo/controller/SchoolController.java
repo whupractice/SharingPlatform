@@ -32,7 +32,7 @@ public class SchoolController {
 
     /**
       * @Author      : QinYingran
-      * @Description : 向数据库插入课程
+      * @Description : 向数据库插入学校
       * @Param       :
       */
     @PostMapping("")
@@ -40,9 +40,10 @@ public class SchoolController {
         schoolService.insertSchool(school);
     }
 
+
     /**
       * @Author      : QinYingran
-      * @Description : 更新课程
+      * @Description : 更新学校
       * @Param       :
       * @return      :
       */
@@ -51,6 +52,14 @@ public class SchoolController {
         schoolService.insertSchool(school);
     }
 
+
+
+    /**
+      * @Author      : QinYingran
+      * @Description :
+      * @Param       : [schoolId]
+      * @return      : void
+      */
     @DeleteMapping("")
     public void deleteSchool(@RequestParam("schoolId") long schoolId) {
         schoolService.deleteSchool(schoolId);
