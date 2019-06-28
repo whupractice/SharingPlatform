@@ -1,0 +1,17 @@
+.modal {
+    z-index: 11040;
+}
+.btn.btn-success {
+    background: rgba(102, 189, 120, 1.0);
+    color: #ffffff;
+}
+.btn {
+    padding: 7px 18px;
+}
+.btn, .btn.btn-default {
+    background: #eaeaea;
+    color: #333333;
+}
+.btn {
+    padding: 7px 18px;
+}
