@@ -38,6 +38,12 @@ public class LessonController {
     }
 
 
+    @ApiOperation(value = "获取所有课程2", notes = "获取所有课程2",httpMethod = "GET")
+    @GetMapping("")
+    public List<LessonEntity> getAllLesson2(){
+        return lessonService.getAll2();
+    }
+
     /**
       * @Author      : Theory
       * @Description : 获取精品课程

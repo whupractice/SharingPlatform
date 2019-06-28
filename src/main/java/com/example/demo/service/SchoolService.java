@@ -29,6 +29,16 @@ public class SchoolService {
 
     /**
       * @Author      : QinYingran
+      * @Description : 获取所有学校列表2
+      * @Param       : []
+      * @return      : 学校列表
+      */
+    public List<SchoolEntity> getAll2() {
+        return schoolRepository.getAllSchool();
+    }
+
+    /**
+      * @Author      : QinYingran
       * @Description : 根据id获取学校介绍
       * @Param       : 学校id
       * @return      : 特定学校的介绍

@@ -1,11 +1,13 @@
 package com.example.demo.service;
+
 import com.example.demo.entity.LessonEntity;
 import com.example.demo.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.data.domain.Sort;
 
 /**
  * @ Author     ：Theory
@@ -22,13 +24,21 @@ public class LessonService {
     /**
       * @Author      : Theory
       * @Description : 获得所有课程
-      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      * @return      : 课程列表
       */
     public List<LessonEntity> getAll(){
         return lessonRepository.findAll();
     }
 
-
+    /**
+      * @Author      : QinYingran
+      * @Description : 获得所有课程2
+      * @Param       : []
+      * @return      : 课程列表
+      */
+    public List<LessonEntity> getAll2() {
+        return lessonRepository.getAllClass();
+    }
 
     /**
       * @Author      : Theory

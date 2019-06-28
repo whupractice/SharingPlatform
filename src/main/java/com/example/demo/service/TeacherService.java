@@ -30,6 +30,16 @@ public class TeacherService {
 
     /**
       * @Author      : QinYingran
+      * @Description : 获取所有教师
+      * @Param       : []
+      * @return      : 所有教师列表
+      */
+    public List<TeacherEntity> getAll2() {
+        return teacherRepository.getAllTeacher();
+    }
+
+    /**
+      * @Author      : QinYingran
       * @Description :
       * @Param       : 向数据库插入教师
       * @return      :

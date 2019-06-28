@@ -56,6 +56,16 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
+    /**
+      * @Author      : QinYingran
+      * @Description : 获取数据库中所有学生2
+      * @Param       : []
+      * @return      : 所有学生
+      */
+    public List<StudentEntity> getAllStudent2(){
+        return studentRepository.getAllStudent();
+    }
+
 
     /**
       * @Author      : Theory

@@ -20,6 +20,8 @@ public interface LessonRepository extends JpaRepository<LessonEntity,Long> {
     @Query(value = "SELECT MAX(lesson_id) FROM lesson",nativeQuery = true)
     long getNewLessonId();
 
-
+    //查询全部课程
+    @Query(value = "SELECT * FROM lesson_view",nativeQuery = true)
+    List<LessonEntity> getAllClass();
 
 }

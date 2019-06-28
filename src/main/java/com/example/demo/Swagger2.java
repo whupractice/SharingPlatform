@@ -46,7 +46,6 @@ public class Swagger2 {
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")
                 .description("更多请关注http://localhost:8089")
                 .termsOfServiceUrl("http://localhost:8089")
-                .contact("sunf")
                 .version("1.0")
                 .build();
     }

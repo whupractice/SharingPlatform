@@ -35,6 +35,13 @@ public class SchoolController {
         return schoolService.getAll();
     }
 
+
+    @ApiOperation(value = "获取所有学校2", notes = "获取所有学校2",httpMethod = "GET")
+    @GetMapping("")
+    public List<SchoolEntity> getAllSchool2(){
+        return schoolService.getAll2();
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 向数据库插入学校

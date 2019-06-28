@@ -35,6 +35,13 @@ public class TeacherController {
         return  teacherService.getAll();
     }
 
+
+    @ApiOperation(value = "获取所有教师2", notes = "获取所有教师2",httpMethod = "GET")
+    @GetMapping("")
+    public List<TeacherEntity> getAllTeacher2() {
+        return  teacherService.getAll2();
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 向数据库插入教师
