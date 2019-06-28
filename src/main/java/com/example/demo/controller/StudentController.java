@@ -64,18 +64,6 @@ public class StudentController {
         return studentService.getAllStudent();
     }
 
-    /**
-      * @Author      : QinYingran
-      * @Description : 获取所有学生列表
-      * @Param       : []
-      * @return      : 所有学生列表
-      */
-    @ApiOperation(value = "返回数据库中所有学生的信息2", notes = "返回数据库中所有学生的信息2",httpMethod = "GET")
-    @GetMapping(value = "")
-    public List<StudentEntity> getAllStudent2(){
-        return studentService.getAllStudent2();
-    }
-
 
     /**
       * @Author      : Theory

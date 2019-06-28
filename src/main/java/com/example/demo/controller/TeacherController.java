@@ -36,10 +36,10 @@ public class TeacherController {
     }
 
 
-    @ApiOperation(value = "获取所有教师2", notes = "获取所有教师2",httpMethod = "GET")
-    @GetMapping("")
-    public List<TeacherEntity> getAllTeacher2() {
-        return  teacherService.getAll2();
+    @ApiOperation(value = "获取所有教师并去重", notes = "获取所有教师并去重",httpMethod = "GET")
+    @GetMapping("/view")
+    public List<Object> getAllDistinctly() {
+        return  teacherService.getAllDistinctly();
     }
 
     /**

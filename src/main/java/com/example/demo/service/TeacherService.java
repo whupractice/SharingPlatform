@@ -34,8 +34,8 @@ public class TeacherService {
       * @Param       : []
       * @return      : 所有教师列表
       */
-    public List<TeacherEntity> getAll2() {
-        return teacherRepository.getAllTeacher();
+    public List<Object> getAllDistinctly() {
+        return teacherRepository.getAllDistinctly();
     }
 
     /**

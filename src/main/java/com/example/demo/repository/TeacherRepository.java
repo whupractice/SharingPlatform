@@ -17,6 +17,6 @@ public interface TeacherRepository extends JpaRepository<TeacherEntity,Long> {
     long getNewTeacherId();
 
     //获取所有教师列表
-    @Query(value = "SELECT * FROM teacher_view",nativeQuery = true)
-    List<TeacherEntity> getAllTeacher();
+    @Query(value = "select distinct academy_name,img_link,job,school_name,teacher_intro,teacher_name from teacher order by school_name",nativeQuery = true)
+    List<Object> getAllDistinctly();
 }

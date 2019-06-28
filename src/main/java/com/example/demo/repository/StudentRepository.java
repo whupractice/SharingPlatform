@@ -4,8 +4,6 @@ import com.example.demo.entity.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
-
 
 /**
   * @Author      : Theory
@@ -22,7 +20,4 @@ public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
     @Query(value = "SELECT MAX(student_id) FROM student",nativeQuery = true)
     long getMaxId();
 
-    //获取所有学生
-    @Query(value = "SELECT * from student_view",nativeQuery = true)
-    List<StudentEntity> getAllStudent();
 }

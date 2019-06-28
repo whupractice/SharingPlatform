@@ -18,8 +18,8 @@ public interface SchoolRepository extends JpaRepository<SchoolEntity,Long> {
     String getSchoolInfoById(Long id);
 
     //查询全部学校
-    @Query(value = "SELECT * FROM school_view",nativeQuery = true)
-    List<SchoolEntity> getAllSchool();
+    @Query(value = "select distinct school_itro,school_name from school order by school_name",nativeQuery = true)
+    List<Object> getAllDistinctly();
 
 }
 

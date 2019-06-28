@@ -38,10 +38,10 @@ public class LessonController {
     }
 
 
-    @ApiOperation(value = "获取所有课程2", notes = "获取所有课程2",httpMethod = "GET")
-    @GetMapping("")
-    public List<LessonEntity> getAllLesson2(){
-        return lessonService.getAll2();
+    @ApiOperation(value = "获取所有课程并去重", notes = "获取所有课程并去重",httpMethod = "GET")
+    @GetMapping("/view")
+    public List<Object> getAllDistinctly(){
+        return lessonService.getAllDistinctly();
     }
 
     /**

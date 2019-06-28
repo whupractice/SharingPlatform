@@ -33,8 +33,8 @@ public class SchoolService {
       * @Param       : []
       * @return      : 学校列表
       */
-    public List<SchoolEntity> getAll2() {
-        return schoolRepository.getAllSchool();
+    public List<Object> getAllDistinctly() {
+        return schoolRepository.getAllDistinctly();
     }
 
     /**

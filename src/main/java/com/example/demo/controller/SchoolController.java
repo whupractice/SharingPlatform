@@ -36,10 +36,10 @@ public class SchoolController {
     }
 
 
-    @ApiOperation(value = "获取所有学校2", notes = "获取所有学校2",httpMethod = "GET")
-    @GetMapping("")
-    public List<SchoolEntity> getAllSchool2(){
-        return schoolService.getAll2();
+    @ApiOperation(value = "获取所有学校并去重", notes = "获取所有学校并去重",httpMethod = "GET")
+    @GetMapping("/view")
+    public List<Object> getAllDistinctly(){
+        return schoolService.getAllDistinctly();
     }
 
     /**

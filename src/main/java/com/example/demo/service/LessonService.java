@@ -36,8 +36,8 @@ public class LessonService {
       * @Param       : []
       * @return      : 课程列表
       */
-    public List<LessonEntity> getAll2() {
-        return lessonRepository.getAllClass();
+    public List<Object> getAllDistinctly() {
+        return lessonRepository.getAllDistinctly();
     }
 
     /**

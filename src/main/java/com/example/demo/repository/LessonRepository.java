@@ -21,7 +21,7 @@ public interface LessonRepository extends JpaRepository<LessonEntity,Long> {
     long getNewLessonId();
 
     //查询全部课程
-    @Query(value = "SELECT * FROM lesson_view",nativeQuery = true)
-    List<LessonEntity> getAllClass();
+    @Query(value = "select distinct credit,education,end_time,img_link,is_excellent,lesson_intro,lesson_name,school_name,share_num,start_time,status,subject,welcome from lesson order by subject",nativeQuery = true)
+    List<Object> getAllDistinctly();
 
 }
