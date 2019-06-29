@@ -56,7 +56,7 @@
 
         <ul style="width: 1070px">
             <li ng-repeat="x in excellentLesson" class="uptodate">
-                <a ng-click="goDetail()">
+                <a ng-click="goDetail(x)">
                     <img class="uptodate-img" src="{{x.imgLink}}" alt="">
                     <p class="uptodate-title">{{x.lessonName}}</p>
                     <p class="uptodate-info">
@@ -80,7 +80,7 @@
 
         <ul style="width: 1070px">
             <li ng-repeat="x in hotLesson" class="uptodate">
-                <a ng-click="goDetail()">
+                <a ng-click="goDetail(x)">
                     <img class="uptodate-img" src="{{x.imgLink}}" alt="">
                     <p class="uptodate-title">{{x.lessonName}}</p>
                     <p class="uptodate-info">

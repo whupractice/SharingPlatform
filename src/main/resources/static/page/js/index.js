@@ -7,9 +7,8 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
             url: '/main',
             templateUrl: '/page/main.html'
         })
-        .state('courseinfo:courseId',{
-            params: {"course":null},//转到课程详情页面时，传递参数[课程信息]
-            url: '/couserinfo',
+        .state('courseinfo',{
+            url: '/couserinfo/:courseId',
             templateUrl: '/page/courseinfo.html'
         })
         .state('schoolCourse', {

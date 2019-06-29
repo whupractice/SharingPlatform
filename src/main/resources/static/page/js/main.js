@@ -1,11 +1,11 @@
-var app = angular.module('myApp');
+var API_index = angular.module('myApp');
 
 /**
  * @Author      : Theory
  * @Description : 主页面控制器
  * @type        : Controller
  */
-app.controller('mainCtrl', function ($scope, $http, $state) {
+API_index.controller("mainCtrl", function ($scope, $http, $state) {
 
 
     $scope.currrentUser = null;//当前用户
