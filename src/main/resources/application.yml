@@ -3,9 +3,9 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://39.96.88.130:3306/sharingdb?serverTimezone=GMT&characterEncoding=utf-8
-    username: xsy
-    password: 123
+    url: jdbc:mysql://127.0.0.1:3306/sharingdb?serverTimezone=GMT&characterEncoding=utf-8
+    username: root
+    password: root
   jpa:
     hibernate:
       ddl-auto: update

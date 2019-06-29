@@ -121,7 +121,7 @@
         max-width: 500px;
     }
     .f-fl {
-        float: left;
+        /*float: left;*/
     }
     .f-self{
         position: relative;
@@ -167,9 +167,7 @@
         position: absolute;
         top: -55px;
     }
-    .f-dn {
-        display: none;
-    }
+
     .m-top .course-enroll-info-wrapper .course-title-wrapper .tag-wrapper.mark .wrap .link {
         cursor: pointer;
         font-size: 12px;
@@ -377,8 +375,10 @@
         height: 52px;
         line-height: 52px;
         font-size: 18px;
-        background-color: #ff7a3e;
-        border-color: #ff7a3e;
+        background-color: #0075ff;
+        border-color: #0075ff;
+        color: white;
+        font-weight: bold;
     }
     .ux-btn-w220 {
         width: 220px;
@@ -420,6 +420,7 @@
 .g-mn2 {
     float: left;
     width: 80%;
+    margin-left: 80px;
 }
 .m-infomation_tabs {
     padding-top: 30px;
@@ -427,8 +428,8 @@
     border-bottom: 1px solid #e6e6e6;
 }
 .m-infomation_tabs_tab.selected {
-    border-bottom: 4px solid #56B929;
-    color: #56B929;
+    border-bottom: 4px solid #0075ff;
+    color: #0075ff;
 }
 .m-infomation_tabs_tab {
     cursor: pointer;
@@ -648,17 +649,17 @@
     line-height: 14px;
     color: #999;
 }
-.m-sd2 {
-    width: 295px;
-    margin-left: -295px;
-}
-.g-sd2 {
-    position: relative;
-    float: right;
-    right: -50px;
-    width: 225px;
-    margin-left: -225px;
-}
+/*.m-sd2 {*/
+    /*width: 295px;*/
+    /*margin-left: -295px;*/
+/*}*/
+/*.g-sd2 {*/
+    /*position: relative;*/
+    /*float: right;*/
+    /*right: -50px;*/
+    /*width: 225px;*/
+    /*margin-left: -225px;*/
+/*}*/
 .f-bgw {
     background-color: #fff;
 }

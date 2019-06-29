@@ -2,142 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../page/css/index.css">
     <link rel="stylesheet" type="text/css" href="../page/css/courseinfo.css">
-    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/fonts/font-awesome/css/font-awesome.min.css">
-    <script src="../shared/css/bootstrap/js/jquery-3.2.1.min.js"></script>
-    <script src="../shared/css/bootstrap/js/umd-popper-4.1.0.min.js"></script>
-    <script src="../shared/css/bootstrap/js/4.1.0-bootstrap.min.js"></script>
-    <script type="text/javascript" src="../shared/css/bootstrap/js/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="../shared/css/bootstrap/js/3.0.3-bootstrap.min.js"></script>
     <title>course information</title>
-    <style type="text/css">
-        .dropdown-submenu {
-            position: relative;
-        }
-        .dropdown-submenu > .dropdown-menu {
-            top: 0;
-            left: 100%;
-            margin-top: -6px;
-            margin-left: -10px;
-            -webkit-border-radius: 0 6px 6px 6px;
-            -moz-border-radius: 0 6px 6px;
-            border-radius: 0 6px 6px 6px;
-        }
-        .dropdown-submenu:hover > .dropdown-menu {
-            display: block;
-        }
-        .dropdown-submenu > a:after {
-            display: block;
-            content: " ";
-            float: right;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-style: solid;
-            border-width: 5px 0 5px 5px;
-            border-left-color: #ccc;
-            margin-top: 5px;
-            margin-right: -10px;
-        }
-        .dropdown-submenu:hover > a:after {
-            border-left-color: #fff;
-        }
-        .dropdown-submenu.pull-left {
-            float: none;
-        }
-        .dropdown-submenu.pull-left > .dropdown-menu {
-            left: -100%;
-            margin-left: 10px;
-            -webkit-border-radius: 6px 0 6px 6px;
-            -moz-border-radius: 6px 0 6px 6px;
-            border-radius: 6px 0 6px 6px;
-        }
-    </style>
 </head>
 <body>
 
-
-<!--导航栏-->
-<div class="main">
-    <!--头部-->
-    <nav class="nav bar nav bar-expand-sm bg-dark nav bar-dark">
-        <!-- Brand -->
-        <a class="nav bar-brand" href="#"><img src="../img/logo.jpg" class="img-responsive center-block" style="max-width: 50%" alt="Cinque Terre"></a>
-
-        <!-- Links -->
-        <div class="container">
-            <div class="row">
-                <li class="btn btn-primary"><a href="#"> 首页</a></li>
-                <div class="dropdown">
-                    <a id="dLabel1" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
-                       href="javascript:;">
-                        下拉多级菜单 <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                        <li><a href="javascript:;">一级菜单</a></li>
-                        <li><a href="javascript:;">一级菜单</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="javascript:;">一级菜单</a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="javascript:;">二级菜单</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="dropdown">
-                    <a id="dLabel2" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
-                       href="javascript:;">
-                        下拉多级菜单 <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                        <li><a href="javascript:;">一级菜单</a></li>
-                        <li><a href="javascript:;">一级菜单</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="javascript:;">一级菜单</a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="javascript:;">二级菜单</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!--search-->
-                </div>
-                <nav class="navbar navbar-default" role="navigation">
-                    <a class="navbar-header">
-                        <a class="navbar-brand" href="#">lc平台</a>
-                    </a>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">提交</button>
-                    </form>
-                </nav>
-            </div>
-            <!--search-->
-        </div>
-
-    </nav>
-    <br>
-</div>
-<!--/导航栏-->
 
 <!--课程图片-->
 <div class="m-top f-cb f-pr f-f0">
@@ -249,7 +118,7 @@
                     <div data-action="点击评价tab" data-label="1206581203" class="ga-click m-infomation_tabs_tab f-ib f-vam" id="review-tag-button">课程评价<span id="review-tag-num">(71)</span></div>
                 </div>
                 <div id="content-section" class="m-infomation_content-section">
-                    <div id="j-rectxt" class="f-dn">spContent=通过对家庭理财理论与方法的学习，能够使学员了解家庭理财的主要观念、理论与方法，学习编制家庭财务报表，根据家庭收支情况以及未来消费支出的时机编制家庭财务预算，规划现金流。</div>
+                    <div id="j-rectxt">spContent=通过对家庭理财理论与方法的学习，能够使学员了解家庭理财的主要观念、理论与方法，学习编制家庭财务报表，根据家庭收支情况以及未来消费支出的时机编制家庭财务预算，规划现金流。</div>
                     <div id="j-course-heading-intro" class="course-heading-intro">
                         <div class="course-heading-intro_intro" id="j-rectxt2">通过对家庭理财理论与方法的学习，能够使学员了解家庭理财的主要观念、理论与方法，学习编制家庭财务报表，根据家庭收支情况以及未来消费支出的时机编制家庭财务预算，规划现金流。</div>
                         <div class="course-heading-intro_team">—— 课程团队</div>
