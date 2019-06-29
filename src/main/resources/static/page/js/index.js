@@ -5,10 +5,12 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
     $stateProvider
         .state('main',{
             url: '/main',
+            params:{"studentId":null},
             templateUrl: '/page/main.html'
         })
         .state('courseinfo',{
-            url: '/couserinfo/:courseId',
+            url: '/couserinfo',
+            params:{"lesson": null},
             templateUrl: '/page/courseinfo.html'
         })
         .state('schoolCourse', {

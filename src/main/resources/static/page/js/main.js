@@ -5,7 +5,7 @@ var API_index = angular.module('myApp');
  * @Description : 主页面控制器
  * @type        : Controller
  */
-API_index.controller("mainCtrl", function ($scope, $http, $state) {
+API_index.controller("mainCtrl", function ($scope, $http, $state,$stateParams) {
 
 
     $scope.currrentUser = null;//当前用户
@@ -54,13 +54,18 @@ API_index.controller("mainCtrl", function ($scope, $http, $state) {
       * @Description : 初始化主界面
       */
     $scope.initMain = function(){
-        $http({
-            method: 'GET',
-            url: '/student/cu'
-        }).then(function successCallback(response) {
-            $scope.currrentUser = response.data;
+        if($stateParams.studentId!=null) {
+            $http({
+                method: 'GET',
+                url: '/student/' + $stateParams.studentId
+            }).then(function successCallback(response) {
+                $scope.currrentUser = response.data;
+                $scope.getHotLesson();
+            });
+        }else{
             $scope.getHotLesson();
-        });
+        }
+
     };
 
 
@@ -68,11 +73,10 @@ API_index.controller("mainCtrl", function ($scope, $http, $state) {
      * @Author      : Theory
      * @Description : 跳转到课程详情页
      * @Param       : 被点击的课程
-     * TODO : 以后可以将此处优化，直接传递被点击的课程信息，而不是传递id
      */
     $scope.goDetail = function (lesson) {
         $state.go('courseinfo', {
-            courseId: lesson.lessonId
+            "lesson": lesson
         });
     }
 

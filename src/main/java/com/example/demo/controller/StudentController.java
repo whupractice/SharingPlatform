@@ -37,12 +37,7 @@ public class StudentController {
     public boolean login(@RequestParam(value = "user") @ApiParam(value = "学生账号")
                                      String user,
                         @RequestParam(value = "pwd") @ApiParam(value = "密码") String pwd){
-        currentUser = studentService.getStuById(user,pwd);
-        if(currentUser==null){
-            return false;
-        }else{
-            return true;
-        }
+        return studentService.judgeLogin(user,pwd);
     }
 
     /**
@@ -67,6 +62,14 @@ public class StudentController {
     @ApiParam(name = "stu",value = "学生实体,其中pwd不能为空")
     public long register(@RequestBody StudentEntity stu){
         return studentService.register(stu);
+    }
+
+
+
+    @ApiOperation(value = "根据id获取学生信息", notes = "根据id获取学生信息",httpMethod = "GET")
+    @GetMapping(value = "/{studentId}")
+    public StudentEntity getStuById(@PathVariable @ApiParam(value = "学生账号") String user){
+        return studentService.getStuById(user);
     }
 
 

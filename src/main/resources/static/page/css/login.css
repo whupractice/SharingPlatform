@@ -140,7 +140,7 @@
     margin-top: -14px;
 }
 #siteTypeLine {
-    margin-left: -9px;
+    /*margin-left: -9px;*/
 }
 .m-regForm .bottomBar {
     width: 100%;
@@ -157,7 +157,7 @@
     width: 100%;
 }
 .m-regForm .bottomBar .u-bigBtn {
-    width: 36%;
+    width: 20%;
 }
 .u-bigBtn {
     width: 100%;

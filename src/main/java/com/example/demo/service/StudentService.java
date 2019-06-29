@@ -25,10 +25,23 @@ public class StudentService {
       * @Param       : [user,id] -- 用户名、密码
       * @return      : 是否正确
       */
-    public StudentEntity getStuById(String user,String pwd){
+    public boolean judgeLogin(String user,String pwd){
         Long username = Long.parseLong(user);
-        return studentRepository.getStuById(username);//调用数据库查询密码接口
+        StudentEntity s =studentRepository.getStuById(username);
+        if(s.getPwd().equals(pwd)){
+            return true;
+        }else {
+            return false;
+        }
     }
+
+
+
+    public StudentEntity getStuById(String user){
+        Long username = Long.parseLong(user);
+        return studentRepository.getStuById(username);
+    }
+
 
     /**
       * @Author      : Theory
@@ -37,6 +50,9 @@ public class StudentService {
       * @return      : 账号
       */
     public long register(StudentEntity stu){
+        if(studentRepository.getStuByNickName(stu.getNickName()).size()!=0){
+            return -1;//此昵称已被用
+        }
         studentRepository.save(stu);//向数据库中插入学生
         return studentRepository.getMaxId();//获取最大的账号（新注册的）
     }

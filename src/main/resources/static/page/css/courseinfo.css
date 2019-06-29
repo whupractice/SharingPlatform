@@ -9,7 +9,7 @@
 }
 .m-top {
     padding: 25px 0 55px;
-    min-height: 288px;
+    min-height: 350px;
     background-color: white;
 }
 
@@ -341,6 +341,7 @@
     }
     .course-enroll-info_course-info_term-info {
         margin-bottom: 4px;
+        margin-top: 10px;
     }
     .f-cb, .course-enroll-info_course-info_term-info, .g-container {
         zoom: 1;

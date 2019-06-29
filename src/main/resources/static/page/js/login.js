@@ -8,12 +8,23 @@ var app = angular.module('myApp');
 app.controller('headCtrl', function ($scope, $http, $state) {
 
 
+    $scope.judgeLog = function(){
+        var r = document.getElementsByName("identify");
+        if (r[0].checked) {
+            $scope.stuLog();//学生登陆
+        } else if (r[1].checked) {
+            alert("选中第2项");
+        } else {
+            alert("请选择至少一个角色！");
+        }
+    };
+
 
     /**
       * @Author      : Theory
-      * @Description : 用户登陆
+      * @Description : 学生登陆
       */
-    $('#logBtn').on('click',function () {
+    $scope.stuLog = function () {
         let user = document.getElementById("acct");
         let pwd = document.getElementById("pwd");
 
@@ -34,18 +45,23 @@ app.controller('headCtrl', function ($scope, $http, $state) {
             }
         }).then(function successCallback(response) {
             if(response.data==true){
-               $state.go('main');
+               $state.go('main',{
+                   "studentId": user
+               });
             }else{
                 alert("用户名或密码错误！");
             }
         });
-    });
+    };
     
-    
-    $('#reBtn').on('click',function () {
+
+    /**
+      * @Author      : Theory
+      * @Description : 学生注册
+      */
+    $scope.stuReg = function () {
         let nickName = document.getElementById("acct");
         let pwd = document.getElementById("pwd");
-
         $http({
             method: 'POST',
             url: '/student/register',
@@ -54,13 +70,17 @@ app.controller('headCtrl', function ($scope, $http, $state) {
                 "pwd" : pwd
             }
         }).then(function successCallback(response) {
-            if(response.data==true){
-                $state.go('main');
+            if(response.data>0){
+                let userAccount = response.data;
+                alert("注册成功！请记住：您的账号为 " +userAccount);
+                $scope.go('main',{
+                    "studentId": userAccount
+                });//跳转主页面
             }else{
-                alert("用户名或密码错误！");
+                alert("此昵称已被占用！");
             }
         });
-    });
+    };
 });
 
 
