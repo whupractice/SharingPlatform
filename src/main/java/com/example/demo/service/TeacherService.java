@@ -66,7 +66,7 @@ public class TeacherService {
       * @Param       : [keyword] -- 教师姓名关键字
       * @return      : 包含此关键字的教师
       */
-    public List<TeacherEntity> getTeacherByKeyword(String keyword){
+    public List<Object> getTeacherByKeyword(String keyword){
         keyword = "%"+keyword+"%";
         return teacherRepository.getTeacherByKeyword(keyword);
     }

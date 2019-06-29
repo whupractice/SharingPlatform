@@ -42,6 +42,21 @@ public class SchoolController {
         return schoolService.getAllDistinctly();
     }
 
+
+    @ApiOperation(value = "根据id获取学校介绍", notes = "根据id获取学校介绍",httpMethod = "GET")
+    @ApiParam(name = "id",value = "学校id")
+    @GetMapping("/schoolInfo")
+    public String getSchoolInfoById (Long id) {
+        return schoolService.getSchoolInfoById(id);
+    }
+
+    @ApiOperation(value = "根据关键词查询学校", notes = "根据关键词查询学校",httpMethod = "GET")
+    @ApiParam(name = "keyword",value = "学校名关键词")
+    @GetMapping("/keyword")
+    public List<Object> getSchoolByKeyword(@RequestParam String keyword) {
+        return schoolService.getSchoolByKeyword(keyword);
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 向数据库插入学校

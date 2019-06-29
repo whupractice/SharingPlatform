@@ -24,4 +24,9 @@ public interface LessonRepository extends JpaRepository<LessonEntity,Long> {
     @Query(value = "select distinct credit,education,end_time,img_link,is_excellent,lesson_intro,lesson_name,school_name,share_num,start_time,status,subject,welcome from lesson order by subject",nativeQuery = true)
     List<Object> getAllDistinctly();
 
+    //查询含有关键词的课程并去重
+    //@Query(value = "select distinct credit,education,end_time,img_link,is_excellent,lesson_intro,lesson_name,school_name,share_num,start_time,status,subject,welcome from lesson where lesson_name like ?1 order by subject",nativeQuery = true)
+    @Query(value = "select * from lesson where lesson_name like ?1 order by subject",nativeQuery = true)
+    List<Object> getLessonByKeyword(String keyword);
+
 }

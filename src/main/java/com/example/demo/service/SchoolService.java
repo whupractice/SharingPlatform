@@ -49,6 +49,17 @@ public class SchoolService {
 
     /**
       * @Author      : QinYingran
+      * @Description : 根据学校名中关键词获取学校列表
+      * @Param       : [keyWord]
+      * @return      : 学校列表
+      */
+    public List<Object> getSchoolByKeyword(String keyword) {
+        keyword = "%"+keyword+"%";
+        return schoolRepository.getSchoolByKeyword(keyword);
+    }
+
+    /**
+      * @Author      : QinYingran
       * @Description : 插入学校
       * @Param       :
       * @return      :

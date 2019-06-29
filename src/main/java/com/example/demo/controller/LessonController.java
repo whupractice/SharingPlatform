@@ -68,6 +68,13 @@ public class LessonController {
         return lessonService.getHotLesson(lessonNum);
     }
 
+    @ApiOperation(value = "根据关键词查询课程", notes = "根据关键词查询课程（课程名中的）",httpMethod = "GET")
+    @ApiParam(name = "keyword",value = "课程名关键词")
+    @GetMapping("/keyword")
+    public List<Object> getLessonByKeyword(@RequestParam String keyword) {
+        return lessonService.getLessonByKeyword(keyword);
+    }
+
 
 
     /**

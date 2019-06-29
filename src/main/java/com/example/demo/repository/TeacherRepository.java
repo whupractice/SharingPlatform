@@ -20,8 +20,7 @@ public interface TeacherRepository extends JpaRepository<TeacherEntity,Long> {
     @Query(value = "select distinct academy_name,img_link,job,school_name,teacher_intro,teacher_name from teacher order by school_name",nativeQuery = true)
     List<Object> getAllDistinctly();
 
-
     //根据关键字查询老师
-    @Query(value = "select * from teacher where teacher_name like ?1",nativeQuery = true)
-    List<TeacherEntity> getTeacherByKeyword(String keyword);
+    @Query(value = "select distinct teacher_name,school_name,academy_name,job,teacher_intro,img_link from teacher where teacher_name like ?1 order by school_name",nativeQuery = true)
+    List<Object> getTeacherByKeyword(String keyword);
 }

@@ -32,7 +32,7 @@ public class LessonService {
 
     /**
       * @Author      : QinYingran
-      * @Description : 获得所有课程2
+      * @Description : 获得所有课程并去重
       * @Param       : []
       * @return      : 课程列表
       */
@@ -43,7 +43,7 @@ public class LessonService {
     /**
       * @Author      : Theory
       * @Description : 获取精品课程
-      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      * @return      : 精品课程列表
       */
     public List<LessonEntity> getExcellentLesson(){
         return lessonRepository.getExcellentClass();
@@ -67,6 +67,17 @@ public class LessonService {
             finalList.add(primList.get(i));
         }
         return finalList;
+    }
+
+    /**
+      * @Author      : QinYingran
+      * @Description : 根据关键词查询课程
+      * @Param       : [keyWord]
+      * @return      : 含有关键词的课程列表
+      */
+    public List<Object> getLessonByKeyword(String keyword) {
+        keyword = "%"+keyword+"%";
+        return lessonRepository.getLessonByKeyword(keyword);
     }
 
 
