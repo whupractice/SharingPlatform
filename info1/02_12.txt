@@ -1,12 +1,12 @@
 /course/detail/1122 外贸单证实务 已完结100 左显兰 宁波城市职业技术学院 @!medium
-/course/detail/972 财政学省级精品 已完结1078 钟晓敏 浙江财经大学 @!medium
-/course/detail/1090 国际贸易实务B 已完结20 胡丹婷 浙江理工大学 @!medium
-/course/detail/833 国际贸易理论与实务 已完结127 胡丹婷 浙江理工大学 @!medium
-/course/detail/831 中国税制 浙江财经大学省级精品 已完结1012 司言武 浙江财经大学 @!medium
-/course/detail/469 世界经济概论省级精品 已完结6 曹永峰 湖州师范学院 @!medium
-/course/detail/455 统计学省级精品 已完结154 卢俊峰 浙江工商大学杭州商学院 @!medium
-/course/detail/582 财政学省级精品 已完结3 钟晓敏 浙江财经大学 @!medium
-/course/detail/747 产业经济学省级精品 已完结99 王俊豪 浙江财经大学 @!medium
-/course/detail/727 投资学省级精品 已完结120 田穗 杭州电子科技大学 @!medium
-/course/detail/579 消费者行为学 已完结48 王丽 宁波大学 @!medium
-/course/detail/429 国际贸易实务A省级精品 已完结231 胡丹婷 浙江理工大学 @!medium
+/course/detail/972 财政学省级精品 已完结1078 钟晓敏 浙江财经大学 http://image.moocollege.com/v2_customer/small/582/1/201605271732223844218585027.jpg@!medium
+/course/detail/1090 国际贸易实务B 已完结20 胡丹婷 浙江理工大学 http://image.moocollege.com/v2_customer/small/429/1/2016022502215416379832709017.jpg@!medium
+/course/detail/833 国际贸易理论与实务 已完结127 胡丹婷 浙江理工大学 http://image.moocollege.com/v2_customer/small/833/1/201606120803402749849419317.png@!medium
+/course/detail/831 中国税制 浙江财经大学省级精品 已完结1012 司言武 浙江财经大学 http://image.moocollege.com/v2_customer/small/831/1/201610121407413766107438576.jpg@!medium
+/course/detail/469 世界经济概论省级精品 已完结6 曹永峰 湖州师范学院 http://image.moocollege.com/v2_customer/small/469/1/2016050113120013010235244036.jpg@!medium
+/course/detail/455 统计学省级精品 已完结154 卢俊峰 浙江工商大学杭州商学院 http://image.moocollege.com/v2_customer/small/455/1/2016040611475112084509857968.jpg@!medium
+/course/detail/582 财政学省级精品 已完结3 钟晓敏 浙江财经大学 http://image.moocollege.com/v2_customer/small/582/1/201605271732223844218585027.jpg@!medium
+/course/detail/747 产业经济学省级精品 已完结99 王俊豪 浙江财经大学 http://image.moocollege.com/v2_customer/small/747/1/2016050310494112032633825995.jpg@!medium
+/course/detail/727 投资学省级精品 已完结120 田穗 杭州电子科技大学 http://image.moocollege.com/v2_customer/small/727/1/2016051014453614914731166931.png@!medium
+/course/detail/579 消费者行为学 已完结48 王丽 宁波大学 http://image.moocollege.com/v2_customer/small/579/1/2016042112553119394801756666.jpg@!medium
+/course/detail/429 国际贸易实务A省级精品 已完结231 胡丹婷 浙江理工大学 http://image.moocollege.com/v2_customer/small/429/1/2016022502215416379832709017.jpg@!medium

@@ -81,4 +81,17 @@ public class TeacherController {
         teacherService.deleteTeacher(teacherId);
     }
 
+
+    /**
+      * @Author      : Theory
+      * @Description : 根据关键字查询老师
+      * @Param       : keyword -- 关键字
+      * @return      : java.util.List<com.example.demo.entity.TeacherEntity>
+      */
+    @ApiOperation(value = "根据关键字查询老师", notes = "根据关键字查询老师",httpMethod = "GET")
+    @GetMapping("/keyword")
+    public List<TeacherEntity> getTeacherByKeyword(@RequestParam String keyword){
+        return teacherService.getTeacherByKeyword(keyword);
+    }
+
 }

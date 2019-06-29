@@ -1,12 +1,12 @@
 /course/detail/1545 App Inventor - 零基础Android移动应用开发省级精品 已完结92 吴明晖 浙江大学城市学院 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1487 税法省级精品 已完结119 袁葵芳 浙江万里学院 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1406 会计学省级精品 已完结1353 罗金明 浙江工商大学 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1281 市场营销学省级精品 已完结229 田雨 杭州师范大学钱江学院 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1191 网络零售省级精品 已完结114 章剑林 杭州师范大学 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1154 管理学（2017年秋）省级精品 已完结1017 郝云宏 浙江工商大学 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1166 会计学（成教版）省级精品 已完结76 罗金明 浙江工商大学 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1142 从管理者到艺术家——管理美学导论省级精品 已完结168 高猛 浙江海洋大学 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1104 税法省级精品 已完结117 袁葵芳 浙江万里学院 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1089 Web前端设计省级精品 已完结164 陈明晶 浙江财经大学 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/1052 会计学省级精品 已完结736 罗金明 浙江工商大学 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
-/course/detail/615 电子商务概论省级精品 已完结321 陈远高 浙江财经大学 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
+/course/detail/1487 税法省级精品 已完结119 袁葵芳 浙江万里学院 http://image.moocollege.com/v2_customer/small/618/1/2016032917372717502490746940.jpg@!medium
+/course/detail/1406 会计学省级精品 已完结1353 罗金明 浙江工商大学 http://image.moocollege.com/v2_customer/small/773/1/201605151555316649423473747.jpg@!medium
+/course/detail/1281 市场营销学省级精品 已完结229 田雨 杭州师范大学钱江学院 http://image.moocollege.com/v2_customer/small/616/1/201604181441005588011520520.jpg@!medium
+/course/detail/1191 网络零售省级精品 已完结114 章剑林 杭州师范大学 http://image.moocollege.com/v2_customer/small/758/1/201605111000255620751351222.jpg@!medium
+/course/detail/1154 管理学（2017年秋）省级精品 已完结1017 郝云宏 浙江工商大学 http://image.moocollege.com/v2_customer/cNCrUUvZIwEa8EfLkVm14CVHHNuYPAmpJBZ0D42Vq8JToQKEL5Jk2n0XEI1h44Yq_1509967769250@!medium
+/course/detail/1166 会计学（成教版）省级精品 已完结76 罗金明 浙江工商大学 http://image.moocollege.com/v2_customer/small/773/1/201605151555316649423473747.jpg@!medium
+/course/detail/1142 从管理者到艺术家——管理美学导论省级精品 已完结168 高猛 浙江海洋大学 http://image.moocollege.com/v2_customer/EfabXaAokh5uTnLxajOeYGCnFH984eZObLW4u0E6mIBqoVsua6eCm1c06RfJUR7n_1505251565354@!medium
+/course/detail/1104 税法省级精品 已完结117 袁葵芳 浙江万里学院 http://image.moocollege.com/v2_customer/small/618/1/2016032917372717502490746940.jpg@!medium
+/course/detail/1089 Web前端设计省级精品 已完结164 陈明晶 浙江财经大学 http://image.moocollege.com/v2_customer/small/591/1/2016032502351011863683598216.jpg@!medium
+/course/detail/1052 会计学省级精品 已完结736 罗金明 浙江工商大学 http://image.moocollege.com/v2_customer/small/773/1/201605151555316649423473747.jpg@!medium
+/course/detail/615 电子商务概论省级精品 已完结321 陈远高 浙江财经大学 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium

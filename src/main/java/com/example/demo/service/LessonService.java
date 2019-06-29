@@ -54,13 +54,14 @@ public class LessonService {
     /**
       * @Author      : Theory
       * @Description : 获取热门课程
-      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      * @return      : 一定数量的热门课程
+      * TODO 查询有点慢，希望优化查询算法
       */
     public List<LessonEntity> getHotLesson(int num){
         Sort sort = new Sort(Sort.Direction.DESC, "welcome");
         List<LessonEntity> primList = lessonRepository.findAll(sort);//按照热度从高到低排序
         List<LessonEntity> finalList = new ArrayList<>();//最终的热门课程列表
-        int n = (num >= primList.size())? 8 : primList.size();
+        int n = (num >= primList.size())? primList.size() : 8;
         /*选择n个最热门课程*/
         for(int i = 0;i < n;i++) {
             finalList.add(primList.get(i));

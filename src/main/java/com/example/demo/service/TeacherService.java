@@ -57,4 +57,17 @@ public class TeacherService {
     public void deleteTeacher(long id) {
         teacherRepository.deleteById(id);
     }
+
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 根据关键字查询老师
+      * @Param       : [keyword] -- 教师姓名关键字
+      * @return      : 包含此关键字的教师
+      */
+    public List<TeacherEntity> getTeacherByKeyword(String keyword){
+        keyword = "%"+keyword+"%";
+        return teacherRepository.getTeacherByKeyword(keyword);
+    }
 }

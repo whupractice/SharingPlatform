@@ -1,0 +1,113 @@
+#footer {
+    margin-top: 70px;
+    position: relative;
+    font-size: 12px;
+    background: #fff;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    border-top: 1px solid #e4e4e4;
+}
+#footer .footer-content {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+#footer .contact-way {
+    text-align: center;
+}
+#footer .contact-way {
+    box-sizing: border-box;
+    width: 240px;
+    z-index: 100;
+    background: #fff;
+    margin: 20px auto;
+}
+#footer .other-way a.weixin-icon {
+    background-position: -28px 0px;
+}
+#footer .other-way a {
+    background: url(//e.jikexueyuan.com/headerandfooter/images/otherway.png) 0 0 no-repeat;
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    margin-right: 20px;
+}
+#footer nav {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0px 0px 20px 0px;
+}
+#footer nav a {
+    padding: 4px 10px;
+    color: #666;
+    text-decoration: none;
+}
+#footer .copyright {
+    color: #999;
+    padding: 10px 0;
+}
+#footer .gotop {
+    position: fixed;
+    left: 50%;
+    margin-left: 515px;
+    top: 450px;
+    width: 40px;
+    text-align: center;
+    z-index: 2000;
+}
+#footer .tdd-icon {
+    position: relative;
+    background: #fff url(//e.jikexueyuan.com/headerandfooter/images/tdd.png) 10px 10px no-repeat / 20px 20px;
+}
+#footer .tdd-icon .tdd-banner {
+    background: url(//e.jikexueyuan.com/headerandfooter/images/tdd_banner.jpg) center center no-repeat / cover;
+    width: 150px;
+    height: 104px;
+    position: absolute;
+    z-index: 2100;
+    left: -150px;
+    top: 0;
+    display: none;
+    cursor: pointer;
+}
+#footer .gotop span, #footer .gotop a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1px;
+}
+#footer .gotop span, #footer .gotop a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1px;
+}
+#footer .tel-icon {
+    position: relative;
+    background: #fff url(//e.jikexueyuan.com/headerandfooter/images/tel.png) 12px 10px no-repeat;
+}
+#footer .gotop span, #footer .gotop a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1px;
+}
+#footer .wx {
+    position: relative;
+    background: #fff url(//e.jikexueyuan.com/headerandfooter/images/wx.png) 12px 10px no-repeat;
+}
+#footer .gotop span, #footer .gotop a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1px;
+}
+#footer .top i {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: #fff
+    url(//e.jikexueyuan.com/headerandfooter/images/top.png) 11px 10px no-repeat;
+}
+address, cite, dfn, em, i, var {
+    font-style: normal;
+}

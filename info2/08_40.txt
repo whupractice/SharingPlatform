@@ -1,12 +1,12 @@
 /course/detail/572 机械设计省级精品 已完结101 魏玉兰 湖州师范学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/405 计算机绘图省级精品 已完结237 涂晶洁 宁波财经学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/452 电力系统继电保护(16-17)省级精品 已完结1514 王颖 中国计量大学 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/461 工业产品开发概论省级精品 已完结92 蒋亚南 宁波大学科学技术学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/704 化工原理省级精品 已完结39 滕波涛 浙江师范大学 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/459 生物工艺学省级精品 已完结111 葛立军 浙江中医药大学滨江学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/735 机械制图省级精品 已完结3 梁晓娟 浙江科技学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/473 数控技术省级精品 已完结133 郑书华 宁波工程学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/423 数字测图原理与方法省级精品 已完结72 赵红 浙江水利水电学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/414 数字电子技术（2016.03）省级精品 已完结209 赵玉铃 浙江水利水电学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/534 App Inventor - 零基础Android移动应用开发省级精品 已完结67 吴明晖 浙江大学城市学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
-/course/detail/483 模拟电子电路省级精品 已完结85 查丽斌 杭州电子科技大学信息工程学院 http://image.moocollege.com/v2_customer/small/572/1/2016042111173611977229452696.jpg@!medium
+/course/detail/405 计算机绘图省级精品 已完结237 涂晶洁 宁波财经学院 http://image.moocollege.com/v2_customer/small/405/1/2016012408153218044855356082.jpg@!medium
+/course/detail/452 电力系统继电保护(16-17)省级精品 已完结1514 王颖 中国计量大学 http://image.moocollege.com/v2_customer/small/452/1/201610141016362301794367225.jpg@!medium
+/course/detail/461 工业产品开发概论省级精品 已完结92 蒋亚南 宁波大学科学技术学院 http://image.moocollege.com/v2_customer/3biwbSfW2hI1AXDqw2jk1gMfw-Mk-uTdyhc837-Ui8nid9B7iH2HOpCXlS7Ljiua_1536820738255@!medium
+/course/detail/704 化工原理省级精品 已完结39 滕波涛 浙江师范大学 http://image.moocollege.com/v2_customer/small/704/1/2016060309242911066787522958.jpg@!medium
+/course/detail/459 生物工艺学省级精品 已完结111 葛立军 浙江中医药大学滨江学院 http://image.moocollege.com/v2_customer/small/459/1/2016042521370115012714269262.jpg@!medium
+/course/detail/735 机械制图省级精品 已完结3 梁晓娟 浙江科技学院 http://image.moocollege.com/v2_customer/small/1076/1/2016100715134412688367514988.jpg@!medium
+/course/detail/473 数控技术省级精品 已完结133 郑书华 宁波工程学院 http://image.moocollege.com/v2_customer/small/473/1/201603251428487825027004827.jpg@!medium
+/course/detail/423 数字测图原理与方法省级精品 已完结72 赵红 浙江水利水电学院 http://image.moocollege.com/v2_customer/small/423/1/20160309200045867139069235.jpg@!medium
+/course/detail/414 数字电子技术（2016.03）省级精品 已完结209 赵玉铃 浙江水利水电学院 http://image.moocollege.com/v2_customer/small/414/1/201604291322426723074647854.jpg@!medium
+/course/detail/534 App Inventor - 零基础Android移动应用开发省级精品 已完结67 吴明晖 浙江大学城市学院 http://image.moocollege.com/v2_customer/small/534/1/201602272117577450221815283.JPG@!medium
+/course/detail/483 模拟电子电路省级精品 已完结85 查丽斌 杭州电子科技大学信息工程学院 http://image.moocollege.com/v2_customer/small/483/1/2016022013172219070287059129.jpg@!medium

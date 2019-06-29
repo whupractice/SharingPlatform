@@ -1,12 +1,12 @@
 /course/detail/30000981 电子商务概论省级精品 已完结193 陈远高 浙江财经大学 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/5000904 财务分析 已完结178 仲春梅 宁波财经学院 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/5001122 公共关系学原理立项课程 已完结478 蒋楠 中国计量大学 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/5000884 财务管理立项课程 已完结673 陈宏 宁波财经学院 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/5000071 Corporate Finance 公司理财立项课程 已完结50 金水英 浙江师范大学 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/1980 《管理学原理》立项课程 已完结427 李文川 浙江农林大学 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/2182 旅游纠纷与行业风险 已完结221 龚正 浙江海洋大学 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/2179 中级财务会计立项课程 已完结337 杨丽霞 浙江农林大学 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/30000560 市场营销学省级精品 已完结376 田雨 杭州师范大学钱江学院 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/1486 创新工场省级精品 已完结1763 薛德黔 湖州师范学院 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/2143 可行性理论与实务 已完结1 王秀秀 浙江树人大学 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
-/course/detail/5000544 会计学 已完结590 李长安 浙江科技学院 http://image.moocollege.com/v2_customer/small/615/1/2016042621475618370585876503.jpg@!medium
+/course/detail/5000904 财务分析 已完结178 仲春梅 宁波财经学院 http://image.moocollege.com/v2_customer/UhugvmVQ468jyO-7oe1BJhtBFCrlYWy3xzwYtqxj-U7zXJ8cpcU4qFOFOBkTMoRx_1502758694829@!medium
+/course/detail/5001122 公共关系学原理立项课程 已完结478 蒋楠 中国计量大学 http://image.moocollege.com/v2_customer/XmSNy4bXR68wLTgb2Jwi1wP1rF1B6yp9c9EHnuxWJoLUBaNCk0JOEKvvyG8RFC9E_1502866009853@!medium
+/course/detail/5000884 财务管理立项课程 已完结673 陈宏 宁波财经学院 http://image.moocollege.com/v2_customer/small/5000884/1/201704111000515025414856353.jpg@!medium
+/course/detail/5000071 Corporate Finance 公司理财立项课程 已完结50 金水英 浙江师范大学 http://image.moocollege.com/v2_customer/MRHIsCmzevvd7Sb9e5i2DgYQUV0BJuGoJsnwqoKfAB0OF-tTTomKxgfJOAFzTKzc_1523534408193@!medium
+/course/detail/1980 《管理学原理》立项课程 已完结427 李文川 浙江农林大学 http://image.moocollege.com/v2_customer/NEfR-8wKApBjExfYoMGr1hnMEtmiHxdRKfobPSySBDDG7bRyITK140oJi3HjVZu8_1505186125948@!medium
+/course/detail/2182 旅游纠纷与行业风险 已完结221 龚正 浙江海洋大学 http://image.moocollege.com/v2_customer/4JMK9o6O3wishthII8yX6tTnW-TDWomwg90NpaABKkPPLhMatADf-FT5Wefr42DF_1504449598964@!medium
+/course/detail/2179 中级财务会计立项课程 已完结337 杨丽霞 浙江农林大学 http://image.moocollege.com/v2_customer/akYDn2qdQOQ0vG-7aZl3pCbqCwEjW8GaoaWsk2vm4fxfI9EniYWrzFH7DL5nEUJ0_1504451317391@!medium
+/course/detail/30000560 市场营销学省级精品 已完结376 田雨 杭州师范大学钱江学院 http://image.moocollege.com/v2_customer/small/616/1/201604181441005588011520520.jpg@!medium
+/course/detail/1486 创新工场省级精品 已完结1763 薛德黔 湖州师范学院 http://image.moocollege.com/v2_customer/small/519/1/2016042918512412410406504123.jpg@!medium
+/course/detail/2143 可行性理论与实务 已完结1 王秀秀 浙江树人大学 @!medium
+/course/detail/5000544 会计学 已完结590 李长安 浙江科技学院 http://image.moocollege.com/v2_customer/Nw6BRJghTpvYwzbzgEUuP5gk3y4QTR5DaeaxdRmwDdnIjOD8j0556qFRaDtAvwOL_1534517533456@!medium

@@ -4,622 +4,100 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>LC平台——最受学生欢迎的课程管理平台!</title>
     <link rel="stylesheet" type="text/css" href="../page/css/main.css">
-    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/fonts/font-awesome/css/font-awesome.min.css">
-    <script src="../shared/css/bootstrap/js/jquery-3.2.1.min.js"></script>
-    <script src="../shared/css/bootstrap/js/umd-popper-4.1.0.min.js"></script>
-    <script src="../shared/css/bootstrap/js/4.1.0-bootstrap.min.js"></script>
-    <script type="text/javascript" src="../shared/css/bootstrap/js/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="../shared/css/bootstrap/js/3.0.3-bootstrap.min.js"></script>
-
-
     <title>Title</title>
-    <style type="text/css">
-        .dropdown-submenu {
-            position: relative;
-        }
-        .dropdown-submenu > .dropdown-menu {
-            top: 0;
-            left: 100%;
-            margin-top: -6px;
-            margin-left: -10px;
-            -webkit-border-radius: 0 6px 6px 6px;
-            -moz-border-radius: 0 6px 6px;
-            border-radius: 0 6px 6px 6px;
-        }
-        .dropdown-submenu:hover > .dropdown-menu {
-            display: block;
-        }
-        .dropdown-submenu > a:after {
-            display: block;
-            content: " ";
-            float: right;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-style: solid;
-            border-width: 5px 0 5px 5px;
-            border-left-color: #ccc;
-            margin-top: 5px;
-            margin-right: -10px;
-        }
-        .dropdown-submenu:hover > a:after {
-            border-left-color: #fff;
-        }
-        .dropdown-submenu.pull-left {
-            float: none;
-        }
-        .dropdown-submenu.pull-left > .dropdown-menu {
-            left: -100%;
-            margin-left: 10px;
-            -webkit-border-radius: 6px 0 6px 6px;
-            -moz-border-radius: 6px 0 6px 6px;
-            border-radius: 6px 0 6px 6px;
-        }
-    </style>
+
 </head>
+<body>
+<div ng-controller="mainCtrl" ng-init="initMain()">
 
-<!--导航栏-->
-<div class="main">
-    <!--头部-->
-    <nav class="nav bar nav bar-expand-sm bg-dark-green nav bar-dark">
-        <!-- Brand -->
-        <a class="nav bar-brand" href="#"><img src="../img/logo.png" class="img-responsive center-block" style="max-width: 50%" alt="Cinque Terre"></a>
-
-        <!-- Links -->
-        <div class="container">
-            <div class="row">
-                <li class="btn btn-shouye"><a href="#" style="color: #FFFFFF"> 首页</a></li>
-                <div class="dropdown">
-                    <a id="dLabel1" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
-                       href="javascript:;">
-                        省份 <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                        <li><a href="javascript:;">选择首字母</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="javascript:;">一级菜单</a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="javascript:;">选择省份</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">A</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">B</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="dropdown">
-                    <a id="dLabel2" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
-                       href="javascript:;">
-                        下拉多级菜单 <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                        <li><a href="javascript:;">一级菜单</a></li>
-                        <li><a href="javascript:;">一级菜单</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="javascript:;">一级菜单</a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="javascript:;">二级菜单</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:;">二级菜单</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:;">三级菜单</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!--search-->
-                </div>
-                <nav class="navbar navbar-default" role="navigation">
-                    <a class="navbar-header">
-                        <a class="navbar-brand" href="#">lc平台</a>
-                    </a>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">提交</button>
-                    </form>
-                </nav>
-            </div>
-            <!--search-->
-        </div>
-
-    </nav>
-    <br>
-</div>
-<!--/导航栏-->
-
-<!--轮播图-->
-<div id="carousel" class="carousel slide" style="width:800px;flow:left;">
-    <!-- 轮播（Carousel）指标 -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel" data-slide-to="1"></li>
-        <li data-target="#carousel" data-slide-to="2"></li>
-    </ol>
-    <!-- 轮播（Carousel）项目 -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <img src="../img/wrq.png" alt="First slide">
-        </div>
-        <div class="item">
-            <img src="../img/wrq.png" alt="Second slide">
-        </div>
-        <div class="item">
-            <img src="../img/wrq.png" alt="Third slide">
-        </div>
-    </div>
-    <!-- 轮播（Carousel）导航 -->
-    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-<br>
-<!--/轮播图-->
-<!--登录注册-->
-<div class="wrap" id="wrap" style="flow:right;">
-    <div class="logGet">
-        <!-- 头部提示信息 -->
-        <div class="logD logDtip">
-            <p class="p1">Welcome</p>
-        </div>
-        <!-- 输入框 -->
-        <div class="lgD">
-            <div class="input-group transparent">
-                    <span class="input-group-addon">
-                        <i class="fa fa-user"></i>
-                    </span>
-                <input type="text" class="form-control" placeholder="Username">
-            </div>
-        </div>
-        <div class="lgD">
-            <div class="input-group transparent">
-                    <span class="input-group-addon">
-                        <i class="fa fa-arrow-right"></i>
-                    </span>
-                <input type="text" class="form-control" placeholder="Password">
-            </div>
-        </div>
-        <div class="logC">
-            <a href="index.html" target="_self"><button>登 录</button></a>
-        </div>
-        <!--忘记密码-->
-
-        <a class="pull-left" href="#" title="Password Lost and Found">Forgot password?</a>
-        <!--/忘记密码-->
-        <!--注册按钮-->
-        <a class="pull-right" href="#" title="Sign Up">Sign Up</a>
-        <!--/注册按钮-->
-        <br>
-        <p><input type="checkbox" name="vehicle" value="Car" checked="checked" />学生 <input type="checkbox" name="vehicle" value="Car"  /> 管理员</p>
-
-    </div>
-</div>
-
-<!--/登录注册-->
-
-<!--热门课程集合-->
-<div class="container2">
-    <p class="text-center" style="font-size: 30px; background-color: #ced6a7">热门课程</p>
-</div>
-<div class="container1">
+    <!--轮播图-->
     <div class="row">
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
+        <div class="col-md-12">
+            <div id="carousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="../img/carousel3.jpg" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img src="../img/carousel1.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="../img/carousel2.jpg" alt="Third slide">
+                    </div>
                 </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="left carousel-control" href="#carousel" role="button" data-slide="prev" id="left">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel" role="button" data-slide="next" id="right">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
+    </div>
+
+    <!--/轮播图-->
+    <br>
+
+    <!--推荐课程-->
+    <div class="jk-uptodate">
+        <div class="img" style="width: 100%;text-align: center; margin-bottom: 20px">
+            <img src="../img/tj-course.png" style="display: inline-block;vertical-align: top;">
         </div>
+
+        <ul style="width: 1070px">
+            <li ng-repeat="x in excellentLesson" class="uptodate">
+                <a ng-click="goDetail()">
+                    <img class="uptodate-img" src="{{x.imgLink}}" alt="">
+                    <p class="uptodate-title">{{x.lessonName}}</p>
+                    <p class="uptodate-info">
+                        {{x.subject}}
+                        <span>|</span>{{x.schoolName}}
+
+                    </p>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <!--/推荐课程-->
+
+
+    <!--热门课程-->
+    <div class="jk-uptodate">
+        <div class="img" style="width: 100%;text-align: center; margin-bottom: 20px">
+            <img src="../img/hot-course.png" style="display: inline-block;vertical-align: top;">
+        </div>
+
+        <ul style="width: 1070px">
+            <li ng-repeat="x in hotLesson" class="uptodate">
+                <a ng-click="goDetail()">
+                    <img class="uptodate-img" src="{{x.imgLink}}" alt="">
+                    <p class="uptodate-title">{{x.lessonName}}</p>
+                    <p class="uptodate-info">
+                        {{x.subject}}
+                        <span>|</span>{{x.schoolName}}
+
+                    </p>
+                </a>
+            </li>
+
+        </ul>
     </div>
     <br>
-    <div class="row">
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-            <div class="coursename1">
-                <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-            </div>
-            <div class="u-liveCard-container">
-                <div class="u-liveCard-teacher">
-                    <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                </div>
-                <div class="u-liveCard-school">
-                    <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <!--/热门课程集合-->
-    <!--精品课程-->
-    <div class="container2">
-        <p class="text-center" style="font-size: 30px; background-color: #ced6a7">精品课程</p>
-    </div>
-    <div class="container1">
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 col-sm-4">
-                <div class="coursename1">
-                    <img src="../img/wrq.png" class="coursename1" alt="Cinque Terre">
-                </div>
-                <div class="u-liveCard-container">
-                    <div class="u-liveCard-teacher">
-                        <span class="f-thide u-liveCard-teacher_span4">陈正康老师</span>
-                    </div>
-                    <div class="u-liveCard-school">
-                        <span class="f-thide u-liveCard-school_span5">慕课考研英语  陈正康老师</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <!--精品课程-->
+    <!--热门课程-->
 
-        <!--团队信息（页脚）-->
-        <div class="footer" id="foot">
-            <div class="copyright">
-                <p>Copyright © 2019 Qunar.com Inc. All Rights Reserved.</p>
-                <div class="img">
-                    <i class="icon"></i><span>联系邮箱：</span>
-                </div>
 
-                <div class="img">
-                    <i class="icon1"></i><span>联系地址：武汉大学</span>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-    <!--/团队信息（页脚）-->
-    </body>
+</div>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
 </html>
