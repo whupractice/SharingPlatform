@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+<div class="m-regForm">
+    <div class="textLine">
+        <span>注册用户</span>
+        <span class="number">19,026,152<span class="font12">+</span></span>
+        <span class="sep"></span>
+        <span>安全运行</span>
+        <span class="number">3193<span class="font12">天+</span></span>
+        <span class="sep"></span>
+        <span>覆盖行业</span>
+        <span class="number">100<span class="font12">+</span></span>
+    </div>
+    <div class="regBox">
+        <div class="u-borderTop u-borderTop-new">
+
+        </div>
+
+        <div class="content" id="contentId">
+            <div class="u-input">
+                <label>账号/昵称</label><!--这种注释写法是为了去除换行产生的4px的间隔
+					--><div class="inputWrapper">
+                <input type="text" placeholder="登录请输入账号，注册请输入昵称" autocomplete="new-password" id="acct" maxlength="34">
+            </div><!--
+					--><span class="msg" style="display: inline-block;">
+						<i></i><font></font>
+					</span>
+            </div>
+            <div class="u-input">
+                <label>密码</label><!--
+					--><div class="inputWrapper">
+                <input type="password" placeholder="请输入密码" autocomplete="new-password" id="pwd" onpaste="return false;" maxlength="20">
+                <i class="vis z-on"></i>
+            </div><!--
+					--><span class="msg" style="display: none;">
+						<i></i><font></font>
+					</span>
+            </div>
+            <div class="u-input" id="verifyCodeLine">
+                <label>验证码</label><!--
+					--><div class="inputWrapper">
+                <input class="short" type="text" placeholder="请输入验证码" autocomplete="off" id="verifyCode" maxlength="4">
+                <button class="button" id="verifyCodeBtn">获取验证码</button>
+            </div><!--
+					--><span class="msg" style="display: none;">
+						<i></i><font id="verifyCodeMsg"></font>
+					</span>
+            </div>
+            <div id="resendNotice1" class="u-resendNotice" style="display: none;">
+                若仍未收到验证码，请点击&gt; <a target="_blank" href="/qq.jsp?s=209">联系客服</a>
+            </div>
+
+
+            <div class="u-input">
+                <label>我是</label>
+                <div id="siteTypeLine">
+                    <input id="student" name="student" type="radio" value="1"><label for="student" style="display:inline">学生</label>
+                    <input id="manager" name="manager" type="radio" value="2"><label for="manager" style="display:inline">管理员</label>
+                </div>
+                <span class="msg" style="display: none;">
+							<i></i><font></font>
+						</span>
+            </div>
+
+        </div>
+        <div class="bottomBar">
+            <font class="msg" id="regMsg"></font>
+            <button class="u-bigBtn" id="logBtn">用户登陆</button>
+            <button class="u-bigBtn" id="rgBtn">免费注册</button>
+        </div>
+
+        <div class="toLogin">
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -7,6 +7,9 @@ var app = angular.module('myApp');
  */
 app.controller('mainCtrl', function ($scope, $http, $state) {
 
+
+    $scope.currrentUser = null;//当前用户
+
     $scope.hotLesson = null;//热门课程
     $scope.hotNum = 8;
 
@@ -39,7 +42,7 @@ app.controller('mainCtrl', function ($scope, $http, $state) {
     $scope.getExcellentLesson = function () {
         $http({
             method: 'GET',
-            url: '/lesson/excellent',
+            url: '/lesson/excellent'
         }).then(function successCallback(response) {
             $scope.excellentLesson = response.data;
         })
@@ -51,7 +54,13 @@ app.controller('mainCtrl', function ($scope, $http, $state) {
       * @Description : 初始化主界面
       */
     $scope.initMain = function(){
-        $scope.getHotLesson();
+        $http({
+            method: 'GET',
+            url: '/student/cu'
+        }).then(function successCallback(response) {
+            $scope.currrentUser = response.data;
+            $scope.getHotLesson();
+        });
     };
 
 

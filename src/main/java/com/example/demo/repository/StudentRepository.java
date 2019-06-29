@@ -12,9 +12,9 @@ import org.springframework.data.jpa.repository.Query;
 public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
 
 
-    //通过学生账号查询学生密码，以便于进行登陆验证
-    @Query(value = "SELECT pwd FROM student WHERE student_id = ?1",nativeQuery = true)
-    String getPwdById(Long id);
+    //通过学生账号查询学生，以便于进行登陆验证
+    @Query(value = "SELECT * FROM student WHERE student_id = ?1",nativeQuery = true)
+    StudentEntity getStuById(Long id);
 
     //返回现在student_id中最大的值（新注册的）
     @Query(value = "SELECT MAX(student_id) FROM student",nativeQuery = true)

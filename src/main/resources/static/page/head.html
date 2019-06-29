@@ -13,6 +13,7 @@
     <!--<link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/css/boostrap-admin-theme.css.css">-->
 </head>
 <body style="color: black">
+<div ng-controller="headCtrl">
 <nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small" role="navigation">
     <div class="container" style="width: 1600px">
         <div class="row" style="margin-top: 8px">
@@ -84,10 +85,9 @@
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#"><i class="fa fa-road"></i>&nbsp;&nbsp; 登陆账号</a></li>
+                                <li><a tabindex="-1" ng-click="">
+                                    <i class="fa fa-road"></i>&nbsp;&nbsp; 登陆/注册</a></li>
                                 <li class="divider"></li>
-                                <li><a tabindex="-1" href=""><i
-                                        class="fa fa-edit"></i>&nbsp;&nbsp; 注册账号</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -99,7 +99,9 @@
     </div>
     <!-- /.container -->
 </nav>
+</div>
 <script src="../shared/css/bootstrap/js/jquery-3.3.1.min.js"></script>
 <script src="../shared/css/bootstrap/js/bootstrap.js"></script>
+<script src="js/head.js"></script>
 </body>
 </html>

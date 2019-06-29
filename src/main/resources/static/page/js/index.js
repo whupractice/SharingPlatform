@@ -15,6 +15,9 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
         .state('schoolCourse', {
             url: '/schoolCourse',
             templateUrl: '/page/schoolCourse.html'
+        }).state('login', {
+            url: '/login',
+            templateUrl: '/page/login.html'
         });
 
 });

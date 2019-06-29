@@ -17,7 +17,7 @@ app.controller('administerCtrl', function ($scope, $http, $state) {
     $scope.searchLesson = function () {
         $http({
             method: 'GET',
-            url: '/lesson',
+            url: '/lesson/keyword',
             params:{
                 //TODO 关键字赋值
             }
@@ -58,7 +58,7 @@ app.controller('administerCtrl', function ($scope, $http, $state) {
     $scope.searchTeacher = function () {
         $http({
             method: 'GET',
-            url: '/teacher',
+            url: '/teacher/keyword',
             params:{
                 //TODO 关键字赋值
             }

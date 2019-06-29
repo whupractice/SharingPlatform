@@ -24,6 +24,8 @@ public class StudentController {
     StudentService studentService;
 
 
+    private StudentEntity currentUser = null;  //当前用户
+
     /**
       * @Author      : Theory
       * @Description : 登陆验证
@@ -35,7 +37,23 @@ public class StudentController {
     public boolean login(@RequestParam(value = "user") @ApiParam(value = "学生账号")
                                      String user,
                         @RequestParam(value = "pwd") @ApiParam(value = "密码") String pwd){
-        return studentService.getPwdById(user,pwd);
+        currentUser = studentService.getStuById(user,pwd);
+        if(currentUser==null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    /**
+     * @Author      : Theory
+     * @Description : 返回当前用户
+     * @return      : 当前在线用户信息
+     */
+    @ApiOperation(value = "返回当前用户", notes = "当前在线用户信息",httpMethod = "GET")
+    @GetMapping(value = "/cu")
+    public StudentEntity getCurrentUser(){
+        return currentUser;
     }
 
     /**
@@ -101,5 +119,7 @@ public class StudentController {
     public void deleteLesson(@RequestParam("studentId") long studentId){
         studentService.deleteStudent(studentId);
     }
+
+
 
 }

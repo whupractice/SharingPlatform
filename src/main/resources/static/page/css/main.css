@@ -369,6 +369,7 @@ a {
 .jk-uptodate .uptodate-img {
     display: block;
     height: 157px;
+    width: 235px;
 }
 .jk-uptodate img {
     vertical-align: middle;
@@ -376,7 +377,7 @@ a {
     ox-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    width: 235px;
+
 }
 .jk-uptodate .uptodate-title {
     padding: 10px 15px 0;
