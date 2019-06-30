@@ -29,4 +29,8 @@ public interface LessonRepository extends JpaRepository<LessonEntity,Long> {
     @Query(value = "select * from lesson where lesson_name like ?1 order by subject",nativeQuery = true)
     List<Object> getLessonByKeyword(String keyword);
 
+    //查询重复项（课程名和学校名）
+    @Query(value = "select * from lesson where lesson_id in (select lesson_id from lesson where lesson_name = ?1 and school_name = ?2)",nativeQuery = true)
+    List<LessonEntity> getDuplicates(String lessonName,String schoolName);
+
 }

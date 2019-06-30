@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
 import com.example.demo.baseClass.Lesson;
-import com.example.demo.baseClass.School;
 import com.example.demo.baseClass.Teacher;
 import com.example.demo.crawler.ClassCrawler;
-import com.example.demo.entity.*;
+import com.example.demo.entity.LessonEntity;
+import com.example.demo.entity.SchoolEntity;
+import com.example.demo.entity.TLEntity;
+import com.example.demo.entity.TeacherEntity;
 import com.example.demo.repository.LessonRepository;
 import com.example.demo.repository.SchoolRepository;
 import com.example.demo.repository.TLRepository;
@@ -46,31 +48,45 @@ public class InitService {
             //遍历课程链表
             for (Lesson lesson : lessons) {
                 /*插入学校*/
-                SchoolEntity school = new SchoolEntity(lesson.getTeachers().get(0).getSchoolName());//获得学校
-                schoolRepository.save(school);
+                String schoolName = lesson.getTeachers().get(0).getSchoolName();
+                List<SchoolEntity> schoolDuplicates = schoolRepository.getDuplicates(schoolName);
+                if(schoolDuplicates.isEmpty()) {
+                    SchoolEntity schoolEntity = new SchoolEntity(schoolName);//获得学校
+                    schoolRepository.save(schoolEntity);
+                }
 
                 /*插入课程*/
-                LessonEntity lessonEntity = new LessonEntity(lesson.getLessonName(),
-                        lesson.getSchoolName(), lesson.getSubject(), lesson.getCategory(), lesson.getCredit(),
-                        lesson.getStartTime(), lesson.getEndTime(), lesson.getStatus(), lesson.getIntro(), 0, false, 0,
-                        lesson.getImgLink());
-                lessonRepository.save(lessonEntity);
-                long lessonId = lessonRepository.getNewLessonId();//新注册的课程号
+                String lessonName = lesson.getLessonName();
+                List<LessonEntity> lessonDuplicates = lessonRepository.getDuplicates(lessonName,schoolName);
+                long lessonId;
+                if(lessonDuplicates.isEmpty()) {
+                    LessonEntity lessonEntity = new LessonEntity(lesson.getLessonName(),
+                            lesson.getSchoolName(), lesson.getSubject(), lesson.getCategory(), lesson.getCredit(),
+                            lesson.getStartTime(), lesson.getEndTime(), lesson.getStatus(), lesson.getIntro(), 0, false, 0,
+                            lesson.getImgLink());
+                    lessonRepository.save(lessonEntity);
+                    lessonId = lessonRepository.getNewLessonId();//新注册的课程号
+                } else {
+                    lessonId = lessonDuplicates.get(0).getLessonId();
+                }
 
                 /*插入老师以及完善 课程-教师 表*/
                 for (Teacher teacher : lesson.getTeachers()) {
-                    TeacherEntity teacherEntity = new TeacherEntity(teacher.getTeacherName(),
-                            teacher.getJob(), teacher.getSchoolName(), teacher.getAcademyName(), teacher.getIntroduction(),
-                            teacher.getImgLink());
-                    teacherRepository.save(teacherEntity);
-                    long teacherId = teacherRepository.getNewTeacherId();//新注册的教师号
+                    List<TeacherEntity> teacherDuplicates = teacherRepository.getDuplicates(teacher.getTeacherName(),teacher.getIntroduction());
+                    long teacherId;
+                    if(teacherDuplicates.isEmpty()) {
+                        TeacherEntity teacherEntity = new TeacherEntity(teacher.getTeacherName(),
+                                teacher.getJob(), teacher.getSchoolName(), teacher.getAcademyName(), teacher.getIntroduction(),
+                                teacher.getImgLink());
+                        teacherRepository.save(teacherEntity);
+                        teacherId = teacherRepository.getNewTeacherId();//新注册的教师号
+                    } else {
+                        teacherId = teacherDuplicates.get(0).getTeacherId();
+                    }
                     TLEntity tl = new TLEntity(lessonId, teacherId);
                     tlRepository.save(tl);//插入课程-教师
                 }
             }
     }
 
-    public void insertTeacher(){
-
-    }
 }

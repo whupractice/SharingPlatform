@@ -19,4 +19,8 @@ public interface TLRepository extends JpaRepository<TLEntity, TLKeys> {
     @Query(value = "SELECT * FROM TL WHERE lesson_id = ?1",nativeQuery = true)
     List<TLEntity> getAllByLessonId(long id);
 
+    //查询重复项
+    @Query(value = "select * from tl where lesson_id = ?1 and teacher_id = ?2",nativeQuery = true)
+    List<TLEntity> getDuplicates(long lessonId,long teacherId);
+
 }

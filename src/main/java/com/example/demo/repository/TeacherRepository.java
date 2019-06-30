@@ -23,4 +23,8 @@ public interface TeacherRepository extends JpaRepository<TeacherEntity,Long> {
     //根据关键字查询老师
     @Query(value = "select distinct teacher_name,school_name,academy_name,job,teacher_intro,img_link from teacher where teacher_name like ?1 order by school_name",nativeQuery = true)
     List<Object> getTeacherByKeyword(String keyword);
+
+    //查询重复项(教师名和教师介绍)
+    @Query(value = "select * from teacher where teacher_name = ?1 and teacher_intro = ?2",nativeQuery = true)
+    List<TeacherEntity> getDuplicates(String name,String intro);
 }
