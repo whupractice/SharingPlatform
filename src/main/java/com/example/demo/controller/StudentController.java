@@ -23,16 +23,13 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-
-    private StudentEntity currentUser = null;  //当前用户
-
     /**
       * @Author      : Theory
       * @Description : 登陆验证
       * @Param       : [user, pwd] -- 学生账号，密码
       * @return      : boolean
       */
-    @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "GET")
+    @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "POST")
     @PostMapping(value = "/login")
     public boolean login(@RequestBody StudentEntity student) {
         return studentService.judgeLogin(student.getStudentId(),student.getPwd());
@@ -46,22 +43,12 @@ public class StudentController {
       * @Param       : [user, pwd] -- 管理员账号、密码
       * @return      : boolean
       */
-    @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "GET")
+    @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "POST")
     @PostMapping(value = "/login/manager")
     public boolean managerLogin(@RequestBody StudentEntity student){
         return studentService.judgeMLogin(student.getStudentId(),student.getPwd());
     }
 
-    /**
-     * @Author      : Theory
-     * @Description : 返回当前用户
-     * @return      : 当前在线用户信息
-     */
-    @ApiOperation(value = "返回当前用户", notes = "当前在线用户信息",httpMethod = "GET")
-    @GetMapping(value = "/cu")
-    public StudentEntity getCurrentUser(){
-        return currentUser;
-    }
 
     /**
       * @Author      : Theory
@@ -79,8 +66,8 @@ public class StudentController {
 
 
     @ApiOperation(value = "根据id获取学生信息", notes = "根据id获取学生信息",httpMethod = "GET")
-    @GetMapping(value = "/{studentId}")
-    public StudentEntity getStuById(@PathVariable @ApiParam(value = "学生账号") String user){
+    @GetMapping(value = "/info")
+    public StudentEntity getStuById(@RequestParam(value = "user") @ApiParam(value = "学生账号") String user){
         return studentService.getStuById(user);
     }
 

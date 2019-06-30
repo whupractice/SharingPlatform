@@ -7,7 +7,7 @@ var API_index = angular.module('myApp');
  */
 API_index.controller("mainCtrl", function ($scope, $http, $state,$stateParams) {
 
-
+    $scope.intervalId = null;
     $scope.currrentUser = null;//当前用户
 
     $scope.hotLesson = null;//热门课程
@@ -15,6 +15,8 @@ API_index.controller("mainCtrl", function ($scope, $http, $state,$stateParams) {
 
     $scope.excellentLesson = null;//精品（推荐）课程
     $scope.excellentNum = 8;
+
+
 
 
     /**
@@ -54,18 +56,7 @@ API_index.controller("mainCtrl", function ($scope, $http, $state,$stateParams) {
       * @Description : 初始化主界面
       */
     $scope.initMain = function(){
-        if($stateParams.studentId!=null) {
-            $http({
-                method: 'GET',
-                url: '/student/' + $stateParams.studentId
-            }).then(function successCallback(response) {
-                $scope.currrentUser = response.data;
-                $scope.getHotLesson();
-            });
-        }else{
             $scope.getHotLesson();
-        }
-
     };
 
 
@@ -80,6 +71,10 @@ API_index.controller("mainCtrl", function ($scope, $http, $state,$stateParams) {
         });
     }
 
+});
+
+$(document).ready(function(){
+    $scope.initMain();
 });
 
 
