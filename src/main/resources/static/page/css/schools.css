@@ -1,0 +1,128 @@
+.s-school {
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    margin-top: -18px;
+}
+.s-school .title {
+    width: 100px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    margin: 65px auto 15px;
+    position: relative;
+}
+.s-school .title img {
+    width: 40px;
+    height: 35px;
+    margin-right: 8px;
+}
+.s-school .title span {
+    display: inline-block;
+    padding-top: 5px;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+.s-school .count {
+    width: 100%;
+    text-align: center;
+    height: 20px;
+    margin: 0 auto;
+    font-family: "Arial", "Microsoft Yahei" !important;
+    font-size: 12px;
+    color: #4A4A4A;
+    letter-spacing: 1.2px;
+}
+.school-input {
+    width: 670px;
+    margin: 15px auto 0;
+    height: 44px;
+    position: relative;
+}
+.school-input input[type=text] {
+    display: block;
+    width: 100%;
+    height: 44px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 22px;
+    border: none;
+    text-align: center;
+    outline: none;
+    padding-left: 12px;
+    padding-right: 50px;
+}
+input, select, textarea {
+    font-size: 100% !important;
+}
+input, button, textarea {
+    font-family: "Microsoft Yahei" !important;
+}
+.school-input i {
+    position: absolute;
+    right: 23px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #52A2FF;
+    font-size: 20px;
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.school-input input[type=submit] {
+    position: absolute;
+    right: 23px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+}
+input, select, textarea {
+    font-size: 100% !important;
+}
+input, button, textarea {
+    font-family: "Microsoft Yahei" !important;
+}
+.s-school .wCenter {
+    width: 1180px !important;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 20px;
+    position: relative;
+    flex-wrap: wrap;
+}
+.wCenter {
+    width: 1206px !important;
+    margin: 0 auto;
+}
+.s-school .wCenter .item {
+    width: 23.7%;
+    height: 120px;
+    margin-right: 1.69%;
+    margin-bottom: 1.69%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    transition: all 0.4s;
+    box-shadow: 0px 1px 5px 1px rgba(62, 62, 62, 0.01);
+}
+.s-school .wCenter .item img {
+    width: 132.5px;
+    height: 82.5px;
+}

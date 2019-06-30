@@ -20,6 +20,7 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
         })
         .state('schoolcourse', {
             url: '/schoolcourse',
+            params:{"school": null},
             templateUrl: '/page/schoolcourse.html'
         }).state('login', {
             url: '/login',
@@ -27,6 +28,9 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
         }).state('category', {
             url: '/category',
             templateUrl: '/page/category.html'
+        }).state('schools', {
+            url: '/schools',
+            templateUrl: '/page/schools.html'
         });
 
 });

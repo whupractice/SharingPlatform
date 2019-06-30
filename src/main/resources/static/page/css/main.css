@@ -364,12 +364,14 @@ a {
     background: #fff;
     margin-right: 20px;
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .jk-uptodate .uptodate-img {
     display: block;
     height: 157px;
     width: 235px;
+    overflow: hidden;
 }
 .jk-uptodate img {
     vertical-align: middle;
@@ -377,8 +379,13 @@ a {
     ox-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-
+    transition: all 0.6s;
 }
+
+.jk-uptodate img:hover{
+    transform: scale(1.4);
+}
+
 .jk-uptodate .uptodate-title {
     padding: 10px 15px 0;
     font-size: 13px;

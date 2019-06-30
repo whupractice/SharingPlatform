@@ -5,6 +5,23 @@
     <title>Title</title>
 </head>
 <body>
+    <div class="compatible-big" ng-controller="schoolsCtrl" ng-init="initSchools()">
+        <div class="s-school">
+            <div class="title">
+                <img src="../img/s-school.png" alt=""><span>院校</span>
+            </div>
+            <div class="count">全部 <span>388</span> 所高校：本科 <span>195</span> 所，高职 <span>152</span> 所，其他 <span>41</span> 所</div>
 
+            <div class="school-input"><form id="school-form" action=""><input onkeyup="this.value=this.value.replace(/\s+/g,'')" class="s-cinput" type="text" placeholder="搜索院校"><i class="iconfont"></i><input type="submit"></form></div>
+
+            <div class="wCenter w-center">
+                <div class="item" ng-repeat="x in schools">
+                    <a ng-click="goSchool(x)">
+                        <img src="{{x.imgLink}}" alt="x.schoolName">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

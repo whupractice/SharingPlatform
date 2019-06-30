@@ -46,7 +46,9 @@
         <ul style="width: 1070px">
             <li ng-repeat="x in selectLesson" class="uptodate">
                 <a ng-click="goDetail(x)">
-                    <img class="uptodate-img" src="{{x.imgLink}}" alt="">
+                    <div class="uptodate-img">
+                        <img src="{{x.imgLink}}" alt="">
+                    </div>
                     <p class="uptodate-title">{{x.lessonName}}</p>
                     <p class="uptodate-info">
                         {{x.subject}}
@@ -61,13 +63,13 @@
 
     <div style="text-align: center"  >
         <ul class="pagination">
-            <li><a href ng-click="prevPage()">&laquo;</a></li>
+            <li><a href ng-click="prevPage_()">&laquo;</a></li>
             <li ng-repeat="page in pages">
-                <a href ng-click="selectPage(page)" class="pageIndex">{{page}}</a>
+                <a href ng-click="selectPage_(page)" class="pageIndex">{{page}}</a>
             </li>
-            <li><a href ng-click="nextPage()">&raquo;</a></li>
+            <li><a href ng-click="nextPage_()">&raquo;</a></li>
         </ul><br>
-        <p>第<span id="page">1</span>页 / 共{{totalPage}}页</p>
+        <p>第<span>{{currentPage}}</span>页 / 共{{totalPage}}页</p>
     </div>
 
     <!--挑选出的课程-->

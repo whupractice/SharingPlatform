@@ -22,6 +22,8 @@ public class SchoolEntity {
     @Column(length = 1000)
     private String schoolItro;//院校简介
 
+    private String imgLink;//院校图片链接
+
 
     public SchoolEntity() {
 

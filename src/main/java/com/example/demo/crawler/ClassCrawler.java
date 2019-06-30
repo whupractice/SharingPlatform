@@ -149,7 +149,7 @@ public class ClassCrawler {
 
         try {
             /*遍历info2下所有文件*/
-            File file = new File("info3");
+            File file = new File("info2");
             File[] files = file.listFiles();
             BufferedReader br;
             for(File f : files){

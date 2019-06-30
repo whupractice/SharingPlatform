@@ -79,7 +79,9 @@
         <ul style="width: 1070px">
             <li ng-repeat="x in selectLesson" class="uptodate">
                 <a ng-click="goDetail_2(x)">
-                    <img class="uptodate-img" src="{{x.imgLink}}" alt="">
+                    <div class="uptodate-img">
+                        <img src="{{x.imgLink}}" alt="">
+                    </div>
                     <p class="uptodate-title">{{x.lessonName}}</p>
                     <p class="uptodate-info">
                         {{x.subject}}
