@@ -1,7 +1,12 @@
 var API_index = angular.module('myApp',['ui.router']);
 API_index.config(function ($stateProvider,$urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/main');
+
+    /**
+      * @Author      : Theory
+      * @Description : 设置路由
+      */
+    $urlRouterProvider.otherwise('/main');//默认页面为主页面
     $stateProvider
         .state('main',{
             url: '/main',
