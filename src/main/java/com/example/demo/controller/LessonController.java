@@ -75,6 +75,13 @@ public class LessonController {
         return lessonService.getHotLesson(lessonNum);
     }
 
+    @ApiOperation(value = "根据学校名查询课程", notes = "根据学校名查询课程",httpMethod = "GET")
+    @GetMapping("/schoolName")
+    @ApiParam(name = "schoolName",value = "学校名")
+    public List<LessonEntity> getBySchoolName(String schoolName) {
+        return lessonService.getBySchoolName(schoolName);
+    }
+
     @ApiOperation(value = "根据关键词查询课程", notes = "根据关键词查询课程（课程名中的）",httpMethod = "GET")
     @ApiParam(name = "keyword",value = "课程名关键词")
     @GetMapping("/keyword")
@@ -83,7 +90,7 @@ public class LessonController {
     }
 
 
-    @ApiOperation(value = "分页获取课程列表", notes = "分页获取课程列表")
+    @ApiOperation(value = "分页获取课程列表", notes = "分页获取课程列表",httpMethod = "GET")
     @GetMapping("/pages")
     public Page<LessonEntity> getLessonPages(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
                                              @RequestParam(value = "status",required = false,defaultValue ="")@ApiParam(value = "课程状态") String status,
@@ -92,6 +99,7 @@ public class LessonController {
         Specification<LessonEntity> specification = createSpecification(status,subject);
         return lessonService.getAll(specification,pageable);
     }
+
 
 
     /**

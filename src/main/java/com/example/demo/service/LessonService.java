@@ -78,6 +78,16 @@ public class LessonService {
 
     /**
       * @Author      : QinYingran
+      * @Description : 根据学校名查询课程
+      * @Param       : [schoolName]
+      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      */
+    public List<LessonEntity> getBySchoolName(String schoolName) {
+        return lessonRepository.getBySchoolName(schoolName);
+    }
+
+    /**
+      * @Author      : QinYingran
       * @Description : 根据关键词查询课程
       * @Param       : [keyWord]
       * @return      : 含有关键词的课程列表
