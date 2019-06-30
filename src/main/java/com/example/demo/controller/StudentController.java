@@ -33,11 +33,9 @@ public class StudentController {
       * @return      : boolean
       */
     @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "GET")
-    @GetMapping(value = "/login")
-    public boolean login(@RequestParam(value = "user") @ApiParam(value = "学生账号")
-                                     String user,
-                        @RequestParam(value = "pwd") @ApiParam(value = "密码") String pwd){
-        return studentService.judgeLogin(user,pwd);
+    @PostMapping(value = "/login")
+    public boolean login(@RequestBody StudentEntity student) {
+        return studentService.judgeLogin(student.getStudentId(),student.getPwd());
     }
 
 
@@ -49,11 +47,9 @@ public class StudentController {
       * @return      : boolean
       */
     @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "GET")
-    @GetMapping(value = "/login/manager")
-    public boolean managerLogin(@RequestParam(value = "user") @ApiParam(value = "学生账号")
-                                 String user,
-                         @RequestParam(value = "pwd") @ApiParam(value = "密码") String pwd){
-        return studentService.judgeMLogin(user,pwd);
+    @PostMapping(value = "/login/manager")
+    public boolean managerLogin(@RequestBody StudentEntity student){
+        return studentService.judgeMLogin(student.getStudentId(),student.getPwd());
     }
 
     /**

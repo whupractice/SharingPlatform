@@ -5,11 +5,11 @@ var app = angular.module('myApp');
  * @Description : 登陆注册控制器
  * @type        : Controller
  */
-app.controller('headCtrl', function ($scope, $http, $state) {
+app.controller('loginCtrl', function ($scope, $http, $state) {
 
 
     $scope.judgeLog = function(){
-        var r = document.getElementsByName("identify");
+        var r = document.getElementsByName("identity");
         if (r[0].checked) {
             $scope.stuLog();//学生登陆
         } else if (r[1].checked) {
@@ -25,23 +25,15 @@ app.controller('headCtrl', function ($scope, $http, $state) {
       * @Description : 学生登陆
       */
     $scope.stuLog = function () {
-        let user = document.getElementById("acct");
-        let pwd = document.getElementById("pwd");
+        let user = parseInt($('#acct').val());
+        let pwd = $('#pwd').val();
 
         $http({
             method: 'POST',
             url: '/student/login',
             data:{
-                "user": user,
+                "studentId": user,
                 "pwd" : pwd
-            },
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            transformRequest: function (obj) {
-                var str = [];
-                for (var s in obj) {
-                    str.push(encodeURIComponent(s) + "=" + encodeURIComponent(obj[s]));
-                }
-                return str.join("&");
             }
         }).then(function successCallback(response) {
             if(response.data==true){
@@ -60,13 +52,13 @@ app.controller('headCtrl', function ($scope, $http, $state) {
       * @Description : 学生注册
       */
     $scope.stuReg = function () {
-        let nickName = document.getElementById("acct");
-        let pwd = document.getElementById("pwd");
+        let nickName = $('#acct').val();
+        let pwd = $('#pwd').val();
         $http({
             method: 'POST',
             url: '/student/register',
             data:{
-                "user": nickName,
+                "nickName": nickName,
                 "pwd" : pwd
             }
         }).then(function successCallback(response) {
@@ -87,23 +79,15 @@ app.controller('headCtrl', function ($scope, $http, $state) {
       * @Description : 管理员登陆
       */
     $scope.managerLog = function () {
-        let user = document.getElementById("acct");
-        let pwd = document.getElementById("pwd");
+        let user = parseInt($('#acct').val());
+        let pwd = $('#pwd').val();
 
         $http({
             method: 'POST',
             url: '/student/login/manager',
             data:{
-                "user": user,
+                "studentId": user,
                 "pwd" : pwd
-            },
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            transformRequest: function (obj) {
-                var str = [];
-                for (var s in obj) {
-                    str.push(encodeURIComponent(s) + "=" + encodeURIComponent(obj[s]));
-                }
-                return str.join("&");
             }
         }).then(function successCallback(response) {
             if(response.data==true){

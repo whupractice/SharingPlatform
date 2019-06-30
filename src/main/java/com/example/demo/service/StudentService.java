@@ -25,9 +25,8 @@ public class StudentService {
       * @Param       : [user,id] -- 用户名、密码
       * @return      : 是否正确
       */
-    public boolean judgeLogin(String user,String pwd){
-        Long username = Long.parseLong(user);
-        StudentEntity s =studentRepository.getStuById(username);
+    public boolean judgeLogin(long user,String pwd){
+        StudentEntity s =studentRepository.getStuById(user);
         if(s.getPwd().equals(pwd)){
             return true;
         }else {
@@ -42,9 +41,8 @@ public class StudentService {
       * @Param       : [user, pwd] -- 用户名、密码
       * @return      : boolean
       */
-    public boolean judgeMLogin(String user,String pwd){
-        Long username = Long.parseLong(user);
-        StudentEntity s =studentRepository.getStuById(username);
+    public boolean judgeMLogin(long user,String pwd){
+        StudentEntity s =studentRepository.getStuById(user);
         if(s.getPwd().equals(pwd) && s.getIsManager()==1){
             return true;
         }else {

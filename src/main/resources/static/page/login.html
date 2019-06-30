@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<div class="m-regForm">
+<div class="m-regForm" ng-controller="loginCtrl">
     <div class="textLine">
         <span>注册用户</span>
         <span class="number">19,026,152<span class="font12">+</span></span>
@@ -71,7 +71,7 @@
         <div class="bottomBar">
             <font class="msg" id="regMsg"></font>
             <button class="u-bigBtn" ng-click="judgeLog()">用户登陆</button>
-            <button class="u-bigBtn" id="rgBtn">免费注册</button>
+            <button class="u-bigBtn" ng-click="stuReg()">免费注册</button>
         </div>
 
         <div class="toLogin">
