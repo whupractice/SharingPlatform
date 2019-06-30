@@ -13,7 +13,7 @@ app.controller('headCtrl', function ($scope, $http, $state) {
         if (r[0].checked) {
             $scope.stuLog();//学生登陆
         } else if (r[1].checked) {
-            alert("选中第2项");
+            $scope.managerLog();//管理员登陆
         } else {
             alert("请选择至少一个角色！");
         }
@@ -81,6 +81,40 @@ app.controller('headCtrl', function ($scope, $http, $state) {
             }
         });
     };
+
+    /**
+      * @Author      : Theory
+      * @Description : 管理员登陆
+      */
+    $scope.managerLog = function () {
+        let user = document.getElementById("acct");
+        let pwd = document.getElementById("pwd");
+
+        $http({
+            method: 'POST',
+            url: '/student/login/manager',
+            data:{
+                "user": user,
+                "pwd" : pwd
+            },
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            transformRequest: function (obj) {
+                var str = [];
+                for (var s in obj) {
+                    str.push(encodeURIComponent(s) + "=" + encodeURIComponent(obj[s]));
+                }
+                return str.join("&");
+            }
+        }).then(function successCallback(response) {
+            if(response.data==true){
+                $state.go('main',{
+                    "studentId": user
+                });
+            }else{
+                alert("用户名或密码错误！");
+            }
+        });
+    }
 });
 
 

@@ -40,6 +40,22 @@ public class StudentController {
         return studentService.judgeLogin(user,pwd);
     }
 
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 管理员登陆验证
+      * @Param       : [user, pwd] -- 管理员账号、密码
+      * @return      : boolean
+      */
+    @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "GET")
+    @GetMapping(value = "/login/manager")
+    public boolean managerLogin(@RequestParam(value = "user") @ApiParam(value = "学生账号")
+                                 String user,
+                         @RequestParam(value = "pwd") @ApiParam(value = "密码") String pwd){
+        return studentService.judgeMLogin(user,pwd);
+    }
+
     /**
      * @Author      : Theory
      * @Description : 返回当前用户

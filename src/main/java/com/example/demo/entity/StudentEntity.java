@@ -39,6 +39,8 @@ public class StudentEntity {
 
     private String name;//真实姓名
 
+    private int isManager;//是否是管理员
+
 
     public long getStudentId() {
         return studentId;
@@ -113,6 +115,11 @@ public class StudentEntity {
         this.name = name;
     }
 
+    public int getIsManager() {
+        return isManager;
+    }
 
-
+    public void setIsManager(int isManager) {
+        this.isManager = isManager;
+    }
 }

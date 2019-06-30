@@ -36,6 +36,23 @@ public class StudentService {
     }
 
 
+    /**
+      * @Author      : Theory
+      * @Description : 判断管理员是否账号和密码正确
+      * @Param       : [user, pwd] -- 用户名、密码
+      * @return      : boolean
+      */
+    public boolean judgeMLogin(String user,String pwd){
+        Long username = Long.parseLong(user);
+        StudentEntity s =studentRepository.getStuById(username);
+        if(s.getPwd().equals(pwd) && s.getIsManager()==1){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
 
     public StudentEntity getStuById(String user){
         Long username = Long.parseLong(user);
