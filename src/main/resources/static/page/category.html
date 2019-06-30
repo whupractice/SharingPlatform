@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>LC平台——最受学生欢迎的课程资源平台</title>
-
 </head>
 <body>
-
+<div ng-controller="categoryCtrl" ng-init="initCategory()">
     <div class="c-status">
         <div class="wCenter">
             <div class="items">
@@ -45,30 +44,30 @@
             <div class="items">
                 <div class="left">状态：</div>
                 <div class="right">
-                    <a  class="item ">全部</a>
-                    <a  class="item ">即将开课</a>
-                    <a  class="item ">正在开课</a>
-                    <a  class="item ">已完结</a>
+                    <a  class="item " ng-click="setStatus(0)">全部</a>
+                    <a  class="item "ng-click="setStatus(1)">即将开课</a>
+                    <a  class="item" ng-click="setStatus(2)">正在开课</a>
+                    <a  class="item " ng-click="setStatus(3)">已完结</a>
                 </div>
             </div>
 
             <div class="items">
                 <div class="left">学科：</div>
                 <div class="right subject">
-                    <a class="item">全部</a>
+                    <a class="item" ng-click="setSubject(0)">全部</a>
                     <!-- <div class="more"><span class="trans"><i class="iconfont">&#xe68c;</i></span>更多</div> -->
-                    <a class="item">哲学</a>
-                    <a class="item">经济学</a>
-                    <a class="item">法学</a>
-                    <a class="item">教育学</a>
-                    <a class="item">文学</a>
-                    <a class="item">历史学</a>
-                    <a class="item">理学</a>
-                    <a class="item">工学</a>
-                    <a class="item">农学</a>
-                    <a class="item">医学</a>
-                    <a class="item">管理学</a>
-                    <a class="item">艺术学</a>
+                    <a class="item" ng-click="setSubject(1)">哲学</a>
+                    <a class="item" ng-click="setSubject(2)">经济学</a>
+                    <a class="item" ng-click="setSubject(3)">法学</a>
+                    <a class="item" ng-click="setSubject(4)">教育学</a>
+                    <a class="item" ng-click="setSubject(5)">文学</a>
+                    <a class="item" ng-click="setSubject(6)">历史学</a>
+                    <a class="item" ng-click="setSubject(7)">理学</a>
+                    <a class="item" ng-click="setSubject(8)">工学</a>
+                    <a class="item" ng-click="setSubject(9)">农学</a>
+                    <a class="item" ng-click="setSubject(10)">医学</a>
+                    <a class="item" ng-click="setSubject(11)">管理学</a>
+                    <a class="item" ng-click="setSubject(12)">艺术学</a>
                 </div>
             </div>
         </div>
@@ -79,7 +78,7 @@
     <div class="jk-uptodate">
         <ul style="width: 1070px">
             <li ng-repeat="x in selectLesson" class="uptodate">
-                <a ng-click="goDetail(x)">
+                <a ng-click="goDetail_2(x)">
                     <img class="uptodate-img" src="{{x.imgLink}}" alt="">
                     <p class="uptodate-title">{{x.lessonName}}</p>
                     <p class="uptodate-info">
@@ -101,9 +100,9 @@
             </li>
             <li><a href ng-click="nextPage()">&raquo;</a></li>
         </ul><br>
-        <p>第<span id="page">1</span>页 / 共{{totalPage}}页</p>
+        <p>第<span>{{currentPage}}</span>页 / 共{{totalPage}}页</p>
     </div>
 
-
+</div>
 </body>
 </html>

@@ -18,18 +18,15 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
             params:{"lesson": null},
             templateUrl: '/page/courseinfo.html'
         })
-        .state('schoolCourse', {
-            url: '/schoolCourse',
-            templateUrl: '/page/schoolCourse.html'
+        .state('schoolcourse', {
+            url: '/schoolcourse',
+            templateUrl: '/page/schoolcourse.html'
         }).state('login', {
             url: '/login',
             templateUrl: '/page/login.html'
         }).state('category', {
             url: '/category',
             templateUrl: '/page/category.html'
-        }).state('schoolcourse', {
-            url: '/schoolcourse',
-            templateUrl: '/page/schoolcourse.html'
         });
 
 });
