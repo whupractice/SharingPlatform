@@ -6,8 +6,15 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.Predicate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -76,6 +83,16 @@ public class LessonController {
     }
 
 
+    @ApiOperation(value = "分页获取课程列表", notes = "分页获取课程列表")
+    @GetMapping("/pages")
+    public Page<LessonEntity> getLessonPages(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
+                                             @RequestParam(value = "status",required = false,defaultValue ="")@ApiParam(value = "课程状态") String status,
+                                             @RequestParam(value = "subject",required = false,defaultValue ="")@ApiParam(value = "学科") String subject
+                                             ) {
+        Specification<LessonEntity> specification = createSpecification(status,subject);
+        return lessonService.getAll(specification,pageable);
+    }
+
 
     /**
       * @Author      : Theory
@@ -117,6 +134,25 @@ public class LessonController {
     }
 
 
+    public Specification<LessonEntity> createSpecification(String status,String subject) {
+
+        return (Specification<LessonEntity>) (root, query, cb) -> {
+            //用于暂时存放查询条件的集合
+            List<Predicate> predicatesList = new ArrayList<>();
+
+            if (!status.equals("全部")) {
+                Predicate predicate = cb.like(root.get("status"), "%" + status + "%");
+                predicatesList.add(predicate);
+            }
+            if (!subject.equals("全部")) {
+                Predicate predicate = cb.like(root.get("subject"), "%" + subject + "%");
+                predicatesList.add(predicate);
+            }
+            Predicate[] predicates = new Predicate[predicatesList.size()];
+            return cb.and(predicatesList.toArray(predicates));
+        };
+
+    }
 
 
 }

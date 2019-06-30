@@ -3,7 +3,10 @@ package com.example.demo.service;
 import com.example.demo.entity.LessonEntity;
 import com.example.demo.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -28,6 +31,10 @@ public class LessonService {
       */
     public List<LessonEntity> getAll(){
         return lessonRepository.findAll();
+    }
+
+    public Page<LessonEntity> getAll(Specification<LessonEntity> specification, Pageable pageable) {
+        return lessonRepository.findAll(specification,pageable);
     }
 
     /**
@@ -78,6 +85,36 @@ public class LessonService {
     public List<Object> getLessonByKeyword(String keyword) {
         keyword = "%"+keyword+"%";
         return lessonRepository.getLessonByKeyword(keyword);
+    }
+
+    /**
+      * @Author      : QinYingran
+      * @Description : 根据状态查询课程
+      * @Param       : [status]
+      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      */
+    public List<LessonEntity> getByStatus(String status) {
+        return lessonRepository.getByStatus(status);
+    }
+
+    /**
+      * @Author      : QinYingran
+      * @Description : 根据学科查询课程
+      * @Param       : [subject]
+      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      */
+    public List<LessonEntity> getBySubject(String subject) {
+        return lessonRepository.getBySubject(subject);
+    }
+
+    /**
+      * @Author      : QinYingran
+      * @Description : 根据状态和学科查询课程
+      * @Param       : [status, subject]
+      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      */
+    public List<LessonEntity> getByStatusAndSubject(String status,String subject) {
+        return lessonRepository.getByStatusAndSubject(status,subject);
     }
 
 

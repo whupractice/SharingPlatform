@@ -2,6 +2,7 @@ package com.example.demo.repository;
 
 import com.example.demo.entity.LessonEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
   * @Author      : Theory
   * @Description : 课程表接口
   */
-public interface LessonRepository extends JpaRepository<LessonEntity,Long> {
+public interface LessonRepository extends JpaRepository<LessonEntity,Long>, JpaSpecificationExecutor<LessonEntity> {
 
     //查询精品课程
     @Query(value = "SELECT * FROM lesson WHERE is_excellent = 1",nativeQuery = true)
@@ -32,5 +33,17 @@ public interface LessonRepository extends JpaRepository<LessonEntity,Long> {
     //查询重复项（课程名和学校名）
     @Query(value = "select * from lesson where lesson_id in (select lesson_id from lesson where lesson_name = ?1 and school_name = ?2)",nativeQuery = true)
     List<LessonEntity> getDuplicates(String lessonName,String schoolName);
+
+    //根据状态查询课程
+    @Query(value = "select * from lesson where status = ?1",nativeQuery = true)
+    List<LessonEntity> getByStatus(String status);
+
+    //根据学科查询课程
+    @Query(value = "select * from lesson where subject = ?1",nativeQuery = true)
+    List<LessonEntity> getBySubject(String subject);
+
+    //根据状态和学科查询课程
+    @Query(value = "select * from lesson where status = ?1 and subject = ?2",nativeQuery = true)
+    List<LessonEntity> getByStatusAndSubject(String status,String subject);
 
 }
