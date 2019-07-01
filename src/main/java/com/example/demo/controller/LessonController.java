@@ -100,6 +100,15 @@ public class LessonController {
         return lessonService.getAll(specification,pageable);
     }
 
+    @ApiOperation(value = "根据学校名分页获取课程列表", notes = "根据学校名分页获取课程列表",httpMethod = "GET")
+    @GetMapping("/pagesBySchoolName")
+    public Page<LessonEntity> getLessonPages(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
+                                             @RequestParam(value = "schoolName",required = false,defaultValue ="")@ApiParam(value = "学校名") String schoolName
+    ) {
+        Specification<LessonEntity> specification = createSpecification(schoolName);
+        return lessonService.getAll(specification,pageable);
+    }
+
 
 
     /**
@@ -156,6 +165,22 @@ public class LessonController {
                 Predicate predicate = cb.like(root.get("subject"), "%" + subject + "%");
                 predicatesList.add(predicate);
             }
+            Predicate[] predicates = new Predicate[predicatesList.size()];
+            return cb.and(predicatesList.toArray(predicates));
+        };
+
+    }
+
+    public Specification<LessonEntity> createSpecification(String schoolName) {
+
+        return (Specification<LessonEntity>) (root, query, cb) -> {
+            //用于暂时存放查询条件的集合
+            List<Predicate> predicatesList = new ArrayList<>();
+
+
+            Predicate predicate = cb.like(root.get("school_name"), "%" + schoolName + "%");
+            predicatesList.add(predicate);
+
             Predicate[] predicates = new Predicate[predicatesList.size()];
             return cb.and(predicatesList.toArray(predicates));
         };
