@@ -26,12 +26,12 @@ public class StudentService {
       * @Param       : [user,id] -- 用户名、密码
       * @return      : 是否正确
       */
-    public boolean judgeLogin(long user,String pwd){
+    public StudentEntity judgeLogin(long user,String pwd){
         StudentEntity s =studentRepository.getStuById(user);
         if(s.getPwd().equals(pwd)){
-            return true;
+            return s;
         }else {
-            return false;
+            return null;
         }
 
     }

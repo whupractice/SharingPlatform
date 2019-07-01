@@ -76,19 +76,24 @@
                     </ul>
                     <!--/搜索框-->
                     <ul class="nav pull-right">
-                        <li id="fat-menu" class="dropdown" >
+                        <li id="fat-menu" class="dropdown">
                             <a id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
                                 <img id="userLog" src="../img/user.jpg">
-                                <span>未登录</span>
+                                <span >{{currentUser.nickName}}</span>
                                 <i class="fa fa-caret-down"></i>
                             </a>
 
                             <ul class="dropdown-menu">
                                 <li><a ui-sref="login">
-                                    <i class="fa fa-road"></i>&nbsp;&nbsp; 登陆/注册</a></li>
+                                    <i class="fa fa-road"></i>&nbsp;&nbsp; 登陆/注册/切换账号</a></li>
+                                <li class="divider"></li>
+
+                                <li ng-if="hasUser()"><a>
+                                    <i class="fa fa-road"></i>&nbsp;&nbsp; 个人界面</a></li>
                                 <li class="divider"></li>
                             </ul>
                         </li>
+
                     </ul>
 
                 </div>

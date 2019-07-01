@@ -5,7 +5,7 @@ var app = angular.module('myApp');
  * @Description : 登陆注册控制器
  * @type        : Controller
  */
-app.controller('loginCtrl', function ($scope, $http, $state) {
+app.controller('loginCtrl', function ($scope, $http, $state,Data) {
 
 
     $scope.judgeLog = function(){
@@ -36,10 +36,9 @@ app.controller('loginCtrl', function ($scope, $http, $state) {
                 "pwd" : pwd
             }
         }).then(function successCallback(response) {
-            if(response.data==true){
-               $state.go('main',{
-                   "studentId": user
-               });
+            if(!!response.data){
+                Data.set(response.data);
+                $state.go('main');//跳转主页面
             }else{
                 alert("用户名或密码错误！");
             }
@@ -65,9 +64,6 @@ app.controller('loginCtrl', function ($scope, $http, $state) {
             if(response.data>0){
                 let userAccount = response.data;
                 alert("注册成功！请记住：您的账号为 " +userAccount);
-                $scope.go('main',{
-                    "studentId": userAccount
-                });//跳转主页面
             }else{
                 alert("此昵称已被占用！");
             }
@@ -91,9 +87,7 @@ app.controller('loginCtrl', function ($scope, $http, $state) {
             }
         }).then(function successCallback(response) {
             if(response.data==true){
-                $state.go('main',{
-                    "studentId": user
-                });
+                $state.go('main');//跳转到主页面
             }else{
                 alert("用户名或密码错误！");
             }

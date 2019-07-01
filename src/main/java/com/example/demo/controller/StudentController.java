@@ -27,11 +27,11 @@ public class StudentController {
       * @Author      : Theory
       * @Description : 登陆验证
       * @Param       : [user, pwd] -- 学生账号，密码
-      * @return      : boolean
+      * @return      : 学生实体
       */
     @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "POST")
     @PostMapping(value = "/login")
-    public boolean login(@RequestBody StudentEntity student) {
+    public StudentEntity login(@RequestBody StudentEntity student) {
         return studentService.judgeLogin(student.getStudentId(),student.getPwd());
     }
 

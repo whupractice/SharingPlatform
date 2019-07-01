@@ -5,8 +5,11 @@ var API_index = angular.module('myApp');
  * @Description : 主页面控制器
  * @type        : Controller
  */
-API_index.controller("headCtrl", function ($scope, $http, $state) {
+API_index.controller("headCtrl", function ($scope, $http, $state,Data,$interval) {
 
+
+
+    $scope.currentUser = null;
 
     /**
      * @Author      : Theory
@@ -14,8 +17,30 @@ API_index.controller("headCtrl", function ($scope, $http, $state) {
      */
     $scope.goLogin = function () {
         $state.go('login');
-    }
+    };
 
+
+    /**
+      * @Author      : Theory
+      * @Description : 初始化导航栏
+      */
+    $scope.initHead = function () {
+      $scope.currentUser = Data.get();
+    };
+
+
+    //每一秒刷新页面，获取用户信息
+    $interval(function(){
+            $scope.initHead();
+    },1000);
+
+
+    //判断是否有用户
+    $scope.hasUser = function () {
+        if($scope.currentUser.nickName.length == 0)
+            return false;
+        return true;
+    };
 });
 
 
