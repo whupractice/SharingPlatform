@@ -31,6 +31,10 @@ public class SLService {
         return slRepository.getAllByStuId(stuId);
     }
 
+    public List<SLEntity> getSLByLessonId(long lessonId) {
+        return slRepository.getSLByLessonId(lessonId);
+    }
+
 
     /**
       * @Author      : Theory

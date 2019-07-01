@@ -15,7 +15,7 @@ import java.util.List;
 public interface SLRepository extends JpaRepository<SLEntity, SLKeys> {
 
 
-    //查询特定学生号的选课信息
+    //根据学生id查询学生选课信息
     @Query(value = "SELECT * FROM SL WHERE student_id = ?1",nativeQuery = true)
     List<SLEntity> getAllByStuId(long studentId);
 
@@ -23,5 +23,10 @@ public interface SLRepository extends JpaRepository<SLEntity, SLKeys> {
     //查询选了这门课的学生数量
     @Query(value = "SELECT COUNT(student_id) FROM sl WHERE Lesson_id=?1 group by Lesson_id",nativeQuery = true)
     int getStuNumByLessonId(long lessonId);
+
+
+    //根据课程id查询学生选课信息
+    @Query(value = "SELECT * FROM SL WHERE lesson_id = ?1",nativeQuery = true)
+    List<SLEntity> getSLByLessonId(long lessonId);
 
 }

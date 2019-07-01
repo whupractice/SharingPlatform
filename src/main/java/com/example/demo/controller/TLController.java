@@ -31,10 +31,18 @@ public class TLController {
       */
     @ApiOperation(value = "根据课程号获取教师授课列表", notes = "根据课程号获取教师授课列表",httpMethod = "GET")
     @ApiParam(name = "lessonId",value = "课程号")
-    @GetMapping("/id")
+    @GetMapping("/lessonId")
     public List<TLEntity> getTLByLessonId(@RequestParam String lessonId) {
         return  tlService.getTLByLessonId(lessonId);
     }
+
+    @ApiOperation(value = "根据教师号获取授课列表", notes = "根据教师号获取授课列表",httpMethod = "GET")
+    @ApiParam(name = "teacherId",value = "教师号")
+    @GetMapping("/teacherId")
+    public List<TLEntity> getTLByTeacherId(@RequestParam String teacherId) {
+        return  tlService.getAllByTeacherId(teacherId);
+    }
+
 
     /**
       * @Author      : QinYingran
@@ -69,8 +77,8 @@ public class TLController {
       * @return      :
       */
     @ApiOperation(value = "通过课程号和教师号删除教师授课记录", notes = "通过课程号和教师号删除教师授课记录",httpMethod = "DELETE")
-    @DeleteMapping("/{lessonId}/{teacherId}")
-    public void deleteTL(@PathVariable @ApiParam(value = "课程号") long lessonId, @PathVariable @ApiParam(value = "教师账号") long teacherId) {
+    @DeleteMapping("/lessonId/teacherId")
+    public void deleteTL(@RequestParam @ApiParam(value = "课程号") long lessonId, @RequestParam @ApiParam(value = "教师账号") long teacherId) {
         tlService.deleteTL(lessonId, teacherId);
     }
 

@@ -29,11 +29,18 @@ public class SLController {
       * @Param       : [studId] -- 学生账号
       * @return      : 选课记录list
       */
-    @ApiOperation(value = "根据学生账号获取所选课程", notes = "根据学生账号获取所选课程",httpMethod = "GET")
-    @ApiParam(name = "stuId",value = "学生账号")
-    @GetMapping("/{stuId}")
-    public List<SLEntity> getSLByStuId(@PathVariable long stuId){
+    @ApiOperation(value = "根据学生id获取学生选课信息", notes = "根据学生id获取学生选课信息",httpMethod = "GET")
+    @ApiParam(name = "stuId",value = "学生id")
+    @GetMapping("/stuId")
+    public List<SLEntity> getSLByStuId(@RequestParam long stuId){
         return slService.getSLByStuId(stuId);
+    }
+
+    @ApiOperation(value = "根据课程id获取学生选课信息", notes = "根据课程id获取学生选课信息",httpMethod = "GET")
+    @ApiParam(name = "lessonId",value = "课程id")
+    @GetMapping("/lessonId")
+    public List<SLEntity> getSLByLessonId(@RequestParam long lessonId){
+        return slService.getSLByLessonId(lessonId);
     }
 
 
@@ -83,9 +90,9 @@ public class SLController {
      */
     @ApiOperation(value = "通过学生账号和课程账号删除选课记录", notes = "通过学生账号和课程账号删除选课记录",httpMethod = "DELETE")
     @ApiParam(name = "stuId",value = "学生账号")
-    @DeleteMapping("/{stuId}/{lessonId}")
-    public void deleteSL(@PathVariable @ApiParam(value = "学生账号") long stuId ,
-                         @PathVariable @ApiParam(value = "课程账号") long lessonId){
+    @DeleteMapping("/stuId/lessonId")
+    public void deleteSL(@RequestParam @ApiParam(value = "学生账号") long stuId ,
+                         @RequestParam @ApiParam(value = "课程账号") long lessonId){
         slService.deleteSL(stuId,lessonId);
     }
 

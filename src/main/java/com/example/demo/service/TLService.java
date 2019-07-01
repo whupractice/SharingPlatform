@@ -30,6 +30,11 @@ public class TLService {
         return tlRepository.getAllByLessonId(newId);
     }
 
+    public List<TLEntity> getAllByTeacherId(String teacherId) {
+        long newId = Long.parseLong(teacherId);
+        return tlRepository.getAllByTeacherId(newId);
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 插入教师授课记录

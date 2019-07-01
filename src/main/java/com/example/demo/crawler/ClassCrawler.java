@@ -9,7 +9,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import javax.print.Doc;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -43,6 +42,7 @@ public class ClassCrawler {
     public String getHtml(String url){
         try {
             Connection con = Jsoup.connect(url);
+            con.timeout(0);
             con.header("User-Agent",
                     "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36");// 配置模拟浏览器
             Connection.Response rs = con.execute();// 获取响应
@@ -259,6 +259,7 @@ public class ClassCrawler {
     public void initMore(){
         for(Lesson lesson : lessons) {
             String url = "http://zjedu.moocollege.com"+lesson.getLessonLink();
+            System.out.println(lesson);
             String detailHtml = getHtml(url);
             Document doc = Jsoup.parse(detailHtml);
 

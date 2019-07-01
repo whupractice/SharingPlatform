@@ -36,16 +36,16 @@ public class SchoolController {
     }
 
 
-    @ApiOperation(value = "获取所有学校并去重", notes = "获取所有学校并去重",httpMethod = "GET")
-    @GetMapping("/view")
-    public List<Object> getAllDistinctly(){
-        return schoolService.getAllDistinctly();
-    }
+//    @ApiOperation(value = "获取所有学校并去重", notes = "获取所有学校并去重",httpMethod = "GET")
+//    @GetMapping("/view")
+//    public List<Object> getAllDistinctly(){
+//        return schoolService.getAllDistinctly();
+//    }
 
 
     @ApiOperation(value = "根据id获取学校介绍", notes = "根据id获取学校介绍",httpMethod = "GET")
     @ApiParam(name = "id",value = "学校id")
-    @GetMapping("/schoolInfo")
+    @GetMapping("/getSchoolInfoById")
     public String getSchoolInfoById (Long id) {
         return schoolService.getSchoolInfoById(id);
     }

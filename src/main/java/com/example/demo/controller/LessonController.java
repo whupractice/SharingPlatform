@@ -45,11 +45,11 @@ public class LessonController {
     }
 
 
-    @ApiOperation(value = "获取所有课程并去重", notes = "获取所有课程并去重",httpMethod = "GET")
-    @GetMapping("/view")
-    public List<Object> getAllDistinctly(){
-        return lessonService.getAllDistinctly();
-    }
+//    @ApiOperation(value = "获取所有课程并去重", notes = "获取所有课程并去重",httpMethod = "GET")
+//    @GetMapping("/view")
+//    public List<Object> getAllDistinctly(){
+//        return lessonService.getAllDistinctly();
+//    }
 
     /**
       * @Author      : Theory
