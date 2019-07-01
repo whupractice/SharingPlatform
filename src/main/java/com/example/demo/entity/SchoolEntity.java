@@ -56,4 +56,12 @@ public class SchoolEntity {
     public void setSchoolItro(String schoolItro) {
         this.schoolItro = schoolItro;
     }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
+    }
 }

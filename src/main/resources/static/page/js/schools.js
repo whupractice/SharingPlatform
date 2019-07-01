@@ -8,7 +8,7 @@ var app = angular.module('myApp');
 app.controller('schoolsCtrl', function ($scope, $http, $state) {
 
 
-    $scope.schoools = null;
+    $scope.schools = null;
 
     //从数据库中获取所有学校信息
     $scope.initSchools = function () {
@@ -16,7 +16,7 @@ app.controller('schoolsCtrl', function ($scope, $http, $state) {
             method: 'GET',
             url: '/school'
         }).then(function successCallback(response) {
-            $scope.schoools = response.data;
+            $scope.schools = response.data;
         });
     };
 
@@ -26,7 +26,23 @@ app.controller('schoolsCtrl', function ($scope, $http, $state) {
         $state.go('schoolcourse',{
             "school": school
         })
-    }
+    };
+
+
+    //根据关键字搜索学校
+    $scope.searchSchoolName = function () {
+        let keyword = $('#searchVal').val();
+        $http({
+            method: 'GET',
+            url: '/school/keyword',
+            params:{
+                "keyword": keyword
+            }
+        }).then(function successCallback(response) {
+            $scope.schools = response.data;
+        });
+    };
+
 });
 
 

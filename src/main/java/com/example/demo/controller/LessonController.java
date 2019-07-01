@@ -178,7 +178,7 @@ public class LessonController {
             List<Predicate> predicatesList = new ArrayList<>();
 
 
-            Predicate predicate = cb.like(root.get("school_name"), "%" + schoolName + "%");
+            Predicate predicate = cb.like(root.get("schoolName"), "%" + schoolName + "%");
             predicatesList.add(predicate);
 
             Predicate[] predicates = new Predicate[predicatesList.size()];

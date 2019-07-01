@@ -27,6 +27,23 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
       */
     $scope.getStuNum = function () {
         //TODO
+    };
+
+
+    //去往学校界面
+    $scope.goSchool2 = function () {
+        $http({
+            method: 'GET',
+            url: "/school/schoolName",
+            params:{
+                "schoolName" : $scope.lesson.schoolName
+            }
+        }).then(function successCallback(response) {
+            let school = response.data;
+            $state.go('schoolcourse',{
+                "school": school
+            })
+        });
     }
 
 });

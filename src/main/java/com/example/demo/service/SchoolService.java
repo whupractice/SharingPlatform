@@ -1,11 +1,16 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.SchoolEntity;
+import com.example.demo.entity.StudentEntity;
 import com.example.demo.repository.SchoolRepository;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * @ Author     ：Theory
@@ -37,6 +42,16 @@ public class SchoolService {
         return schoolRepository.getAllDistinctly();
     }
 
+
+    //根据姓名获取学校
+    public SchoolEntity getSchoolByName(String name){
+        List<SchoolEntity> schools = schoolRepository.getDuplicates(name);
+        if(schools.size()!=0)
+            return schools.get(0);
+
+        return null;
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 根据id获取学校介绍
@@ -53,7 +68,7 @@ public class SchoolService {
       * @Param       : [keyWord]
       * @return      : 学校列表
       */
-    public List<Object> getSchoolByKeyword(String keyword) {
+    public List<SchoolEntity> getSchoolByKeyword(String keyword) {
         keyword = "%"+keyword+"%";
         return schoolRepository.getSchoolByKeyword(keyword);
     }

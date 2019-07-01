@@ -22,8 +22,8 @@ public interface SchoolRepository extends JpaRepository<SchoolEntity,Long> {
     List<Object> getAllDistinctly();
 
     //查询含有关键词的学校并去重
-    @Query(value = "select distinct school_itro,school_name from school where school_name like ?1 order by school_name",nativeQuery = true)
-    List<Object> getSchoolByKeyword(String keyword);
+    @Query(value = "select * from school where school_name like ?1 order by school_name",nativeQuery = true)
+    List<SchoolEntity> getSchoolByKeyword(String keyword);
 
     //查询重复项（学校名）
     @Query(value = "select * from school where school_name = ?1",nativeQuery = true)
