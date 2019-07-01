@@ -2,12 +2,14 @@
 package com.example.demo.crawler;
 
 import com.example.demo.baseClass.Lesson;
+import com.example.demo.baseClass.School;
 import com.example.demo.baseClass.Teacher;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import javax.print.Doc;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -26,17 +28,15 @@ public class ClassCrawler {
 
     List<Lesson> lessons = new ArrayList<>();
 
-    public List<Lesson> crawl(){
+    List<School> schools = new ArrayList<>();
+
+    public List<Lesson> crawl1(){
 
         initClass();//爬取课程初步信息
         initMore();//爬取课程详细信息和教师信息
-
-
         return lessons;
         //crawler();
         //getLink();
-
-
     }
 
     //爬取工具
@@ -322,6 +322,50 @@ public class ClassCrawler {
            teachers.add(new Teacher(teacherName, job, schoolName, academyName, intro, imgLink));
         }
         return teachers;
+    }
+
+
+
+    //爬取学校信息
+    public List<School> crawl2(){
+        try {
+            getSchools();
+            for(School school : schools){
+                String url = school.getSchoolDetailLink();
+                String html = getHtml(url);
+                Document doc = Jsoup.parse(html);
+                List<Element> intros = doc.getElementsByTag("p");
+                StringBuffer intro = new StringBuffer();
+                for(Element e : intros){
+                    intro.append(e.text());
+                }
+                school.setSchoolIntro(intro.toString());
+            }
+            return schools;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+    private void getSchools(){
+        try {
+            String baseUrl = "http://zjedu.moocollege.com";
+            File allScholls = new File("schoolInfo\\allSchools.html");
+            Document doc = Jsoup.parse(allScholls,"UTF-8");
+            List<Element>items = doc.getElementsByAttributeValue("class","item");
+            for(Element item : items){
+                String schoolDetailLink = baseUrl+item.getElementsByTag("a").get(0).attr("href");//学校链接
+                String imgLink = item.getElementsByTag("img").get(0).attr("src");//学校图片链接
+                School school = new School(schoolDetailLink,imgLink);
+                schools.add(school);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 

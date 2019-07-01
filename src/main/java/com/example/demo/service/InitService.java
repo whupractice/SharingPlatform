@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.baseClass.Lesson;
+import com.example.demo.baseClass.School;
 import com.example.demo.baseClass.Teacher;
 import com.example.demo.crawler.ClassCrawler;
 import com.example.demo.entity.LessonEntity;
@@ -43,7 +44,7 @@ public class InitService {
 
     public void insertT_L_TL(){
             ClassCrawler classCrawler = new ClassCrawler();
-            List<Lesson> lessons = classCrawler.crawl();
+            List<Lesson> lessons = classCrawler.crawl1();
 
             //遍历课程链表
             for (Lesson lesson : lessons) {
@@ -87,6 +88,15 @@ public class InitService {
                     tlRepository.save(tl);//插入课程-教师
                 }
             }
+    }
+
+    //插入学校信息
+    public void insertSchoolInfo(){
+        ClassCrawler classCrawler = new ClassCrawler();
+        List<School> schools = classCrawler.crawl2();
+        for(School school:schools){
+            logger.info(school.toString());
+        }
     }
 
 }

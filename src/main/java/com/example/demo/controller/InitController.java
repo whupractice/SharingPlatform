@@ -36,4 +36,11 @@ public class InitController {
     }
 
 
+    @ApiOperation(value = "初始化数据库2", notes = "初始化数据库2",httpMethod = "GET")
+    @GetMapping("/2")
+    public void initDB2(){
+        initService.insertSchoolInfo();
+    }
+
+
 }

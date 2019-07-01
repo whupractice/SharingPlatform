@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="../page/css/schoolcourse.css">
     <link rel="stylesheet" type="text/css" href="../page/css/courseinfo.css">
-    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/fonts/font-awesome/css/font-awesome.min.css">
-    <script src="../shared/css/bootstrap/js/jquery-3.2.1.min.js"></script>
-    <script src="../shared/css/bootstrap/js/umd-popper-4.1.0.min.js"></script>
-    <script src="../shared/css/bootstrap/js/4.1.0-bootstrap.min.js"></script>
-    <script type="text/javascript" src="../shared/css/bootstrap/js/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="../shared/css/bootstrap/js/3.0.3-bootstrap.min.js"></script>
     <title>院校全部课程</title>
 </head>
 <body calss="p-university">
@@ -30,7 +23,7 @@
         <div class="g-doc" style="position: absolute;margin-top: 20px;right: 230px;">
             <div class="g-mn1c m-cnt">
 
-                <h1>武汉大学</h1>
+                <h1>{{school.schoolName}}</h1>
                 <p class="f-f1 f-fc6">武汉大学是国家教育部直属重点综合性大学，是国家“985工程”和“211工程”重点建设高校。
                     武汉大学溯源于1893年清末湖广总督张之洞奏请清政府创办的自强学堂，历经传承演变，1928年定名为国立武汉大学，是近代中国第一批国立大学。1946年，学校已形成文、法、理、工、农、医 6大学院并驾齐驱的办学格局。
                     2000年，武汉大学与武汉水利电力大学、武汉测绘科技大学、湖北医科大学合并组建新的武汉大学，揭开了学校改革发展的崭新一页。合校十多年来，学校综合实力和核心竞争力不断提升。</p>
@@ -53,7 +46,9 @@
         <ul style="width: 1070px">
             <li ng-repeat="x in selectLesson" class="uptodate">
                 <a ng-click="goDetail(x)">
-                    <img class="uptodate-img" src="{{x.imgLink}}" alt="">
+                    <div class="uptodate-img">
+                        <img src="{{x.imgLink}}" alt="">
+                    </div>
                     <p class="uptodate-title">{{x.lessonName}}</p>
                     <p class="uptodate-info">
                         {{x.subject}}
@@ -68,13 +63,13 @@
 
     <div style="text-align: center"  >
         <ul class="pagination">
-            <li><a href ng-click="prevPage()">&laquo;</a></li>
+            <li><a href ng-click="prevPage_()">&laquo;</a></li>
             <li ng-repeat="page in pages">
-                <a href ng-click="selectPage(page)" class="pageIndex">{{page}}</a>
+                <a href ng-click="selectPage_(page)" class="pageIndex">{{page}}</a>
             </li>
-            <li><a href ng-click="nextPage()">&raquo;</a></li>
+            <li><a href ng-click="nextPage_()">&raquo;</a></li>
         </ul><br>
-        <p>第<span id="page">1</span>页 / 共{{totalPage}}页</p>
+        <p>第<span>{{currentPage}}</span>页 / 共{{totalPage}}页</p>
     </div>
 
     <!--挑选出的课程-->
