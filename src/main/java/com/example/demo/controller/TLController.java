@@ -31,8 +31,8 @@ public class TLController {
       */
     @ApiOperation(value = "根据课程号获取教师授课列表", notes = "根据课程号获取教师授课列表",httpMethod = "GET")
     @ApiParam(name = "lessonId",value = "课程号")
-    @GetMapping("/{lessonId}")
-    public List<TLEntity> getTLByLessonId(@PathVariable long lessonId) {
+    @GetMapping("/id")
+    public List<TLEntity> getTLByLessonId(@RequestParam String lessonId) {
         return  tlService.getTLByLessonId(lessonId);
     }
 

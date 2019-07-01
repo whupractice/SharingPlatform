@@ -70,4 +70,11 @@ public class TeacherService {
         keyword = "%"+keyword+"%";
         return teacherRepository.getTeacherByKeyword(keyword);
     }
+
+
+
+    public TeacherEntity getTeacherById(String id){
+        long newId = Long.parseLong(id);//转换类型
+        return teacherRepository.getTeacherById(newId);
+    }
 }

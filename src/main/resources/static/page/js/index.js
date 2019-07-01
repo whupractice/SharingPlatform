@@ -31,6 +31,10 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
         }).state('schools', {
             url: '/schools',
             templateUrl: '/page/schools.html'
+        }).state('teacher',{
+            url: '/teacher',
+            templateUrl: '/page/teacher.html',
+            params:{"teacher": null}
         });
 
 });

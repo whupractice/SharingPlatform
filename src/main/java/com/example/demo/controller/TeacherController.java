@@ -94,4 +94,14 @@ public class TeacherController {
         return teacherService.getTeacherByKeyword(keyword);
     }
 
+
+
+
+    @ApiOperation(value = "根据id查询老师", notes = "根据id查询老师",httpMethod = "GET")
+    @GetMapping("/id")
+    public TeacherEntity getTeacherById(@RequestParam String id){
+        return teacherService.getTeacherById(id);
+    }
+
+
 }

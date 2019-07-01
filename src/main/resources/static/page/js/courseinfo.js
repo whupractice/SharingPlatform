@@ -10,13 +10,18 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
 
     $scope.lesson = null;
 
+    $scope.TL = null;
+
+
+    $scope.teachers = [];
+
     /**
       * @Author      : Theory
       * @Description : 初始化课程的信息
       */
     $scope.initCourseInfo = function(){
-        $scope.lesson = $stateParams.lesson;//接收主页传来课程信息
-        $scope.getStuNum();
+        $scope.lesson = $stateParams.lesson;//接收传来课程信息
+       $scope.getTeachers();
     };
 
 
@@ -43,6 +48,38 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
             $state.go('schoolcourse',{
                 "school": school
             })
+        });
+    };
+
+
+
+    $scope.getTeachers = function () {
+        let lessonId = $scope.lesson.lessonId;//获取课程id
+        $http({
+            method: 'GET',
+            url: '/tl/id',
+            params:{
+                "lessonId" : lessonId
+            }
+        }).then(function successCallback(response) {
+            $scope.TL = response.data;
+            for(let i = 0;i<$scope.TL.length;i++){
+                $scope.getTeachers_($scope.TL[i]);
+            }
+        });
+    };
+
+
+    $scope.getTeachers_ = function (tl) {
+        $http({
+            method: 'GET',
+            url: '/teacher/id',
+            params:{
+                "id" : tl.teacherId // id必须从接口文档里看
+            }
+        }).then(function successCallback(response) {
+            let t = response.data;
+            $scope.teachers.push(t);
         });
     }
 

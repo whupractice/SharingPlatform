@@ -2,7 +2,7 @@ var app = angular.module('myApp');
 
 /**
  * @Author      : Theory
- * @Description : 登陆注册控制器
+ * @Description : 学校信息控制器
  * @type        : Controller
  */
 app.controller('schoolcourseCtrl', function ($scope, $http, $stateParams,$state) {

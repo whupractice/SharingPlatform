@@ -522,7 +522,7 @@
                                 <!--Regular if41-->
                                 <div class="m-teachers_teacher-list">
                                     <div class="t-title f-fc3 f-f0">1位授课老师</div>
-                                    <div class="m-teachers_teacher-list_wrap height-auto"><!--Regular if42-->
+                                    <div class="m-teachers_teacher-list_wrap height-auto" ng-repeat="x in teachers"><!--Regular if42-->
                                         <div class="um-list-slider f-pr">
                                             <!--Regular if43-->
                                             <!--Regular if44-->
@@ -531,13 +531,13 @@
                                                 <div class="um-list-slider_con_item">
                                                     <!--Regular if45-->
                                                     <!--inlcude--><a data-cate="课程介绍页" data-action="点击课程团队头像" data-label="1206581203-姚宏" class="ga-click u-tchcard f-cb" href="/u/mooc1498021676324" target="_blank">
-                                                    <img class="f-fl" src="http://edu-image.nosdn.127.net/FF986E2E4C21C8BEF525F5EA0131BBCA.JPG?imageView&amp;thumbnail=180y180&amp;quality=100" width="55" height="55" alt="姚宏">
+                                                    <img class="f-fl" src="{{x.imgLink}}" width="55" height="55" alt="姚宏">
                                                     <div class="cnt f-fl">
                                                         <!--Regular if46-->
-                                                        <h3 class="f-fc3">姚宏</h3>
+                                                        <h3 class="f-fc3">{{x.teacherName}}</h3>
 
                                                         <!--Regular if47-->
-                                                        <p class="lector-title f-fc9 f-f0">副教授</p>
+                                                        <p class="lector-title f-fc9 f-f0">{{x.job}}</p>
 
                                                     </div>
                                                 </a>

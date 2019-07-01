@@ -25,8 +25,9 @@ public class TLService {
       * @Param       :
       * @return      :
       */
-    public List<TLEntity> getTLByLessonId(long id) {
-        return tlRepository.getAllByLessonId(id);
+    public List<TLEntity> getTLByLessonId(String id) {
+        long newId = Long.parseLong(id);
+        return tlRepository.getAllByLessonId(newId);
     }
 
     /**
