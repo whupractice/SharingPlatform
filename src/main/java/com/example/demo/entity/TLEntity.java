@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @IdClass(TLKeys.class)
-@Table(name="TL")
+@Table(name="tl")
 public class TLEntity {
 
     @Id

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @IdClass(SLKeys.class)
-@Table(name="SL")
+@Table(name="sl")
 public class SLEntity {
 
     public SLEntity() {
@@ -22,7 +22,7 @@ public class SLEntity {
 
 
     @Id
-    private long studentId;//学生账号
+    private long phone;//学生账号
 
     @Id
     private long lessonId;//课程号
@@ -37,12 +37,12 @@ public class SLEntity {
 
     private String lessonProcess;//课程学习进度
 
-    public long getStudentId() {
-        return studentId;
+    public long getPhone() {
+        return phone;
     }
 
-    public void setStudentId(long studentId) {
-        this.studentId = studentId;
+    public void setPhone(long phone) {
+        this.phone = phone;
     }
 
     public long getLessonId() {

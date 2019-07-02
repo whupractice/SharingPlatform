@@ -77,7 +77,7 @@ public class SLService {
         long newId = Long.parseLong(lessonId);
         List<StudentEntity> studentEntities =  new ArrayList<>();
         for(SLEntity slEntity : slRepository.getSLByLessonId(newId)) {
-            studentEntities.add(studentRepository.getStuById(slEntity.getStudentId()));
+            studentEntities.add(studentRepository.getStuById(slEntity.getPhone()));
         }
         return studentEntities;
     }

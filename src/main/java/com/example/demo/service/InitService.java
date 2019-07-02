@@ -64,7 +64,7 @@ public class InitService {
                     if(lessonDuplicates.isEmpty()) {
                         LessonEntity lessonEntity = new LessonEntity(lesson.getLessonName(),
                                 lesson.getSchoolName(), lesson.getSubject(), lesson.getCategory(), lesson.getCredit(),
-                                lesson.getStartTime(), lesson.getEndTime(), lesson.getStatus(), lesson.getIntro(), 0, false, 0,
+                                lesson.getStartTime(), lesson.getEndTime(), lesson.getStatus(), lesson.getIntro(), 0, 0, 0,
                                 lesson.getImgLink());
                         lessonRepository.save(lessonEntity);
                         lessonId = lessonRepository.getNewLessonId();//新注册的课程号

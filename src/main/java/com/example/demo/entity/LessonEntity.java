@@ -8,7 +8,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "Lesson")
+@Table(name = "lesson")
 public class LessonEntity {
 
     public LessonEntity() {

@@ -105,7 +105,6 @@ public class SLController {
      * @Param       : [stuId,lessonId] -- 学生账号、课程账号
      */
     @ApiOperation(value = "通过学生账号和课程账号删除选课记录", notes = "通过学生账号和课程账号删除选课记录",httpMethod = "DELETE")
-    @ApiParam(name = "stuId",value = "学生账号")
     @DeleteMapping("/stuId/lessonId")
     public void deleteSL(@RequestParam @ApiParam(value = "学生账号") String stuId ,
                          @RequestParam @ApiParam(value = "课程账号") String lessonId){

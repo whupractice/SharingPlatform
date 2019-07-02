@@ -1,7 +1,5 @@
 package com.example.demo.keys;
 
-import org.springframework.data.jpa.repository.Query;
-
 import java.io.Serializable;
 
 /**
@@ -12,23 +10,23 @@ import java.io.Serializable;
 
 public class SLKeys implements Serializable {
 
-    private long studentId;//学生账号
+    private long phone;//学生手机号
     private long lessonId;//课程号
 
     public SLKeys() {
     }
 
-    public SLKeys(long studentId, long lessonId) {
-        this.studentId = studentId;
+    public SLKeys(long phone, long lessonId) {
+        this.phone = phone;
         this.lessonId = lessonId;
     }
 
-    public long getStudentId() {
-        return studentId;
+    public long getPhone() {
+        return phone;
     }
 
-    public void setStudentId(long studentId) {
-        this.studentId = studentId;
+    public void setPhone(long phone) {
+        this.phone = phone;
     }
 
     public long getLessonId() {
@@ -42,7 +40,7 @@ public class SLKeys implements Serializable {
     @Override
     public boolean equals(Object obj){
         SLKeys objKeys = (SLKeys)obj;
-        if(studentId==objKeys.studentId && lessonId == objKeys.lessonId)
+        if(phone ==objKeys.phone && lessonId == objKeys.lessonId)
             return true;
         else
             return false;
