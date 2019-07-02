@@ -46,6 +46,10 @@ public interface LessonRepository extends JpaRepository<LessonEntity,Long>, JpaS
     @Query(value = "select * from lesson where school_name = ?1",nativeQuery = true)
     List<LessonEntity> getBySchoolName(String schoolName);
 
+    //根据课程id查询课程
+    @Query(value = "select * from lesson where lesson_id = ?1",nativeQuery = true)
+    LessonEntity getByLessonId(long lessonId);
+
     //根据状态和学科查询课程
     @Query(value = "select * from lesson where status = ?1 and subject = ?2",nativeQuery = true)
     List<LessonEntity> getByStatusAndSubject(String status,String subject);

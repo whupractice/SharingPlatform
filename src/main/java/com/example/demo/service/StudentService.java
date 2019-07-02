@@ -23,11 +23,11 @@ public class StudentService {
     /**
       * @Author      : Theory
       * @Description : 判断账号密码是否正确
-      * @Param       : [user,id] -- 用户名、密码
+      * @Param       : [phone,id] -- 用户名、密码
       * @return      : 是否正确
       */
-    public StudentEntity judgeLogin(long user,String pwd){
-        StudentEntity s =studentRepository.getStuById(user);
+    public StudentEntity judgeLogin(long phone,String pwd){
+        StudentEntity s =studentRepository.getStuById(phone);
         if(s.getPwd().equals(pwd)){
             return s;
         }else {
@@ -40,11 +40,11 @@ public class StudentService {
     /**
       * @Author      : Theory
       * @Description : 判断管理员是否账号和密码正确
-      * @Param       : [user, pwd] -- 用户名、密码
+      * @Param       : [phone, pwd] -- 用户名、密码
       * @return      : boolean
       */
-    public boolean judgeMLogin(long user,String pwd){
-        StudentEntity s =studentRepository.getStuById(user);
+    public boolean judgeMLogin(long phone,String pwd){
+        StudentEntity s =studentRepository.getStuById(phone);
         if(s.getPwd().equals(pwd) && s.getIsManager()==1){
             return true;
         }else {
@@ -53,25 +53,43 @@ public class StudentService {
     }
 
 
+    /**
+      * @Author      : QinYingran
+      * @Description : 根据id获取学生
+      * @Param       : [phone]
+      * @return      : com.example.demo.entity.StudentEntity
+      */
+    public StudentEntity getStuById(String phone){
+        Long newPhone = Long.parseLong(phone);
+        return studentRepository.getStuById(newPhone);
+    }
 
-    public StudentEntity getStuById(String user){
-        Long username = Long.parseLong(user);
-        return studentRepository.getStuById(username);
+    /**
+      * @Author      : QinYingran
+      * @Description : 根据nickName获取学生
+      * @Param       : [nickName]
+      * @return      : com.example.demo.entity.StudentEntity
+      */
+    public StudentEntity getStuByNickName(String nickName) {
+        return studentRepository.getStuByNickName(nickName);
     }
 
 
     /**
-      * @Author      : Theory
-      * @Description : 注册账号，返回账号
-      * @Param       : [pwd]
-      * @return      : 账号
+      * @Author      : QinYingran
+      * @Description : 注册学生
+      * @Param       : [stu]
+      * @return      : boolean
       */
-    public long register(StudentEntity stu){
-        if(studentRepository.getStuByNickName(stu.getNickName()).size()!=0){
-            return -1;//此昵称已被用
+    public boolean register(StudentEntity stu){
+        stu.setNickName(String.valueOf(stu.getPhone()));
+        StudentEntity stu1 = studentRepository.getStuById(stu.getPhone());
+        StudentEntity stu2 = studentRepository.getStuByNickName(stu.getNickName());
+        if(stu1==null && stu2==null) {
+            studentRepository.save(stu);//向数据库中插入学生
+            return true;
         }
-        studentRepository.save(stu);//向数据库中插入学生
-        return studentRepository.getMaxId();//获取最大的账号（新注册的）
+        return false;
     }
 
 
@@ -88,13 +106,24 @@ public class StudentService {
 
 
     /**
-      * @Author      : Theory
-      * @Description : 插入学生记录
-      * @Param       : [stu] -- 学生
+      * @Author      : QinYingran
+      * @Description : 更新学生
+      * @Param       : [stu]
+      * @return      : boolean
       */
-    public void insertStudent(StudentEntity stu){
-        studentRepository.save(stu);
+    public boolean insertStudent(StudentEntity stu){
+        StudentEntity stu1 = studentRepository.getStuById(stu.getPhone());
+        StudentEntity stu2 = studentRepository.getStuByNickName(stu.getNickName());
+        if(stu1!=null) {
+            if(stu2!=null && stu2.getNickName()!=stu1.getNickName()){
+                return false;
+            }
+            studentRepository.save(stu);//向数据库中插入学生
+            return true;
+        }
+        return false;
     }
+
 
 
     /**
@@ -102,8 +131,8 @@ public class StudentService {
       * @Description : 根据学生账号删除学生id
       * @Param       : [id] -- 学生账号
       */
-    public void deleteStudent(long id){
-        studentRepository.deleteById(id);
+    public void deleteStudent(long phone){
+        studentRepository.deleteById(phone);
     }
 
 }

@@ -32,7 +32,7 @@ public class StudentController {
     @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "POST")
     @PostMapping(value = "/login")
     public StudentEntity login(@RequestBody StudentEntity student) {
-        return studentService.judgeLogin(student.getStudentId(),student.getPwd());
+        return studentService.judgeLogin(student.getPhone(),student.getPwd());
     }
 
 
@@ -46,7 +46,7 @@ public class StudentController {
     @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "POST")
     @PostMapping(value = "/login/manager")
     public boolean managerLogin(@RequestBody StudentEntity student){
-        return studentService.judgeMLogin(student.getStudentId(),student.getPwd());
+        return studentService.judgeMLogin(student.getPhone(),student.getPwd());
     }
 
 
@@ -58,8 +58,8 @@ public class StudentController {
       */
     @ApiOperation(value = "注册学生账号", notes = "注册学生账号",httpMethod = "POST")
     @PostMapping(value = "/register")
-    @ApiParam(name = "stu",value = "学生实体,其中pwd不能为空")
-    public long register(@RequestBody StudentEntity stu){
+    @ApiParam(name = "stu",value = "学生实体,其中phone和pwd不能为空")
+    public boolean register(@RequestBody StudentEntity stu){
         return studentService.register(stu);
     }
 
@@ -67,8 +67,15 @@ public class StudentController {
 
     @ApiOperation(value = "根据id获取学生信息", notes = "根据id获取学生信息",httpMethod = "GET")
     @GetMapping(value = "/info")
-    public StudentEntity getStuById(@RequestParam(value = "user") @ApiParam(value = "学生账号") String user){
-        return studentService.getStuById(user);
+    public StudentEntity getStuById(@RequestParam(value = "phone") @ApiParam(value = "学生账号") String phone){
+        return studentService.getStuById(phone);
+    }
+
+    @ApiOperation(value = "根据昵称获取学生", notes = "根据昵称获取学生",httpMethod = "GET")
+    @GetMapping(value = "/nickName")
+    @ApiParam(name = "nickName",value = "昵称")
+    public StudentEntity getStuByNickName(@RequestParam String nickName) {
+        return studentService.getStuByNickName(nickName);
     }
 
 
@@ -86,28 +93,15 @@ public class StudentController {
 
 
     /**
-      * @Author      : Theory
-      * @Description : 向数据库中插入学生信息
-      * @Param       : [stu] -- 学生实体
-      */
-    @ApiOperation(value = "向数据库中插入学生信息", notes = "向数据库中插入学生信息",httpMethod = "POST")
-    @ApiParam(name = "stu",value = "学生实体,其中studentId不能为空")
-    @PostMapping("")
-    public void insertStudent(@RequestBody StudentEntity stu){
-        studentService.insertStudent(stu);
-    }
-
-
-    /**
      * @Author      : Theory
      * @Description : 更新指定学生记录
      * @Param       : [stu] -- 学生实体
      */
-    @ApiOperation(value = "更新指定学生记录", notes = "更新指定学生记录",httpMethod = "PUT")
-    @ApiParam(name = "stu",value = "学生实体,其中studentId不能为空")
+    @ApiOperation(value = "更新指定学生记录", notes = "不允许改phone！！！",httpMethod = "PUT")
+    @ApiParam(name = "stu",value = "学生实体,其中phone和pwd不能为空")
     @PutMapping("")
-    public void updateStudent(@RequestBody StudentEntity stu){
-        studentService.insertStudent(stu);
+    public boolean updateStudent(@RequestBody StudentEntity stu){
+        return studentService.insertStudent(stu);
     }
 
     /**
@@ -118,8 +112,8 @@ public class StudentController {
     @ApiOperation(value = "删除数据库中学生信息", notes = "删除数据库中学生信息",httpMethod = "DELETE")
     @ApiParam(name = "studentId",value = "学生账号")
     @DeleteMapping("")
-    public void deleteLesson(@RequestParam("studentId") long studentId){
-        studentService.deleteStudent(studentId);
+    public void deleteLesson(@RequestParam("phone") long phone){
+        studentService.deleteStudent(phone);
     }
 
 

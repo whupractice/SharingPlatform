@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.LessonEntity;
 import com.example.demo.entity.TLEntity;
+import com.example.demo.entity.TeacherEntity;
 import com.example.demo.service.TLService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,6 +45,20 @@ public class TLController {
         return  tlService.getAllByTeacherId(teacherId);
     }
 
+    @ApiOperation(value = "根据课程号获取教师列表", notes = "根据课程号获取教师列表",httpMethod = "GET")
+    @ApiParam(name = "lessonId",value = "课程号")
+    @GetMapping("/getTeacherByLessonId")
+    public List<TeacherEntity> getTeacherByLessonId(@RequestParam String lessonId) {
+        return tlService.getTeacherByLessonId(lessonId);
+    }
+
+    @ApiOperation(value = "根据教师号获取课程列表", notes = "根据教师号获取课程列表",httpMethod = "GET")
+    @ApiParam(name = "teacherId",value = "教师号")
+    @GetMapping("/getLessonByTeacherId")
+    public List<LessonEntity> getLessonByTeacherId(@RequestParam String teacherId) {
+        return tlService.getLessonByTeacherId(teacherId);
+    }
+
 
     /**
       * @Author      : QinYingran
@@ -50,7 +66,7 @@ public class TLController {
       * @Param       :
       * @return      :
       */
-    @ApiOperation(value = "根据课程号获取教师授课列表", notes = "根据课程号获取教师授课列表",httpMethod = "POST")
+    @ApiOperation(value = "向数据库插入教师授课信息", notes = "向数据库插入教师授课信息",httpMethod = "POST")
     @ApiParam(name = "tl",value = "教师授课实体，其中teacherId、lessonId不能为空")
     @PostMapping("")
     public void insertTL(@RequestBody TLEntity tl) {
@@ -78,7 +94,7 @@ public class TLController {
       */
     @ApiOperation(value = "通过课程号和教师号删除教师授课记录", notes = "通过课程号和教师号删除教师授课记录",httpMethod = "DELETE")
     @DeleteMapping("/lessonId/teacherId")
-    public void deleteTL(@RequestParam @ApiParam(value = "课程号") long lessonId, @RequestParam @ApiParam(value = "教师账号") long teacherId) {
+    public void deleteTL(@RequestParam @ApiParam(value = "课程号") String lessonId, @RequestParam @ApiParam(value = "教师账号") String teacherId) {
         tlService.deleteTL(lessonId, teacherId);
     }
 

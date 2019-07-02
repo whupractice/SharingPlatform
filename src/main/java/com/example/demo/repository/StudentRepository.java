@@ -4,9 +4,6 @@ import com.example.demo.entity.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import javax.validation.constraints.Null;
-import java.util.List;
-
 
 /**
   * @Author      : Theory
@@ -16,14 +13,14 @@ public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
 
 
     //通过学生账号查询学生，以便于进行登陆验证
-    @Query(value = "SELECT * FROM student WHERE student_id = ?1",nativeQuery = true)
-    StudentEntity getStuById(Long id);
+    @Query(value = "SELECT * FROM student WHERE phone = ?1",nativeQuery = true)
+    StudentEntity getStuById(Long phone);
 
-    //返回现在student_id中最大的值（新注册的）
-    @Query(value = "SELECT MAX(student_id) FROM student",nativeQuery = true)
-    long getMaxId();
+//    //返回现在student_id中最大的值（新注册的）
+//    @Query(value = "SELECT MAX(student_id) FROM student",nativeQuery = true)
+//    long getMaxId();
 
     //根据昵称查询学生
     @Query(value = "SELECT * FROM student WHERE nick_name = ?1",nativeQuery = true)
-    List<StudentEntity> getStuByNickName(String nickName);
+    StudentEntity getStuByNickName(String nickName);
 }

@@ -33,8 +33,25 @@ public class LessonService {
         return lessonRepository.findAll();
     }
 
+    /**
+      * @Author      : QinYingran
+      * @Description : 分页条件查询获得所有课程
+      * @Param       : [specification, pageable]
+      * @return      : org.springframework.data.domain.Page<com.example.demo.entity.LessonEntity>
+      */
     public Page<LessonEntity> getAll(Specification<LessonEntity> specification, Pageable pageable) {
         return lessonRepository.findAll(specification,pageable);
+    }
+
+    /**
+      * @Author      : QinYingran
+      * @Description : 根据课程id获取课程列表
+      * @Param       : [schoolId]
+      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
+      */
+    public LessonEntity getByLessonId(String lessonId) {
+        long newId = Long.parseLong(lessonId);
+        return lessonRepository.getByLessonId(newId);
     }
 
     /**

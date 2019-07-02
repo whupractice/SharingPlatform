@@ -57,11 +57,11 @@ public class TeacherController {
 
     /**
       * @Author      : QinYingran
-      * @Description : 更新课程
+      * @Description : 更新教师
       * @Param       : [teacherEntity]
       * @return      : void
       */
-    @ApiOperation(value = "更新课程", notes = "更新课程",httpMethod = "PUT")
+    @ApiOperation(value = "更新教师", notes = "更新教师",httpMethod = "PUT")
     @ApiParam(name = "teacherEntity",value = "教师实体,其中teacherId不能为空")
     @PutMapping("")
     public void updateTeacher(@RequestBody TeacherEntity teacherEntity) {

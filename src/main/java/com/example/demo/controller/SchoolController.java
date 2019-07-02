@@ -46,7 +46,7 @@ public class SchoolController {
     @ApiOperation(value = "根据id获取学校介绍", notes = "根据id获取学校介绍",httpMethod = "GET")
     @ApiParam(name = "id",value = "学校id")
     @GetMapping("/getSchoolInfoById")
-    public String getSchoolInfoById (Long id) {
+    public String getSchoolInfoById (@RequestParam Long id) {
         return schoolService.getSchoolInfoById(id);
     }
 

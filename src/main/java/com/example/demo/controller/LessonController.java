@@ -45,6 +45,14 @@ public class LessonController {
     }
 
 
+    @ApiOperation(value = "根据课程id获取课程列表", notes = "根据课程id获取课程列表",httpMethod = "GET")
+    @ApiParam(name = "schoolId",value = "课程id")
+    @GetMapping("/id")
+    public LessonEntity getByLessonId(@RequestParam String schoolId) {
+        return lessonService.getByLessonId(schoolId);
+    }
+
+
 //    @ApiOperation(value = "获取所有课程并去重", notes = "获取所有课程并去重",httpMethod = "GET")
 //    @GetMapping("/view")
 //    public List<Object> getAllDistinctly(){
@@ -78,7 +86,7 @@ public class LessonController {
     @ApiOperation(value = "根据学校名查询课程", notes = "根据学校名查询课程",httpMethod = "GET")
     @GetMapping("/schoolName")
     @ApiParam(name = "schoolName",value = "学校名")
-    public List<LessonEntity> getBySchoolName(String schoolName) {
+    public List<LessonEntity> getBySchoolName(@RequestParam String schoolName) {
         return lessonService.getBySchoolName(schoolName);
     }
 

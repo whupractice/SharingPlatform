@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.LessonEntity;
 import com.example.demo.entity.SLEntity;
+import com.example.demo.entity.StudentEntity;
 import com.example.demo.service.SLService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,15 +34,29 @@ public class SLController {
     @ApiOperation(value = "根据学生id获取学生选课信息", notes = "根据学生id获取学生选课信息",httpMethod = "GET")
     @ApiParam(name = "stuId",value = "学生id")
     @GetMapping("/stuId")
-    public List<SLEntity> getSLByStuId(@RequestParam long stuId){
+    public List<SLEntity> getSLByStuId(@RequestParam String stuId){
         return slService.getSLByStuId(stuId);
     }
 
     @ApiOperation(value = "根据课程id获取学生选课信息", notes = "根据课程id获取学生选课信息",httpMethod = "GET")
     @ApiParam(name = "lessonId",value = "课程id")
     @GetMapping("/lessonId")
-    public List<SLEntity> getSLByLessonId(@RequestParam long lessonId){
+    public List<SLEntity> getSLByLessonId(@RequestParam String lessonId){
         return slService.getSLByLessonId(lessonId);
+    }
+
+    @ApiOperation(value = "根据学生id获取课程信息", notes = "根据学生id获取课程信息",httpMethod = "GET")
+    @ApiParam(name = "stuId",value = "学生id")
+    @GetMapping("/getLessonByStuId")
+    public List<LessonEntity> getLessonByStuId(@RequestParam String stuId) {
+        return slService.getLessonByStuId(stuId);
+    }
+
+    @ApiOperation(value = "根据课程id获取学生信息", notes = "根据课程id获取学生信息",httpMethod = "GET")
+    @ApiParam(name = "lessonId",value = "课程id")
+    @GetMapping("/getStudentByLessonId")
+    public List<StudentEntity> getStudentByLessonId(@RequestParam String lessonId) {
+        return slService.getStudentByLessonId(lessonId);
     }
 
 
@@ -53,7 +69,7 @@ public class SLController {
     @ApiOperation(value = "通过课程号获取选择这门课程的学生数量", notes = "通过课程号获取选择这门课程的学生数量",httpMethod = "GET")
     @ApiParam(name = "lessonId",value = "课程号")
     @GetMapping("")
-    public int getStuNumByLessonId(@RequestParam long lessonId){
+    public int getStuNumByLessonId(@RequestParam String lessonId){
         return slService.getStuNumByLessonId(lessonId);
     }
 
@@ -91,8 +107,8 @@ public class SLController {
     @ApiOperation(value = "通过学生账号和课程账号删除选课记录", notes = "通过学生账号和课程账号删除选课记录",httpMethod = "DELETE")
     @ApiParam(name = "stuId",value = "学生账号")
     @DeleteMapping("/stuId/lessonId")
-    public void deleteSL(@RequestParam @ApiParam(value = "学生账号") long stuId ,
-                         @RequestParam @ApiParam(value = "课程账号") long lessonId){
+    public void deleteSL(@RequestParam @ApiParam(value = "学生账号") String stuId ,
+                         @RequestParam @ApiParam(value = "课程账号") String lessonId){
         slService.deleteSL(stuId,lessonId);
     }
 
