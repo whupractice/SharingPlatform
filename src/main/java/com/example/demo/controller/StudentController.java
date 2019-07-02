@@ -79,6 +79,13 @@ public class StudentController {
     }
 
 
+    @ApiOperation(value = "根据学校名获取学生", notes = "根据学校名获取学生",httpMethod = "GET")
+    @GetMapping(value = "/schoolName")
+    @ApiParam(name = "schoolName",value = "学校名")
+    public List<StudentEntity> getStuBySchoolName(@RequestParam String schoolName) {
+        return studentService.getStuBySchoolName(schoolName);
+    }
+
 
     /**
       * @Author      : Theory

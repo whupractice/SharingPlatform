@@ -4,6 +4,7 @@ import com.example.demo.entity.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
 
 /**
   * @Author      : Theory
@@ -23,4 +24,10 @@ public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
     //根据昵称查询学生
     @Query(value = "SELECT * FROM student WHERE nick_name = ?1",nativeQuery = true)
     StudentEntity getStuByNickName(String nickName);
+
+
+    //根据学校名查询学生
+    @Query(value = "SELECT * FROM student WHERE school_name = ?1",nativeQuery = true)
+    List<StudentEntity> getStuBySchoolName(String schoolName);
+
 }

@@ -74,6 +74,16 @@ public class StudentService {
         return studentRepository.getStuByNickName(nickName);
     }
 
+    /**
+      * @Author      : QinYingran
+      * @Description : 根据schoolName获取学生
+      * @Param       : [schoolName]
+      * @return      : java.util.List<com.example.demo.entity.StudentEntity>
+      */
+    public List<StudentEntity> getStuBySchoolName(String schoolName) {
+        return studentRepository.getStuBySchoolName(schoolName);
+    }
+
 
     /**
       * @Author      : QinYingran
