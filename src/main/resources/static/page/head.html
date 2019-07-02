@@ -11,8 +11,8 @@
 <body style="color: black">
 <div ng-controller="headCtrl">
 <nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small" role="navigation">
-    <div class="container" style="width: 1600px">
-        <div class="row" style="margin-top: 8px">
+    <div class="" style="width: 1600px">
+        <div class="row">
             <div class="col-lg-12" style="margin-bottom: 5px">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-navbar-collapse">
@@ -61,19 +61,19 @@
                         <!--</li>-->
                     <!--</ul>-->
                     <!--搜索框-->
-                    <ul class="search nav navbar-nav">
-                        <li class="hidden-sm hidden-xs searchform focus">
-                            <div class="input-group">
-                                <span class="input-group-addon input-focus">
-                                    <i class="fa fa-search"></i>
-                                </span>
-                                <form action="search-page.html" method="post">
-                                    <input type="text" class="form-control animated fadeIn" placeholder="搜索课程">
-                                    <input type="submit" value="">
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
+                    <!--<ul class="search nav navbar-nav">-->
+                        <!--<li class="hidden-sm hidden-xs searchform focus">-->
+                            <!--<div class="input-group">-->
+                                <!--<span class="input-group-addon input-focus">-->
+                                    <!--<i class="fa fa-search"></i>-->
+                                <!--</span>-->
+                                <!--<form action="search-page.html" method="post">-->
+                                    <!--<input type="text" class="form-control animated fadeIn" placeholder="搜索课程">-->
+                                    <!--<input type="submit" value="">-->
+                                <!--</form>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
                     <!--/搜索框-->
                     <ul class="nav pull-right">
                         <li id="fat-menu" class="dropdown">
@@ -88,8 +88,8 @@
                                     <i class="fa fa-road"></i>&nbsp;&nbsp; 登陆/注册/切换账号</a></li>
                                 <li class="divider"></li>
 
-                                <li ng-if="hasUser()"><a>
-                                    <i class="fa fa-road"></i>&nbsp;&nbsp; 个人界面</a></li>
+                                <li ui-sref="administer"><a>
+                                    <i class="fa fa-road"></i>&nbsp;&nbsp; 系统管理员界面</a></li>
                                 <li class="divider"></li>
                             </ul>
                         </li>

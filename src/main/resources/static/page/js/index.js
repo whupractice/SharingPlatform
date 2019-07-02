@@ -58,6 +58,9 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
             url: '/teacher',
             templateUrl: '/page/teacher.html',
             params:{"teacher": null}
+        }).state('administer',{
+            url: '/administer',
+            templateUrl: '/page/administer.html'
         });
 
 });

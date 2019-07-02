@@ -35,12 +35,16 @@ API_index.controller("headCtrl", function ($scope, $http, $state,Data,$interval)
     },1000);
 
 
-    //判断是否有用户
+    //判断角色类型
     $scope.hasUser = function () {
-        if($scope.currentUser.nickName.length == 0)
-            return false;
-        return true;
+        if($scope.currentUser.nickName.length == 0)//没有用户
+            return 0;
+        else if($scope.currentUser.isManager == 1)
+            return 1;
+
     };
+
+
 });
 
 
