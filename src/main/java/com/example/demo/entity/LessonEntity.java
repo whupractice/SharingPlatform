@@ -38,6 +38,8 @@ public class LessonEntity {
 
     private String schoolName;//所属学校名
 
+    private String academyName;//所属学院名
+
     private String subject;//所属学科
 
     private String education;//所属学历
@@ -84,6 +86,14 @@ public class LessonEntity {
 
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
+    }
+
+    public String getAcademyName() {
+        return academyName;
+    }
+
+    public void setAcademyName(String academyName) {
+        this.academyName = academyName;
     }
 
     public String getSubject() {
