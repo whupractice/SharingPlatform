@@ -702,6 +702,8 @@ ul {
     font-size: 12px;
     font-family: Arial;
     color: #666;
+    font-size: 15px;
+    margin-top: 10px;
 }
 button, a {
     outline: none;
@@ -823,4 +825,9 @@ button, a {
 }
 .panel-tables .panel-body {
     padding-top: 105px;
+}
+.panel-body.panel-search-body{
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
 }

@@ -61,6 +61,9 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
         }).state('administer',{
             url: '/administer',
             templateUrl: '/page/administer.html'
+        }).state('lessonManager',{
+            url: '/lessonManager',
+            templateUrl: '/page/lessonManager.html'
         });
 
 });
