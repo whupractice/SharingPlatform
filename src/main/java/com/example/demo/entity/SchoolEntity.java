@@ -20,7 +20,7 @@ public class SchoolEntity {
     private String schoolName;//院校名
 
     @Column(length = 1000)
-    private String schoolItro;//院校简介
+    private String schoolIntro;//院校简介
 
     private String imgLink;//院校图片链接
 
@@ -49,12 +49,12 @@ public class SchoolEntity {
         this.schoolName = schoolName;
     }
 
-    public String getSchoolItro() {
-        return schoolItro;
+    public String getSchoolIntro() {
+        return schoolIntro;
     }
 
-    public void setSchoolItro(String schoolItro) {
-        this.schoolItro = schoolItro;
+    public void setSchoolIntro(String schoolIntro) {
+        this.schoolIntro = schoolIntro;
     }
 
     public String getImgLink() {

@@ -24,20 +24,24 @@ public class StudentEntity {
 
     private String pwd;//密码
 
-    @NotNull(message = "昵称不能为空")
-    private String nickName;//昵称
-
-    private String realName;//真实姓名
-
-    private String birth;//出生年月
-
-    private String sex;//性别
-
-    private String email;//邮箱
-
     private int isManager;//是否是管理员
 
     private int isLessonManager;//是否课程管理员
+
+    private String email;//邮箱
+
+    @NotNull(message = "昵称不能为空")
+    private String nickName;//昵称
+
+    private String schoolName;//学校名
+
+    private String academyName;//院系名称
+
+    private String realName;//真实姓名
+
+    private String birth;//生日yyyymmdd
+
+    private String sex;//性别
 
     private String introduction;//个人介绍
 
@@ -58,12 +62,52 @@ public class StudentEntity {
         this.pwd = pwd;
     }
 
+    public int getIsManager() {
+        return isManager;
+    }
+
+    public void setIsManager(int isManager) {
+        this.isManager = isManager;
+    }
+
+    public int getIsLessonManager() {
+        return isLessonManager;
+    }
+
+    public void setIsLessonManager(int isLessonManager) {
+        this.isLessonManager = isLessonManager;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getNickName() {
         return nickName;
     }
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
+    public String getAcademyName() {
+        return academyName;
+    }
+
+    public void setAcademyName(String academyName) {
+        this.academyName = academyName;
     }
 
     public String getRealName() {
@@ -88,30 +132,6 @@ public class StudentEntity {
 
     public void setSex(String sex) {
         this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getIsManager() {
-        return isManager;
-    }
-
-    public void setIsManager(int isManager) {
-        this.isManager = isManager;
-    }
-
-    public int getIsLessonManager() {
-        return isLessonManager;
-    }
-
-    public void setIsLessonManager(int isLessonManager) {
-        this.isLessonManager = isLessonManager;
     }
 
     public String getIntroduction() {

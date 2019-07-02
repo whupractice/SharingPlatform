@@ -14,7 +14,7 @@ public class LessonEntity {
     public LessonEntity() {
     }
 
-    public LessonEntity(String lessonName, String schoolName, String education, String subject, int credit, String startTime, String endTime, String status,  String lessonIntro, int welcome, boolean isExcellent, int shareNum, String imgLink) {
+    public LessonEntity(String lessonName, String schoolName, String education, String subject, int credit, String startTime, String endTime, String status,  String lessonIntro, int welcome, int recommendedLevel, int shareNum, String imgLink) {
         this.lessonName = lessonName;
         this.schoolName = schoolName;
         this.education = education;
@@ -25,7 +25,7 @@ public class LessonEntity {
         this.status = status;
         this.lessonIntro = lessonIntro;
         this.welcome = welcome;
-        this.isExcellent = isExcellent;
+        this.recommendedLevel = recommendedLevel;
         this.shareNum = shareNum;
         this.imgLink = imgLink;
     }
@@ -36,31 +36,30 @@ public class LessonEntity {
 
     private String lessonName;//课程名
 
-    private String schoolName;//学校名
-
-    private String education;//所属学历
+    private String schoolName;//所属学校名
 
     private String subject;//所属学科
 
-    private int credit;//学分
+    private String education;//所属学历
+
+    private String status;//状态
 
     private String startTime;//开始时间
 
     private String endTime;//结束时间
 
-    private String status;//状态
+    private int credit;//学分
 
     @Column(length = 2000)
     private String lessonIntro;//课程简介
 
     private int welcome;//火热程度
 
-    private boolean isExcellent = false;//是否精品
+    private int recommendedLevel;//推荐级别
 
     private int shareNum;//分享次数
 
-    private String imgLink;//网页图片链接
-
+    private String imgLink;//课程图片链接
 
 
     public long getLessonId() {
@@ -87,14 +86,6 @@ public class LessonEntity {
         this.schoolName = schoolName;
     }
 
-    public String getEducation() {
-        return education;
-    }
-
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
     public String getSubject() {
         return subject;
     }
@@ -103,12 +94,20 @@ public class LessonEntity {
         this.subject = subject;
     }
 
-    public int getCredit() {
-        return credit;
+    public String getEducation() {
+        return education;
     }
 
-    public void setCredit(int credit) {
-        this.credit = credit;
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getStartTime() {
@@ -127,14 +126,13 @@ public class LessonEntity {
         this.endTime = endTime;
     }
 
-    public String getStatus() {
-        return status;
+    public int getCredit() {
+        return credit;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCredit(int credit) {
+        this.credit = credit;
     }
-
 
     public String getLessonIntro() {
         return lessonIntro;
@@ -144,7 +142,6 @@ public class LessonEntity {
         this.lessonIntro = lessonIntro;
     }
 
-
     public int getWelcome() {
         return welcome;
     }
@@ -153,13 +150,12 @@ public class LessonEntity {
         this.welcome = welcome;
     }
 
-
-    public boolean isExcellent() {
-        return isExcellent;
+    public int getRecommendedLevel() {
+        return recommendedLevel;
     }
 
-    public void setExcellent(boolean excellent) {
-        isExcellent = excellent;
+    public void setRecommendedLevel(int recommendedLevel) {
+        this.recommendedLevel = recommendedLevel;
     }
 
     public int getShareNum() {
