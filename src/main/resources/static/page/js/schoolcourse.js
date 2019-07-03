@@ -14,7 +14,7 @@ app.controller('schoolcourseCtrl', function ($scope, $http, $stateParams,$state)
 
 
     $scope.currentPage = 1;//当前页数
-    $scope.totalPage = 0;//总页数
+    $scope.totalPage = 1;//总页数
     $scope.pages = [];
 
 
