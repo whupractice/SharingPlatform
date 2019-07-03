@@ -38,14 +38,14 @@ public class MessageController {
     @ApiOperation(value = "向数据库中插入学生课程消息", notes = "向数据库中插入学生课程消息",httpMethod = "POST")
     @ApiParam(name = "messageEntity",value = "学生课程消息实体,其中任意属性都不能为空")
     @PostMapping("")
-    public void insertMessage(MessageEntity messageEntity) {
+    public void insertMessage(@RequestBody MessageEntity messageEntity) {
         messageService.insertMessage(messageEntity);
     }
 
     @ApiOperation(value = "根据id删除学生课程消息", notes = "根据id删除学生课程消息",httpMethod = "DELETE")
     @ApiParam(name = "id",value = "学生课程消息id")
     @DeleteMapping("")
-    public void deleteMessage(long id) {
+    public void deleteMessage(@RequestParam long id) {
         messageService.deleteMessage(id);
     }
 }

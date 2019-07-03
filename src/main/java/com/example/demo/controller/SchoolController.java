@@ -72,7 +72,7 @@ public class SchoolController {
       * @return      : void
       */
     @ApiOperation(value = "向数据库插入学校", notes = "向数据库插入学校",httpMethod = "POST")
-    @ApiParam(name = "school",value = "学校实体,其中schoolId不能为空")
+    @ApiParam(name = "school",value = "学校实体")
     @PostMapping("")
     public void insertSchool(@RequestBody SchoolEntity school) {
         schoolService.insertSchool(school);

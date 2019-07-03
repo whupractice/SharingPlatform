@@ -123,6 +123,14 @@ public class StudentController {
     }
 
 
+//    @ApiOperation(value = "根据课程名关键字分页获取课程列表", notes = "根据课程名关键字分页获取课程列表",httpMethod = "GET")
+//    @GetMapping("/pagesByLessonName")
+//    public Page<LessonEntity> getLessonPagesByLessonName(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
+//                                                         @RequestParam(value = "lessonName")@ApiParam(value = "课程名") String lessonName) {
+//        Specification<LessonEntity> specification = createSpecification2(lessonName);
+//        return lessonService.getAll(specification,pageable);
+//    }
+
 
 
     public Specification<LessonEntity> createSpecification(String schoolName) {

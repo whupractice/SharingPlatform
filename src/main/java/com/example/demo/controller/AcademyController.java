@@ -30,28 +30,28 @@ public class AcademyController {
     @ApiOperation(value = "根据学院名获取学院", notes = "根据学院名获取学院",httpMethod = "GET")
     @ApiParam(name = "academyName",value = "学院名")
     @GetMapping("/academyName")
-    public AcademyEntity getByAcademyName(String academyName) {
+    public AcademyEntity getByAcademyName(@RequestParam String academyName) {
         return academyService.getByAcademyName(academyName);
     }
 
     @ApiOperation(value = "根据学校名获取学院列表", notes = "根据学校名获取学院列表",httpMethod = "GET")
     @ApiParam(name = "schoolName",value = "学校名")
     @GetMapping("/schoolName")
-    public List<AcademyEntity> getBySchoolName(String schoolName) {
+    public List<AcademyEntity> getBySchoolName(@RequestParam String schoolName) {
         return academyService.getBySchoolName(schoolName);
     }
 
     @ApiOperation(value = "向数据库中插入学院", notes = "向数据库中插入学院",httpMethod = "POST")
     @ApiParam(name = "academyEntity",value = "学院实体,其中任意属性都不能为空")
     @PostMapping("")
-    public void insertAcademy(AcademyEntity academyEntity) {
+    public void insertAcademy(@RequestBody AcademyEntity academyEntity) {
         academyService.insertAcademy(academyEntity);
     }
 
     @ApiOperation(value = "根据学院id删除学院", notes = "根据学院id删除学院",httpMethod = "DELETE")
     @ApiParam(name = "id",value = "学院id")
     @DeleteMapping("")
-    public void deleteByAcademyId(String id) {
+    public void deleteByAcademyId(@RequestParam String id) {
         academyService.deleteByAcademyId(id);
     }
 }
