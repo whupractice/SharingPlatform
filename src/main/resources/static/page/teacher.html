@@ -21,8 +21,8 @@
                         <div class="g-doc" style="position: absolute;margin-top: 20px;right: 230px;">
                             <div class="g-mn1c m-cnt">
 
-                                <h1>{{school.schoolName}}</h1>
-                                <p class="f-f1 f-fc6">{{school.schoolItro}}</p>
+                                <h1>{{teacher.teacherName}}</h1>
+                                <p class="f-f1 f-fc6">{{teacher.teacherIntro}}</p>
                             </div>
                         </div>
                     </div>
@@ -40,15 +40,15 @@
         <!--教师所授课程课程-->
         <div class="jk-uptodate">
             <ul style="width: 1070px">
-                <li ng-repeat="x in selectLesson" class="uptodate">
-                    <a ng-click="goDetail_(x)">
+                <li ng-repeat="x in selectTLesson" class="uptodate">
+                    <a ng-click="goDetail_course(x)">
                         <div class="uptodate-img">
-                            <img src="{{teacher.imgLink}}" alt="">
+                            <img src="{{x.imgLink}}" alt="">
                         </div>
                         <p class="uptodate-title">{{x.lessonName}}</p>
                         <p class="uptodate-info">
                             {{x.subject}}
-                            <span>|</span>{{x.schoolName}}
+                            <span>|</span>{{x.teacherName}}
 
                         </p>
                     </a>
@@ -57,25 +57,9 @@
             </ul>
         </div>
 
-        <div style="text-align: center"  >
-            <ul class="pagination">
-                <li><a href ng-click="prevPage_()">&laquo;</a></li>
-                <li ng-repeat="page in pages">
-                    <a href ng-click="selectPage_(page)" class="pageIndex">{{page}}</a>
-                </li>
-                <li><a href ng-click="nextPage_()">&raquo;</a></li>
-            </ul><br>
-            <p>第<span>{{currentPage}}</span>页 / 共{{totalPage}}页</p>
-        </div>
-
-        <!--挑选出的课程-->
 
 
     </div>
-
-    <img src="{{teacher.imgLink}}">
-    <p>{{teacher.teacherName}}</p>
-    <p>{{teacher.teacherIntro}}</p>
 
 
     <!--<div class="jk-uptodate">-->
