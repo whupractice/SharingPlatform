@@ -98,7 +98,7 @@ public class LessonController {
     }
 
 
-    @ApiOperation(value = "分页获取课程列表", notes = "分页获取课程列表",httpMethod = "GET")
+    @ApiOperation(value = "根据课程状态和学科分页获取课程列表", notes = "根据课程状态和学科分页获取课程列表",httpMethod = "GET")
     @GetMapping("/pages")
     public Page<LessonEntity> getLessonPages(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
                                              @RequestParam(value = "status")@ApiParam(value = "课程状态") String status,

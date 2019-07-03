@@ -3,6 +3,9 @@ package com.example.demo.service;
 import com.example.demo.entity.StudentEntity;
 import com.example.demo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,24 +40,16 @@ public class StudentService {
     }
 
 
-//    /**
-//     * @Author      : Theory
-//     * @Description : 获得所有课程
-//     * @return      : 课程列表
-//     */
-//    public List<LessonEntity> getAll(){
-//        return lessonRepository.findAll();
-//    }
-//
-//    /**
-//     * @Author      : QinYingran
-//     * @Description : 分页条件查询获得所有课程
-//     * @Param       : [specification, pageable]
-//     * @return      : org.springframework.data.domain.Page<com.example.demo.entity.LessonEntity>
-//     */
-//    public Page<LessonEntity> getAll(Specification<LessonEntity> specification, Pageable pageable) {
-//        return lessonRepository.findAll(specification,pageable);
-//    }
+
+    /**
+     * @Author      : QinYingran
+     * @Description : 分页条件查询学生或管理员
+     * @Param       : [specification, pageable]
+     * @return      : org.springframework.data.domain.Page<com.example.demo.entity.StudentEntity>
+     */
+    public Page<StudentEntity> getAll(Specification<StudentEntity> specification, Pageable pageable) {
+        return studentRepository.findAll(specification,pageable);
+    }
 
 
     /**

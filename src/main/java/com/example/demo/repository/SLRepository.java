@@ -16,7 +16,7 @@ public interface SLRepository extends JpaRepository<SLEntity, SLKeys> {
 
 
     //根据学生id查询学生选课信息
-    @Query(value = "SELECT * FROM SL WHERE phone = ?1",nativeQuery = true)
+    @Query(value = "SELECT * FROM sl WHERE phone = ?1",nativeQuery = true)
     List<SLEntity> getSLByStuId(long studentId);
 
 
@@ -26,7 +26,7 @@ public interface SLRepository extends JpaRepository<SLEntity, SLKeys> {
 
 
     //根据课程id查询学生选课信息
-    @Query(value = "SELECT * FROM SL WHERE lesson_id = ?1",nativeQuery = true)
+    @Query(value = "SELECT * FROM sl WHERE lesson_id = ?1",nativeQuery = true)
     List<SLEntity> getSLByLessonId(long lessonId);
 
 }

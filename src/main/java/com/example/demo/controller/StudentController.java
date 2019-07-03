@@ -1,13 +1,16 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.LessonEntity;
 import com.example.demo.entity.StudentEntity;
 import com.example.demo.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.Predicate;
@@ -123,30 +126,29 @@ public class StudentController {
     }
 
 
-//    @ApiOperation(value = "根据课程名关键字分页获取课程列表", notes = "根据课程名关键字分页获取课程列表",httpMethod = "GET")
-//    @GetMapping("/pagesByLessonName")
-//    public Page<LessonEntity> getLessonPagesByLessonName(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
-//                                                         @RequestParam(value = "lessonName")@ApiParam(value = "课程名") String lessonName) {
-//        Specification<LessonEntity> specification = createSpecification2(lessonName);
-//        return lessonService.getAll(specification,pageable);
-//    }
+    @ApiOperation(value = "分页获取所有课程管理员", notes = "分页获取所有课程管理员",httpMethod = "GET")
+    @GetMapping("/lessonManagerPages")
+    public Page<StudentEntity> getlessonManagerPages(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable) {
+
+        Specification<StudentEntity> specification = createManagerSpecification();
+        return studentService.getAll(specification,pageable);
+    }
 
 
 
-    public Specification<LessonEntity> createSpecification(String schoolName) {
+    public Specification<StudentEntity> createManagerSpecification() {
 
-        return (Specification<LessonEntity>) (root, query, cb) -> {
+        return (Specification<StudentEntity>) (root, query, cb) -> {
             //用于暂时存放查询条件的集合
             List<Predicate> predicatesList = new ArrayList<>();
 
 
-            Predicate predicate = cb.like(root.get("schoolName"), "%" + schoolName + "%");
+            Predicate predicate = cb.like(root.get("isLessonManager"), "1");
             predicatesList.add(predicate);
 
             Predicate[] predicates = new Predicate[predicatesList.size()];
             return cb.and(predicatesList.toArray(predicates));
         };
-
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.demo.repository;
 
 import com.example.demo.entity.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
   * @Author      : Theory
   * @Description : 学生表接口
   */
-public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
+public interface StudentRepository extends JpaRepository<StudentEntity,Long>, JpaSpecificationExecutor<StudentEntity> {
 
 
     //通过学生账号查询学生，以便于进行登陆验证
