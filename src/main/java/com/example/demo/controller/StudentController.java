@@ -1,13 +1,17 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.LessonEntity;
 import com.example.demo.entity.StudentEntity;
 import com.example.demo.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.Predicate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,18 +40,6 @@ public class StudentController {
     }
 
 
-
-    /**
-      * @Author      : Theory
-      * @Description : 管理员登陆验证
-      * @Param       : [user, pwd] -- 管理员账号、密码
-      * @return      : boolean
-      */
-    @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "POST")
-    @PostMapping(value = "/login/manager")
-    public boolean managerLogin(@RequestBody StudentEntity student){
-        return studentService.judgeMLogin(student.getPhone(),student.getPwd());
-    }
 
 
     /**
@@ -99,6 +91,13 @@ public class StudentController {
     }
 
 
+    @ApiOperation(value = "返回数据库中所有系统管理员的信息", notes = "返回数据库中所有系统管理员的信息",httpMethod = "GET")
+    @GetMapping(value = "/manager")
+    public List<StudentEntity> getAllManager() {
+        return studentService.getAllManager();
+    }
+
+
     /**
      * @Author      : Theory
      * @Description : 更新指定学生记录
@@ -124,5 +123,22 @@ public class StudentController {
     }
 
 
+
+
+    public Specification<LessonEntity> createSpecification(String schoolName) {
+
+        return (Specification<LessonEntity>) (root, query, cb) -> {
+            //用于暂时存放查询条件的集合
+            List<Predicate> predicatesList = new ArrayList<>();
+
+
+            Predicate predicate = cb.like(root.get("schoolName"), "%" + schoolName + "%");
+            predicatesList.add(predicate);
+
+            Predicate[] predicates = new Predicate[predicatesList.size()];
+            return cb.and(predicatesList.toArray(predicates));
+        };
+
+    }
 
 }

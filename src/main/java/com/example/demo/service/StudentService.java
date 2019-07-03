@@ -37,20 +37,24 @@ public class StudentService {
     }
 
 
-    /**
-      * @Author      : Theory
-      * @Description : 判断管理员是否账号和密码正确
-      * @Param       : [phone, pwd] -- 用户名、密码
-      * @return      : boolean
-      */
-    public boolean judgeMLogin(long phone,String pwd){
-        StudentEntity s =studentRepository.getStuById(phone);
-        if(s.getPwd().equals(pwd) && s.getIsManager()==1){
-            return true;
-        }else {
-            return false;
-        }
-    }
+//    /**
+//     * @Author      : Theory
+//     * @Description : 获得所有课程
+//     * @return      : 课程列表
+//     */
+//    public List<LessonEntity> getAll(){
+//        return lessonRepository.findAll();
+//    }
+//
+//    /**
+//     * @Author      : QinYingran
+//     * @Description : 分页条件查询获得所有课程
+//     * @Param       : [specification, pageable]
+//     * @return      : org.springframework.data.domain.Page<com.example.demo.entity.LessonEntity>
+//     */
+//    public Page<LessonEntity> getAll(Specification<LessonEntity> specification, Pageable pageable) {
+//        return lessonRepository.findAll(specification,pageable);
+//    }
 
 
     /**
@@ -111,6 +115,10 @@ public class StudentService {
       */
     public List<StudentEntity> getAllStudent(){
         return studentRepository.findAll();
+    }
+
+    public List<StudentEntity> getAllManager() {
+        return studentRepository.getAllManager();
     }
 
 

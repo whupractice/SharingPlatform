@@ -101,22 +101,27 @@ public class LessonController {
     @ApiOperation(value = "分页获取课程列表", notes = "分页获取课程列表",httpMethod = "GET")
     @GetMapping("/pages")
     public Page<LessonEntity> getLessonPages(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
-                                             @RequestParam(value = "status",required = false,defaultValue ="")@ApiParam(value = "课程状态") String status,
-                                             @RequestParam(value = "subject",required = false,defaultValue ="")@ApiParam(value = "学科") String subject
-                                             ) {
+                                             @RequestParam(value = "status")@ApiParam(value = "课程状态") String status,
+                                             @RequestParam(value = "subject")@ApiParam(value = "学科") String subject) {
         Specification<LessonEntity> specification = createSpecification(status,subject);
         return lessonService.getAll(specification,pageable);
     }
 
-    @ApiOperation(value = "根据学校名分页获取课程列表", notes = "根据学校名分页获取课程列表",httpMethod = "GET")
+    @ApiOperation(value = "根据学校名关键字分页获取课程列表", notes = "根据学校名关键字分页获取课程列表",httpMethod = "GET")
     @GetMapping("/pagesBySchoolName")
-    public Page<LessonEntity> getLessonPages(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
-                                             @RequestParam(value = "schoolName",required = false,defaultValue ="")@ApiParam(value = "学校名") String schoolName
-    ) {
-        Specification<LessonEntity> specification = createSpecification(schoolName);
+    public Page<LessonEntity> getLessonPagesBySchoolName(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
+                                             @RequestParam(value = "schoolName")@ApiParam(value = "学校名") String schoolName) {
+        Specification<LessonEntity> specification = createSpecification1(schoolName);
         return lessonService.getAll(specification,pageable);
     }
 
+    @ApiOperation(value = "根据课程名关键字分页获取课程列表", notes = "根据课程名关键字分页获取课程列表",httpMethod = "GET")
+    @GetMapping("/pagesByLessonName")
+    public Page<LessonEntity> getLessonPagesByLessonName(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
+                                             @RequestParam(value = "lessonName")@ApiParam(value = "课程名") String lessonName) {
+        Specification<LessonEntity> specification = createSpecification2(lessonName);
+        return lessonService.getAll(specification,pageable);
+    }
 
 
     /**
@@ -179,7 +184,7 @@ public class LessonController {
 
     }
 
-    public Specification<LessonEntity> createSpecification(String schoolName) {
+    public Specification<LessonEntity> createSpecification1(String schoolName) {
 
         return (Specification<LessonEntity>) (root, query, cb) -> {
             //用于暂时存放查询条件的集合
@@ -187,6 +192,22 @@ public class LessonController {
 
 
             Predicate predicate = cb.like(root.get("schoolName"), "%" + schoolName + "%");
+            predicatesList.add(predicate);
+
+            Predicate[] predicates = new Predicate[predicatesList.size()];
+            return cb.and(predicatesList.toArray(predicates));
+        };
+
+    }
+
+    public Specification<LessonEntity> createSpecification2(String lessonName) {
+
+        return (Specification<LessonEntity>) (root, query, cb) -> {
+            //用于暂时存放查询条件的集合
+            List<Predicate> predicatesList = new ArrayList<>();
+
+
+            Predicate predicate = cb.like(root.get("lessonName"), "%" + lessonName + "%");
             predicatesList.add(predicate);
 
             Predicate[] predicates = new Predicate[predicatesList.size()];

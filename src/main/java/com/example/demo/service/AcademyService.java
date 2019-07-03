@@ -57,9 +57,9 @@ public class AcademyService {
       * @Param       : [academyName]
       * @return      : void
       */
-    public void deleteByAcademyName(String academyName){
-        AcademyEntity academyEntity = getByAcademyName(academyName);
-        academyRepository.deleteById(academyEntity.getAcademyId());
+    public void deleteByAcademyId(String academyId){
+        long id = Long.parseLong(academyId);
+        academyRepository.deleteById(id);
     }
 
 }

@@ -30,4 +30,7 @@ public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
     @Query(value = "SELECT * FROM student WHERE school_name = ?1",nativeQuery = true)
     List<StudentEntity> getStuBySchoolName(String schoolName);
 
+    @Query(value = "select * from student where is_manager = 1",nativeQuery = true)
+    List<StudentEntity> getAllManager();
+
 }

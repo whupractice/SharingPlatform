@@ -48,10 +48,10 @@ public class AcademyController {
         academyService.insertAcademy(academyEntity);
     }
 
-    @ApiOperation(value = "根据学院名删除学院", notes = "根据学院名删除学院",httpMethod = "DELETE")
-    @ApiParam(name = "academyName",value = "学院名")
+    @ApiOperation(value = "根据学院id删除学院", notes = "根据学院id删除学院",httpMethod = "DELETE")
+    @ApiParam(name = "id",value = "学院id")
     @DeleteMapping("")
-    public void deleteByAcademyName(String academyName) {
-        academyService.deleteByAcademyName(academyName);
+    public void deleteByAcademyId(String id) {
+        academyService.deleteByAcademyId(id);
     }
 }
