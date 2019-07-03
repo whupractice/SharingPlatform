@@ -39,6 +39,37 @@ app.controller('loginCtrl', function ($scope, $http, $state,Data) {   //Data是�
     };
 
 
+    $scope.register = function(){
+
+        let user = $('#phone_number').val();
+        let pwd = $('#code1').val();
+        if ( pwd == $('#code2').val()){
+
+            $http({
+                method: 'POST',
+                url: '/student/register',
+                //如果swagger文档里参数是body类型，参数用data传递；若为query，参数用params
+                data: {
+                    "phone": user,
+                    "pwd": pwd
+                }
+            }).then(function successCallback(response) {
+                if (response.data == true) {
+                    alert('账号注册成功')
+
+                } else {
+                    alert("账号注册失败")
+                }
+
+            })
+        }
+        else {
+            alert("两次密码输入不一致！")
+        }
+    };
+
+
+
 
 });
 
