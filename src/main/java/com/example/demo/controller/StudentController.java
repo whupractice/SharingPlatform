@@ -135,7 +135,7 @@ public class StudentController {
     }
 
     @ApiOperation(value = "根据姓名分页获取所有课程管理员", notes = "根据姓名分页获取所有课程管理员",httpMethod = "GET")
-    @GetMapping("/lessonManagerPages")
+    @GetMapping("/lessonManagerPagesByName")
     public Page<StudentEntity> getLessonManagerPagesByName(@PageableDefault(size = 12, sort = {"academyName"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
                                                            @RequestParam(value = "realName")@ApiParam(value = "课程管理员名") String realName) {
 
@@ -144,7 +144,7 @@ public class StudentController {
     }
 
     @ApiOperation(value = "根据学校分页获取所有课程管理员", notes = "根据学校分页获取所有课程管理员",httpMethod = "GET")
-    @GetMapping("/lessonManagerPages")
+    @GetMapping("/lessonManagerPagesBySchool")
     public Page<StudentEntity> getLessonManagerPagesBySchool(@PageableDefault(size = 12, sort = {"academyName"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
                                                              @RequestParam(value = "schoolName")@ApiParam(value = "学校名") String schoolName) {
 
