@@ -11,7 +11,7 @@
 
 <body>
 
-<div class="row" ng-controller="administerCtrl">
+<div class="row" ng-controller="administerCtrl" ng-init="initManager()">
     <div id="sidebar" class="column">
         <h5>Navigation</h5>
         <ul>
@@ -48,7 +48,6 @@
                 <table class="table table-hover mb0">
                     <thead>
                     <tr class="active">
-                        <th style="width:45px">ID</th>
                         <th style="width:150px">姓名</th>
                         <th style="width:250px">昵称</th>
                         <th style="width:100px">性别</th>
@@ -57,78 +56,45 @@
                     </tr>
                     </thead>
                     <tbody id="datas">
-                    <tr style="display: table-row; opacity: 1;">
-                        <td>1</td>
-                        <td>谢帅宇</td>
-                        <td>伊万诺夫</td>
-                        <td>男</td>
+                    <tr ng-repeat="x in allSystemManager"  style="display: table-row; opacity: 1;">
+                        <td>{{x.realName}}</td>
+                        <td>{{x.nickName}}</td>
+                        <td>{{x.sex}}</td>
                         <td>系统管理员</td>
                         <td>
-                            <button class="btn btn-info" data-toggle="modal" data-target="#infoModal" data-name="谢帅宇">详情</button>
-                            <button class="btn btn-danger">注销</button>
-                        </td>
-                    </tr>
-                    <tr style="display: table-row; opacity: 1;">
-                        <td>2</td>
-                        <td>庞梦璐</td>
-                        <td>白嘉莉</td>
-                        <td>女</td>
-                        <td>系统管理员</td>
-                        <td>
-                            <button class="btn btn-info">详情</button>
-                            <button class="btn btn-danger">注销</button>
-                        </td>
-                    </tr>
-                    <tr style="display: table-row; opacity: 1;">
-                        <td>3</td>
-                        <td>秦英然</td>
-                        <td>别摸我</td>
-                        <td>男</td>
-                        <td>系统管理员</td>
-                        <td>
-                            <button class="btn btn-info">详情</button>
-                            <button class="btn btn-danger">注销</button>
-                        </td>
-                    </tr>
-                    <tr style="display: table-row; opacity: 1;">
-                        <td>4</td>
-                        <td>王瑞琪</td>
-                        <td>芭乐</td>
-                        <td>女</td>
-                        <td>系统管理员</td>
-                        <td>
-                            <button class="btn btn-info">详情</button>
-                            <button class="btn btn-danger">注销</button>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#infoModal"
+                            ng-click="bindingSys(x)">详情</button>
+                            <button class="btn btn-danger" ng-click="deleteSys(x)">注销</button>
                         </td>
                     </tr>
                     </tbody>
                     <tfoot>
-                    <tr>
-                        <td colspan="5">
-                            <div class="pull-right king-page-box">
-                                <p class="pull-left mt15 mr15">
-                                    共<span id="total">25</span>条记录，当前第<span id="cur_page">1</span>/<span id="total_page">5</span>页
-                                </p>
-                                <ul class="pagination pagination-sm pull-left mt10" style="margin-top: 10px">
-                                    <li class="disabled">
-                                        <a href="javascript:;" aria-label="Previous">
-                                            <span aria-hidden="true">«</span>
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="javascript:;">1</a></li>
-                                    <li><a href="javascript:;">2</a></li>
-                                    <li><a href="javascript:;">3</a></li>
-                                    <li><a href="javascript:;">4</a></li>
-                                    <li><a href="javascript:;">5</a></li>
-                                    <li>
-                                        <a href="javascript:;" aria-label="Next">
-                                            <span aria-hidden="true">»</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    <!--<tr>-->
+                        <!--<td colspan="5">-->
+                            <!--<div class="pull-right king-page-box">-->
+                                <!--<p class="pull-left mt15 mr15">-->
+                                    <!--共<span id="total">25</span>条记录，当前第<span id="cur_page">1</span>/<span id="total_page">5</span>页-->
+                                <!--</p>-->
+                                <!--<ul class="pagination pagination-sm pull-left mt10" style="margin-top: 10px">-->
+                                    <!--<li class="disabled">-->
+                                        <!--<a href="javascript:;" aria-label="Previous">-->
+                                            <!--<span aria-hidden="true">«</span>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li class="active"><a href="javascript:;">1</a></li>-->
+                                    <!--<li><a href="javascript:;">2</a></li>-->
+                                    <!--<li><a href="javascript:;">3</a></li>-->
+                                    <!--<li><a href="javascript:;">4</a></li>-->
+                                    <!--<li><a href="javascript:;">5</a></li>-->
+                                    <!--<li>-->
+                                        <!--<a href="javascript:;" aria-label="Next">-->
+                                            <!--<span aria-hidden="true">»</span>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                    <!--</tr>-->
                     </tfoot>
                 </table>
             </div>
@@ -149,11 +115,11 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">姓名: </label>
-                                    <input type="text" class="form-control" id="relName" value="谢帅宇" readonly>
+                                    <input type="text" class="form-control" id="relName" value="{{bindSysMan.realName}}" readonly>
                                     <label class="control-label">联系电话: </label>
-                                    <input type="text" class="form-control" id="phone" value="15387315836" readonly>
+                                    <input type="text" class="form-control" id="phone" value="{{bindSysMan.phone}}" readonly>
                                     <label class="control-label">联系邮箱: </label>
-                                    <input type="text" class="form-control" id="email" value="827041735@qq.com" readonly>
+                                    <input type="text" class="form-control" id="email" value="{{bindSysMan.email}}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +182,6 @@
                 <table class="table table-hover mb0">
                     <thead>
                     <tr class="active">
-                        <th style="width:45px">ID</th>
                         <th style="width:150px">姓名</th>
                         <th style="width:100px">学校</th>
                         <th style="width:100px">学院</th>
@@ -226,7 +191,6 @@
                     </thead>
                     <tbody id="datas_2">
                     <tr style="display: table-row; opacity: 1;">
-                        <td>1</td>
                         <td>刘宇</td>
                         <td>武汉大学</td>
                         <td>计算机学院</td>

@@ -73,22 +73,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">学校</label>
-                            <div class="col-lg-8">
-                                <select id="school">
-                                    <option value="" class="selected">武汉大学</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">学院</label>
-                            <div class="col-lg-8">
-                                <select id="academy">
-                                    <option value="" class="selected">计算机学院</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-lg-2 control-label">个人简介</label>
                             <div class="col-lg-8">
                                 <textarea class="form-control" rows="5" placeholder="问题描述"></textarea>
@@ -251,30 +235,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">课程名: </label>
-                                        <input type="text" class="form-control" id="lessonName" value="马克思主义">
-                                        <label class="control-label">学校名: </label>
-                                        <select id="schoolName">
-                                            <option class="selected">武汉大学</option>
-                                        </select>
-                                        <label class="control-label">学院名: </label>
-                                        <select id="academyName">
-                                            <option class="selected">马克思主义学院</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="lessonName" value="马克思主义" readonly>
                                         <label class="control-label">学科: </label>
-                                        <select id="lessonType">
-                                            <option class="selected">哲学</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="subject" value="哲学" readonly>
                                         <label class="control-label">起止时间: </label>
-                                        <input type="date" id="startTime">
-                                        <input type="date" id="endTime">
+                                        <input type="date" id="startTime" readonly>
+                                        <input type="date" id="endTime" readonly>
                                         <label class="control-label">课程简介: </label>
-                                        <textarea class="form-control" rows="5" placeholder="课程简介"></textarea>
+                                        <textarea class="form-control" rows="5" placeholder="课程简介" readonly></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="update_L_Btn" class="btn btn-success">提交</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                         </div>
                     </div><!-- /.modal-content -->

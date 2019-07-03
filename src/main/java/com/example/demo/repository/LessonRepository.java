@@ -14,7 +14,7 @@ import java.util.List;
 public interface LessonRepository extends JpaRepository<LessonEntity,Long>, JpaSpecificationExecutor<LessonEntity> {
 
     //查询精品课程
-    @Query(value = "SELECT * FROM lesson WHERE is_excellent = 1",nativeQuery = true)
+    @Query(value = "SELECT * FROM lesson WHERE recommended_level = 1",nativeQuery = true)
     List<LessonEntity> getExcellentClass();
 
     //返回最大的课程id（最新加入的课程id）
