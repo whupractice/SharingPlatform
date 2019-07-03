@@ -13,6 +13,9 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
     $scope.TL = null;
 
 
+    $scope.now = 1;//当前位置
+
+
     $scope.teachers = [];
 
     /**
@@ -51,6 +54,18 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
         });
     };
 
+    //跳转
+    $scope.jump = function(page){
+        return $scope.now = page;
+    };
+    //显示课程详情内容
+    $scope.CoursePage = function(){
+      return $scope.now == 1;
+    };
+    //显示评论区
+    $scope.CommentPage = function(){
+        return $scope.now == 2;
+    };
 
 
     $scope.getTeachers = function () {

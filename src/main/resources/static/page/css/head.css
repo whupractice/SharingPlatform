@@ -80,11 +80,6 @@ li .dropdown-menu.profile li i {
 i {
     font-size: 14px;
 }
-.fa {
-    font-size: 16px;
-    font-weight: bold;
-    color: #3399CC;
-}
 
 .search li.searchform.focus .form-control {
     display: block;
@@ -158,3 +153,90 @@ i {
 #userLog{
     max-height: 28px;
 }
+
+
+#money
+{
+    margin-top: 7px;
+
+}
+li .dropdown-menu {
+    width: 305px;
+    border-radius: 0px;
+    -o-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    line-height: 23px;
+    font-size: 14px;
+    padding-bottom: 0px;
+    border: 0px solid transparent;
+    box-shadow: 0px 0px 5px rgba(86, 96, 117, 0.15);
+    -o-box-shadow: 0px 0px 5px rgba(86, 96, 117, 0.15);
+    -ms-box-shadow: 0px 0px 5px rgba(86, 96, 117, 0.15);
+    -moz-box-shadow: 0px 0px 5px rgba(86, 96, 117, 0.15);
+    -webkit-box-shadow: 0px 0px 5px rgba(86, 96, 117, 0.15);
+    margin-top: -1px;
+    padding-top: 0px;
+}
+.fa {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(108, 164, 128, 0.86);
+}
+
+
+
+
+
+
+
+
+.page-topbar .quick-area .info-menu li {
+    position: relative;
+}.page-topbar .quick-area .info-menu li a.toggle, .page-topbar .quick-area .info-menu li a.toggle_chat, .page-topbar .quick-area .info-menu li a.sidebar_toggle {
+     width: 30px;
+     display: inline-block;
+     text-align: center;
+     font-size: 14px;
+     color: rgba(150, 150, 158, 1.0);
+     position: relative;
+ }
+.page-topbar i {
+      font-size: 14px;
+  }
+.page-topbar .quick-area .info-menu li a.toggle .badge, .page-topbar .quick-area .info-menu li a.toggle_chat .badge, .page-topbar .quick-area .info-menu li a.sidebar_toggle .badge {
+       position: absolute;
+       font-size: 10px;
+       padding: 4px;
+       margin: 10px 0 0 -5px;
+       width: 18px;
+       height: 18px;
+   }
+.badge-orange {
+    background-color: rgba(250, 133, 100, 1.0);
+    color: #ffffff;
+}
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    color: #fff;
+
+    border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+.page-topbar .quick-area .info-menu li a.toggle, .page-topbar .quick-area .info-menu li a.toggle_chat, .page-topbar .quick-area .info-menu li a.sidebar_toggle {
+     width: 30px;
+     display: inline-block;
+     text-align: center;
+     font-size: 14px;
+     color: rgba(150, 150, 158, 1.0);
+     position: relative;
+ }
