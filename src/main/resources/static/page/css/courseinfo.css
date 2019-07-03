@@ -831,6 +831,7 @@
       color: #476c0e;
       margin-right: 10px;
       margin-bottom: 7px;
+    margin-left: 10px;
   }.f-fl {
        /* float: left; */
        margin-top: 10px;
@@ -1039,4 +1040,7 @@ p {
 }
 .input-group .input-group-addon {
     min-width: 40px;
+}
+.star {
+    float: left;
 }

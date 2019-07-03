@@ -46,7 +46,13 @@
                                         </div>
 
                                     </div>
+
                                     <div class="course-enroll-info_course-info_term-info">
+                                        <div ng-repeat="x in scores" class="star">
+                                            <span>课程星级: </span>
+                                            <span data-class="star"><i class="fa fa-star"></i></span>
+                                        </div>
+                                        <br>
                                         <div class="course-enroll-info_course-info_term-info_term-time">
                                             <span>开课时间：</span>
                                             <span>{{lesson.startTime}} ~ {{lesson.endTime}}</span>
@@ -132,8 +138,9 @@
                                                     <span data-class="user"><i class="fa fa-user"></i><span>{{teacherNum}}位授课老师</span></span>
 
                                                     <div id="imgg"  >
+
                                                         <div ng-repeat="x in teachers" id="img1">
-                                                            <img class="f-fl" src="{{x.imgLink}}" width="75" height="75">
+                                                            <img class="f-fl" src="{{x.imgLink}}" width="75" height="75" ng-click="jumpT(x)">
                                                             <p>{{x.teacherName}}</p>
                                                             <p>{{x.schoolName}}</p>
                                                         </div>

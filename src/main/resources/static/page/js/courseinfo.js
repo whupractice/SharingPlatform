@@ -13,12 +13,15 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
 
     $scope.teacherNum = 0;
 
-
+    $scope.scores=[];//课程打分
 
     $scope.now = 1;//当前位置
 
 
     $scope.teachers = null;
+
+
+
 
     /**
       * @Author      : Theory
@@ -84,7 +87,16 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
         });
     };
 
+
+    $scope.jumpT = function (teacher) {
+        $state.go('teacher',{
+            "teacher" : teacher
+        });
+    }
+
 });
+
+
 
 
 
