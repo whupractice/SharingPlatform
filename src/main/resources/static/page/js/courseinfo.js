@@ -10,13 +10,15 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
 
     $scope.lesson = null;
 
-    $scope.TL = null;
+
+    $scope.teacherNum = 0;
+
 
 
     $scope.now = 1;//当前位置
 
 
-    $scope.teachers = [];
+    $scope.teachers = null;
 
     /**
       * @Author      : Theory
@@ -72,31 +74,15 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
         let lessonId = $scope.lesson.lessonId;//获取课程id
         $http({
             method: 'GET',
-            url: '/tl/id',
+            url: '/tl/getTeacherByLessonId',
             params:{
                 "lessonId" : lessonId
             }
         }).then(function successCallback(response) {
-            $scope.TL = response.data;
-            for(let i = 0;i<$scope.TL.length;i++){
-                $scope.getTeachers_($scope.TL[i]);
-            }
+            $scope.teachers=response.data;
+            $scope.teacherNum = $scope.teachers.length;
         });
     };
-
-
-    $scope.getTeachers_ = function (tl) {
-        $http({
-            method: 'GET',
-            url: '/teacher/id',
-            params:{
-                "id" : tl.teacherId // id必须从接口文档里看
-            }
-        }).then(function successCallback(response) {
-            let t = response.data;
-            $scope.teachers.push(t);
-        });
-    }
 
 });
 

@@ -129,28 +129,13 @@
 
                                                 <!--Regular if41-->
                                                 <div class="m-teachers_teacher-list">
-                                                    <span data-class="user"><i class="fa fa-user"></i><span>1位授课老师</span></span>
+                                                    <span data-class="user"><i class="fa fa-user"></i><span>{{teacherNum}}位授课老师</span></span>
 
                                                     <div id="imgg"  >
-                                                        <div id="img1">
-                                                            <img class="f-fl" src="../img/city1.jpg" width="75" height="75" alt="姚宏">
-                                                            <p>姚宏</p>
-                                                            <p>武汉大学</p>
-                                                        </div>
-                                                        <div id="img2">
-                                                            <img class="f-fl" src="../img/city1.jpg" width="75" height="75" alt="姚宏">
-                                                            <p>姚宏</p>
-                                                            <p>武汉大学</p>
-                                                        </div>
-                                                        <div id="img3">
-                                                            <img class="f-fl" src="../img/city1.jpg" width="75" height="75" alt="姚宏">
-                                                            <p>姚宏</p>
-                                                            <p>武汉大学</p>
-                                                        </div>
-                                                        <div id="img4">
-                                                            <img class="f-fl" src="../img/city1.jpg" width="75" height="75" alt="姚宏">
-                                                            <p>姚宏</p>
-                                                            <p>武汉大学</p>
+                                                        <div ng-repeat="x in teachers" id="img1">
+                                                            <img class="f-fl" src="{{x.imgLink}}" width="75" height="75">
+                                                            <p>{{x.teacherName}}</p>
+                                                            <p>{{x.schoolName}}</p>
                                                         </div>
 
                                                     </div>
