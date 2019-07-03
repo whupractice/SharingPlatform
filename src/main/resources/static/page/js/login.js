@@ -5,94 +5,41 @@ var app = angular.module('myApp');
  * @Description : 登陆注册控制器
  * @type        : Controller
  */
-app.controller('loginCtrl', function ($scope, $http, $state,Data) {
+app.controller('loginCtrl', function ($scope, $http, $state,Data) {   //Data是全局变量，保存当前用户
 
 
+    $scope.currentUser = null;
+
+
+
+    //
     $scope.judgeLog = function(){
-        var r = document.getElementsByName("identity");
-        if (r[0].checked) {
-            $scope.stuLog();//学生登陆
-        } else if (r[1].checked) {
-            $scope.managerLog();//管理员登陆
-        } else {
-            alert("请选择至少一个角色！");
-        }
-    };
 
-
-    /**
-      * @Author      : Theory
-      * @Description : 学生登陆
-      */
-    $scope.stuLog = function () {
-        let user = parseInt($('#acct').val());
+        let user = $('#acct').val();
         let pwd = $('#pwd').val();
 
         $http({
             method: 'POST',
             url: '/student/login',
+            //如果swagger文档里参数是body类型，参数用data传递；若为query，参数用params
             data:{
-                "studentId": user,
-                "pwd" : pwd
+                "phone": user,
+                "pwd": pwd
             }
         }).then(function successCallback(response) {
-            if(!!response.data){
-                Data.set(response.data);
-                $state.go('main');//跳转主页面
-            }else{
-                alert("用户名或密码错误！");
+            if(response.status==200){
+                $scope.currentUser = response.data;
+                Data.set($scope.currentUser);//设置全局用户为当前的currentuser
+                $state.go('main');
             }
-        });
-    };
-    
-
-    /**
-      * @Author      : Theory
-      * @Description : 学生注册
-      */
-    $scope.stuReg = function () {
-        let nickName = $('#acct').val();
-        let pwd = $('#pwd').val();
-        $http({
-            method: 'POST',
-            url: '/student/register',
-            data:{
-                "nickName": nickName,
-                "pwd" : pwd
+            else {
+                alert("用户名或者密码错误")
             }
-        }).then(function successCallback(response) {
-            if(response.data>0){
-                let userAccount = response.data;
-                alert("注册成功！请记住：您的账号为 " +userAccount);
-            }else{
-                alert("此昵称已被占用！");
-            }
-        });
+        })
     };
 
-    /**
-      * @Author      : Theory
-      * @Description : 管理员登陆
-      */
-    $scope.managerLog = function () {
-        let user = parseInt($('#acct').val());
-        let pwd = $('#pwd').val();
 
-        $http({
-            method: 'POST',
-            url: '/student/login/manager',
-            data:{
-                "studentId": user,
-                "pwd" : pwd
-            }
-        }).then(function successCallback(response) {
-            if(response.data==true){
-                $state.go('main');//跳转到主页面
-            }else{
-                alert("用户名或密码错误！");
-            }
-        });
-    }
+
 });
 
 

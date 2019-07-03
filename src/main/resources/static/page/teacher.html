@@ -4,11 +4,74 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+
+<body calss="p-university">
+    <div id="g-container" ng-controller="teacherCtrl" ng-init="initTeacher()">
+        <div id="g-body">
+            <!--网页头部-->
+            <div class="g-wrap m-unibg">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="g-doc f-pr" style="margin-left: 800px">
+                            <img class="avatar" id="" src="https://nos.netease.com/edu-image/E0C17CE94731A190BC740852F3276005.png?imageView&amp;thumbnail=150y150&amp;quality=100" width="150" height="150" alt="武汉大学">
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="g-doc" style="position: absolute;margin-top: 20px;right: 230px;">
+                            <div class="g-mn1c m-cnt">
+
+                                <h1>{{school.schoolName}}</h1>
+                                <p class="f-f1 f-fc6">{{school.schoolItro}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!--显示课程-->
+
+        <div class="container2">
+            <p class="text-center" style="font-size: 30px; background-color: #ced6a7">所授课程</p>
+        </div>
+
+        <!--教师所授课程课程-->
+        <div class="jk-uptodate">
+            <ul style="width: 1070px">
+                <li ng-repeat="x in selectLesson" class="uptodate">
+                    <a ng-click="goDetail_(x)">
+                        <div class="uptodate-img">
+                            <img src="{{teacher.imgLink}}" alt="">
+                        </div>
+                        <p class="uptodate-title">{{x.lessonName}}</p>
+                        <p class="uptodate-info">
+                            {{x.subject}}
+                            <span>|</span>{{x.schoolName}}
+
+                        </p>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div style="text-align: center"  >
+            <ul class="pagination">
+                <li><a href ng-click="prevPage_()">&laquo;</a></li>
+                <li ng-repeat="page in pages">
+                    <a href ng-click="selectPage_(page)" class="pageIndex">{{page}}</a>
+                </li>
+                <li><a href ng-click="nextPage_()">&raquo;</a></li>
+            </ul><br>
+            <p>第<span>{{currentPage}}</span>页 / 共{{totalPage}}页</p>
+        </div>
+
+        <!--挑选出的课程-->
 
 
-<div ng-controller="teacherCtrl" ng-init="initTeacher()">
-
+    </div>
 
     <img src="{{teacher.imgLink}}">
     <p>{{teacher.teacherName}}</p>
@@ -32,8 +95,6 @@
             <!--</li>-->
         <!--</ul>-->
     <!--</div>-->
-
-</div>
 
 </body>
 </html>

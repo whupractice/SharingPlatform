@@ -23,9 +23,9 @@
 
         <div class="content" id="contentId">
             <div class="u-input">
-                <label>账号/昵称</label><!--这种注释写法是为了去除换行产生的4px的间隔
+                <label>账号</label><!--这种注释写法是为了去除换行产生的4px的间隔
 					--><div class="inputWrapper">
-                <input type="text" placeholder="登录请输入账号，注册请输入昵称" autocomplete="new-password" id="acct" maxlength="34">
+                <input type="text" placeholder="登录请输入账号" autocomplete="new-password" id="acct" maxlength="34">
             </div><!--
 					--><span class="msg" style="display: inline-block;">
 						<i></i><font></font>
@@ -41,43 +41,60 @@
 						<i></i><font></font>
 					</span>
             </div>
-            <div class="u-input" id="verifyCodeLine">
-                <label>验证码</label><!--
-					--><div class="inputWrapper">
-                <input class="short" type="text" placeholder="请输入验证码" autocomplete="off" id="verifyCode" maxlength="4">
-                <button class="button" id="verifyCodeBtn">获取验证码</button>
-            </div><!--
-					--><span class="msg" style="display: none;">
-						<i></i><font id="verifyCodeMsg"></font>
-					</span>
-            </div>
-            <div id="resendNotice1" class="u-resendNotice" style="display: none;">
-                若仍未收到验证码，请点击&gt; <a target="_blank" href="/qq.jsp?s=209">联系客服</a>
-            </div>
-
-
-            <div class="u-input">
-                <label>我是</label>
-                <div id="siteTypeLine">
-                    <input id="student" name="identity" type="radio" value="1"><label for="student" style="display:inline">学生</label>
-                    <input id="manager" name="identity" type="radio" value="2"><label for="manager" style="display:inline">管理员</label>
-                </div>
-                <span class="msg" style="display: none;">
-							<i></i><font></font>
-						</span>
-            </div>
 
         </div>
+        <br>
         <div class="bottomBar">
             <font class="msg" id="regMsg"></font>
             <button class="u-bigBtn" ng-click="judgeLog()">用户登陆</button>
-            <button class="u-bigBtn" ng-click="stuReg()">免费注册</button>
+            <button class="u-bigBtn" data-toggle="modal" data-target="#infoModal_2">免费注册</button>
+        </div>
+        <div class="bottom" id="bottom_web" style="display: block;">
+            <a href="#" class="link" id="forget_pwd" target="_blank" style="position:relative;left: 420px;">忘了密码？</a>
         </div>
 
         <div class="toLogin">
 
         </div>
 
+    </div>
+
+     <!--注册界面模态框-->
+    <div class="modal fade" id="infoModal_2" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel_2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="infoModalLabel_2">注册账号</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">手机号 </label>
+                                <input type="text" class="form-control" id="phone_number" placeholder="必填" required>
+                                <label class="control-label">密码 </label>
+                                <input type="text" class="form-control" id="code1" placeholder="密码格式为数字加字母，区分大小写" required>
+                                <label class="control-label">确认密码 </label>
+                                <input type="text" class="form-control" id="code2" placeholder="密码格式为数字加字母，区分大小写" required>
+                                <label class="control-label">验证码 </label>
+                                    <div class="inputWrapper">
+                                        <input class="short" type="text" placeholder="请输入验证码" autocomplete="off" id="verify_code" maxlength="4">
+                                        <button class="verify_btn" id="verify_code_btn">获取验证码</button>
+                                    </div><!--
+					--><span class="msg" style="display: none;">
+						<i></i><font id="verify_code_msg"></font>
+					</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" id="update_L_Btn" class="btn btn-success">注册账号</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
     </div>
 </div>
 </body>
