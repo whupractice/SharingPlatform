@@ -130,7 +130,7 @@ public class StudentController {
     @GetMapping("/lessonManagerPages")
     public Page<StudentEntity> getLessonManagerPages(@PageableDefault(size = 12, sort = {"academyName"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable) {
 
-        Specification<StudentEntity> specification = createManagerSpecification();
+        Specification<StudentEntity> specification = createLessonManagerSpecification();
         return studentService.getAll(specification,pageable);
     }
 
@@ -154,14 +154,13 @@ public class StudentController {
 
 
 
-    public Specification<StudentEntity> createManagerSpecification() {
+    public Specification<StudentEntity> createLessonManagerSpecification() {
 
         return (Specification<StudentEntity>) (root, query, cb) -> {
             //用于暂时存放查询条件的集合
             List<Predicate> predicatesList = new ArrayList<>();
 
-
-            Predicate predicate = cb.like(root.get("isLessonManager"), "1");
+            Predicate predicate = cb.equal(root.get("isLessonManager"),1);
             predicatesList.add(predicate);
 
             Predicate[] predicates = new Predicate[predicatesList.size()];
