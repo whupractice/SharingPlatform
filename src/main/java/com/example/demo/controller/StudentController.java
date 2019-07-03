@@ -128,9 +128,27 @@ public class StudentController {
 
     @ApiOperation(value = "分页获取所有课程管理员", notes = "分页获取所有课程管理员",httpMethod = "GET")
     @GetMapping("/lessonManagerPages")
-    public Page<StudentEntity> getlessonManagerPages(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable) {
+    public Page<StudentEntity> getLessonManagerPages(@PageableDefault(size = 12, sort = {"academyName"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable) {
 
         Specification<StudentEntity> specification = createManagerSpecification();
+        return studentService.getAll(specification,pageable);
+    }
+
+    @ApiOperation(value = "根据姓名分页获取所有课程管理员", notes = "根据姓名分页获取所有课程管理员",httpMethod = "GET")
+    @GetMapping("/lessonManagerPages")
+    public Page<StudentEntity> getLessonManagerPagesByName(@PageableDefault(size = 12, sort = {"academyName"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
+                                                           @RequestParam(value = "realName")@ApiParam(value = "课程管理员名") String realName) {
+
+        Specification<StudentEntity> specification = createLessonManagerSpecificationByName(realName);
+        return studentService.getAll(specification,pageable);
+    }
+
+    @ApiOperation(value = "根据学校分页获取所有课程管理员", notes = "根据学校分页获取所有课程管理员",httpMethod = "GET")
+    @GetMapping("/lessonManagerPages")
+    public Page<StudentEntity> getLessonManagerPagesBySchool(@PageableDefault(size = 12, sort = {"academyName"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
+                                                             @RequestParam(value = "schoolName")@ApiParam(value = "学校名") String schoolName) {
+
+        Specification<StudentEntity> specification = createLessonManagerSpecificationBySchool(schoolName);
         return studentService.getAll(specification,pageable);
     }
 
@@ -150,5 +168,39 @@ public class StudentController {
             return cb.and(predicatesList.toArray(predicates));
         };
     }
+
+    public Specification<StudentEntity> createLessonManagerSpecificationByName(String realName) {
+
+        return (Specification<StudentEntity>) (root, query, cb) -> {
+            //用于暂时存放查询条件的集合
+            List<Predicate> predicatesList = new ArrayList<>();
+
+
+            Predicate predicate = cb.like(root.get("realName"), "%" + realName + "%");
+            predicatesList.add(predicate);
+
+            Predicate[] predicates = new Predicate[predicatesList.size()];
+            return cb.and(predicatesList.toArray(predicates));
+        };
+    }
+
+
+    public Specification<StudentEntity> createLessonManagerSpecificationBySchool(String schoolName) {
+
+        return (Specification<StudentEntity>) (root, query, cb) -> {
+            //用于暂时存放查询条件的集合
+            List<Predicate> predicatesList = new ArrayList<>();
+
+
+            Predicate predicate = cb.like(root.get("schoolName"), "%" + schoolName + "%");
+            predicatesList.add(predicate);
+
+            Predicate[] predicates = new Predicate[predicatesList.size()];
+            return cb.and(predicatesList.toArray(predicates));
+        };
+    }
+
+
+
 
 }
