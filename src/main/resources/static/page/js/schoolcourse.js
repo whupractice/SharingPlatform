@@ -28,7 +28,7 @@ app.controller('schoolcourseCtrl', function ($scope, $http, $stateParams,$state)
 
     //选择页数
     $scope.selectPage_ = function (page) {
-        if ($scope.totalPage != 0 && (page < 1 || page > $scope.totalPage))
+        if ($scope.totalPage == 0 && (page < 1 || page > $scope.totalPage))
             return;
         $scope.currentPage = page;
         $scope.getLessons_();
@@ -48,15 +48,16 @@ app.controller('schoolcourseCtrl', function ($scope, $http, $stateParams,$state)
 
     //发送请求
     $scope.getLessons_ = function () {
+        let p = $scope.currentPage-1;
         $http({
             method: 'GET',
-            url: "lesson/pagesBySchoolName?page="+$scope.currentPage,
+            url: "lesson/pagesBySchoolName?page="+p,
             params:{
                 "schoolName" : $scope.school.schoolName
             }
         }).then(function successCallback(response) {
             $scope.selectLesson = response.data.content;//获取返回的课程
-            $scope.totalPage = response.data.totalPages-1;//获取最大页数
+            $scope.totalPage = response.data.totalPages;//获取最大页数
             $scope.pages = [];
             if($scope.totalPage>5) {
                 let start = ($scope.currentPage>=3) ? $scope.currentPage-2 : 1;

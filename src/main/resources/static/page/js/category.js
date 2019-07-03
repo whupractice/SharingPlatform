@@ -12,7 +12,7 @@ app.controller('categoryCtrl', function ($scope, $http, $state) {
 
 
     $scope.currentPage = 1;//当前页数
-    $scope.totalPage = 0; // 总页数 （根据 总记录数、每页记录数 计算 ）
+    $scope.totalPage = 1; // 总页数 （根据 总记录数、每页记录数 计算 ）
     $scope.currentStatus = "全部";
     $scope.currentSubject = "全部";
     $scope.pages = [];
@@ -27,7 +27,7 @@ app.controller('categoryCtrl', function ($scope, $http, $state) {
 
     //选择页数
     $scope.selectPage = function (page) {
-        if ($scope.totalPage != 0 && (page < 1 || page > $scope.totalPage))
+        if ($scope.totalPage == 0 && (page < 1 || page > $scope.totalPage))
             return;
         $scope.currentPage = page;
         $scope.getLessons();
@@ -98,16 +98,17 @@ app.controller('categoryCtrl', function ($scope, $http, $state) {
 
     //发送请求
     $scope.getLessons = function () {
+        let p = $scope.currentPage-1;
         $http({
             method: 'GET',
-            url: "/lesson/pages?page="+$scope.currentPage,
+            url: "/lesson/pages?page="+p,
             params:{
                 "status": $scope.currentStatus,
                 "subject": $scope.currentSubject
             }
         }).then(function successCallback(response) {
             $scope.selectLesson = response.data.content;//获取返回的课程
-            $scope.totalPage = response.data.totalPages-1;//获取最大页数
+            $scope.totalPage = response.data.totalPages;//获取最大页数
             $scope.pages = [];
             if($scope.totalPage>5) {
                 let start = ($scope.currentPage>=3) ? $scope.currentPage-2 : 1;

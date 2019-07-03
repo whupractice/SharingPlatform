@@ -190,10 +190,10 @@
                     </tr>
                     </thead>
                     <tbody id="datas_2">
-                    <tr style="display: table-row; opacity: 1;">
-                        <td>刘宇</td>
-                        <td>武汉大学</td>
-                        <td>计算机学院</td>
+                    <tr ng-repeat="x in allLessonManager" style="display: table-row; opacity: 1;">
+                        <td>{{x.realName}}</td>
+                        <td>{{x.schoolName}}</td>
+                        <td>{{x.academyName}}</td>
                         <td>课程管理员</td>
                         <td>
                             <button class="btn btn-info" data-toggle="modal" data-target="#infoModal_2">修改</button>
@@ -206,21 +206,19 @@
                         <td colspan="5">
                             <div class="pull-right king-page-box">
                                 <p class="pull-left mt15 mr15">
-                                    共<span id="total_2">25</span>条记录，当前第<span id="cur_page_2">1</span>/<span id="total_page_2">5</span>页
+                                    共<span id="total_2">{{totalP}}</span>条记录，当前第{{currentP}}页
                                 </p>
                                 <ul class="pagination pagination-sm pull-left mt10" style="margin-top: 10px">
                                     <li class="disabled">
-                                        <a href="javascript:;" aria-label="Previous">
+                                        <a ng-click="pre()" aria-label="Previous">
                                             <span aria-hidden="true">«</span>
                                         </a>
                                     </li>
-                                    <li class="active"><a href="javascript:;">1</a></li>
-                                    <li><a href="javascript:;">2</a></li>
-                                    <li><a href="javascript:;">3</a></li>
-                                    <li><a href="javascript:;">4</a></li>
-                                    <li><a href="javascript:;">5</a></li>
+                                    <li ng-repeat="page in Ps">
+                                        <a href ng-click="selectP(page)" class="pageIndex">{{page}}</a>
+                                    </li>
                                     <li>
-                                        <a href="javascript:;" aria-label="Next">
+                                        <a ng-click="next()" aria-label="Next">
                                             <span aria-hidden="true">»</span>
                                         </a>
                                     </li>
@@ -274,8 +272,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label class="control-label">电话: </label>
+                                        <input type="text" class="form-control" id="lessonManagerPhone"  required>
                                         <label class="control-label">姓名: </label>
                                         <input type="text" class="form-control" id="lessonManagerName"  required>
+                                        <label class="control-label">密码: </label>
+                                        <input type="text" class="form-control" id="lessonManagerPwd"  required>
                                         <label class="control-label">学校: </label>
                                         <select id="lessonManagerSchool" class="form-control">
                                             <option ng-repeat="x in yetSchools">{{yetSchools.schoolName}}</option>
