@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.baseClass.School;
 import com.example.demo.entity.SchoolEntity;
 import com.example.demo.entity.StudentEntity;
 import com.example.demo.repository.SchoolRepository;
@@ -79,8 +80,14 @@ public class SchoolService {
       * @Param       :
       * @return      :
       */
-    public void insertSchool(SchoolEntity school) {
-        schoolRepository.save(school);
+    public boolean insertSchool(SchoolEntity school) {
+        List<SchoolEntity>schools = schoolRepository.getSchoolByName(school.getSchoolName());
+        if(schools.size()!=0)
+            return false;
+        else {
+            schoolRepository.save(school);
+            return true;
+        }
     }
 
     /**

@@ -704,6 +704,7 @@ ul {
     color: #666;
     font-size: 15px;
     margin-top: 10px;
+    cursor: pointer;
 }
 button, a {
     outline: none;

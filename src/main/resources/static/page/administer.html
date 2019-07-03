@@ -165,10 +165,14 @@
                 课程管理员列表
             </div>
             <div class="panel-body panel-search-body">
+
+                <button class="btn btn-primary pull-right" ng-click="searchByType()"
+                >搜索</button>
                 <div class="input-group pull-right king-input-group">
-                    <input type="text" class="form-control pl30 king-form-control" placeholder="请输入关键字">
-                    <span class="glyphicon glyphicon-search form-control-feedback king-form-control-feedback"></span>
+                    <input type="text" class="form-control pl30 king-form-control" placeholder="请输入关键字"
+                    id="searchVal">
                 </div>
+
                 <button class="king-btn king-radius king-primary" title="添加变量" data-toggle="modal"
                 data-target="#addLModal">添加成员</button>
                 <div class="form-group pull-right">
@@ -177,6 +181,7 @@
                         <option value="school">学校</option>
                     </select>
                 </div>
+
             </div>
             <div>
                 <table class="table table-hover mb0">
@@ -196,8 +201,10 @@
                         <td>{{x.academyName}}</td>
                         <td>课程管理员</td>
                         <td>
-                            <button class="btn btn-info" data-toggle="modal" data-target="#infoModal_2">修改</button>
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteLModal">注销</button>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#infoModal_2"
+                            ng-click="bindingLeMan(x)">修改</button>
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteLModal"
+                                    ng-click="bindingLeMan(x)">注销</button>
                         </td>
                     </tr>
                     </tbody>
@@ -244,18 +251,24 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">姓名: </label>
-                                        <input type="text" class="form-control" id="relName_2" value="刘宇" required>
+                                        <input type="text" class="form-control" id="relName_2" value="{{bindLeMan.realName}}" required>
                                         <label class="control-label">学校: </label>
-                                        <input type="text" class="form-control" id="school" value="武汉大学" required>
+                                        <select id="allSchools">
+                                            <option ng-repeat="x in allSchools">{{x.schoolName}}</option>
+                                        </select>
                                         <label class="control-label">学院: </label>
-                                        <input type="text" class="form-control" id="academy" value="计算机学院" required="">
+                                        <button class="btn btn-primary" ng-click="getAcademy()">更新</button>
+                                        <select id="allAcdemys">
+                                            <option ng-repeat="x in academys">{{x.academyName}}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" id="update_L_Btn" class="btn btn-success">提交</button>
+                            <button type="button" id="update_L_Btn" class="btn btn-success"
+                            ng-click="updateLessonMan()">提交</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->
@@ -273,18 +286,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">电话: </label>
-                                        <input type="text" class="form-control" id="lessonManagerPhone"  required>
+                                        <input type="text" class="form-control" id="lePhone"  required>
                                         <label class="control-label">姓名: </label>
-                                        <input type="text" class="form-control" id="lessonManagerName"  required>
+                                        <input type="text" class="form-control" id="leName"  required>
                                         <label class="control-label">密码: </label>
-                                        <input type="text" class="form-control" id="lessonManagerPwd"  required>
+                                        <input type="text" class="form-control" id="lePwd"  required>
                                         <label class="control-label">学校: </label>
-                                        <select id="lessonManagerSchool" class="form-control">
-                                            <option ng-repeat="x in yetSchools">{{yetSchools.schoolName}}</option>
+                                        <select id="leSchool" class="form-control">
+                                            <option ng-repeat="x in allSchools">{{x.schoolName}}</option>
                                         </select>
                                         <label class="control-label">学院: </label>
-                                        <select id="lessonManagerAcademy" class="form-control">
-                                            <option ng-repeat="x in yetAcademy">{{yetAcademy.academyName}}</option>
+                                        <button class="btn btn-primary" ng-click="getAcademy()">更新</button>
+                                        <select id="leAcademy" class="form-control">
+                                            <option ng-repeat="x in academys">{{x.academyName}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -292,7 +306,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" id="addLessonManagerBtn" class="btn btn-success">提交</button>
+                            <button type="button" id="addLessonManagerBtn" class="btn btn-success"
+                            ng-click="addLeMan()">提交</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->
@@ -317,7 +332,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" id="DelLBtn" class="btn btn-danger">删除</button>
+                            <button type="button" id="DelLBtn" class="btn btn-danger"
+                            ng-click="deleteLeMan()">删除</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->
@@ -339,15 +355,17 @@
                         <i class="fa fa-list-ul"></i>已注册学校列表
                     </div>
                     <div class="panel-btns" style="margin-top: 40px">
-                        <a class="king-btn king-radius king-primary" title="保存绑定关系">增添学校</a>
+                        <a class="king-btn king-radius king-primary" title="保存绑定关系"
+                        data-toggle="modal" data-target="#addSModal">增添学校</a>
                     </div>
                     <div class="panel-body">
                         <div class="panel-content container">
                             <ul style="list-style: none">
-                                <li><a href="#none"><i class="fa fa-bank"></i>武汉大学</a></li>
-                                <li><a href="#none"><i class="fa fa-bank"></i>华中科技大学</a></li>
-                                <li><a href="#none"><i class="fa fa-bank"></i>华中师范大学</a></li>
-                                <li><a href="#none"><i class="fa fa-bank"></i>武汉理工大学</a></li>
+                                <li ng-repeat="x in allSchools">
+                                    <a ng-click="getPage3Academy(x)">
+                                        <i class="fa fa-bank"></i>{{x.schoolName}}
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -357,7 +375,8 @@
                         <i class="fa fa-list-ul"></i>已注册学院列表
                     </div>
                     <div class="panel-btns">
-                        <a class="king-btn king-radius king-primary" title="保存绑定关系">增添学院</a>
+                        <a class="king-btn king-radius king-primary" title="保存绑定关系" data-toggle="modal"
+                        data-target="#addAModal">增添学院</a>
                         <a class="king-btn king-radius king-danger" title="保存绑定关系" style="color: white">删除学院</a>
                         <span class="hint-info"><i class="hint"></i>勾选配置文件以进行绑定，反选以进行解绑</span>
                     </div>
@@ -374,10 +393,10 @@
                                     </thead>
                                     <tbody>
 
-                                    <tr>
+                                    <tr ng-repeat="x in bindSchoolAcademys">
                                         <td align="center"><input type="checkbox" value=""></td>
-                                        <td>计算机学院</td>
-                                        <td>武汉大学</td>
+                                        <td>{{x.academyName}}</td>
+                                        <td>{{x.schoolName}}</td>
 
                                     </tr>
                                     </tbody>
@@ -388,9 +407,64 @@
                 </div>
             </div>
 
+            <div class="modal fade" id="addSModal" tabindex="-1" role="dialog" aria-labelledby="addModeSLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="addModeSLabel">添加学校</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">学校名: </label>
+                                        <input type="text" class="form-control" id="schoolName"  required>
+                                        <label class="control-label">学校介绍: </label>
+                                        <textarea class="form-control" rows="5" placeholder="学校介绍"
+                                                  id="schoolIntro" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" ng-click="addSchool()" class="btn btn-success">提交</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
 
 
 
+            <div class="modal fade" id="addAModal" tabindex="-1" role="dialog" aria-labelledby="addModeALabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="addModeALabel">添加学院</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">学校名: </label>
+                                        <input type="text" class="form-control" id="academyName"  required>
+                                        <label class="control-label">学校名: </label>
+                                        <select id="schools">
+                                            <option ng-repeat="x in allSchools">{{x.schoolName}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" ng-click="addAcademy()" class="btn btn-success">提交</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
 
 
 

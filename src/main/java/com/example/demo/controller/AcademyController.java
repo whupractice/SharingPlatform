@@ -44,8 +44,8 @@ public class AcademyController {
     @ApiOperation(value = "向数据库中插入学院", notes = "向数据库中插入学院",httpMethod = "POST")
     @ApiParam(name = "academyEntity",value = "学院实体,其中任意属性都不能为空")
     @PostMapping("")
-    public void insertAcademy(@RequestBody AcademyEntity academyEntity) {
-        academyService.insertAcademy(academyEntity);
+    public boolean insertAcademy(@RequestBody AcademyEntity academyEntity) {
+        return academyService.insertAcademy(academyEntity);
     }
 
     @ApiOperation(value = "根据学院id删除学院", notes = "根据学院id删除学院",httpMethod = "DELETE")

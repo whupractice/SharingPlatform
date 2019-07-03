@@ -47,8 +47,14 @@ public class AcademyService {
       * @Param       : [academyEntity]
       * @return      : void
       */
-    public void insertAcademy(AcademyEntity academyEntity) {
-        academyRepository.save(academyEntity);
+    public boolean insertAcademy(AcademyEntity academyEntity) {
+        AcademyEntity academy = academyRepository.getByAcademyName(academyEntity.getAcademyName());
+        if(academy!=null)
+            return false;
+        else {
+            academyRepository.save(academyEntity);
+            return true;
+        }
     }
 
     /**
