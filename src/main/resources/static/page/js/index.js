@@ -64,6 +64,9 @@ API_index.config(function ($stateProvider,$urlRouterProvider) {
         }).state('lessonManager',{
             url: '/lessonManager',
             templateUrl: '/page/lessonManager.html'
-        });
+        }).state('findpwd',{
+        url: '/findpwd',
+        templateUrl: '/page/findpwd.html'
+    });
 
 });

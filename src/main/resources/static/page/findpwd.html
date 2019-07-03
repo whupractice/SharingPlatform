@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../page/css/findpwd.css">
     <title>Title</title>
 </head>
 <body>
+<div ng-controller="findpwdCtrl" ng-init="initFindpwd()">
 <div id="app" class="g-bd f-cf"><div class="u-op ">
     <!--Regular if65-->
     <!--Regular if1-->
-    <div class="m-title">输入帐号</div>
+    <div class="m-title">找回密码</div>
     <!--Regular if52-->
     <div class="m-op-box">
         <div class="m-vfAccount m-center">
@@ -17,7 +20,9 @@
             <div class="w-ipt">
                 <div class="m-suggest" style="z-index: 89;">
                     <div class="u-ipt ">
-                        <div class="ipt_wrap"><input type="text" class="ipt_input ipt_input_large ipt_input-success" name="" placeholder="邮箱帐号" autocomplete="off" spellcheck="false">
+                        <div class="ipt_wrap">
+                            <input type="text" class="ipt_input ipt_input_large ipt_input-success" id="p_number" placeholder="手机号" autocomplete="off" spellcheck="false">
+
                             <!--Regular if53-->
                             <div class="ipt_extend">
                                 <!--Regular if54-->
@@ -26,6 +31,11 @@
                                 </i></div></div>
                         <!--inlcude-->
                         <div class="ipt_tip ipt_tip-success"></div>
+                    </div>
+                    <label class="control-label">验证码 </label>
+                    <div class="ipt_wrap">
+                        <input class="short" type="text" placeholder="请输入验证码" autocomplete="off" id="verify_code_" maxlength="4">
+                        <button class="verify_btn_" id="verify_code_btn">获取验证码</button>
                     </div>
                     <!--Regular if55-->
                     <!--Regular if56-->
@@ -37,7 +47,7 @@
 
             <div class="w-btn">
                 <div class="u-btn ">
-                    <button class="">下一步</button>
+                    <button ng-click="verify_resetPwd()" class="u-bigBtn">下一步</button>
                     <!--Regular if59-->
                 </div>
                 <!--Regular if60-->
@@ -50,7 +60,7 @@
 
 
     <!--Regular if4-->
-
+</div>
 
 
 </div>

@@ -15,11 +15,6 @@ app.controller('teacherCtrl', function ($scope, $http, $stateParams,$state) {//$
     $scope.selectTLesson = null;//选择的课程
 
 
-    $scope.currentPage = 1;//当前页数
-    $scope.totalPage = 1;//总页数
-    $scope.pages = [];
-
-
     // $http({
     //     method: 'GET',
     //     url: '/teacher/id',
@@ -61,7 +56,6 @@ app.controller('teacherCtrl', function ($scope, $http, $stateParams,$state) {//$
 
     //发送请求
     $scope.getTLessons = function () {
-        let p = $scope.currentPage-1;
         $http({
             method: 'GET',
             url: "tl/getLessonByTeacherId",
@@ -69,7 +63,7 @@ app.controller('teacherCtrl', function ($scope, $http, $stateParams,$state) {//$
                 "teacherId" : $scope.teacher.teacherId
             }
         }).then(function successCallback(response) {
-            $scope.selectTLesson = response.data.content;//获取返回的课程
+            $scope.selectTLesson = response.data;//获取返回的课程
         })
     };
 

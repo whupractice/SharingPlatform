@@ -172,3 +172,17 @@ input, keygen, legend, select, textarea {
 #app .u-btn, .u-btn {
     display: block;
 }
+
+.verify_btn_{
+    width: 30%;
+    height: 29px;
+    line-height: 29px;
+    background-color: #81bc9b;
+    border-radius: 2px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+}
