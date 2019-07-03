@@ -178,6 +178,9 @@ public class StudentController {
             Predicate predicate = cb.like(root.get("realName"), "%" + realName + "%");
             predicatesList.add(predicate);
 
+            Predicate predicate1 = cb.equal(root.get("isLessonManager"),1);
+            predicatesList.add(predicate1);
+
             Predicate[] predicates = new Predicate[predicatesList.size()];
             return cb.and(predicatesList.toArray(predicates));
         };
