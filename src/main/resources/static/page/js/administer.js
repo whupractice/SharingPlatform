@@ -24,7 +24,7 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
     $scope.bindLeMan = null;//当前被选中的课程管理员
     $scope.bindSchool = null;//page2当前被选中的学校
     $scope.bindSchoolAcademys = null;//page3的学院
-    $scope.page3qSchool = null;//page3当前被选中的学校
+    $scope.page3School = null;//page3当前被选中的学校
 
 
 

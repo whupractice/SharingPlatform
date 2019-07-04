@@ -70,94 +70,87 @@
             <div ng-if="_page_1_()">
             <div class="king-content-wrap">
                 <div class="king-layout1-content" style="margin-left: 216px;">
-                    <form class="form-horizontal" style="margin-top: 25px">
+                    <form class="form-horizontal" style="margin-top: 60px">
                         <div class="form-group clearfix ">
                         <label class="col-sm-3 control-label bk-lh30 pt0">昵称：</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息" style="position: relative;
-    top: -15px;">
+                            <input type="text" class="form-control bk-valign-top" id="nickName"  style="position: relative;
+    top: -15px;" value="{{currentStudent.nickName}}">
                         </div>
                     </div>
                         <div class="form-group clearfix ">
                             <label class="control-label col-sm-3 bk-lh30 pt0">性别：</label>
                             <div class="col-sm-6">
-                                <div class="radio pt0">
-                                    <label class="mr10">
-                                        <input type="radio" name="optionsRadios" id="" class="bk-top5" value="男" style="position: relative;top: -10px;">
-                                        <span class="bk-lh30" style="position: relative;top: -10px;">男</span>
-                                    </label><label class="mr10">
-                                    <input type="radio" name="optionsRadios" id="" class="bk-top5" value="女" style="position: relative;top: -10px;">
-                                    <span class="bk-lh30" style="position: relative;top: -10px;">女</span>
-                                </label><label class="mr10">
-                                    <input type="radio" name="optionsRadios" id="" class="bk-top5" value="保密" style="position: relative;top: -10px;">
-                                    <span class="bk-lh30"style="position: relative;top: -10px;">保密</span>
-                                </label>
+                                <select id="sex">
+                                    <option class="selected" value="male">男</option>
+                                    <option value="female">女</option>
+                                </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group clearfix ">
-                            <label class="control-label col-sm-3 pt0 bk-h30 bk-lh30">头像：</label>
-                            <div class="col-sm-6">
-                                <button class="king-btn king-default king-file-btn king-btn-small bk-mt3 bk-block">选择文件
-                                    <input type="file">
-                                </button>
-                            </div>
-                        </div>
+
+<!--                        <div class="form-group clearfix ">-->
+<!--                            <label class="control-label col-sm-3 pt0 bk-h30 bk-lh30">头像：</label>-->
+<!--                            <div class="col-sm-6">-->
+<!--                                <button class="king-btn king-default king-file-btn king-btn-small bk-mt3 bk-block">选择文件-->
+<!--                                    <input type="file">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">生日：</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control bk-valign-top" id="" placeholder="如1998-2-12" style="position: relative;
+                                <input type="date" class="form-control bk-valign-top" id="birth" value={{currentStudent.birth}} style="position: relative;
     top: -15px;">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">手机号：</label>
                             <div class="col-sm-6">
-                            <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息" style="position: relative;
+                            <input type="text" class="form-control bk-valign-top" id="phoneNumber" value={{currentStudent.phone}} style="position: relative;
     top: -15px;">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">邮箱：</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息" style="position: relative;
+                                <input type="text" class="form-control bk-valign-top" id="email" value={{currentStudent.email}} style="position: relative;
     top: -15px;">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">居住地：</label>
                             <div class="col-sm-6">
-                                <select name="" id="" class="form-control bk-valign-top" style="position: relative;
+                                <select name="" id="place" class="form-control bk-valign-top" style="position: relative;
     top: -15px;">
-                                    <option value="选择项1">选择项1</option>
-                                    <option value="选择项2">选择项2</option>
-                                    <option value="选择项3">选择项3</option>
-                                    <option value="选择项4">选择项4</option>
+                                    <option value="选择项1">中国</option>
+                                    <option value="选择项2">美国</option>
+                                    <option value="选择项3">法国</option>
+                                    <option value="选择项4">英国</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">专业：</label>
                             <div class="col-sm-6">
-                                <select name="" id="" class="form-control bk-valign-top" style="position: relative;
+                                <select name="" id="profession" class="form-control bk-valign-top" style="position: relative;
     top: -15px;">
-                                    <option value="选择项1">选择项1</option>
-                                    <option value="选择项2">选择项2</option>
-                                    <option value="选择项3">选择项3</option>
-                                    <option value="选择项4">选择项4</option>
+                                    <option value="选择项1">计算机</option>
+                                    <option value="选择项2">艺术</option>
+                                    <option value="选择项3">体育</option>
+                                    <option value="选择项4">博彩</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group has-feedback clearfix ">
-                            <label class="control-label col-sm-3 pt0" for="introduction">个人描述：</label>
+                            <label class="control-label col-sm-3 pt0" >个人描述：</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control" rows="3" placeholder="提示信息" style="position: relative;
-    top: -15px;"></textarea>
+                                <textarea id="introduction" class="form-control" rows="3" style="position: relative;
+    top: -15px;">{{currentStudent.introduction}}</textarea>
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <div class="col-sm-9 col-sm-offset-3">
-                                <button type="button" class="king-btn mr10  king-success">提交</button>
+                                <button  ng-click="updateStuInfo()" type="button" class="king-btn mr10  king-success">提交</button>
                                 <button type="button" class="king-btn king-default ">取消</button>
                             </div>
                         </div>
