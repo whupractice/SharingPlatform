@@ -2,281 +2,439 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="./css/student.css">
-    <link rel="stylesheet" href="../shared/css/milligram.min.css">
-    <link rel="stylesheet" href="../shared/css/bootstrap/fonts/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/student.css">
+
+    <link rel="stylesheet" type="text/css" href="css/lanjing.css">
+
+
+<!--    <link rel="stylesheet" href="../shared/css/milligram.min.css">-->
+<!--    <link rel="stylesheet" href="../shared/css/bootstrap/fonts/font-awesome/css/font-awesome.min.css">-->
+<!--    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/css/bootstrap.min.css">-->
     <title>Title</title>
 
 </head>
 <body>
 <body>
-<!--导航栏-->
-<div class="navbar">
-    <div class="row">
-        <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Medialoot</a></div>
-        <div class="column column-40 col-search">
-            <div data-toggle="modal" data-target="#settingModal" class="search-btn fa fa-search"></div>
-            <input type="text" name="" value="" placeholder="查找课程">
-        </div>
-        <div class="column column-30">
-            <div class="user-section"><a href="#">
-                <i class="fa fa-user" aria-hidden="true" style="float:left;position:absolute;top: 20px;right:150px" ;=""></i>
-                <div class="username" style="display: block">
-                    <h4>个人信息</h4>
-                    <p>studentinformation</p>
-                </div>
-            </a></div>
-        </div>
+<!--HTML-->
+<div class="king-layout-container" id="layoutPanel">
 
-    </div>
-</div>
-<!--设置-->
-<div class="settings f-cb g-flow st" id="auto-id-1561784694225">
-    <div id="settings-box" class="f-bg">
-        <div class="m-setBox" id="auto-id-1561784694223">
-            <div class="boxTab j-tabBox f-cb" id="auto-id-1561784694222">
-                <a class="j-tabItem current" id="auto-id-1561784694496">资料设置</a>
-                <a class="j-tabItem" id="auto-id-1561784694498">收货地址设置</a>
-                <a class="j-tabItem" id="auto-id-1561784694500">帐号设置</a>
-                <a class="j-tabItem" id="auto-id-1561784694502">邮件设置</a>
+    <!--  -->
+    <div class="king-page-box">
+        <div class="king-layout1-header"></div>
+        <div class="king-layout1-main clearfix">
+            <!-- sidebar start -->
+            <div class="king-layout1-sidebar" style="width:216px;">
+                <nav style="height:100%;" class="   f14">
+                    <div class="king-vertical-nav4">
+                        <div class="sidebar-inner">
+                            <ul class="navi">
+                                <li class="has_submenu current open active c-open">
+                                    <a href="javascript:void(0);">
+                                        <i class="fa fa-wrench ">
+                                        </i> <span>个人信息</span>
+                                        <span class="pull-right">
+                                            <i class="fa fa-angle-down"></i></span>
+                                    </a>
+                                    <ul class="sub-menu" style="display: block;">
+                                        <li>
+                                            <a href="javascript:void(0);">个人信息设置<i class="fa fa-chevron-right pull-right"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">账号设置<i class="fa fa-chevron-right pull-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="has_submenu current open">
+                                    <a href="javascript:void(0);">
+                                        <i class="fa fa-tasks ">
+                                        </i> <span>我的课程</span>
+                                        <span class="pull-right">
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="sub-menu" style="display: none;">
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
-            <div id="j-setBox" class="setBox">
-                <div class="m-infoEdit" id="auto-id-1561784694254">
-                    <div class="f-cb header">
-                        <div class="f-fl fk">完善个人资料是让别人认识你的第一步</div>
+            <!-- sidebar end -->
+            <!-- content start -->
+            <div class="king-content-wrap">
+                <div class="king-layout1-content" style="margin-left: 216px;">
+                    <form class="form-horizontal">	<div class="form-group clearfix ">
+                        <label class="col-sm-3 control-label bk-lh30 pt0">昵称：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息">
+                        </div>
                     </div>
-                    <div class="editBox" id="auto-id-1561784694253">
-                        <table id="auto-id-1561784694252">
-                            <tbody id="auto-id-1561784694251"><tr>
-                                <td>
-                                    <h4>基本信息</h4>
-                                </td>
-                            </tr>
-                            <tr class="b-10"></tr>
-                            <tr id="auto-id-1561784694250">
-                                <td class="title">
-                                    <em class="f-sign">*</em>昵称
-                                </td>
-                                <td id="auto-id-1561784694249">
-                                    <div class="j-nickName eBcon auto-1561784694475-parent" id="auto-id-1561784694248">
-                                        <div class="m-nicknameui u-insug f-cb auto-1561784694475" id="auto-id-1561784694511">
-                                            <div class="area j-inputArea f-fl" style="width: 175px; height: 25px;" id="auto-id-1561784694247">
-                                                <input type="text" class="j-input" id="auto-id-1561784694518" style="width: 175px; height: 25px;">
-                                                <label class="j-label" id="auto-id-1561784694516" style="">请输入昵称</label>
-                                            </div>
-                                            <div class="infobox j-infobox auto-1561784694277-parent">
-                                                <div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694547" style="">
-                                                    <div class="warningbox j-warningbox f-cb">
-                                                        <span class="j-warningicon warn"></span>
-                                                        <span class="warning j-warning warntxt">昵称不能为空</span>
-                                                    </div>
-                                                    <div class="loadingbox j-loadingbox f-cb" style="display: none;">
-                                                        <span class="icon"></span>
-                                                        <span class="loading j-loading"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr id="auto-id-1561784694257">
-                                <td class="title">头像</td>
-                                <td id="auto-id-1561784694256">
-                                    <div class="j-pic eBcon auto-1561784694479-parent" id="auto-id-1561784694255">
-                                        <div class="f-cb auto-1561784694479" id="auto-id-1561784694684">
-                                            <div class="imgbox">
-                                                <img class="img j-img" src="//img-ph-mirror.nosdn.127.net/NrYhLLFqQIQLrpP-q-ZZrA==/6632383881120329172.jpg?imageView&amp;quality=100&amp;thumbnail=120y120">
-                                            </div>
-                                            <div class="infobox">
-                                                <div class="info">支持jpg、gif、png或bmp格式的图片，建议文件小于20M</div>
-                                                <div class="opt f-cb">
-                                                    <div class="uploadbox j-uploadbox">
-                                                        <div class="u-upd-img-btn" id="auto-id-1561784694686">
-                                                            <a class="upbtn j-upload" title="支持jpg、gif、png或bmp格式的图片，建议文件小于20M">修改头像</a>
-                                                            <div class="flashbox j-flashbox" id="auto-id-1561784694688">
-                                                                <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" width="100%" height="100%" id="_1561784694687">
-                                                                    <param value="//s.stu.126.net/res/swf/imageUpload.swf?884965992b66cee07fb945929ac4b00f" name="movie">
-                                                                    <param value="always" name="allowScriptAccess">
-                                                                    <param value="transparent" name="wmode">
-                                                                    <param value="cbNameSpace=edu.u.imgUpload38&amp;uploadExif=true&amp;uploadUrl=%2F%2Fupload.icourse163.org%2Fapi%2FphotoUpload2.do%3F_upload_mth_%3Dsync_parse%26userdefinesize%3D28x28x1%3B120x120x1%26saveorigin%3Dfalse%26responsetype%3Dxml%26rotatedegree%3D0%26stamptype%3D%26stampstring%3D%26sitefrom%3Dstudy&amp;id=_1561784694687" name="flashvars">
-                                                                    <embed src="//s.stu.126.net/res/swf/imageUpload.swf?884965992b66cee07fb945929ac4b00f" name="_1561784694687" width="100%" height="100%" pluginspage="http://www.adobe.com/go/getflashplayer" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent" flashvars="cbNameSpace=edu.u.imgUpload38&amp;uploadExif=true&amp;uploadUrl=%2F%2Fupload.icourse163.org%2Fapi%2FphotoUpload2.do%3F_upload_mth_%3Dsync_parse%26userdefinesize%3D28x28x1%3B120x120x1%26saveorigin%3Dfalse%26responsetype%3Dxml%26rotatedegree%3D0%26stamptype%3D%26stampstring%3D%26sitefrom%3Dstudy&amp;id=_1561784694687">
-                                                                </object>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feedbox j-feedbox auto-1561784694277-parent">
-                                                        <div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694532" style="display: none;">
-                                                            <div class="warningbox j-warningbox f-cb">
-                                                                <span class="right j-warningicon"></span>
-                                                                <span class="warning j-warning"></span>
-                                                            </div>
-                                                            <div class="loadingbox j-loadingbox f-cb">
-                                                                <span class="icon"></span>
-                                                                <span class="loading j-loading"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="title">性别</td>
-                                <td>
-                                    <div class="sex eBcon">
-                                        <input id="male" type="radio" name="sex" class="j-sex">
-                                        <label for="male">男</label>
-                                        <input id="female" type="radio" name="sex" class="j-sex">
-                                        <label for="female">女</label>
-                                        <input id="privacy" type="radio" name="sex" class="j-sex">
-                                        <label for="privacy">保密</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="j-oneDesEditArea f-dn">
-                                <td class="title">
-                                    <em class="f-sign">*</em>职业头衔</td>
-                                <td>
-                                    <div class="j-oneDes eBcon"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="title">个人介绍</td>
-                                <td>
-                                    <div class="j-description eBcon auto-1561784694477-parent">
-                                        <div class="m-inputcheckui f-cb auto-1561784694477" id="auto-id-1561784694534">
-                                            <div class="inputbox">
-                                                <div class="input j-input auto-1561784694260-parent">
-                                                    <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694567" style="width: 395px; height: 74px;">
-                                                        <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694571" style="width: 395px; height: 74px;"></textarea>
-                                                        <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694569">用一段话介绍你自己，会在你的个人页面显示，最多输入80字</label>
-                                                    </div>
-                                                </div>
-                                                <div class="tips j-tipsNode"></div>
-                                            </div>
-                                            <div class="infobox j-infobox auto-1561784694277-parent"><div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694577" style="display: none;">
-                                                <div class="warningbox j-warningbox f-cb">
-                                                    <span class="right j-warningicon"></span>
-                                                    <span class="warning j-warning"></span>
-                                                </div>
-                                                <div class="loadingbox j-loadingbox f-cb">
-                                                    <span class="icon"></span>
-                                                    <span class="loading j-loading"></span>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h4>联系信息</h4>
-                                </td>
-                            </tr>
-                            <tr class="b-10"></tr>
-                            <tr>
-                                <td class="title">真实姓名</td>
-                                <td>
-                                    <div class="f-fl rnIpt f-cb">
-                                        <div class="j-rnIpt auto-1561784694260-parent">
-                                            <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694550" style="width: 285px; height: 23px;">
-                                                <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694554" style="width: 285px; height: 23px;"></textarea>
-                                                <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694552"></label>
-                                            </div>
-                                        </div>
-                                        <div class="tip f-fs0 s-fc6">用于高等教育课程证书登记与发放，不会以任何形式向第三方透露</div>
-                                    </div>
-                                    <div class="f-fl feed j-rnFb"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="title">
-                                    <em class="f-sign">*</em>常用邮箱</td>
-                                <td>
-                                    <div class="j-mail eBcon">
-                                        <div class="accMail" id="auto-id-1561784694564">
-                                            <div class="j-mailOpr mailOpr">
-                                                <div class="j-add f-cb add">
-                                                    <div class="f-fl auto-1561784694260-parent">
-                                                        <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694584" style="width: 204px; height: 22px;">
-                                                            <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694588" style="width: 204px; height: 22px;"></textarea>
-                                                            <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694586">name@example.com</label>
-                                                        </div>
-                                                        <a class="btn f-fl" id="auto-id-1561784694560">
-                                                            <span>添加</span>
-                                                        </a>
-                                                        <a class="cancel f-fl" id="auto-id-1561784694562" style="display: none;">取消</a>
-                                                        <div class="j-addFb f-fl auto-1561784694277-parent">
-                                                            <div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694524" style="display: none;">
-                                                                <div class="warningbox j-warningbox f-cb">
-                                                                    <span class="right j-warningicon"></span>
-                                                                    <span class="warning j-warning"></span>
-                                                                </div>
-                                                                <div class="loadingbox j-loadingbox f-cb">
-                                                                    <span class="icon"></span>
-                                                                    <span class="loading j-loading"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="j-verify verify f-cb" style="display: none;">
-                                                        <div class="f-fl mailN"></div>
-                                                        <a class="btn btn1 f-fl" target="_blank"><span>发送验证邮件</span></a>
-                                                        <a class="f-fl change" id="auto-id-1561784694561">修改邮箱</a>
-                                                        <div class="f-fl"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="j-mailTxt mailTxt" style="margin-top: 5px;">用于接收来自平台和课程的邮件通知，非常重要</div>
-                                            </div>
-                                        </div>
-                                    </div></td>
-                            </tr>
-                            <tr>
-                                <td class="title">手机号码</td>
-                                <td>
-                                    <div class="f-fl qqIpt f-cb">
-                                        <div class="j-qqIpt auto-1561784694260-parent">
-                                            <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694514" style="width: 285px; height: 23px;">
-                                                <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694652" style="width: 285px; height: 23px;"></textarea>
-                                                <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694650"></label>
-                                            </div>
-                                        </div>
-                                        <div class="tip f-fs0 s-fc6">用于课程的高效交流、方便机构及老师答疑解惑</div>
-                                    </div>
-                                    <div class="f-fl feed j-rnFb"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="title">QQ号码</td>
-                                <td>
-                                    <div class="f-fl qqIpt f-cb">
-                                        <div class="j-qqIpt auto-1561784694260-parent">
-                                            <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694514" style="width: 285px; height: 23px;">
-                                                <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694652" style="width: 285px; height: 23px;"></textarea>
-                                                <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694650"></label>
-                                            </div>
-                                        </div>
-                                        <div class="tip f-fs0 s-fc6">用于课程的高效交流、方便机构及老师答疑解惑</div>
-                                    </div>
-                                    <div class="f-fl feed j-rnFb"></div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="footer">
-                        <a class="btn f-cb j-save" id="auto-id-1561784694504"><span>保存</span></a>
-                    </div>
+                        <div class="form-group clearfix ">
+                            <label class="control-label col-sm-3 bk-lh30 pt0">性别：</label>
+                            <div class="col-sm-9">
+                                <div class="radio pt0">
+                                    <label class="mr10">
+                                        <input type="radio" name="optionsRadios" id="" class="bk-top5" value="邮件">
+                                        <span class="bk-lh30">邮件</span>
+                                    </label><label class="mr10">
+                                    <input type="radio" name="optionsRadios" id="" class="bk-top5" value="女"><span class="bk-lh30">女</span>
+                                </label><label class="mr10">
+                                    <input type="radio" name="optionsRadios" id="" class="bk-top5" value="保密"><span class="bk-lh30">保密</span>
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="control-label col-sm-3 pt0 bk-h30 bk-lh30">头像：</label>
+                            <div class="col-sm-9">
+                                <button class="king-btn king-default king-file-btn king-btn-small bk-mt3 bk-block">选择文件
+                                    <input type="file">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">生日：</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control bk-valign-top" id="" placeholder="如1998-2-12">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">手机号：</label>
+                            <div class="col-sm-9">
+                            <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">邮箱：</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">居住地：</label>
+                            <div class="col-sm-9">
+                                <select name="" id="" class="form-control bk-valign-top">
+                                    <option value="选择项1">选择项1</option>
+                                    <option value="选择项2">选择项2</option>
+                                    <option value="选择项3">选择项3</option>
+                                    <option value="选择项4">选择项4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">专业：</label>
+                            <div class="col-sm-9">
+                                <select name="" id="" class="form-control bk-valign-top">
+                                    <option value="选择项1">选择项1</option>
+                                    <option value="选择项2">选择项2</option>
+                                    <option value="选择项3">选择项3</option>
+                                    <option value="选择项4">选择项4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback clearfix ">
+                            <label class="control-label col-sm-3 pt0" for="introduction">个人描述：</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" rows="3" placeholder="提示信息"></textarea>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <!-- content end -->
         </div>
     </div>
+    <!-- footer -->
+
 </div>
+<!--JS-->
+<script>
+    $(function(){
+        var li = $('.navi li');
+        li.each(function(){
+            $(this).click(function(){
+                if( $(this).hasClass('c-open')){
+                    $(this).find('ul').slideUp(350);
+                    $(this).removeClass('c-open');
+                }else{
+                    $(this).find('ul').slideDown(350);
+                    $(this).addClass('c-open');
+                }
+            })
+        });
+    })
+
+</script>
+
+
+
+<!--&lt;!&ndash;导航栏&ndash;&gt;-->
+<!--<div class="navbar">-->
+<!--    <div class="row">-->
+<!--        <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Medialoot</a></div>-->
+<!--        <div class="column column-40 col-search">-->
+<!--            <div data-toggle="modal" data-target="#settingModal" class="search-btn fa fa-search"></div>-->
+<!--            <input type="text" name="" value="" placeholder="查找课程">-->
+<!--        </div>-->
+<!--        <div class="column column-30">-->
+<!--            <div class="user-section"><a href="#">-->
+<!--                <i class="fa fa-user" aria-hidden="true" style="float:left;position:absolute;top: 20px;right:150px" ;=""></i>-->
+<!--                <div class="username" style="display: block">-->
+<!--                    <h4>个人信息</h4>-->
+<!--                    <p>studentinformation</p>-->
+<!--                </div>-->
+<!--            </a></div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;设置&ndash;&gt;-->
+<!--<div class="settings f-cb g-flow st" id="auto-id-1561784694225">-->
+<!--    <div id="settings-box" class="f-bg">-->
+<!--        <div class="m-setBox" id="auto-id-1561784694223">-->
+<!--            <div class="boxTab j-tabBox f-cb" id="auto-id-1561784694222">-->
+<!--                <a class="j-tabItem current" id="auto-id-1561784694496">资料设置</a>-->
+<!--                <a class="j-tabItem" id="auto-id-1561784694498">收货地址设置</a>-->
+<!--                <a class="j-tabItem" id="auto-id-1561784694500">帐号设置</a>-->
+<!--                <a class="j-tabItem" id="auto-id-1561784694502">邮件设置</a>-->
+<!--            </div>-->
+<!--            <div id="j-setBox" class="setBox">-->
+<!--                <div class="m-infoEdit" id="auto-id-1561784694254">-->
+<!--                    <div class="f-cb header">-->
+<!--                        <div class="f-fl fk">完善个人资料是让别人认识你的第一步</div>-->
+<!--                    </div>-->
+<!--                    <div class="editBox" id="auto-id-1561784694253">-->
+<!--                        <table id="auto-id-1561784694252">-->
+<!--                            <tbody id="auto-id-1561784694251"><tr>-->
+<!--                                <td>-->
+<!--                                    <h4>基本信息</h4>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr class="b-10"></tr>-->
+<!--                            <tr id="auto-id-1561784694250">-->
+<!--                                <td class="title">-->
+<!--                                    <em class="f-sign">*</em>昵称-->
+<!--                                </td>-->
+<!--                                <td id="auto-id-1561784694249">-->
+<!--                                    <div class="j-nickName eBcon auto-1561784694475-parent" id="auto-id-1561784694248">-->
+<!--                                        <div class="m-nicknameui u-insug f-cb auto-1561784694475" id="auto-id-1561784694511">-->
+<!--                                            <div class="area j-inputArea f-fl" style="width: 175px; height: 25px;" id="auto-id-1561784694247">-->
+<!--                                                <input type="text" class="j-input" id="auto-id-1561784694518" style="width: 175px; height: 25px;">-->
+<!--                                                <label class="j-label" id="auto-id-1561784694516" style="">请输入昵称</label>-->
+<!--                                            </div>-->
+<!--                                            <div class="infobox j-infobox auto-1561784694277-parent">-->
+<!--                                                <div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694547" style="">-->
+<!--                                                    <div class="warningbox j-warningbox f-cb">-->
+<!--                                                        <span class="j-warningicon warn"></span>-->
+<!--                                                        <span class="warning j-warning warntxt">昵称不能为空</span>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="loadingbox j-loadingbox f-cb" style="display: none;">-->
+<!--                                                        <span class="icon"></span>-->
+<!--                                                        <span class="loading j-loading"></span>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr id="auto-id-1561784694257">-->
+<!--                                <td class="title">头像</td>-->
+<!--                                <td id="auto-id-1561784694256">-->
+<!--                                    <div class="j-pic eBcon auto-1561784694479-parent" id="auto-id-1561784694255">-->
+<!--                                        <div class="f-cb auto-1561784694479" id="auto-id-1561784694684">-->
+<!--                                            <div class="imgbox">-->
+<!--                                                <img class="img j-img" src="//img-ph-mirror.nosdn.127.net/NrYhLLFqQIQLrpP-q-ZZrA==/6632383881120329172.jpg?imageView&amp;quality=100&amp;thumbnail=120y120">-->
+<!--                                            </div>-->
+<!--                                            <div class="infobox">-->
+<!--                                                <div class="info">支持jpg、gif、png或bmp格式的图片，建议文件小于20M</div>-->
+<!--                                                <div class="opt f-cb">-->
+<!--                                                    <div class="uploadbox j-uploadbox">-->
+<!--                                                        <div class="u-upd-img-btn" id="auto-id-1561784694686">-->
+<!--                                                            <a class="upbtn j-upload" title="支持jpg、gif、png或bmp格式的图片，建议文件小于20M">修改头像</a>-->
+<!--                                                            <div class="flashbox j-flashbox" id="auto-id-1561784694688">-->
+<!--                                                                <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" width="100%" height="100%" id="_1561784694687">-->
+<!--                                                                    <param value="//s.stu.126.net/res/swf/imageUpload.swf?884965992b66cee07fb945929ac4b00f" name="movie">-->
+<!--                                                                    <param value="always" name="allowScriptAccess">-->
+<!--                                                                    <param value="transparent" name="wmode">-->
+<!--                                                                    <param value="cbNameSpace=edu.u.imgUpload38&amp;uploadExif=true&amp;uploadUrl=%2F%2Fupload.icourse163.org%2Fapi%2FphotoUpload2.do%3F_upload_mth_%3Dsync_parse%26userdefinesize%3D28x28x1%3B120x120x1%26saveorigin%3Dfalse%26responsetype%3Dxml%26rotatedegree%3D0%26stamptype%3D%26stampstring%3D%26sitefrom%3Dstudy&amp;id=_1561784694687" name="flashvars">-->
+<!--                                                                    <embed src="//s.stu.126.net/res/swf/imageUpload.swf?884965992b66cee07fb945929ac4b00f" name="_1561784694687" width="100%" height="100%" pluginspage="http://www.adobe.com/go/getflashplayer" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent" flashvars="cbNameSpace=edu.u.imgUpload38&amp;uploadExif=true&amp;uploadUrl=%2F%2Fupload.icourse163.org%2Fapi%2FphotoUpload2.do%3F_upload_mth_%3Dsync_parse%26userdefinesize%3D28x28x1%3B120x120x1%26saveorigin%3Dfalse%26responsetype%3Dxml%26rotatedegree%3D0%26stamptype%3D%26stampstring%3D%26sitefrom%3Dstudy&amp;id=_1561784694687">-->
+<!--                                                                </object>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="feedbox j-feedbox auto-1561784694277-parent">-->
+<!--                                                        <div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694532" style="display: none;">-->
+<!--                                                            <div class="warningbox j-warningbox f-cb">-->
+<!--                                                                <span class="right j-warningicon"></span>-->
+<!--                                                                <span class="warning j-warning"></span>-->
+<!--                                                            </div>-->
+<!--                                                            <div class="loadingbox j-loadingbox f-cb">-->
+<!--                                                                <span class="icon"></span>-->
+<!--                                                                <span class="loading j-loading"></span>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td class="title">性别</td>-->
+<!--                                <td>-->
+<!--                                    <div class="sex eBcon">-->
+<!--                                        <input id="male" type="radio" name="sex" class="j-sex">-->
+<!--                                        <label for="male">男</label>-->
+<!--                                        <input id="female" type="radio" name="sex" class="j-sex">-->
+<!--                                        <label for="female">女</label>-->
+<!--                                        <input id="privacy" type="radio" name="sex" class="j-sex">-->
+<!--                                        <label for="privacy">保密</label>-->
+<!--                                    </div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr class="j-oneDesEditArea f-dn">-->
+<!--                                <td class="title">-->
+<!--                                    <em class="f-sign">*</em>职业头衔</td>-->
+<!--                                <td>-->
+<!--                                    <div class="j-oneDes eBcon"></div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td class="title">个人介绍</td>-->
+<!--                                <td>-->
+<!--                                    <div class="j-description eBcon auto-1561784694477-parent">-->
+<!--                                        <div class="m-inputcheckui f-cb auto-1561784694477" id="auto-id-1561784694534">-->
+<!--                                            <div class="inputbox">-->
+<!--                                                <div class="input j-input auto-1561784694260-parent">-->
+<!--                                                    <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694567" style="width: 395px; height: 74px;">-->
+<!--                                                        <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694571" style="width: 395px; height: 74px;"></textarea>-->
+<!--                                                        <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694569">用一段话介绍你自己，会在你的个人页面显示，最多输入80字</label>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <div class="tips j-tipsNode"></div>-->
+<!--                                            </div>-->
+<!--                                            <div class="infobox j-infobox auto-1561784694277-parent"><div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694577" style="display: none;">-->
+<!--                                                <div class="warningbox j-warningbox f-cb">-->
+<!--                                                    <span class="right j-warningicon"></span>-->
+<!--                                                    <span class="warning j-warning"></span>-->
+<!--                                                </div>-->
+<!--                                                <div class="loadingbox j-loadingbox f-cb">-->
+<!--                                                    <span class="icon"></span>-->
+<!--                                                    <span class="loading j-loading"></span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>-->
+<!--                                    <h4>联系信息</h4>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr class="b-10"></tr>-->
+<!--                            <tr>-->
+<!--                                <td class="title">真实姓名</td>-->
+<!--                                <td>-->
+<!--                                    <div class="f-fl rnIpt f-cb">-->
+<!--                                        <div class="j-rnIpt auto-1561784694260-parent">-->
+<!--                                            <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694550" style="width: 285px; height: 23px;">-->
+<!--                                                <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694554" style="width: 285px; height: 23px;"></textarea>-->
+<!--                                                <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694552"></label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="tip f-fs0 s-fc6">用于高等教育课程证书登记与发放，不会以任何形式向第三方透露</div>-->
+<!--                                    </div>-->
+<!--                                    <div class="f-fl feed j-rnFb"></div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td class="title">-->
+<!--                                    <em class="f-sign">*</em>常用邮箱</td>-->
+<!--                                <td>-->
+<!--                                    <div class="j-mail eBcon">-->
+<!--                                        <div class="accMail" id="auto-id-1561784694564">-->
+<!--                                            <div class="j-mailOpr mailOpr">-->
+<!--                                                <div class="j-add f-cb add">-->
+<!--                                                    <div class="f-fl auto-1561784694260-parent">-->
+<!--                                                        <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694584" style="width: 204px; height: 22px;">-->
+<!--                                                            <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694588" style="width: 204px; height: 22px;"></textarea>-->
+<!--                                                            <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694586">name@example.com</label>-->
+<!--                                                        </div>-->
+<!--                                                        <a class="btn f-fl" id="auto-id-1561784694560">-->
+<!--                                                            <span>添加</span>-->
+<!--                                                        </a>-->
+<!--                                                        <a class="cancel f-fl" id="auto-id-1561784694562" style="display: none;">取消</a>-->
+<!--                                                        <div class="j-addFb f-fl auto-1561784694277-parent">-->
+<!--                                                            <div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694524" style="display: none;">-->
+<!--                                                                <div class="warningbox j-warningbox f-cb">-->
+<!--                                                                    <span class="right j-warningicon"></span>-->
+<!--                                                                    <span class="warning j-warning"></span>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="loadingbox j-loadingbox f-cb">-->
+<!--                                                                    <span class="icon"></span>-->
+<!--                                                                    <span class="loading j-loading"></span>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="j-verify verify f-cb" style="display: none;">-->
+<!--                                                        <div class="f-fl mailN"></div>-->
+<!--                                                        <a class="btn btn1 f-fl" target="_blank"><span>发送验证邮件</span></a>-->
+<!--                                                        <a class="f-fl change" id="auto-id-1561784694561">修改邮箱</a>-->
+<!--                                                        <div class="f-fl"></div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <div class="j-mailTxt mailTxt" style="margin-top: 5px;">用于接收来自平台和课程的邮件通知，非常重要</div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td class="title">手机号码</td>-->
+<!--                                <td>-->
+<!--                                    <div class="f-fl qqIpt f-cb">-->
+<!--                                        <div class="j-qqIpt auto-1561784694260-parent">-->
+<!--                                            <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694514" style="width: 285px; height: 23px;">-->
+<!--                                                <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694652" style="width: 285px; height: 23px;"></textarea>-->
+<!--                                                <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694650"></label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="tip f-fs0 s-fc6">用于课程的高效交流、方便机构及老师答疑解惑</div>-->
+<!--                                    </div>-->
+<!--                                    <div class="f-fl feed j-rnFb"></div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td class="title">QQ号码</td>-->
+<!--                                <td>-->
+<!--                                    <div class="f-fl qqIpt f-cb">-->
+<!--                                        <div class="j-qqIpt auto-1561784694260-parent">-->
+<!--                                            <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694514" style="width: 285px; height: 23px;">-->
+<!--                                                <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694652" style="width: 285px; height: 23px;"></textarea>-->
+<!--                                                <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694650"></label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="tip f-fs0 s-fc6">用于课程的高效交流、方便机构及老师答疑解惑</div>-->
+<!--                                    </div>-->
+<!--                                    <div class="f-fl feed j-rnFb"></div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                    <div class="footer">-->
+<!--                        <a class="btn f-cb j-save" id="auto-id-1561784694504"><span>保存</span></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 
