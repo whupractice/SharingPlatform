@@ -13,7 +13,7 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
 
     //初始化管理员信息
-    $scope.initManager = function () {
+    $scope.initLessonManager = function () {
         $scope.currentManager = Data.get();//获取当前管理员信息
     };
 

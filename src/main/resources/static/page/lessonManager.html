@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../shared/css/milligram.min.css">
 </head>
 <body>
-<div class="row" ng-controller="lessonManagerCtrl">
+<div class="row" ng-controller="lessonManagerCtrl" ng-init="initLessonManager()">
     <div id="sidebar" class="column">
         <h5>Navigation</h5>
         <ul>
@@ -25,7 +25,7 @@
         <div class="row grid-responsive">
             <div class="column page-heading">
                 <div class="large-card">
-                    <h1 style="margin-bottom: 10px">Hey {{currrentUser.nickName}}</h1>
+                    <h1 style="margin-bottom: 10px">Hey {{currentManager.nickName}}</h1>
                     <p class="text-large">尊贵的课程管理员，伊万诺夫提醒您：
                         <span style="font-weight: bold">操作千万条，谨慎第一条，操作不规范，管理两行泪。</span></p>
                     <p style="float: right"> -- 最爱您的伊万诺夫</p>
