@@ -13,9 +13,9 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
     $scope.nowPage = 1;
 
 
-    //初始化管理员信息
+    //初始化学生信息
     $scope.initstudent = function () {
-        $scope.currentStudent = Data.get();//获取当前管理员信息
+        $scope.currentStudent = Data.get();//获取当前学生信息
     };
 
 
@@ -41,6 +41,42 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
     $scope._page_4_ = function () {
         return $scope.nowPage == 4;
     };
+
+    //更新学生信息
+    $scope.updateStuInfo = function () {
+        let phoneNumber = $scope.currentStudent.phone;
+        let  realName=$scope.currentStudent.realName;
+        let nickName = $('#nickName').val();
+        let pwd = $scope.currentStudent.pwd;
+        let sex = $('#sex').find('option:selected').text();
+        let email = $('#email').val();
+        let birth = $('#birth').val();
+        let introduction = $('#introduction').val();
+
+        $http({
+            method: 'PUT',
+            url: '/student',
+            data:{
+                "phone": phoneNumber,
+                "birth": birth,
+                "email": email,
+              "pwd":pwd,
+                "realName":realName,
+                "nickName": nickName,
+"introduction":introduction,
+                "sex": sex
+            }
+        }).then(function successCallback(response) {
+            if(response.status == 200){
+                alert("修改成功！");
+            }else{
+                alert("修改失败!");
+            }
+        })
+
+    };
+
+
 
 
 });
