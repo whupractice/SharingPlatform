@@ -14,15 +14,16 @@
 <body>
 <body>
 <!--HTML-->
-<div class="king-layout-container" id="layoutPanel">
+<div class="king-layout-container container" id="layoutPanel" style="margin-top: 15px;" ng-controller="studentCtrl" ng-init="initstudent()">
 
     <!--  -->
     <div class="king-page-box">
-        <div class="king-layout1-header"></div>
+        <div class="king-layout1-header">
+        </div>
         <div class="king-layout1-main clearfix">
             <!-- sidebar start -->
             <div class="king-layout1-sidebar" style="width:216px;">
-                <nav style="height:100%;" class="   f14">
+                <div style="height:100%;" class="   f14">
                     <div class="king-vertical-nav4">
                         <div class="sidebar-inner">
                             <ul class="navi">
@@ -35,10 +36,10 @@
                                     </a>
                                     <ul class="sub-menu" style="display: block;">
                                         <li>
-                                            <a href="javascript:void(0);">个人信息设置<i class="fa fa-chevron-right pull-right"></i></a>
+                                            <a href="javascript:void(0);" ng-click="jump_(1)">个人信息设置<i class="fa fa-chevron-right pull-right"></i></a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">账号设置<i class="fa fa-chevron-right pull-right"></i></a>
+                                            <a href="javascript:void(0);" ng-click="jump_(2)">账号设置<i class="fa fa-chevron-right pull-right"></i></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -50,42 +51,53 @@
                                             <i class="fa fa-angle-down"></i>
                                         </span>
                                     </a>
-                                    <ul class="sub-menu" style="display: none;">
+                                    <ul class="sub-menu" style="display: block;">
+                                        <li >
+                                            <a href="javascript:void(0);" ng-click="jump_(3)">已加入课程<i class="fa fa-chevron-right pull-right"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" ng-click="jump_(4)">消息通知<i class="fa fa-chevron-right pull-right"></i></a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                </nav>
+                </div>
             </div>
             <!-- sidebar end -->
             <!-- content start -->
+            <div ng-if="_page_1_()">
             <div class="king-content-wrap">
                 <div class="king-layout1-content" style="margin-left: 216px;">
-                    <form class="form-horizontal">	<div class="form-group clearfix ">
+                    <form class="form-horizontal" style="margin-top: 25px">
+                        <div class="form-group clearfix ">
                         <label class="col-sm-3 control-label bk-lh30 pt0">昵称：</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息" style="position: relative;
+    top: -15px;">
                         </div>
                     </div>
                         <div class="form-group clearfix ">
                             <label class="control-label col-sm-3 bk-lh30 pt0">性别：</label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-6">
                                 <div class="radio pt0">
                                     <label class="mr10">
-                                        <input type="radio" name="optionsRadios" id="" class="bk-top5" value="邮件">
-                                        <span class="bk-lh30">邮件</span>
+                                        <input type="radio" name="optionsRadios" id="" class="bk-top5" value="男" style="position: relative;top: -10px;">
+                                        <span class="bk-lh30" style="position: relative;top: -10px;">男</span>
                                     </label><label class="mr10">
-                                    <input type="radio" name="optionsRadios" id="" class="bk-top5" value="女"><span class="bk-lh30">女</span>
+                                    <input type="radio" name="optionsRadios" id="" class="bk-top5" value="女" style="position: relative;top: -10px;">
+                                    <span class="bk-lh30" style="position: relative;top: -10px;">女</span>
                                 </label><label class="mr10">
-                                    <input type="radio" name="optionsRadios" id="" class="bk-top5" value="保密"><span class="bk-lh30">保密</span>
+                                    <input type="radio" name="optionsRadios" id="" class="bk-top5" value="保密" style="position: relative;top: -10px;">
+                                    <span class="bk-lh30"style="position: relative;top: -10px;">保密</span>
                                 </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="control-label col-sm-3 pt0 bk-h30 bk-lh30">头像：</label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-6">
                                 <button class="king-btn king-default king-file-btn king-btn-small bk-mt3 bk-block">选择文件
                                     <input type="file">
                                 </button>
@@ -93,26 +105,30 @@
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">生日：</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control bk-valign-top" id="" placeholder="如1998-2-12">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control bk-valign-top" id="" placeholder="如1998-2-12" style="position: relative;
+    top: -15px;">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">手机号：</label>
-                            <div class="col-sm-9">
-                            <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息">
+                            <div class="col-sm-6">
+                            <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息" style="position: relative;
+    top: -15px;">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">邮箱：</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息" style="position: relative;
+    top: -15px;">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">居住地：</label>
-                            <div class="col-sm-9">
-                                <select name="" id="" class="form-control bk-valign-top">
+                            <div class="col-sm-6">
+                                <select name="" id="" class="form-control bk-valign-top" style="position: relative;
+    top: -15px;">
                                     <option value="选择项1">选择项1</option>
                                     <option value="选择项2">选择项2</option>
                                     <option value="选择项3">选择项3</option>
@@ -122,8 +138,9 @@
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">专业：</label>
-                            <div class="col-sm-9">
-                                <select name="" id="" class="form-control bk-valign-top">
+                            <div class="col-sm-6">
+                                <select name="" id="" class="form-control bk-valign-top" style="position: relative;
+    top: -15px;">
                                     <option value="选择项1">选择项1</option>
                                     <option value="选择项2">选择项2</option>
                                     <option value="选择项3">选择项3</option>
@@ -133,18 +150,322 @@
                         </div>
                         <div class="form-group has-feedback clearfix ">
                             <label class="control-label col-sm-3 pt0" for="introduction">个人描述：</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" rows="3" placeholder="提示信息"></textarea>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" rows="3" placeholder="提示信息" style="position: relative;
+    top: -15px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="button" class="king-btn mr10  king-success">提交</button>
+                                <button type="button" class="king-btn king-default ">取消</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
             <!-- content end -->
+            </div>
+        </div>
+
+        <div ng-if="_page_2_()">
+            <div class="king-content-wrap">
+                <div class="king-layout1-content" style="margin-left:300px;margin-right:200px;margin-top:-280px">
+                    <form class="form-horizontal" style="margin-top: 25px">
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">原密码</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control bk-valign-top" id="" placeholder="请输入原本的密码" style="position: relative;
+    top: -15px;">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">新密码</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control bk-valign-top" id="" placeholder="请输入新密码" style="position: relative;
+    top: -15px;">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">确认密码</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control bk-valign-top" id="" placeholder="请再次输入新密码" style="position: relative;
+    top: -15px;">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="button" class="king-btn mr10  king-success">提交</button>
+                                <button type="button" class="king-btn king-default ">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+            <!-- content end -->
+
+    <div ng-if="_page_3_()">
+
+
+        <div class="king-content-wrap">
+            <div class="king-layout1-content" style="margin-left:300px;margin-right:200px;margin-top:-280px;margin-bottom: 50px">
+                <section class="panel panel-box-1">
+                    <div class="panel-top bg-success1">
+                        <div class="divider divider"></div>
+                        <i class="fa fa-user f36"></i>
+                        <div class="divider divider"></div>
+                    </div>
+                    <div class="list-justified-container">
+                        <ul class="list-justified text-center">
+                            <li>
+                                <p class="f24">575</p>
+                                <p class="text-muted">微博</p>
+                            </li>
+                            <li>
+                                <p class="f24">23</p>
+                                <p class="text-muted">关注</p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <br>
+                <table class="table mb0 pr15 ranger-box2  ">
+                    <thead>
+                    <tr>
+                        <th style="width: 70px;">#</th>
+                        <th style="width: 15%;">课程名</th>
+                        <th style="width: 15%;">授课教师</th>
+                        <th style="width: 15%;">院校</th>
+                        <th style="width: 15%;">类别</th>
+                        <th style="width: 15%;">进入课程</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="width: 70px;">1</td>
+                        <td style="width: 15%;">微观经济学</td>
+                        <td style="width: 15%;">菜徐鲲</td>
+                        <td style="width: 15%;">篮球学院</td>
+                        <td style="width: 15%;">经济学</td>
+                        <td>
+                            <button class="btn btn-xs btn-success">
+                                <i class="glypgicon glyphicon-ok"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-xs btn-warning">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button class="btn btn-xs btn-danger">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 70px;">2</td>
+                        <td style="width: 15%;">Ravi Kumar</td>
+                        <td style="width: 15%;">India</td>
+                        <td style="width: 15%;">23/12/2012</td>
+                        <td style="width: 15%;">Paid</td>
+                        <td>
+                            <button class="btn btn-xs btn-success">
+                                <i class="glypgicon glyphicon-ok"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-xs btn-warning">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button class="btn btn-xs btn-danger">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 70px;">3</td>
+                        <td style="width: 15%;">Ravi Kumar</td>
+                        <td style="width: 15%;">India</td>
+                        <td style="width: 15%;">23/12/2012</td>
+                        <td style="width: 15%;">Paid</td>
+                        <td>
+                            <button class="btn btn-xs btn-success">
+                                <i class="glypgicon glyphicon-ok"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-xs btn-warning">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button class="btn btn-xs btn-danger">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 70px;">4</td>
+                        <td style="width: 15%;">Ravi Kumar</td>
+                        <td style="width: 15%;">India</td>
+                        <td style="width: 15%;">23/12/2012</td>
+                        <td style="width: 15%;">Paid</td>
+                        <td>
+                            <button class="btn btn-xs btn-success">
+                                <i class="glypgicon glyphicon-ok"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-xs btn-warning">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button class="btn btn-xs btn-danger">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 70px;">5</td>
+                        <td style="width: 15%;">Ravi Kumar</td>
+                        <td style="width: 15%;">India</td>
+                        <td style="width: 15%;">23/12/2012</td>
+                        <td style="width: 15%;">Paid</td>
+                        <td>
+                            <button class="btn btn-xs btn-success">
+                                <i class="glypgicon glyphicon-ok"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-xs btn-warning">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button class="btn btn-xs btn-danger">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 70px;">6</td>
+                        <td style="width: 15%;">Ravi Kumar</td>
+                        <td style="width: 15%;">India</td>
+                        <td style="width: 15%;">23/12/2012</td>
+                        <td style="width: 15%;">Paid</td>
+                        <td>
+                            <button class="btn btn-xs btn-success">
+                                <i class="glypgicon glyphicon-ok"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-xs btn-warning">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button class="btn btn-xs btn-danger">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <template id="header_tpl_15622091094562">
+                    <tr>
+                        <th style="width: 70px;">#index#</th>
+                        <th style="width: 15%;">#name#</th>
+                        <th style="width: 15%;">#position#</th>
+                        <th style="width: 15%;">#date#</th>
+                        <th style="width: 15%;">#type#</th>
+                        <th style="width: 15%;">#type#</th>
+                        <th>操作</th>
+                    </tr>
+                </template>
+                <template id="tpl_15622091094562">
+                    <tr>
+                        <td style="width: 70px;">#index#</td>
+                        <td style="width: 15%;">#name#</td>
+                        <td style="width: 15%;">#position#</td>
+                        <td style="width: 15%;">#date#</td>
+                        <td style="width: 15%;">#type#</td>
+                        <td>
+                            <button class="btn btn-xs btn-success">
+                                <i class="glypgicon glyphicon-ok"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-xs btn-success">
+                                <i class="glypgicon glyphicon-ok"></i>
+                            </button>
+                            <button class="btn btn-xs btn-warning">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button class="btn btn-xs btn-danger">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </template>
+                <!-- 设置面板End -->
+            </div>
         </div>
     </div>
-    <!-- footer -->
 
+    <div ng-if="_page_4_()">
+        <div class="king-page-box">
+            <div class="king-layout1-header"></div>
+            <div class="king-layout1-main clearfix">
+                <!-- sidebar start -->
+                <div class="king-layout1-sidebar" style="width:216px;"></div>
+                <!-- sidebar end -->
+                <!-- content start -->
+                <div class="king-content-wrap">
+                    <div class="king-layout1-content" style="    margin-left: 260px;margin-right: 80px;">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="badge king-info">just now</span>
+                                <i class="fa fa-calendar"></i>
+                                <span>RAP</span>
+                            </li>
+                            <li class="list-group-item">
+                            <span class="badge king-info">4 minutes ago</span>
+                            <i class="fa fa-comment"></i>
+                            <span>回复邮件</span>
+                        </li>
+                            <li class="list-group-item">
+                            <span class="badge king-info">23 minutes ago</span>
+                            <i class="fa fa-comment"></i>
+                            <span>购物车</span>
+                        </li>
+                            <li class="list-group-item">
+                            <span class="badge king-info">46 minutes ago</span>
+                            <i class="fa fa-comment"></i>
+                            <span>支付</span>
+                        </li>
+                            <li class="list-group-item">
+                            <span class="badge king-info">1 hour ago</span>
+                            <i class="fa fa-comment"></i>
+                            <span>添加新用户</span>
+                        </li>
+                            <li class="list-group-item">
+                            <span class="badge king-info">2 hours ago</span>
+                            <i class="fa fa-comment"></i>
+                            <span>任务: "pick up dry cleaning"</span>
+                        </li>
+                            <li class="list-group-item">
+                            <span class="badge king-info">yesterday</span>
+                            <i class="fa fa-comment"></i>
+                            <span>保存文件</span>
+                        </li>
+                            <li class="list-group-item">
+                            <span class="badge king-info">two days ago</span>
+                            <i class="fa fa-comment"></i>
+                            <span>任务: "fix error on sales page"</span>
+                        </li>
+                        </ul>
+                        <!-- 设置面板Start -->
+                        <!-- 设置面板End -->
+                    </div>
+                </div>
+                <!-- content end -->
+            </div>
+        </div>
+    </div>
 </div>
 <!--JS-->
 <script>
