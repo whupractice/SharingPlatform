@@ -5,7 +5,7 @@ var API_index = angular.module('myApp');
  * @Description : 主页面控制器
  * @type        : Controller
  */
-API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$stateParams) {
+API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$stateParams,Data) {
 
 
     $scope.lesson = null;
@@ -22,7 +22,7 @@ $scope.Si=null;//Studentinformation
 
     $scope.currentScore = 4.3;
     $scope.f = 0.3;
-
+$scope.student=null;
 
 
 
@@ -35,6 +35,7 @@ $scope.Si=null;//Studentinformation
        $scope.getTeachers();
        //$scope.getScores();
        $scope.getComments();
+
     };
 
 
@@ -142,21 +143,40 @@ $scope.Si=null;//Studentinformation
         })
     }
 
-// //根据获取昵称
-//     $scope.getNickname=function () {
-//         let lessonId = $scope.lesson.lessonId;//获取课程id
-//         $http({
-//             method:'GET',
-//             url:'/sl/getStudentByLessonId',
-//             params:{
-//                 "lessonId":lessonId
-//             }
-//         }).then(function successCallback(response) {
-//             $scope.Nn=response.data;
-//         })
-//
-//     }
 
+ //参加课程
+    $scope.joinCourse=function () {
+
+        let lessonId = $scope.lesson.lessonId;//获取课程id
+        $scope.student = Data.get();
+        let phone = $scope.student.phone;
+
+        if($scope.student.phone==0){  //未登录则跳转登录界面
+            $state.go('login');
+        }
+        else if($scope.student.isManager == 1 || $scope.student.isLessonManager == 1){
+            alert("管理员不能选课！");
+            return;
+        }
+        else {
+            $http({
+                method: 'POST',
+                url: '/sl',
+                //如果swagger文档里参数是body类型，参数用data传递；若为query，参数用params
+                data: {
+                    "phone": phone,
+                    "lessonId": lessonId
+                }
+            }).then(function successCallback(response) {
+                if (response.status == 200) {
+                    alert("success");
+                    //TODO 跳转奥课程学习界面
+                } else {
+                    alert("插入失败");
+                }
+            })
+        }
+    };
 });
 
 
