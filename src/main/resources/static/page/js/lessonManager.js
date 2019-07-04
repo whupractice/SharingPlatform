@@ -307,10 +307,14 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
         let teacherIntro = $('#addTIntro').val();
 
         $http({
-            method: 'GET',
-            url: '/lesson/hot',
-            params: {
-                lessonNum: $scope.hotNum
+            method: 'POST',
+            url: '/teacher',
+            data: {
+                "teacherName": teacherName,
+                "job":job,
+                "academyName": academyName,
+                "schoolName": schoolName,
+                "teacherIntro": teacherIntro
             }
         }).then(function successCallback(response) {
             $scope.hotLesson = response.data;
@@ -323,7 +327,6 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
     $scope.getAcademyLesson = function () {
         let academyName = $('#addTAcademy').find('option:selected').text();
         let schoolName = $scope.currentManager.schoolName;
-
         $http({
             method: 'GET',
             url: '/lesson/schoolAndAcademy',
@@ -332,7 +335,7 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
                 "academyName": academyName
             }
         }).then(function successCallback(response) {
-
+            $scope.academyLesson = response.data;
         })
     };
 
