@@ -137,7 +137,7 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //选择页号
     $scope.selectP = function (page) {
-        if ($scope.totalP == 0 && (page < 1 || page > $scope.totalPage))
+        if ($scope.totalP == 0 && (page < 1 || page > $scope.totalP))
             return;
         $scope.currentP = page;
         $scope.getAllLessonManagers();

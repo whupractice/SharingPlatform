@@ -94,6 +94,7 @@ public class LessonController {
     @ApiParam(name = "keyword",value = "课程名关键词")
     @GetMapping("/keyword")
     public List<Object> getLessonByKeyword(@RequestParam String keyword) {
+
         return lessonService.getLessonByKeyword(keyword);
     }
 
@@ -161,6 +162,14 @@ public class LessonController {
     @DeleteMapping("")
     public void deleteLesson(@RequestParam("lessonId") long lessonId){
         lessonService.deleteLesson(lessonId);
+    }
+
+
+    @ApiOperation(value = "根据学校和学院获取课程",notes = "根据学校和学院获取课程",httpMethod = "GET")
+    @GetMapping("/schoolAndAcademy")
+    public List<LessonEntity> getLessonsBySchoolAndAcademy(@RequestParam(value = "schoolName")@ApiParam(name="schoolName",value = "学校名") String schoolName,
+                                                           @RequestParam(value = "academyName")@ApiParam(name="academyName",value = "学院名") String academyName){
+            return lessonService.getLessonsBySchoolAndAcademy(schoolName,academyName);
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.baseClass.Lesson;
 import com.example.demo.entity.LessonEntity;
 import com.example.demo.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -142,6 +143,13 @@ public class LessonService {
       */
     public List<LessonEntity> getByStatusAndSubject(String status,String subject) {
         return lessonRepository.getByStatusAndSubject(status,subject);
+    }
+
+
+
+    //根据学校和学院查询课程
+    public List<LessonEntity> getLessonsBySchoolAndAcademy(String sName,String aName){
+        return lessonRepository.getLessonsBySchoolAndAcademy(sName,aName);
     }
 
 

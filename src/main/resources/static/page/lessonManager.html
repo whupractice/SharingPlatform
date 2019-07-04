@@ -45,44 +45,72 @@
                         <div class="form-group">
                             <label class="col-lg-2 control-label">姓名</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="relName" type="text" >
+                                <input class="form-control" id="realName" type="text"
+                                       value="{{currentManager.realName}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-2 control-label" >昵称</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="nickName" type="text" >
+                                <input class="form-control" id="nickName" type="text"
+                                value="{{currentManager.nickName}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" >密码</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" id="pwd" type="text"
+                                       value="{{currentManager.pwd}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" >学校</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" id="schoolName" type="text"
+                                       value="{{currentManager.schoolName}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" >学院</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" id="academy" type="text"
+                                       value="{{currentManager.academyName}}" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-2 control-label" >性别</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="sex" type="text" >
+                                <select id="sex">
+                                    <option class="selected" value="male">男</option>
+                                    <option  value="female">女</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-2 control-label">邮箱</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="email" type="text" >
+                                <input class="form-control" id="email" type="text"
+                                value="{{currentManager.email}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-2 control-label">生日</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="birth" type="date" >
+                                <input class="form-control" id="birth" type="date"
+                                value="{{currentManager.birth}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-2 control-label">个人简介</label>
                             <div class="col-lg-8">
-                                <textarea class="form-control" rows="5" placeholder="问题描述"></textarea>
-                                <p class="king-help-block text-danger">问题描述问题描述问题描述问题描述问题描述问题描述</p>
+                                <textarea class="form-control" rows="5" placeholder="个人简介"
+                                id = "introduction">{{currentManager.introduction}}</textarea>
                             </div>
                         </div>
 
 
                         <div style="text-align: center;">
-                            <button type="submit" class="btn btn-success mr10">保存</button>
+                            <button type="submit" class="btn btn-success mr10" ng-click="updateLeMan()">保存</button>
                             <button type="reset" class="btn btn-danger king-default">取消</button>
                         </div>
                     </fieldset>
@@ -102,17 +130,8 @@
                 课程管理员列表
             </div>
             <div class="panel-body panel-search-body">
-                <div class="input-group pull-right king-input-group">
-                    <input type="text" class="form-control pl30 king-form-control" placeholder="请输入关键字">
-                    <span class="glyphicon glyphicon-search form-control-feedback king-form-control-feedback"></span>
-                </div>
                 <button class="king-btn king-radius king-primary" title="添加变量" data-toggle="modal"
                         data-target="#addLModal">添加课程</button>
-                <div class="form-group pull-right">
-                    <select id="keyType" class="form-control service-sub-title">
-                        <option value="lessonName" selected="selected">课程名</option>
-                    </select>
-                </div>
             </div>
             </div>
             <table class="table table-bordered table7_demo">
@@ -128,100 +147,121 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>马克思主义</td>
-                    <td>武汉大学</td>
-                    <td>马克思主义学院</td>
-                    <td>哲学</td>
+                <tr ng-repeat="x in currentLesson">
+                    <td>{{x.lessonId}}</td>
+                    <td>{{x.lessonName}}</td>
+                    <td>{{x.schoolName}}</td>
+                    <td>{{x.academyName}}</td>
+                    <td>{{x.subject}}</td>
                     <td>
-                        <span class="label label-info">Active</span>
+                        <span class="label label-info">{{x.status}}</span>
                     </td>
                     <td>
-                        <button class="btn btn-xs btn-warning" title="编辑" data-toggle="modal" data-target="#lessonModal">
+                        <button class="btn btn-xs btn-info" title="详情" data-toggle="modal" data-target="#lessonModal"
+                                ng-click="bindLesson(x)">
                             <i class="glyphicon glyphicon-edit"></i>
                         </button>
-                        <button class="btn btn-xs btn-danger" title="删除">
-                            <i class="glyphicon glyphicon-remove"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ravi Kumar</td>
-                    <td>India</td>
-                    <td>23/12/2012</td>
-                    <td>Paid</td>
-                    <td>
-                        <span class="label label-danger">Banned</span>
-                    </td>
-                    <td>
-                        <button class="btn btn-xs btn-warning" title="编辑">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </button>
-                        <button class="btn btn-xs btn-danger" title="删除">
-                            <i class="glyphicon glyphicon-remove"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Ravi Kumar</td>
-                    <td>India</td>
-                    <td>23/12/2012</td>
-                    <td>Paid</td>
-                    <td>
-                        <span class="label label-success">Active</span>
-                    </td>
-                    <td>
-                        <button class="btn btn-xs btn-warning" title="编辑">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </button>
-                        <button class="btn btn-xs btn-danger" title="删除">
-                            <i class="glyphicon glyphicon-remove"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ravi Kumar</td>
-                    <td>India</td>
-                    <td>23/12/2012</td>
-                    <td>Paid</td>
-                    <td>
-                        <span class="label label-success">Active</span>
-                    </td>
-                    <td>
-                        <button class="btn btn-xs btn-warning" title="编辑">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </button>
-                        <button class="btn btn-xs btn-danger" title="删除">
-                            <i class="glyphicon glyphicon-remove"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Ravi Kumar</td>
-                    <td>India</td>
-                    <td>23/12/2012</td>
-                    <td>Paid</td>
-                    <td>
-                        <span class="label label-danger">Banned</span>
-                    </td>
-                    <td>
-                        <button class="btn btn-xs btn-warning" title="编辑">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </button>
-                        <button class="btn btn-xs btn-danger" title="删除">
+                        <button class="btn btn-xs btn-danger" title="删除" data-toggle="modal" data-target="#deleteLModal"
+                        ng-click="bindLesson(x)">
                             <i class="glyphicon glyphicon-remove"></i>
                         </button>
                     </td>
                 </tr>
                 </tbody>
             </table>
+            <ul class="pagination pagination-sm pull-left mt10" style="margin-top: 10px">
+                <li class="disabled">
+                    <a ng-click="pre_()" aria-label="Previous">
+                        <span aria-hidden="true">«</span>
+                    </a>
+                </li>
+                <li ng-repeat="page in Ps_">
+                    <a href ng-click="selectP_(page)" class="pageIndex">{{page}}</a>
+                </li>
+                <li>
+                    <a ng-click="next_()" aria-label="Next">
+                        <span aria-hidden="true">»</span>
+                    </a>
+                </li>
+            </ul>
 
 
+
+            <div class="modal fade" id="addLModal" tabindex="-1" role="dialog" aria-labelledby="addLModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="addLModalLabel">添加课程</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">课程名: </label>
+                                        <input type="text" class="form-control" id="addLessonName">
+                                        <label class="control-label">学科: </label>
+                                        <select id="addSubject">
+                                            <option>哲学</option><option>理学</option>
+                                            <option>经济学</option><option>工学</option>
+                                            <option>法学</option><option>农学</option>
+                                            <option>教育学</option><option>医学</option>
+                                            <option>文学</option><option>管理学</option>
+                                            <option>历史学</option><option>艺术学</option>
+                                            <option>体育</option>
+                                        </select>
+                                        <label class="control-label">学分: </label>
+                                        <select id=addCredit>
+                                            <option>1</option><option>2</option>
+                                            <option>3</option><option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        <label class="control-label">起止时间: </label>
+                                        <input type="date" id="addStartTime">
+                                        <input type="date" id="addEndTime">
+                                        <label class="control-label">推荐级别: </label>
+                                        <select id=addRecommend>
+                                            <option value="1">精品</option><option value="0">普通</option>
+                                        </select>
+                                        <label class="control-label">课程简介: </label>
+                                        <textarea class="form-control" rows="5" placeholder="课程简介"
+                                        id="addIntroduction"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal"
+                            ng-click="addLesson()">提交</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+            <div class="modal fade" id="deleteLModal" tabindex="-1" role="dialog" aria-labelledby="deleteLModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="deleteLModalLabel">删除课程</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-15">
+                                    <div class="form-group">
+                                        <i class="fa fa-warning fa-2x" style="color:red"></i><span style="padding-left: 10px;">删除此课程后，不可撤销。</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" id="DelLBtn" class="btn btn-danger"
+                                    ng-click="deleteLesson()">删除</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
 
             <div class="modal fade" id="lessonModal" tabindex="-1" role="dialog" aria-labelledby="lessonModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -235,14 +275,16 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">课程名: </label>
-                                        <input type="text" class="form-control" id="lessonName" value="马克思主义" readonly>
+                                        <input type="text" class="form-control" value="{{currentL.lessonName}}" readonly>
                                         <label class="control-label">学科: </label>
-                                        <input type="text" class="form-control" id="subject" value="哲学" readonly>
+                                        <input type="text" class="form-control" id="subject" value="{{currentL.subject}}" readonly>
                                         <label class="control-label">起止时间: </label>
-                                        <input type="date" id="startTime" readonly>
-                                        <input type="date" id="endTime" readonly>
+                                        <input type="date" value="{{currentL.startTime}}" readonly>
+                                        <input type="date" value="{{currentL.endTime}}" readonly>
                                         <label class="control-label">课程简介: </label>
-                                        <textarea class="form-control" rows="5" placeholder="课程简介" readonly></textarea>
+                                        <textarea class="form-control" rows="5" readonly>
+                                            {{currentL.lessonIntro}}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -253,7 +295,6 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->
             </div>
-
 
         </div>
 
@@ -266,7 +307,7 @@
 
 
             <div class="panel panel-default pannel-overflow panel-tables table7_demo">
-                <div class="panel-heading"> <i class="fa fa-list-ul"></i> 变量列表
+                <div class="panel-heading"> <i class="fa fa-list-ul"></i> 老师列表
                 </div>
                 <div class="panel-body panel-search-body" style="margin: 30px">
                     <a class="king-btn king-radius king-primary" title="添加变量">添加老师</a>
@@ -277,111 +318,22 @@
                     <table class="table table-header-bg table-hover mb0" id="table_demo2">
                         <thead>
                         <tr>
-                            <th style="width: 25px">
-                                <input type="checkbox" name="checkall" value="">
-                            </th>
-                            <th style="width: 100px">FuncID</th>
-                            <th style="width:25%">key</th>
-                            <th style="width:25%">作用域</th>
-                            <th style="width:15%">值</th>
+                            <th style="width: 100px">id</th>
+                            <th style="width:25%">姓名</th>
+                            <th style="width:25%">职位</th>
+                            <th style="width:15%">学校</th>
+                            <th style="width:15%">学院</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        <tr>
-                            <td>
-                                <input type="checkbox" value="">
-                            </td>
-                            <td>1</td>
-                            <td>TclsWorldID</td>
-                            <td>s1.*.*.*</td>
-                            <td>abc</td>
-                            <td>
-                                <button class="btn btn-xs btn-primary" title="编辑">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </button>
-                                <button class="btn btn-xs btn-danger" title="删除">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" value="">
-                            </td>
-                            <td>1</td>
-                            <td>TclsWorldID</td>
-                            <td>s1.*.*.*</td>
-                            <td>abc</td>
-                            <td>
-                                <button class="btn btn-xs btn-primary" title="编辑">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </button>
-                                <button class="btn btn-xs btn-danger" title="删除">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" value="">
-                            </td>
-                            <td>1</td>
-                            <td>TclsWorldID</td>
-                            <td>s1.*.*.*</td>
-                            <td>abc</td>
-                            <td>
-                                <button class="btn btn-xs btn-primary" title="编辑">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </button>
-                                <button class="btn btn-xs btn-danger" title="删除">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" value="">
-                            </td>
-                            <td>1</td>
-                            <td>TclsWorldID</td>
-                            <td>s1.*.*.*</td>
-                            <td>abc</td>
-                            <td>
-                                <button class="btn btn-xs btn-primary" title="编辑">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </button>
-                                <button class="btn btn-xs btn-danger" title="删除">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" value="">
-                            </td>
-                            <td>1</td>
-                            <td>TclsWorldID</td>
-                            <td>s1.*.*.*</td>
-                            <td>abc</td>
-                            <td>
-                                <button class="btn btn-xs btn-primary" title="编辑">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </button>
-                                <button class="btn btn-xs btn-danger" title="删除">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" value="">
-                            </td>
-                            <td>1</td>
-                            <td>TclsWorldID</td>
-                            <td>s1.*.*.*</td>
-                            <td>abc</td>
+                        <tr ng-repeat="x in teachers">
+                            <td>{{x.teacheId}}</td>
+                            <td>{{x.teacherName}}</td>
+                            <td>{{x.job}}</td>
+                            <td>{{x.schoolName}}</td>
+                            <td>{{x.academyName}}</td>
                             <td>
                                 <button class="btn btn-xs btn-primary" title="编辑">
                                     <i class="glyphicon glyphicon-edit"></i>
@@ -396,9 +348,47 @@
                     </table>
                 </div>
 
+            </div>
 
+            <div class="modal fade" id="addTModal" tabindex="-1" role="dialog" aria-labelledby="addTModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="addTModalLabel">课程信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">教师名: </label>
+                                        <input type="text" class="form-control"  id="addTName">
+                                        <label class="control-label">职位: </label>
+                                        <input type="text" class="form-control" id="addTJob">
+                                        <label class="control-label">学院: </label>
+                                        <select id="addTAcademy">
+                                            <option ng-repeat="x in academys">{{x.academyName}}</option>
+                                        </select>
+                                        <label class="control-label">课程: </label>
+                                        <button ng-click="getAcademyLesson()">更新</button>
+                                        <select id="addTLesson">
+                                            <option ng-repeat="x in academys">{{x.academyName}}</option>
+                                        </select>
+                                        <label class="control-label">教师简介: </label>
+                                        <textarea class="form-control" rows="5" id="addTIntro">
 
-
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" ng-click="addTeacher()">提交</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
 
         </div>
 
