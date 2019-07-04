@@ -41,9 +41,26 @@ API_index.controller("headCtrl", function ($scope, $http, $state,Data,$interval)
             return 0;
         else if($scope.currentUser.isManager == 1)
             return 1;
-
     };
 
+    //是否是系统管理员
+    $scope.isSysManager = function () {
+        return $scope.currentUser.isManager == 1;
+    };
+
+
+
+    //是否是普通学生
+    $scope.isStu = function () {
+        return ($scope.currentUser.isManager == 0 && $scope.currentUser.isLessonManager==0);
+    };
+
+
+
+    //是否是课程管理员
+    $scope.isLeManager = function () {
+        return $scope.currentUser.isLessonManager == 1;
+    };
 
 });
 

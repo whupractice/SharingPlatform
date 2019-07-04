@@ -22,8 +22,9 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     $scope.bindSysMan = null;//当前选中的系统管理员
     $scope.bindLeMan = null;//当前被选中的课程管理员
-    $scope.bindSchool = null;//当前被选中的学校
+    $scope.bindSchool = null;//page2当前被选中的学校
     $scope.bindSchoolAcademys = null;//page3的学院
+    $scope.page3School = null;//page3当前被选中的学校
 
 
 
@@ -101,8 +102,12 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
     };
 
     //获取page2指定学校下的学院
-    $scope.getAcademy = function(){
-        let schoolName = $('#allSchools').find('option:selected').text();
+    $scope.getAcademy = function(i){
+        let schoolName = "";
+        if(i==0)
+            schoolName = $('#allSchools').find('option:selected').text();
+        else
+            schoolName = $('#leSchool').find('option:selected').text();
         $http({
             method: 'GET',
             url: '/academy/schoolName',
@@ -117,6 +122,7 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //获取page3指定学校下的学院
     $scope.getPage3Academy = function(x){
+        $scope.page3School = x;
         $http({
             method: 'GET',
             url: '/academy/schoolName',
@@ -161,6 +167,10 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
     $scope.bindingSchool = function(x){
       $scope.bindSchool = x;
     };
+
+
+
+
 
     //删除当前选中的系统管理员
     $scope.deleteSys = function (x) {
@@ -351,9 +361,27 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
             if(response.data == true){
                 alert("增添成功!");
                 $('#addAModal').modal('hide');
-                $scope.initManager();
+                $scope.getPage3Academy($scope.page3School);
             }else{
                 alert("此学院已存在! 增添失败!");
+            }
+        })
+    };
+
+
+    //删除学院
+    $scope.deleteAcademy = function () {
+        let academyId = $('input[name="selection"]:checked').val();//获取被选中的学院id
+        $http({
+            method: 'DELETE',
+            url: '/academy',
+            params:{"id": academyId}
+        }).then(function successCallback(response) {
+            if(response.status == 200){
+                alert("删除成功!");
+                $scope.getPage3Academy($scope.page3School);
+            }else{
+                alert("删除失败!");
             }
         })
     };

@@ -112,12 +112,18 @@
                                         <i class="fa fa-road"></i>&nbsp;&nbsp; 登陆/注册/切换账号</a></li>
                                     <li class="divider"></li>
 
-                                    <li ui-sref="administer"><a>
+                                    <li ng-if="isSysManager()" ui-sref="administer"><a>
                                         <i class="fa fa-road"></i>&nbsp;&nbsp; 系统管理员界面</a></li>
                                     <li class="divider"></li>
 
-                                    <li ui-sref="lessonManager"><a>
+                                    <li ng-if="isLeManager()" ui-sref="lessonManager"><a>
                                         <i class="fa fa-road"></i>&nbsp;&nbsp; 课程管理员界面</a></li>
+                                    <li class="divider"></li>
+
+                                    <li ng-if="isStu()" ui-sref="student">
+                                        <a>
+                                            <i class="fa fa-road"></i>&nbsp;&nbsp; 学生个人界面</a>
+                                    </li>
                                     <li class="divider"></li>
                                 </ul>
                             </li>

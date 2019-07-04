@@ -257,7 +257,7 @@
                                             <option ng-repeat="x in allSchools">{{x.schoolName}}</option>
                                         </select>
                                         <label class="control-label">学院: </label>
-                                        <button class="btn btn-primary" ng-click="getAcademy()">更新</button>
+                                        <button class="btn btn-primary" ng-click="getAcademy(0)">更新</button>
                                         <select id="allAcdemys">
                                             <option ng-repeat="x in academys">{{x.academyName}}</option>
                                         </select>
@@ -296,7 +296,7 @@
                                             <option ng-repeat="x in allSchools">{{x.schoolName}}</option>
                                         </select>
                                         <label class="control-label">学院: </label>
-                                        <button class="btn btn-primary" ng-click="getAcademy()">更新</button>
+                                        <button class="btn btn-primary" ng-click="getAcademy(1)">更新</button>
                                         <select id="leAcademy" class="form-control">
                                             <option ng-repeat="x in academys">{{x.academyName}}</option>
                                         </select>
@@ -377,7 +377,8 @@
                     <div class="panel-btns">
                         <a class="king-btn king-radius king-primary" title="保存绑定关系" data-toggle="modal"
                         data-target="#addAModal">增添学院</a>
-                        <a class="king-btn king-radius king-danger" title="保存绑定关系" style="color: white">删除学院</a>
+                        <a class="king-btn king-radius king-danger" title="保存绑定关系" style="color: white"
+                        ng-click="deleteAcademy()">删除学院</a>
                         <span class="hint-info"><i class="hint"></i>勾选配置文件以进行绑定，反选以进行解绑</span>
                     </div>
                     <div class="panel-body">
@@ -386,7 +387,7 @@
                                 <table class="table table-out-bordered table-header-bg table-hover">
                                     <thead>
                                     <tr>
-                                        <th style="width:38px;text-align:center;"><input type="checkbox" value=""></th>
+                                        <th style="width:38px;text-align:center;"><input type="radio" value=""></th>
                                         <th>学院名</th>
                                         <th>所属大学</th>
                                     </tr>
@@ -394,7 +395,8 @@
                                     <tbody>
 
                                     <tr ng-repeat="x in bindSchoolAcademys">
-                                        <td align="center"><input type="checkbox" value=""></td>
+                                        <td align="center">
+                                            <input type="radio" name="selection" value="{{x.academyId}}"></td>
                                         <td>{{x.academyName}}</td>
                                         <td>{{x.schoolName}}</td>
 
