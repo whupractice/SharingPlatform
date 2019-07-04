@@ -310,7 +310,8 @@
                 <div class="panel-heading"> <i class="fa fa-list-ul"></i> 老师列表
                 </div>
                 <div class="panel-body panel-search-body" style="margin: 30px">
-                    <a class="king-btn king-radius king-primary" title="添加变量">添加老师</a>
+                    <a class="king-btn king-radius king-primary" title="添加变量"
+                    data-toggle="modal" data-target="#addTModal">添加老师</a>
                     <a class="king-btn king-radius king-default" title="数据导入">数据导入</a>
                     <a class="king-btn king-radius king-default" title="数据导出">数据导出</a>
                 </div>
@@ -329,7 +330,7 @@
                         <tbody>
 
                         <tr ng-repeat="x in teachers">
-                            <td>{{x.teacheId}}</td>
+                            <td>{{x.teacherId}}</td>
                             <td>{{x.teacherName}}</td>
                             <td>{{x.job}}</td>
                             <td>{{x.schoolName}}</td>
@@ -338,7 +339,7 @@
                                 <button class="btn btn-xs btn-primary" title="编辑">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </button>
-                                <button class="btn btn-xs btn-danger" title="删除">
+                                <button class="btn btn-xs btn-danger" title="删除" ng-click="deleteT(x)">
                                     <i class="glyphicon glyphicon-remove"></i>
                                 </button>
                             </td>
@@ -372,7 +373,7 @@
                                         <label class="control-label">课程: </label>
                                         <button ng-click="getAcademyLesson()">更新</button>
                                         <select id="addTLesson">
-                                            <option ng-repeat="x in academyLesson">{{x.lessonName}}</option>
+                                            <option ng-repeat="x in academyLesson" value="{{x.lessonId}}">{{x.lessonName}}</option>
                                         </select>
                                         <label class="control-label">教师简介: </label>
                                         <textarea class="form-control" rows="5" id="addTIntro">

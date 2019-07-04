@@ -32,4 +32,9 @@ public interface TeacherRepository extends JpaRepository<TeacherEntity,Long> {
     //根据id查询老师
     @Query(value = "SELECT * FROM teacher WHERE teacher_id = ?1",nativeQuery = true)
     TeacherEntity getTeacherById(long id);
+
+
+    //根据学校名查询老师
+    @Query(value = "select * from teacher where school_name =?1",nativeQuery = true)
+    List<TeacherEntity> getTeacherBySchool(String schoolName);
 }

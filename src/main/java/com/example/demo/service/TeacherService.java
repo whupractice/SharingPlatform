@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.baseClass.Teacher;
 import com.example.demo.entity.TeacherEntity;
 import com.example.demo.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +45,9 @@ public class TeacherService {
       * @Param       : 向数据库插入教师
       * @return      :
       */
-    public void insertTeacher(TeacherEntity teacherEntity) {
+    public long insertTeacher(TeacherEntity teacherEntity) {
         teacherRepository.save(teacherEntity);
+        return teacherRepository.getNewTeacherId();
     }
 
     /**
@@ -76,5 +78,14 @@ public class TeacherService {
     public TeacherEntity getTeacherById(String id){
         long newId = Long.parseLong(id);//转换类型
         return teacherRepository.getTeacherById(newId);
+    }
+
+
+    public List<TeacherEntity> getTeacherBySchool(String schoolName){
+        List<TeacherEntity> ts = teacherRepository.getTeacherBySchool(schoolName);
+        if(ts.size()==0)
+            return null;
+        else
+            return ts;
     }
 }

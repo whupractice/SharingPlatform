@@ -51,8 +51,8 @@ public class TeacherController {
     @ApiOperation(value = "向数据库插入教师", notes = "向数据库插入教师",httpMethod = "POST")
     @ApiParam(name = "teacherEntity",value = "教师实体,其中teacherId不能为空")
     @PostMapping("")
-    public void insertTeacher(@RequestBody TeacherEntity teacherEntity) {
-        teacherService.insertTeacher(teacherEntity);
+    public long insertTeacher(@RequestBody TeacherEntity teacherEntity) {
+        return teacherService.insertTeacher(teacherEntity);
     }
 
     /**
@@ -103,5 +103,12 @@ public class TeacherController {
         return teacherService.getTeacherById(id);
     }
 
+
+
+    @ApiOperation(value = "根据学校名查询老师", notes = "根据学校名查询老师",httpMethod = "GET")
+    @GetMapping("/schoolName")
+    public List<TeacherEntity> getTeacherBySchool(@RequestParam(value = "schoolName") String schoolName){
+        return teacherService.getTeacherBySchool(schoolName);
+    }
 
 }

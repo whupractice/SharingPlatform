@@ -275,7 +275,7 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
     $scope.getTeachers = function () {
         $http({
             method: 'GET',
-            url: '/teacher',
+            url: '/teacher/schoolName',
             params: {
                 "schoolName": $scope.currentManager.schoolName
             }
@@ -300,11 +300,12 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //增添老师
     $scope.addTeacher = function () {
-        let teacherName = $('addTName').val();
+        let teacherName = $('#addTName').val();
         let job = $('#addTJob').val();
         let academyName = $('#addTAcademy').find('option:selected').text();
         let schoolName = $scope.currentManager.schoolName;
         let teacherIntro = $('#addTIntro').val();
+        let lessonId = $('#addTLesson').find('option:selected').val();
 
         $http({
             method: 'POST',
@@ -317,8 +318,27 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
                 "teacherIntro": teacherIntro
             }
         }).then(function successCallback(response) {
-            $scope.hotLesson = response.data;
-            $scope.getExcellentLesson();
+            if(response.status==200) {
+                let teacherId = response.data;
+                $http({
+                    method: 'POST',
+                    url: '/tl',
+                    data: {
+                        "lessonId": lessonId,
+                        "teacherId": teacherId
+                    }
+                }).then(function successCallback(response) {
+                    if(response.status == 200){
+                        alert("添加成功!");
+                        $('#addTModal').modal('hide');
+                        $scope.getTeachers();
+                    }else{
+                        alert("添加失败！");
+                    }
+                })
+            }else{
+                alert("添加失败！");
+            }
         })
     };
 
@@ -336,6 +356,25 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
             }
         }).then(function successCallback(response) {
             $scope.academyLesson = response.data;
+        })
+    };
+
+
+    //删除老师
+    $scope.deleteT = function (x) {
+        $http({
+            method: 'DELETE',
+            url: '/teacher',
+            params: {
+                "teacherId": x.teacherId
+            }
+        }).then(function successCallback(response) {
+            if(response.status==200){
+                alert("删除成功！");
+                $scope.getTeachers();
+            }else{
+                alert("删除失败!");
+            }
         })
     };
 
