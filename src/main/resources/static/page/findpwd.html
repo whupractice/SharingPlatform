@@ -61,7 +61,7 @@
 </div>
 </div>
 <div ng-if="code_page_2()">
-        <div id="app" class="g-bd f-cf">
+        <div id="app" class="g-bd-1 f-cf">
             <div class="u-op ">
     <div class="m-title">找回密码</div>
     <!--Regular if52-->
@@ -73,7 +73,7 @@
                 <div class="m-suggest" style="z-index: 89;">
                     <div class="u-ipt ">
                         <div class="ipt_wrap">
-                            <input type="text" class="ipt_input ipt_input_large ipt_input-success" id="" placeholder="密码区分大小写" autocomplete="off" spellcheck="false">
+                            <input type="password" class="ipt_input ipt_input_large ipt_input-success" id="new_pwd_1" placeholder="密码区分大小写" autocomplete="off" spellcheck="false">
 
                             <!--Regular if53-->
                             <div class="ipt_extend">
@@ -86,18 +86,28 @@
                         <!--inlcude-->
                         <div class="ipt_tip ipt_tip-success"></div>
                     </div>
-                    <label class="control-label">请再次输入密码 </label>
-                    <div class="ipt_wrap">
-                        <input class="ipt_input ipt_input_large ipt_input-success" type="text" placeholder="请再次输入验证码" autocomplete="off" id="" spellcheck="false">
-                        <div class="ipt_extend">
-                            <!--Regular if54-->
-                            <i class="i-icon i-icon-delete" style="display: none;">
+                </div>
+            </div>
 
-                            </i>
+            <div class="u-tip">请再次输入新密码</div>
+            <!--inlcude-->
+            <div class="w-ipt">
+                <div class="m-suggest" style="z-index: 89;">
+                    <div class="u-ipt ">
+                        <div class="ipt_wrap">
+                            <input type="password" class="ipt_input ipt_input_large ipt_input-success" id="new_pwd_2" placeholder="请保证两次输入一致" autocomplete="off" spellcheck="false">
+
+                            <!--Regular if53-->
+                            <div class="ipt_extend">
+                                <!--Regular if54-->
+                                <i class="i-icon i-icon-delete" style="display: none;">
+
+                                </i>
+                            </div>
                         </div>
+                        <!--inlcude-->
+                        <div class="ipt_tip ipt_tip-success"></div>
                     </div>
-                    <!--Regular if55-->
-                    <!--Regular if56-->
                 </div>
             </div>
 
@@ -106,7 +116,7 @@
 
             <div class="w-btn">
                 <div class="u-btn ">
-                    <button ng-click="verify_resetPwd(3)" class="u-bigBtn">下一步</button>
+                    <button ng-click="reset_pwd()" class="u-bigBtn">下一步</button>
                     <!--Regular if59-->
                 </div>
                 <!--Regular if60-->

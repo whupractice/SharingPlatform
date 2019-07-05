@@ -186,3 +186,13 @@ input, keygen, legend, select, textarea {
     border: 0;
     cursor: pointer;
 }
+
+.g-bd-1 {
+    display: block;
+    position: relative;
+    margin: 125px auto 89px;
+    width: 1100px;
+    min-height: 680px;
+    background-color: #f9f9f9;
+    top: -60px;
+}
