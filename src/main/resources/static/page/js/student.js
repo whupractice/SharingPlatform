@@ -189,7 +189,35 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
 
     //给课程打分
-    $scope.score = function (x) {
 
+    $scope.s_comment = function () {
+        let evaTime	= $scope.selectL.evaTime
+        let evaluation= $scope.selectL.evaluation
+        let lessonId = $scope.selectL.lessonId
+        let lessonProcess =$scope.selectL.lessonProcess
+        let phone = $scope.currentStudent.phone
+        let praiseNum = $scope.selectL.praiseNum
+        let star = $scope.selectL.star
+        $http({
+            method: 'PUT',
+            url: '/sl',
+            data:{
+                "evaTime": evaTime,
+                "evaluation": evaluation,
+                "lessonId": lessonId,
+                "lessonProcess": lessonProcess,
+                "phone": phone,
+                "praiseNum": praiseNum,
+                "star": star
+            }
+        }).then(function successCallback(response) {
+            if(response.status==200){
+                $('#scoreModal').modal('hide');
+                $scope.getLessonByPhone();
+            }
+            else {
+                alert("评论失败！");
+            }
+        })
     };
 });
