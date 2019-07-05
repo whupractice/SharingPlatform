@@ -7,7 +7,7 @@ var app = angular.module('myApp');
  */
 app.controller('schoolsCtrl', function ($scope, $http, $state) {
 
-
+    $scope.schoolNum=0;
     $scope.schools = null;
 
     //从数据库中获取所有学校信息
@@ -17,6 +17,7 @@ app.controller('schoolsCtrl', function ($scope, $http, $state) {
             url: '/school'
         }).then(function successCallback(response) {
             $scope.schools = response.data;
+            $scope.schoolNum = $scope.schools.length;
         });
     };
 

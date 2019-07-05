@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache" />
     <link rel="stylesheet" type="text/css" href="../page/css/courseinfo.css">
 
     <title>course information</title>
@@ -33,8 +38,14 @@
                             <div class="f-fr f-f0 f-fs1 course-share f-pa" id="j-coushare">
                                 <span class="f-ib f-vam">分享</span>
                                 <div class="u-share f-cb">
-                                    <a class="weixin f-fl f-fc6 solo f-icon u-icon-weixin f-pr" title="分享到微信" rel="weixin" id="auto-id-1561603468061">
-                                    </a>
+                                    <i class="fa fa-weibo"style="color:rgba(255,102,21,0.61)" ng-click="shareToSinaWB(event)"></i>
+
+                                    <i class="fa fa-qq" style="color:rgba(236,255,103,0.66)" ng-click="shareToQzone(event)"></i>
+
+<!--                                    <i class="fa fa-wechat"style="color:rgba(255,130,159,0.66)"></i>-->
+
+
+
                                 </div>
                             </div>
                         </div>

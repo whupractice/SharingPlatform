@@ -824,7 +824,7 @@
  }.fa {
       font-size: 16px;
       font-weight: bold;
-      color: #476c0e;
+       color: #75b3c7;
       margin-right: 10px;
       margin-bottom: 7px;
     margin-left: 10px;
@@ -1040,4 +1040,7 @@ p {
 .star {
     float: left;
 }
+
+
+
 
