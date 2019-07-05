@@ -12,10 +12,15 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
     $scope.nowPage = 1;
 
+    $scope.nowLesson = null;
+
+    $scope.selectL = null;//当前选中的课程
+
 
     //初始化学生信息
-    $scope.initstudent = function () {
+    $scope.initStudent = function () {
         $scope.currentStudent = Data.get();//获取当前学生信息
+        $scope.getLessonByPhone();//获取当前课程
     };
 
 
@@ -129,6 +134,62 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
     };
 
 
+    //根据学生电话号码查询所选课程
+    $scope.getLessonByPhone = function () {
+        let phone = $scope.currentStudent.phone;
+        $http({
+            method: 'GET',
+            url: '/sl/getLessonByStuId',
+            params:{
+                "stuId": phone
+           }
+        }).then(function successCallback(response) {
+            $scope.nowLesson = response.data;
+        })
+    };
 
 
+    //进入课程
+    $scope.enterLesson = function (x) {
+        $state.go('courseinfo',{
+            "lesson": x
+        })
+    };
+
+
+
+
+    //删除所选课程
+    $scope.deleteLesson_ = function () {
+        $http({
+            method: 'DELETE',
+            url: '/sl/stuId/lessonId',
+            params:{
+                "stuId": $scope.currentStudent.phone,
+                "lessonId": $scope.selectL.lessonId
+            }
+        }).then(function successCallback(response) {
+            if(response.status==200){
+                $('#deleteL_modal').modal('hide');
+                $scope.getLessonByPhone();
+            }
+            else {
+                alert("删除失败！");
+            }
+        })
+    };
+
+
+
+    //绑定当前选中课程
+    $scope.bindL = function (x) {
+        $scope.selectL = x;
+    };
+
+
+
+    //给课程打分
+    $scope.score = function (x) {
+
+    };
 });
