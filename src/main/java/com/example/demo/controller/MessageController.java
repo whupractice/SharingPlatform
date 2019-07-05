@@ -35,6 +35,12 @@ public class MessageController {
         return messageService.getByPhoneAndLessonId(phone,lessonId);
     }
 
+    @ApiOperation(value = "根据学生手机号获取消息列表", notes = "根据学生手机号获取消息列表",httpMethod = "GET")
+    @GetMapping("/phone")
+    public List<MessageEntity> getByPhone(@RequestParam @ApiParam(value = "学生手机号") String phone){
+        return messageService.getByPhone(phone);
+    }
+
     @ApiOperation(value = "向数据库中插入学生课程消息", notes = "向数据库中插入学生课程消息",httpMethod = "POST")
     @ApiParam(name = "messageEntity",value = "学生课程消息实体,其中任意属性都不能为空")
     @PostMapping("")

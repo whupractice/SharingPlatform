@@ -13,9 +13,9 @@ import java.util.List;
   */
 public interface AcademyRepository extends JpaRepository<AcademyEntity,Long> {
 
-    //根据学院名获取学院
+    //根据学院名获取学院列表
     @Query(value = "SELECT * FROM academy WHERE academy_name = ?1",nativeQuery = true)
-    AcademyEntity getByAcademyName(String academyName);
+    List<AcademyEntity> getByAcademyName(String academyName);
 
     //根据学校名获取学院列表
     @Query(value = "SELECT * FROM academy WHERE school_name = ?1",nativeQuery = true)

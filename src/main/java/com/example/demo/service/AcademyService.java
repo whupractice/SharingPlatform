@@ -27,7 +27,7 @@ public class AcademyService {
       * @Param       : [academyName]
       * @return      : com.example.demo.entity.LessonEntity
       */
-    public AcademyEntity getByAcademyName(String academyName) {
+    public List<AcademyEntity> getByAcademyName(String academyName) {
         return academyRepository.getByAcademyName(academyName);
     }
 
@@ -48,13 +48,13 @@ public class AcademyService {
       * @return      : void
       */
     public boolean insertAcademy(AcademyEntity academyEntity) {
-        AcademyEntity academy = academyRepository.getByAcademyName(academyEntity.getAcademyName());
-        if(academy!=null)
-            return false;
-        else {
-            academyRepository.save(academyEntity);
-            return true;
+        List<AcademyEntity> academyEntities = academyRepository.getByAcademyName(academyEntity.getAcademyName());
+        for(AcademyEntity academy: academyEntities) {
+            if(academy.getSchoolName().equals(academyEntity.getSchoolName())) {
+                return false;
+            }
         }
+        return true;
     }
 
     /**

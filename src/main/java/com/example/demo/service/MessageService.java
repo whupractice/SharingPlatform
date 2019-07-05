@@ -32,6 +32,11 @@ public class MessageService {
         return messageRepository.getByPhoneAndLessonId(newPhone,newLessonId);
     }
 
+    public List<MessageEntity> getByPhone(String phone) {
+        long newPhone = Long.parseLong(phone);
+        return messageRepository.getByPhone(newPhone);
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 向数据库中插入学生课程消息

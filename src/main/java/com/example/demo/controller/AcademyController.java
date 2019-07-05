@@ -27,10 +27,10 @@ public class AcademyController {
         return academyService.getAll();
     }
 
-    @ApiOperation(value = "根据学院名获取学院", notes = "根据学院名获取学院",httpMethod = "GET")
+    @ApiOperation(value = "根据学院名获取学院列表", notes = "根据学院名获取学院列表",httpMethod = "GET")
     @ApiParam(name = "academyName",value = "学院名")
     @GetMapping("/academyName")
-    public AcademyEntity getByAcademyName(@RequestParam String academyName) {
+    public List<AcademyEntity> getByAcademyName(@RequestParam String academyName) {
         return academyService.getByAcademyName(academyName);
     }
 

@@ -17,4 +17,8 @@ public interface MessageRepository extends JpaRepository<MessageEntity,Long> {
     //根据学生手机号和课程号获取消息列表
     @Query(value = "select * from message where phone = ?1 and lesson_id = ?2",nativeQuery = true)
     List<MessageEntity> getByPhoneAndLessonId(long phone, long lessonId);
+
+    //根据学生手机号获取消息列表
+    @Query(value = "select * from message where phone = ?1",nativeQuery = true)
+    List<MessageEntity> getByPhone(long phone);
 }
