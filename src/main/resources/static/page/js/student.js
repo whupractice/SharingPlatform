@@ -45,7 +45,7 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
     //更新学生信息
     $scope.updateStuInfo = function () {
         let phoneNumber = $scope.currentStudent.phone;
-        let  realName=$scope.currentStudent.realName;
+        let realName=$scope.currentStudent.realName;
         let nickName = $('#nickName').val();
         let pwd = $scope.currentStudent.pwd;
         let sex = $('#sex').find('option:selected').text();
@@ -60,10 +60,10 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
                 "phone": phoneNumber,
                 "birth": birth,
                 "email": email,
-              "pwd":pwd,
+                "pwd":pwd,
                 "realName":realName,
                 "nickName": nickName,
-"introduction":introduction,
+                "introduction":introduction,
                 "sex": sex
             }
         }).then(function successCallback(response) {
@@ -73,6 +73,58 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
                 alert("修改失败!");
             }
         })
+
+    };
+
+
+    //改变密码
+    $scope.changePwd = function () {
+        let primPwd = $('#primPwd').val();
+        let newPwd = $('#newPwd').val();
+        let confirmPwd = $('#confirmPwd').val();
+
+        if(primPwd == newPwd){
+            alert("前后密码一致，请重新输入！");
+            return;
+        }else if(newPwd != confirmPwd){
+            alert("二次密码不一致！请重新确认密码！");
+            return;
+        }else{
+            $http({
+                method: 'POST',
+                url: '/student/login',
+                data:{
+                    "phone": $scope.currentStudent.phone,
+                    "pwd": primPwd
+                }
+            }).then(function successCallback(response) {
+                if(response.data.length != 0){
+                    $http({
+                        method: 'PUT',
+                        url: '/student',
+                        data:{
+                            "phone": $scope.currentStudent.phone,
+                            "birth": $scope.currentStudent.birth,
+                            "email": $scope.currentStudent.email,
+                            "pwd":newPwd,
+                            "realName":$scope.currentStudent.realName,
+                            "nickName": $scope.currentStudent.nickName,
+                            "introduction":$scope.currentStudent.introduction,
+                            "sex": $scope.currentStudent.sex
+                        }
+                    }).then(function successCallback(response) {
+                        if(response.status == 200){
+                            alert("修改成功！");
+                        }else{
+                            alert("修改失败!");
+                        }
+                    })
+                }
+                else {
+                    alert("用户名或者密码错误")
+                }
+            })
+        }
 
     };
 
