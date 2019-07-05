@@ -1,17 +1,11 @@
 package com.example.demo.service;
 
-import com.example.demo.baseClass.School;
 import com.example.demo.entity.SchoolEntity;
-import com.example.demo.entity.StudentEntity;
 import com.example.demo.repository.SchoolRepository;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * @ Author     ：Theory

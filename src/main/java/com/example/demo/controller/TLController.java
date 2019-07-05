@@ -25,6 +25,13 @@ public class TLController {
     @Autowired
     TLService tlService;
 
+
+    @ApiOperation(value = "获取所有教师授课信息", notes = "获取所有教师授课信息",httpMethod = "GET")
+    @GetMapping("")
+    public List<TLEntity> getAllTL() {
+        return tlService.getAll();
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 根据课程号获取教师授课列表

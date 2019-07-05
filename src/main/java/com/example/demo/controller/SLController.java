@@ -25,6 +25,12 @@ public class SLController {
     @Autowired
     SLService slService;
 
+    @ApiOperation(value = "获取所有学生选课信息", notes = "获取所有学生选课信息",httpMethod = "GET")
+    @GetMapping("")
+    public List<SLEntity> getAllSL() {
+        return slService.getAll();
+    }
+
     /**
       * @Author      : Theory
       * @Description : 根据学生账号获取所选课程
@@ -68,7 +74,7 @@ public class SLController {
       */
     @ApiOperation(value = "通过课程号获取选择这门课程的学生数量", notes = "通过课程号获取选择这门课程的学生数量",httpMethod = "GET")
     @ApiParam(name = "lessonId",value = "课程号")
-    @GetMapping("")
+    @GetMapping("/getStuNumByLessonId")
     public int getStuNumByLessonId(@RequestParam String lessonId){
         return slService.getStuNumByLessonId(lessonId);
     }

@@ -33,6 +33,46 @@ public class LessonController {
     LessonService lessonService;
 
 
+
+
+
+//    @ApiOperation(value = "获取项目根目录", notes = "获取项目根目录",httpMethod = "GET")
+//    @GetMapping("/getRootUrl")
+//    public JSONObject getRootUrl(){
+//        String LOCATION;
+//        try {
+//            LOCATION = URLDecoder.decode(DemoApplication.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
+//                    "UTF-8");
+//            System.out.println("获取路径成功：LOCATION=" + LOCATION);
+//            LOCATION = LOCATION.substring(0,LOCATION.length()-39);
+//        } catch (UnsupportedEncodingException e) {
+//            System.out.println("获取路径失败：" + e.getMessage());
+//            LOCATION = "";
+//        }
+//        String content ="{\"link\":\""+LOCATION+"\"}";
+//        JSONObject jsonObject = JSONObject.fromObject(content);
+//        getPath("video");
+//        return jsonObject;
+//
+//
+//    }
+
+//    private String getPath(String subdirectory){
+//        //获取跟目录---与jar包同级目录的upload目录下指定的子目录subdirectory
+//        File upload;
+//        try {
+//            File path = new File(ResourceUtils.getURL("classpath:").getPath());
+//            if (!path.exists()) path = new File("");
+//            upload = new File(path.getAbsolutePath(),subdirectory);
+//            if(!upload.exists())upload.mkdirs();
+//            String realPath = upload + "/";
+//            return realPath;
+//        }catch (FileNotFoundException e){
+//            throw new RuntimeException("获取服务器路径发生错误！");
+//        }
+//    }
+
+
     /**
       * @Author      : Theory
       * @Description : 获取所有课程
@@ -52,12 +92,6 @@ public class LessonController {
         return lessonService.getByLessonId(schoolId);
     }
 
-
-//    @ApiOperation(value = "获取所有课程并去重", notes = "获取所有课程并去重",httpMethod = "GET")
-//    @GetMapping("/view")
-//    public List<Object> getAllDistinctly(){
-//        return lessonService.getAllDistinctly();
-//    }
 
     /**
       * @Author      : Theory

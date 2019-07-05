@@ -30,6 +30,10 @@ public class SLService {
     LessonRepository lessonRepository;
 
 
+    public List<SLEntity> getAll() {
+        return slRepository.findAll();
+    }
+
     /**
       * @Author      : Theory
       * @Description : 根据学生号获取学生选课列表

@@ -10,19 +10,26 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
 
     $scope.lesson = null;
 
-$scope.sl=null;//选课信息
+    $scope.sl=null;//选课信息
+
     $scope.teacherNum = 0;
 
     $scope.scores=[];//课程打分
 
     $scope.now = 1;//当前位置
 
-$scope.Si=null;//Studentinformation
+    $scope.Si=null;//Studentinformation
+
     $scope.teachers = null;
 
     $scope.currentScore = 4.3;
     $scope.f = 0.3;
-$scope.student=null;
+    $scope.student=null;
+
+    $scope.RootUrl=null;
+
+    $scope.errorMessage=null;
+
 
 
 
@@ -35,7 +42,7 @@ $scope.student=null;
        $scope.getTeachers();
        //$scope.getScores();
        $scope.getComments();
-
+        //$scope.getRootUrl();
     };
 
 
@@ -176,6 +183,24 @@ $scope.student=null;
                 }
             })
         }
+    };
+    $scope.getRootUrl = function () {
+
+        $http({
+            method: 'GET',
+            url: '/lesson/getRootUrl'
+        }).then(function successCallback(response) {
+
+            $scope.RootUrl=response.data.link+'carousel1.jpg/';
+            // if(response.status==200){
+            //     alert("GET请求成功");
+            // }
+            // else {
+            //     alert("GET请求失败");
+            // }
+        })
+
+
     };
 });
 

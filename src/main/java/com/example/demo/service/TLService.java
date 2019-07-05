@@ -28,6 +28,11 @@ public class TLService {
     @Autowired
     LessonRepository lessonRepository;
 
+
+    public List<TLEntity> getAll() {
+        return tlRepository.findAll();
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 根据课程号获取教师授课列表
