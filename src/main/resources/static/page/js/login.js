@@ -27,7 +27,7 @@ app.controller('loginCtrl', function ($scope, $http, $state,Data) {   //Data是�
                 "pwd": pwd
             }
         }).then(function successCallback(response) {
-            if(response.status==200){
+            if(response.status==200 && response.data == true){
                 $scope.currentUser = response.data;
                 Data.set($scope.currentUser);//设置全局用户为当前的currentuser
                 $state.go('main');

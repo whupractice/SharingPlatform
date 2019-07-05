@@ -10,10 +10,12 @@ app.controller('findpwdCtrl', function ($scope, $http, $state,Data) {
 
     $scope.currentUser = null;
 
+    $scope.nowPage = 1;
+
 
 
     //
-    $scope.verify_resetPwd = function(){
+    $scope.verify_resetPwd = function(page){
 
         let user = $('#p_number').val();
         let v_code = $('#verify_code_').val();
@@ -31,10 +33,25 @@ app.controller('findpwdCtrl', function ($scope, $http, $state,Data) {
             }
             else {
                 $scope.currentUser = response.data;
-                $state.go('login');
+
+                $scope.nowPage = page;
+
+
             }
         })
     };
+
+
+    $scope.code_page_1 = function () {
+        return $scope.nowPage == 1;
+    };
+
+
+    $scope.code_page_2 = function () {
+        return $scope.nowPage == 2;
+    };
+    //重置密码
+
 
 
 })
