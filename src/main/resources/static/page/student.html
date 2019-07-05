@@ -14,7 +14,7 @@
 <body>
 <body>
 <!--HTML-->
-<div class="king-layout-container container" id="layoutPanel" style="margin-top: 15px;" ng-controller="studentCtrl" ng-init="initstudent()">
+<div class="king-layout-container container" id="layoutPanel" style="margin-top: 15px;" ng-controller="studentCtrl" ng-init="initStudent()">
 
     <!--  -->
     <div class="king-page-box">
@@ -107,7 +107,7 @@
                             <label class="col-sm-3 control-label bk-lh30 pt0">手机号：</label>
                             <div class="col-sm-6">
                             <input type="text" class="form-control bk-valign-top" id="phoneNumber" value={{currentStudent.phone}} style="position: relative;
-    top: -15px;">
+    top: -15px;" readonly>
                             </div>
                         </div>
                         <div class="form-group clearfix ">
@@ -168,21 +168,21 @@
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">原密码</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control bk-valign-top" id="primPwd" placeholder="请输入原本的密码" style="position: relative;
+                                <input type="password" class="form-control bk-valign-top" id="primPwd" placeholder="请输入原本的密码" style="position: relative;
     top: -15px;">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">新密码</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control bk-valign-top" id="newPwd" placeholder="请输入新密码" style="position: relative;
+                                <input type="password" class="form-control bk-valign-top" id="newPwd" placeholder="请输入新密码" style="position: relative;
     top: -15px;">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">确认密码</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control bk-valign-top" id="confirmPwd" placeholder="请再次输入新密码" style="position: relative;
+                                <input type="password" class="form-control bk-valign-top" id="confirmPwd" placeholder="请再次输入新密码" style="position: relative;
     top: -15px;">
                             </div>
                         </div>
@@ -228,134 +228,36 @@
                     <tr>
                         <th style="width: 70px;">#</th>
                         <th style="width: 15%;">课程名</th>
-                        <th style="width: 15%;">授课教师</th>
-                        <th style="width: 15%;">院校</th>
+                        <th style="width: 15%;">学院</th>
+                        <th style="width: 15%;">学校</th>
                         <th style="width: 15%;">类别</th>
                         <th style="width: 15%;">进入课程</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td style="width: 70px;">1</td>
-                        <td style="width: 15%;">微观经济学</td>
-                        <td style="width: 15%;">菜徐鲲</td>
-                        <td style="width: 15%;">篮球学院</td>
-                        <td style="width: 15%;">经济学</td>
+                    <tr ng-repeat="x in nowLesson">
+                        <td style="width: 70px;">{{x.lessonId}}</td>
+                        <td style="width: 15%;">{{x.lessonName}}</td>
+                        <td style="width: 15%;">{{x.schoolName}}</td>
+                        <td style="width: 15%;">{{x.academyName}}</td>
+                        <td style="width: 15%;">{{x.status}}</td>
                         <td>
-                            <button class="btn btn-xs btn-success">
+                            <button class="btn btn-xs btn-success" ng-click="enterLesson(x)">
                                 <i class="glypgicon glyphicon-ok"></i>
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-xs btn-warning">
+                            <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#scoreModal"
+                            ng-click="bindL(x)">
                                 <i class="glyphicon glyphicon-edit"></i>
-                            </button>
-                            <button class="btn btn-xs btn-danger">
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </button>
+                                <button class="btn btn-xs btn-danger" title="删除" data-toggle="modal" data-target="#deleteL_modal"
+                                        ng-click="bindL(x)">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </button>
                         </td>
                     </tr>
-                    <tr>
-                        <td style="width: 70px;">2</td>
-                        <td style="width: 15%;">Ravi Kumar</td>
-                        <td style="width: 15%;">India</td>
-                        <td style="width: 15%;">23/12/2012</td>
-                        <td style="width: 15%;">Paid</td>
-                        <td>
-                            <button class="btn btn-xs btn-success">
-                                <i class="glypgicon glyphicon-ok"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-warning">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </button>
-                            <button class="btn btn-xs btn-danger">
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 70px;">3</td>
-                        <td style="width: 15%;">Ravi Kumar</td>
-                        <td style="width: 15%;">India</td>
-                        <td style="width: 15%;">23/12/2012</td>
-                        <td style="width: 15%;">Paid</td>
-                        <td>
-                            <button class="btn btn-xs btn-success">
-                                <i class="glypgicon glyphicon-ok"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-warning">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </button>
-                            <button class="btn btn-xs btn-danger">
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 70px;">4</td>
-                        <td style="width: 15%;">Ravi Kumar</td>
-                        <td style="width: 15%;">India</td>
-                        <td style="width: 15%;">23/12/2012</td>
-                        <td style="width: 15%;">Paid</td>
-                        <td>
-                            <button class="btn btn-xs btn-success">
-                                <i class="glypgicon glyphicon-ok"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-warning">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </button>
-                            <button class="btn btn-xs btn-danger">
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 70px;">5</td>
-                        <td style="width: 15%;">Ravi Kumar</td>
-                        <td style="width: 15%;">India</td>
-                        <td style="width: 15%;">23/12/2012</td>
-                        <td style="width: 15%;">Paid</td>
-                        <td>
-                            <button class="btn btn-xs btn-success">
-                                <i class="glypgicon glyphicon-ok"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-warning">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </button>
-                            <button class="btn btn-xs btn-danger">
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 70px;">6</td>
-                        <td style="width: 15%;">Ravi Kumar</td>
-                        <td style="width: 15%;">India</td>
-                        <td style="width: 15%;">23/12/2012</td>
-                        <td style="width: 15%;">Paid</td>
-                        <td>
-                            <button class="btn btn-xs btn-success">
-                                <i class="glypgicon glyphicon-ok"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-warning">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </button>
-                            <button class="btn btn-xs btn-danger">
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </button>
-                        </td>
-                    </tr>
+
                     </tbody>
                 </table>
                 <template id="header_tpl_15622091094562">
@@ -397,6 +299,36 @@
                 <!-- 设置面板End -->
             </div>
         </div>
+
+<!--delete_modal-->
+        <div class="modal fade" id="deleteL_modal" tabindex="-1" role="dialog" aria-labelledby="deleteLModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="deleteLModalLabel">删除课程</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-15">
+                                <div class="form-group">
+                                    <i class="fa fa-warning fa-2x" style="color:red"></i><span style="padding-left: 10px;">确定要删除该课程吗？</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" id="DelLBtn" class="btn btn-danger"
+                                ng-click="deleteLesson_()">删除</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+        <!--socreModal-->
+
+
     </div>
 
     <div ng-if="_page_4_()">
