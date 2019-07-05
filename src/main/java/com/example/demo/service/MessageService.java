@@ -3,6 +3,9 @@ package com.example.demo.service;
 import com.example.demo.entity.MessageEntity;
 import com.example.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +21,10 @@ public class MessageService {
 
     public List<MessageEntity> getAll() {
         return messageRepository.findAll();
+    }
+
+    public Page<MessageEntity> getAll(Specification<MessageEntity> specification, Pageable pageable) {
+        return messageRepository.findAll(specification,pageable);
     }
 
     /**
