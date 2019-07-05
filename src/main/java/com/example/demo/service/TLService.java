@@ -107,4 +107,11 @@ public class TLService {
         long newId2 = Long.parseLong(lessonId);
         tlRepository.deleteById(new TLKeys(newId,newId2));
     }
+
+    public void deleteTLByTeacherId(String teacherId) {
+        List<TLEntity> tlEntities = getAllByTeacherId(teacherId);
+        for(TLEntity tlEntity : tlEntities) {
+            tlRepository.delete(tlEntity);
+        }
+    }
 }
