@@ -41,6 +41,10 @@ public class AcademyService {
         return academyRepository.getBySchoolName(schoolName);
     }
 
+    public List<AcademyEntity> getBySchoolNameAndAcademyName(String schoolName,String academyName) {
+        return academyRepository.getBySchoolNameAndAcademyName(schoolName,academyName);
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 向数据库中插入学院

@@ -85,7 +85,7 @@ public class LessonController {
     }
 
 
-    @ApiOperation(value = "根据课程id获取课程列表", notes = "根据课程id获取课程列表",httpMethod = "GET")
+    @ApiOperation(value = "根据课程id获取课程", notes = "根据课程id获取课程",httpMethod = "GET")
     @ApiParam(name = "schoolId",value = "课程id")
     @GetMapping("/id")
     public LessonEntity getByLessonId(@RequestParam String schoolId) {
@@ -117,14 +117,14 @@ public class LessonController {
         return lessonService.getHotLesson(lessonNum);
     }
 
-    @ApiOperation(value = "根据学校名查询课程", notes = "根据学校名查询课程",httpMethod = "GET")
+    @ApiOperation(value = "根据学校名获取课程列表", notes = "根据学校名获取课程列表",httpMethod = "GET")
     @GetMapping("/schoolName")
     @ApiParam(name = "schoolName",value = "学校名")
     public List<LessonEntity> getBySchoolName(@RequestParam String schoolName) {
         return lessonService.getBySchoolName(schoolName);
     }
 
-    @ApiOperation(value = "根据关键词查询课程", notes = "根据关键词查询课程（课程名中的）",httpMethod = "GET")
+    @ApiOperation(value = "根据课程名模糊获取课程列表", notes = "根据课程名模糊获取课程列表",httpMethod = "GET")
     @ApiParam(name = "keyword",value = "课程名关键词")
     @GetMapping("/keyword")
     public List<Object> getLessonByKeyword(@RequestParam String keyword) {

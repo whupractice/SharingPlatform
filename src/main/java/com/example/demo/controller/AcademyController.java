@@ -41,6 +41,14 @@ public class AcademyController {
         return academyService.getBySchoolName(schoolName);
     }
 
+    @ApiOperation(value = "根据学校名和学院名获取学院列表", notes = "根据学校名和学院名获取学院列表",httpMethod = "GET")
+
+    @GetMapping("/schoolNameAndAcademyName")
+    public List<AcademyEntity> getBySchoolNameAndAcademyName(@RequestParam @ApiParam(name = "schoolName",value = "学校名") String schoolName,
+                                                             @RequestParam @ApiParam(name = "academyName",value = "学院名") String academyName) {
+        return academyService.getBySchoolNameAndAcademyName(schoolName, academyName);
+    }
+
     @ApiOperation(value = "向数据库中插入学院", notes = "向数据库中插入学院",httpMethod = "POST")
     @ApiParam(name = "academyEntity",value = "学院实体,其中任意属性都不能为空")
     @PostMapping("")
