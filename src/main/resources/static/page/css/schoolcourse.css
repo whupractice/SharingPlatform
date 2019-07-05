@@ -162,3 +162,54 @@ img.avatar {
     background-position: center;
     background-color: #0bb453;
 }
+
+
+
+
+
+.g-doc, .g-flow {
+    width: 960px;
+    margin: 0 auto;
+}.b-20 {
+     height: 20px;
+ }
+.b-10, .b-20, .b-30, .b-15, .b-40, .b-50 {
+    clear: both;
+    height: 10px;
+    overflow: hidden;
+    display: block;
+}.f-cb, .g-container {
+     zoom: 1;
+ }
+.g-wrap {
+    width: 100%;
+}.g-sd1 {
+     position: relative;
+     float: left;
+     width: 225px;
+     margin-right: -225px;
+ }.g-mn1 {
+    margin-top: -100px;
+   }
+      float: right;
+      width: 100%;
+  }
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p, blockquote, pre, hr, figure, table, caption, th, td, form, fieldset, legend, input, button, textarea, menu {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}.g-mn1c {
+     margin-left: 165px;
+ }.p-university .m-cnt h1 {
+      font-size: 20px;
+      line-height: 1.2;
+  }.p-university .m-cnt p {
+       font-size: 14px;
+       padding-right: 55px;
+       margin-top: 5px;
+   }
+.f-fc6 {
+    color: #666;
+}
+.f-f1 {
+    font-family: "Arial","Hiragino Sans GB", "SimSun",\5b8b\4f53, "Georgia", "serif";

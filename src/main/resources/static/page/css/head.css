@@ -220,7 +220,7 @@ li .dropdown-menu {
 .badge {
     display: inline-block;
     min-width: 10px;
-    padding: 3px 7px;
+    padding: 3px 3px;
     font-size: 12px;
     font-weight: 400;
     line-height: 1;
