@@ -14,6 +14,8 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
     $scope.nowLesson = null;
 
+    $scope.nowNews = null;//课程管理员发来的消息
+
     $scope.selectL = null;//当前选中的课程
 
 
@@ -21,6 +23,7 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
     $scope.initStudent = function () {
         $scope.currentStudent = Data.get();//获取当前学生信息
         $scope.getLessonByPhone();//获取当前课程
+        $scope.getMessageByPhone();
     };
 
 
@@ -189,7 +192,70 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
 
     //给课程打分
-    $scope.score = function (x) {
 
+    $scope.s_comment = function () {
+        let evaTime	= $scope.selectL.evaTime
+        let evaluation= $scope.selectL.evaluation
+        let lessonId = $scope.selectL.lessonId
+        let lessonProcess =$scope.selectL.lessonProcess
+        let phone = $scope.currentStudent.phone
+        let praiseNum = $scope.selectL.praiseNum
+        let star = $scope.selectL.star
+        $http({
+            method: 'PUT',
+            url: '/sl',
+            data:{
+                "evaTime": evaTime,
+                "evaluation": evaluation,
+                "lessonId": lessonId,
+                "lessonProcess": lessonProcess,
+                "phone": phone,
+                "praiseNum": praiseNum,
+                "star": star
+            }
+        }).then(function successCallback(response) {
+            if(response.status==200){
+                $('#scoreModal').modal('hide');
+                $scope.getLessonByPhone();
+            }
+            else {
+                alert("评论失败！");
+            }
+        })
     };
+
+
+    //查看课程消息
+    $scope.getMessageByPhone = function () {
+        let phone = $scope.currentStudent.phone;
+        $http({
+            method: 'GET',
+            url: '/message/phone',
+            params:{
+                "phone": phone
+            }
+        }).then(function successCallback(response) {
+            $scope.nowNews = response.data;
+        })
+    };
+
+    // $scope.deleteNews = function () {
+    //     let ID = nowNews.messageId;
+    //     $http({
+    //         method: 'DELETE',
+    //         url: '/message',
+    //         params:{
+    //             "messageId": ID
+    //         }
+    //     }).then(function successCallback(response) {
+    //         if(response.status==200){
+    //             $scope.getLessonByPhone();
+    //         }
+    //         else {
+    //             alert("删除失败！");
+    //         }
+    //     })
+    // };
+
 });
+

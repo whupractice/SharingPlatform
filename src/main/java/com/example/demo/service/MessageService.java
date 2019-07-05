@@ -3,6 +3,9 @@ package com.example.demo.service;
 import com.example.demo.entity.MessageEntity;
 import com.example.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +23,10 @@ public class MessageService {
         return messageRepository.findAll();
     }
 
+    public Page<MessageEntity> getAll(Specification<MessageEntity> specification, Pageable pageable) {
+        return messageRepository.findAll(specification,pageable);
+    }
+
     /**
       * @Author      : QinYingran
       * @Description : 根据学生手机号和课程号获取消息列表
@@ -30,6 +37,11 @@ public class MessageService {
         long newPhone = Long.parseLong(phone);
         long newLessonId = Long.parseLong(lessonId);
         return messageRepository.getByPhoneAndLessonId(newPhone,newLessonId);
+    }
+
+    public List<MessageEntity> getByPhone(String phone) {
+        long newPhone = Long.parseLong(phone);
+        return messageRepository.getByPhone(newPhone);
     }
 
     /**

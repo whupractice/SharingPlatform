@@ -50,7 +50,9 @@ public class SchoolController {
         return schoolService.getSchoolInfoById(id);
     }
 
-    @ApiOperation(value = "根据关键词查询学校", notes = "根据关键词查询学校",httpMethod = "GET")
+
+
+    @ApiOperation(value = "根据学校名关键词查询学校", notes = "根据关键词查询学校",httpMethod = "GET")
     @ApiParam(name = "keyword",value = "学校名关键词")
     @GetMapping("/keyword")
     public List<SchoolEntity> getSchoolByKeyword(@RequestParam String keyword) {

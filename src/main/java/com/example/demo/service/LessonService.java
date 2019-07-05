@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.baseClass.Lesson;
 import com.example.demo.entity.LessonEntity;
 import com.example.demo.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,7 +85,7 @@ public class LessonService {
         Sort sort = new Sort(Sort.Direction.DESC, "welcome");
         List<LessonEntity> primList = lessonRepository.findAll(sort);//按照热度从高到低排序
         List<LessonEntity> finalList = new ArrayList<>();//最终的热门课程列表
-        int n = (num >= primList.size())? primList.size() : 8;
+        int n = (num >= primList.size())? primList.size() : num;
         /*选择n个最热门课程*/
         for(int i = 0;i < n;i++) {
             finalList.add(primList.get(i));

@@ -271,6 +271,40 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
     };
 
 
+    //向选了这门课的学生发消息
+    $scope.send = function(){
+        let message = $('#message').val();
+        let lessonId = $scope.currentL.lessonId.toString();
+        $http({
+            method: 'GET',
+            url: '/sl/getStudentByLessonId',
+            params: {
+                "lessonId": lessonId
+            }
+        }).then(function successCallback(response) {
+            let stus = response.data;//获取选了这门课的所有学生
+            for(let i = 0;i<stus.length;i++){
+                let phone = stus[i].phone;
+                let time = $scope.getNowFormatDate();
+                $http({
+                    method: 'POST',
+                    url: '/message',
+                    data: {
+                        "lessonId": $scope.currentL.lessonId,
+                        "phone": phone,
+                        "message": message,
+                        "time": time
+                    }
+                }).then(function successCallback(response) {
+                })
+            }
+            alert("发送成功！");
+
+        })
+    };
+
+
+
     //获取当前学校的所有教师
     $scope.getTeachers = function () {
         $http({
@@ -370,13 +404,27 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
             }
         }).then(function successCallback(response) {
             if(response.status==200){
-                alert("删除成功！");
-                $scope.getTeachers();
+                $http({
+                    method: 'DELETE',
+                    url: '/tl/teacherId',
+                    params: {
+                        "teacherId": x.teacherId
+                    }
+                }).then(function successCallback(response) {
+                    if(response.status==200){
+                        alert("删除成功！");
+                        $scope.getTeachers();
+                    }else{
+                        alert("删除失败!");
+                    }
+                })
             }else{
                 alert("删除失败!");
             }
         })
     };
+
+
 
 });
 

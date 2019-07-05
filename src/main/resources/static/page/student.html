@@ -326,7 +326,42 @@
             </div><!-- /.modal -->
         </div>
 
-        <!--socreModal-->
+        <!--scoreModal-->
+
+        <div class="modal fade" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="scoreModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">添加评价</h4>
+                    </div>
+                    <div class="modal-body">
+                        <my-stars ng-model="drLevel">
+                            <div>
+                                <ul class="my-stars-list">
+                                    <li class="my-stars-items" ng-mouseover="mouseoverStar(myStar)" ng-mouseleave="mouseleaveStar(myStar)" ng-click="stars(myStar)" ng-class="{myStarsSel: clickCnt > $index , myStarHover: hoverCnt > $index }" ng-repeat="myStar in myStars track by $index" title="{{ myStar }}星">
+                                        {{ myStar }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </my-stars>
+
+                        <div class="form-group has-feedback clearfix ">
+                            <label class="control-label col-sm-2 pt0" >你的评价</label>
+                            <div class="col-sm-10">
+                                <textarea id="evaluation" class="form-control" rows="3" style="position: relative;
+    top: -15px;">{{selectL.evaluation}}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                        <button class="btn btn-success" type="button" ng-click="s_comment()">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>
@@ -341,46 +376,11 @@
                 <!-- content start -->
                 <div class="king-content-wrap">
                     <div class="king-layout1-content" style="    margin-left: 260px;margin-right: 80px;">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <span class="badge king-info">just now</span>
-                                <i class="fa fa-calendar"></i>
-                                <span>RAP</span>
-                            </li>
-                            <li class="list-group-item">
-                            <span class="badge king-info">4 minutes ago</span>
+                        <ul class="list-group" >
+                            <li class="list-group-item" ng-repeat="x in nowNews">
+                            <span class="badge king-info">{{x.time}}<a href="javascript:void(0);" ng-click="" id="">已读</a></span>
                             <i class="fa fa-comment"></i>
-                            <span>回复邮件</span>
-                        </li>
-                            <li class="list-group-item">
-                            <span class="badge king-info">23 minutes ago</span>
-                            <i class="fa fa-comment"></i>
-                            <span>购物车</span>
-                        </li>
-                            <li class="list-group-item">
-                            <span class="badge king-info">46 minutes ago</span>
-                            <i class="fa fa-comment"></i>
-                            <span>支付</span>
-                        </li>
-                            <li class="list-group-item">
-                            <span class="badge king-info">1 hour ago</span>
-                            <i class="fa fa-comment"></i>
-                            <span>添加新用户</span>
-                        </li>
-                            <li class="list-group-item">
-                            <span class="badge king-info">2 hours ago</span>
-                            <i class="fa fa-comment"></i>
-                            <span>任务: "pick up dry cleaning"</span>
-                        </li>
-                            <li class="list-group-item">
-                            <span class="badge king-info">yesterday</span>
-                            <i class="fa fa-comment"></i>
-                            <span>保存文件</span>
-                        </li>
-                            <li class="list-group-item">
-                            <span class="badge king-info">two days ago</span>
-                            <i class="fa fa-comment"></i>
-                            <span>任务: "fix error on sales page"</span>
+                            <span>{{x.message}}</span>
                         </li>
                         </ul>
                         <!-- 设置面板Start -->
@@ -409,277 +409,43 @@
         });
     })
 
+
+
+
+
+    app.directive('myStars', function () {
+        return {
+            require : '?ngModel', // ?ngModel
+            restrict : 'E',
+            replace : true,
+            templateUrl : 'ui/templateUrl/myStars.html',
+            scope: {ngModel : '='},
+            link: function ($scope, element, attrs, ngModel) {
+                $scope.myStars = [1,2,3,4,5];
+                $scope.clickCnt = 1;
+                $scope.$watch('ngModel', function(newValue) {
+                    var dataList = newValue;
+                    console.log(dataList);
+                    if(!dataList) return;
+                    $scope.myStar = dataList;
+                    $scope.clickCnt = dataList;
+                })
+                $scope.stars = function (myStar) {
+                    $scope.clickCnt = myStar;
+                    ngModel.$setViewValue(myStar);
+                }
+
+                $scope.mouseoverStar = function (myStar) {
+                    $scope.hoverCnt = myStar;
+                }
+                $scope.mouseleaveStar = function (myStar) {
+                    $scope.hoverCnt = 1;
+                }
+            }
+        }
+    });
+
 </script>
-
-
-
-<!--&lt;!&ndash;导航栏&ndash;&gt;-->
-<!--<div class="navbar">-->
-<!--    <div class="row">-->
-<!--        <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Medialoot</a></div>-->
-<!--        <div class="column column-40 col-search">-->
-<!--            <div data-toggle="modal" data-target="#settingModal" class="search-btn fa fa-search"></div>-->
-<!--            <input type="text" name="" value="" placeholder="查找课程">-->
-<!--        </div>-->
-<!--        <div class="column column-30">-->
-<!--            <div class="user-section"><a href="#">-->
-<!--                <i class="fa fa-user" aria-hidden="true" style="float:left;position:absolute;top: 20px;right:150px" ;=""></i>-->
-<!--                <div class="username" style="display: block">-->
-<!--                    <h4>个人信息</h4>-->
-<!--                    <p>studentinformation</p>-->
-<!--                </div>-->
-<!--            </a></div>-->
-<!--        </div>-->
-
-<!--    </div>-->
-<!--</div>-->
-<!--&lt;!&ndash;设置&ndash;&gt;-->
-<!--<div class="settings f-cb g-flow st" id="auto-id-1561784694225">-->
-<!--    <div id="settings-box" class="f-bg">-->
-<!--        <div class="m-setBox" id="auto-id-1561784694223">-->
-<!--            <div class="boxTab j-tabBox f-cb" id="auto-id-1561784694222">-->
-<!--                <a class="j-tabItem current" id="auto-id-1561784694496">资料设置</a>-->
-<!--                <a class="j-tabItem" id="auto-id-1561784694498">收货地址设置</a>-->
-<!--                <a class="j-tabItem" id="auto-id-1561784694500">帐号设置</a>-->
-<!--                <a class="j-tabItem" id="auto-id-1561784694502">邮件设置</a>-->
-<!--            </div>-->
-<!--            <div id="j-setBox" class="setBox">-->
-<!--                <div class="m-infoEdit" id="auto-id-1561784694254">-->
-<!--                    <div class="f-cb header">-->
-<!--                        <div class="f-fl fk">完善个人资料是让别人认识你的第一步</div>-->
-<!--                    </div>-->
-<!--                    <div class="editBox" id="auto-id-1561784694253">-->
-<!--                        <table id="auto-id-1561784694252">-->
-<!--                            <tbody id="auto-id-1561784694251"><tr>-->
-<!--                                <td>-->
-<!--                                    <h4>基本信息</h4>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr class="b-10"></tr>-->
-<!--                            <tr id="auto-id-1561784694250">-->
-<!--                                <td class="title">-->
-<!--                                    <em class="f-sign">*</em>昵称-->
-<!--                                </td>-->
-<!--                                <td id="auto-id-1561784694249">-->
-<!--                                    <div class="j-nickName eBcon auto-1561784694475-parent" id="auto-id-1561784694248">-->
-<!--                                        <div class="m-nicknameui u-insug f-cb auto-1561784694475" id="auto-id-1561784694511">-->
-<!--                                            <div class="area j-inputArea f-fl" style="width: 175px; height: 25px;" id="auto-id-1561784694247">-->
-<!--                                                <input type="text" class="j-input" id="auto-id-1561784694518" style="width: 175px; height: 25px;">-->
-<!--                                                <label class="j-label" id="auto-id-1561784694516" style="">请输入昵称</label>-->
-<!--                                            </div>-->
-<!--                                            <div class="infobox j-infobox auto-1561784694277-parent">-->
-<!--                                                <div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694547" style="">-->
-<!--                                                    <div class="warningbox j-warningbox f-cb">-->
-<!--                                                        <span class="j-warningicon warn"></span>-->
-<!--                                                        <span class="warning j-warning warntxt">昵称不能为空</span>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="loadingbox j-loadingbox f-cb" style="display: none;">-->
-<!--                                                        <span class="icon"></span>-->
-<!--                                                        <span class="loading j-loading"></span>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr id="auto-id-1561784694257">-->
-<!--                                <td class="title">头像</td>-->
-<!--                                <td id="auto-id-1561784694256">-->
-<!--                                    <div class="j-pic eBcon auto-1561784694479-parent" id="auto-id-1561784694255">-->
-<!--                                        <div class="f-cb auto-1561784694479" id="auto-id-1561784694684">-->
-<!--                                            <div class="imgbox">-->
-<!--                                                <img class="img j-img" src="//img-ph-mirror.nosdn.127.net/NrYhLLFqQIQLrpP-q-ZZrA==/6632383881120329172.jpg?imageView&amp;quality=100&amp;thumbnail=120y120">-->
-<!--                                            </div>-->
-<!--                                            <div class="infobox">-->
-<!--                                                <div class="info">支持jpg、gif、png或bmp格式的图片，建议文件小于20M</div>-->
-<!--                                                <div class="opt f-cb">-->
-<!--                                                    <div class="uploadbox j-uploadbox">-->
-<!--                                                        <div class="u-upd-img-btn" id="auto-id-1561784694686">-->
-<!--                                                            <a class="upbtn j-upload" title="支持jpg、gif、png或bmp格式的图片，建议文件小于20M">修改头像</a>-->
-<!--                                                            <div class="flashbox j-flashbox" id="auto-id-1561784694688">-->
-<!--                                                                <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" width="100%" height="100%" id="_1561784694687">-->
-<!--                                                                    <param value="//s.stu.126.net/res/swf/imageUpload.swf?884965992b66cee07fb945929ac4b00f" name="movie">-->
-<!--                                                                    <param value="always" name="allowScriptAccess">-->
-<!--                                                                    <param value="transparent" name="wmode">-->
-<!--                                                                    <param value="cbNameSpace=edu.u.imgUpload38&amp;uploadExif=true&amp;uploadUrl=%2F%2Fupload.icourse163.org%2Fapi%2FphotoUpload2.do%3F_upload_mth_%3Dsync_parse%26userdefinesize%3D28x28x1%3B120x120x1%26saveorigin%3Dfalse%26responsetype%3Dxml%26rotatedegree%3D0%26stamptype%3D%26stampstring%3D%26sitefrom%3Dstudy&amp;id=_1561784694687" name="flashvars">-->
-<!--                                                                    <embed src="//s.stu.126.net/res/swf/imageUpload.swf?884965992b66cee07fb945929ac4b00f" name="_1561784694687" width="100%" height="100%" pluginspage="http://www.adobe.com/go/getflashplayer" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent" flashvars="cbNameSpace=edu.u.imgUpload38&amp;uploadExif=true&amp;uploadUrl=%2F%2Fupload.icourse163.org%2Fapi%2FphotoUpload2.do%3F_upload_mth_%3Dsync_parse%26userdefinesize%3D28x28x1%3B120x120x1%26saveorigin%3Dfalse%26responsetype%3Dxml%26rotatedegree%3D0%26stamptype%3D%26stampstring%3D%26sitefrom%3Dstudy&amp;id=_1561784694687">-->
-<!--                                                                </object>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="feedbox j-feedbox auto-1561784694277-parent">-->
-<!--                                                        <div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694532" style="display: none;">-->
-<!--                                                            <div class="warningbox j-warningbox f-cb">-->
-<!--                                                                <span class="right j-warningicon"></span>-->
-<!--                                                                <span class="warning j-warning"></span>-->
-<!--                                                            </div>-->
-<!--                                                            <div class="loadingbox j-loadingbox f-cb">-->
-<!--                                                                <span class="icon"></span>-->
-<!--                                                                <span class="loading j-loading"></span>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td class="title">性别</td>-->
-<!--                                <td>-->
-<!--                                    <div class="sex eBcon">-->
-<!--                                        <input id="male" type="radio" name="sex" class="j-sex">-->
-<!--                                        <label for="male">男</label>-->
-<!--                                        <input id="female" type="radio" name="sex" class="j-sex">-->
-<!--                                        <label for="female">女</label>-->
-<!--                                        <input id="privacy" type="radio" name="sex" class="j-sex">-->
-<!--                                        <label for="privacy">保密</label>-->
-<!--                                    </div>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr class="j-oneDesEditArea f-dn">-->
-<!--                                <td class="title">-->
-<!--                                    <em class="f-sign">*</em>职业头衔</td>-->
-<!--                                <td>-->
-<!--                                    <div class="j-oneDes eBcon"></div>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td class="title">个人介绍</td>-->
-<!--                                <td>-->
-<!--                                    <div class="j-description eBcon auto-1561784694477-parent">-->
-<!--                                        <div class="m-inputcheckui f-cb auto-1561784694477" id="auto-id-1561784694534">-->
-<!--                                            <div class="inputbox">-->
-<!--                                                <div class="input j-input auto-1561784694260-parent">-->
-<!--                                                    <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694567" style="width: 395px; height: 74px;">-->
-<!--                                                        <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694571" style="width: 395px; height: 74px;"></textarea>-->
-<!--                                                        <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694569">用一段话介绍你自己，会在你的个人页面显示，最多输入80字</label>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                <div class="tips j-tipsNode"></div>-->
-<!--                                            </div>-->
-<!--                                            <div class="infobox j-infobox auto-1561784694277-parent"><div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694577" style="display: none;">-->
-<!--                                                <div class="warningbox j-warningbox f-cb">-->
-<!--                                                    <span class="right j-warningicon"></span>-->
-<!--                                                    <span class="warning j-warning"></span>-->
-<!--                                                </div>-->
-<!--                                                <div class="loadingbox j-loadingbox f-cb">-->
-<!--                                                    <span class="icon"></span>-->
-<!--                                                    <span class="loading j-loading"></span>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td>-->
-<!--                                    <h4>联系信息</h4>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr class="b-10"></tr>-->
-<!--                            <tr>-->
-<!--                                <td class="title">真实姓名</td>-->
-<!--                                <td>-->
-<!--                                    <div class="f-fl rnIpt f-cb">-->
-<!--                                        <div class="j-rnIpt auto-1561784694260-parent">-->
-<!--                                            <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694550" style="width: 285px; height: 23px;">-->
-<!--                                                <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694554" style="width: 285px; height: 23px;"></textarea>-->
-<!--                                                <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694552"></label>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="tip f-fs0 s-fc6">用于高等教育课程证书登记与发放，不会以任何形式向第三方透露</div>-->
-<!--                                    </div>-->
-<!--                                    <div class="f-fl feed j-rnFb"></div>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td class="title">-->
-<!--                                    <em class="f-sign">*</em>常用邮箱</td>-->
-<!--                                <td>-->
-<!--                                    <div class="j-mail eBcon">-->
-<!--                                        <div class="accMail" id="auto-id-1561784694564">-->
-<!--                                            <div class="j-mailOpr mailOpr">-->
-<!--                                                <div class="j-add f-cb add">-->
-<!--                                                    <div class="f-fl auto-1561784694260-parent">-->
-<!--                                                        <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694584" style="width: 204px; height: 22px;">-->
-<!--                                                            <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694588" style="width: 204px; height: 22px;"></textarea>-->
-<!--                                                            <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694586">name@example.com</label>-->
-<!--                                                        </div>-->
-<!--                                                        <a class="btn f-fl" id="auto-id-1561784694560">-->
-<!--                                                            <span>添加</span>-->
-<!--                                                        </a>-->
-<!--                                                        <a class="cancel f-fl" id="auto-id-1561784694562" style="display: none;">取消</a>-->
-<!--                                                        <div class="j-addFb f-fl auto-1561784694277-parent">-->
-<!--                                                            <div class="m-feedbackinfo auto-1561784694277" id="auto-id-1561784694524" style="display: none;">-->
-<!--                                                                <div class="warningbox j-warningbox f-cb">-->
-<!--                                                                    <span class="right j-warningicon"></span>-->
-<!--                                                                    <span class="warning j-warning"></span>-->
-<!--                                                                </div>-->
-<!--                                                                <div class="loadingbox j-loadingbox f-cb">-->
-<!--                                                                    <span class="icon"></span>-->
-<!--                                                                    <span class="loading j-loading"></span>-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="j-verify verify f-cb" style="display: none;">-->
-<!--                                                        <div class="f-fl mailN"></div>-->
-<!--                                                        <a class="btn btn1 f-fl" target="_blank"><span>发送验证邮件</span></a>-->
-<!--                                                        <a class="f-fl change" id="auto-id-1561784694561">修改邮箱</a>-->
-<!--                                                        <div class="f-fl"></div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                <div class="j-mailTxt mailTxt" style="margin-top: 5px;">用于接收来自平台和课程的邮件通知，非常重要</div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div></td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td class="title">手机号码</td>-->
-<!--                                <td>-->
-<!--                                    <div class="f-fl qqIpt f-cb">-->
-<!--                                        <div class="j-qqIpt auto-1561784694260-parent">-->
-<!--                                            <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694514" style="width: 285px; height: 23px;">-->
-<!--                                                <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694652" style="width: 285px; height: 23px;"></textarea>-->
-<!--                                                <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694650"></label>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="tip f-fs0 s-fc6">用于课程的高效交流、方便机构及老师答疑解惑</div>-->
-<!--                                    </div>-->
-<!--                                    <div class="f-fl feed j-rnFb"></div>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td class="title">QQ号码</td>-->
-<!--                                <td>-->
-<!--                                    <div class="f-fl qqIpt f-cb">-->
-<!--                                        <div class="j-qqIpt auto-1561784694260-parent">-->
-<!--                                            <div class="m-baseinputui auto-1561784694260" id="auto-id-1561784694514" style="width: 285px; height: 23px;">-->
-<!--                                                <textarea name="inputtxt" class="j-textarea inputtxt" id="auto-id-1561784694652" style="width: 285px; height: 23px;"></textarea>-->
-<!--                                                <label class="j-hint inputhint" for="inputtxt" id="auto-id-1561784694650"></label>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="tip f-fs0 s-fc6">用于课程的高效交流、方便机构及老师答疑解惑</div>-->
-<!--                                    </div>-->
-<!--                                    <div class="f-fl feed j-rnFb"></div>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            </tbody>-->
-<!--                        </table>-->
-<!--                    </div>-->
-<!--                    <div class="footer">-->
-<!--                        <a class="btn f-cb j-save" id="auto-id-1561784694504"><span>保存</span></a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 
 
 

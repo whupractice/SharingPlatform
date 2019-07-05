@@ -105,4 +105,10 @@ public class TLController {
         tlService.deleteTL(lessonId, teacherId);
     }
 
+    @ApiOperation(value = "通过教师号删除教师授课记录", notes = "通过教师号删除教师授课记录",httpMethod = "DELETE")
+    @DeleteMapping("/teacherId")
+    public void deleteTLByTeacherId(@RequestParam @ApiParam(value = "教师账号") String teacherId) {
+        tlService.deleteTLByTeacherId(teacherId);
+    }
+
 }

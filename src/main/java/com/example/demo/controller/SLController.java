@@ -65,6 +65,13 @@ public class SLController {
         return slService.getStudentByLessonId(lessonId);
     }
 
+    @ApiOperation(value = "根据课程id获取评论信息", notes = "根据课程id获取评论信息",httpMethod = "GET")
+    @ApiParam(name = "lessonId",value = "课程id")
+    @GetMapping("/getEvaluationByLessonId")
+    public List<SLEntity> getEvaluationByLessonId(@RequestParam String lessonId) {
+        return slService.getEvaluationByLessonId(lessonId);
+    }
+
 
     /**
       * @Author      : Theory

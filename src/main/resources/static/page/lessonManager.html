@@ -285,11 +285,17 @@
                                         <textarea class="form-control" rows="5" readonly>
                                             {{currentL.lessonIntro}}
                                         </textarea>
+                                        <label class="control-label">发送消息</label>
+                                        <textarea class="form-control" rows="5" placeholder="发送给这门课的学生..."
+                                        id="message">
+
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="send()">发送</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                         </div>
                     </div><!-- /.modal-content -->

@@ -29,4 +29,8 @@ public interface SLRepository extends JpaRepository<SLEntity, SLKeys> {
     @Query(value = "SELECT * FROM sl WHERE lesson_id = ?1",nativeQuery = true)
     List<SLEntity> getSLByLessonId(long lessonId);
 
+    //根据课程id查询评论
+    @Query(value = "select * from sl where lesson_id = ?1 and evaluation is not null",nativeQuery = true)
+    List<SLEntity> getEvaluationByLessonId(long lessonId);
+
 }

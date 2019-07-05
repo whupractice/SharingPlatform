@@ -127,3 +127,32 @@ a.king-gray-lighter:hover{background-color:#e0e0e0}
     border: none;
     left: 90px;
 }
+
+
+.my-stars-list{
+    height: 34px;
+    line-height: 34px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.my-stars-items{
+    cursor:pointer;
+    font-size:0;
+    width: 34px;
+    line-height: 34px;
+    height:34px;
+    background-image: url(./static/img/star-off-big.tiff);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.myStarHover.my-stars-items{
+    background-image: url(./static/img/star-on-big.tiff);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.myStarsSel.my-stars-items{
+    background-image: url(./static/img/star-on-big.tiff);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
