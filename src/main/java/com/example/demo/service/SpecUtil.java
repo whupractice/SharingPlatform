@@ -17,12 +17,23 @@ import java.util.List;
 @Service
 public class SpecUtil {
 
-    public Specification<MessageEntity> createSpecificationByPhoneAndLessonId(String phone, String lessonId) {
-
+    public Specification<MessageEntity> createSpecificationByPhone(String phone) {
         return (Specification<MessageEntity>) (root, query, cb) -> {
             //用于暂时存放查询条件的集合
             List<Predicate> predicatesList = new ArrayList<>();
 
+            Predicate predicate = cb.like(root.get("phone"), "%" + phone + "%");
+            predicatesList.add(predicate);
+
+            Predicate[] predicates = new Predicate[predicatesList.size()];
+            return cb.and(predicatesList.toArray(predicates));
+        };
+    }
+
+    public Specification<MessageEntity> createSpecificationByPhoneAndLessonId(String phone, String lessonId) {
+        return (Specification<MessageEntity>) (root, query, cb) -> {
+            //用于暂时存放查询条件的集合
+            List<Predicate> predicatesList = new ArrayList<>();
 
             Predicate predicate = cb.like(root.get("phone"), "%" + phone + "%");
             predicatesList.add(predicate);
@@ -33,7 +44,6 @@ public class SpecUtil {
             Predicate[] predicates = new Predicate[predicatesList.size()];
             return cb.and(predicatesList.toArray(predicates));
         };
-
     }
 
 

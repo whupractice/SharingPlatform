@@ -25,11 +25,15 @@ import java.util.List;
 @RequestMapping("/message")
 public class MessageController {
 
-    @Autowired
-    MessageService messageService;
+    private MessageService messageService;
+
+    private SpecUtil specUtil;
 
     @Autowired
-    SpecUtil specUtil;
+    MessageController(MessageService messageService,SpecUtil specUtil) {
+        this.messageService = messageService;
+        this.specUtil = specUtil;
+    }
 
     @ApiOperation(value = "获取所有学生课程消息", notes = "获取所有学生课程消息",httpMethod = "GET")
     @GetMapping("")
@@ -56,6 +60,14 @@ public class MessageController {
                                              @RequestParam(value = "phone")@ApiParam(value = "学生手机号") String phone,
                                              @RequestParam(value = "lessonId")@ApiParam(value = "课程号") String lessonId) {
         Specification<MessageEntity> specification = specUtil.createSpecificationByPhoneAndLessonId(phone,lessonId);
+        return messageService.getAll(specification,pageable);
+    }
+
+    @ApiOperation(value = "分页根据学生手机号获取消息列表", notes = "分页根据学生手机号获取消息列表",httpMethod = "GET")
+    @GetMapping("/getPagesByPhone")
+    public Page<MessageEntity> getPagesByPhone(@PageableDefault(size = 12, sort = {"time"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
+                                               @RequestParam(value = "phone")@ApiParam(value = "学生手机号") String phone) {
+        Specification<MessageEntity> specification = specUtil.createSpecificationByPhone(phone);
         return messageService.getAll(specification,pageable);
     }
 
