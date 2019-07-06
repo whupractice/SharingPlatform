@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.baseClass.Lesson;
 import com.example.demo.entity.LessonEntity;
 import com.example.demo.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -171,5 +172,18 @@ public class LessonService {
       */
     public void deleteLesson(long lessonId){
         lessonRepository.deleteById(lessonId);
+    }
+
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 根据id返回课程
+      * @Param       : [id]--课程号
+      * @return      : 课程
+      */
+    public LessonEntity getLessonById(String id){
+        long lessonId = Long.parseLong(id);
+        return lessonRepository.findById(lessonId).get();
     }
 }

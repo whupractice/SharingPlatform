@@ -10,6 +10,7 @@ API_index.controller("headCtrl", function ($scope, $http, $state,Data,$interval)
 
 
     $scope.currentUser = null;
+    $scope.messageNum = 0;
 
     /**
      * @Author      : Theory
@@ -26,6 +27,7 @@ API_index.controller("headCtrl", function ($scope, $http, $state,Data,$interval)
       */
     $scope.initHead = function () {
       $scope.currentUser = Data.get();
+      $scope.getMessageNum();
     };
 
 
@@ -60,6 +62,24 @@ API_index.controller("headCtrl", function ($scope, $http, $state,Data,$interval)
     //是否是课程管理员
     $scope.isLeManager = function () {
         return $scope.currentUser.isLessonManager == 1;
+    };
+
+
+    //获取学生消息数量
+    $scope.getMessageNum = function () {
+        let judge = $scope.isStu();
+        if(judge==true) {
+            let phone = $scope.currentUser.phone;
+            $http({
+                method: 'GET',
+                url: "/message/phone",
+                params: {
+                    "phone": phone
+                }
+            }).then(function successCallback(response) {
+                $scope.messageNum = response.data.length;
+            });
+        }
     };
 
 });

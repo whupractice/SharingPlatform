@@ -157,7 +157,11 @@
                         <span class="label label-info">{{x.status}}</span>
                     </td>
                     <td>
-                        <button class="btn btn-xs btn-info" title="详情" data-toggle="modal" data-target="#lessonModal"
+                        <button class="btn btn-xs btn-info" title="上传" data-toggle="modal" data-target="#uploadModal"
+                                ng-click="bindLesson(x)">
+                            <i class="glyphicon glyphicon-upload"></i>
+                        </button>
+                        <button class="btn btn-xs btn-info" title="发送" data-toggle="modal" data-target="#lessonModal"
                                 ng-click="bindLesson(x)">
                             <i class="glyphicon glyphicon-edit"></i>
                         </button>
@@ -186,7 +190,38 @@
             </ul>
 
 
+            <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="uploadModalLabel">上传图片和视频</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <form action="/lesson/imgUpload" method="post" enctype="multipart/form-data" id="uploadImgForm">
+                                            <label class="control-label">图片: </label>
+                                            <input type="file" class="form-control" name="img" accept="image/*">
+                                            <input type="text" value="{{currentL.lessonId}}" name="fileName">
+                                            <input type="submit" value="提交" ng-click="uploadImg()">
+                                        </form>
 
+                                        <form action="/lesson/videoUpload" method="post" enctype="multipart/form-data" id="uploadVideoForm">
+                                            <label class="control-label">视频: </label>
+                                            <input type="file" class="form-control" name="video" accept="video/*">
+                                            <input type="text" class="form-control" name="id">
+                                            <input type="text" value="{{currentL.lessonId}}" name="fileName">
+                                            <input type="submit" value="提交" ng-click="uploadVideo()">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
             <div class="modal fade" id="addLModal" tabindex="-1" role="dialog" aria-labelledby="addLModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

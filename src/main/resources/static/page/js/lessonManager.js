@@ -25,6 +25,11 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
     $scope.academys = null;//此学校的所有学院
     $scope.academyLesson = null;//此学院的所有课程
 
+    $scope.imgForm = {
+        img: null,
+        fileName:""
+    };
+
 
     //初始化管理员信息
     $scope.initLessonManager = function () {
@@ -423,6 +428,21 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
             }
         })
     };
+
+    $scope.uploadImg = function() {
+        $("#uploadImgForm").ajaxForm(function (data) {
+            alert("上传成功！");
+            $('#uploadModal').modal('hide');
+        });
+    };
+
+    $scope.uploadVideo = function() {
+        $("#uploadVideoForm").ajaxForm(function (data) {
+            alert("上传成功！");
+            $('#uploadModal').modal('hide');
+        });
+    };
+
 
 
 

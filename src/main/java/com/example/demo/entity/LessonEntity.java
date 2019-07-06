@@ -28,6 +28,7 @@ public class LessonEntity {
         this.recommendedLevel = recommendedLevel;
         this.shareNum = shareNum;
         this.imgLink = imgLink;
+
     }
 
     @Id
@@ -51,6 +52,8 @@ public class LessonEntity {
     private String endTime;//结束时间
 
     private int credit;//学分
+
+    private String videoLink;//视频链接
 
     @Column(length = 2000)
     private String lessonIntro;//课程简介
@@ -182,5 +185,13 @@ public class LessonEntity {
 
     public void setImgLink(String imgLink) {
         this.imgLink = imgLink;
+    }
+
+    public String getVideoLink() {
+        return videoLink;
+    }
+
+    public void setVideoLink(String videoLink) {
+        this.videoLink = videoLink;
     }
 }

@@ -11,7 +11,7 @@
 <body style="color: black">
 <div ng-controller="headCtrl">
     <nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small" role="navigation">
-        <div class="" style="width: 1300px">
+        <div class="" style="width: 1600px">
             <div class="row">
                 <div class="col-lg-12" style="margin-bottom: 5px">
                     <div class="navbar-header">
@@ -89,17 +89,7 @@
                             </li>
                         </ul>
                         <!--消息提醒-->
-                        <ul class="nav pull-right">
-                            <li class="">
-                                <a href="#" data-toggle="dropdown" class="toggle">
-                                    <i class="fa fa-bell"></i>
-                                    <span class="badge badge-orange" style="height: 15px;
-    width: 15px;
-    margin-top: -14px;
-    margin-left: -16px;">3</span>
-                                </a>
-                            </li>
-                        </ul>
+
 
 
                         <ul class="nav pull-right">
@@ -116,21 +106,34 @@
                                     <li class="divider"></li>
 
                                     <li ng-if="isSysManager()" ui-sref="administer"><a>
-                                        <i class="fa fa-road"></i>&nbsp;&nbsp; 系统管理员界面</a></li>
-                                    <li class="divider"></li>
+                                        <i class="fa fa-road"></i>&nbsp;&nbsp; 系统管理员界面</a>
+                                    </li>
+                                    <li class="divider" ng-if="isSysManager()"></li>
 
                                     <li ng-if="isLeManager()" ui-sref="lessonManager"><a>
                                         <i class="fa fa-road"></i>&nbsp;&nbsp; 课程管理员界面</a></li>
-                                    <li class="divider"></li>
+                                    <li class="divider" ng-if="isLeManager()"></li>
 
                                     <li ng-if="isStu()" ui-sref="student">
                                         <a>
                                             <i class="fa fa-road"></i>&nbsp;&nbsp; 学生个人界面</a>
                                     </li>
-                                    <li class="divider"></li>
+                                    <li class="divider" ng-if="isStu()" ></li>
                                 </ul>
                             </li>
 
+                        </ul>
+
+                        <ul class="nav pull-right">
+                            <li class="">
+                                <a href="#" data-toggle="dropdown" class="toggle">
+                                    <i class="fa fa-bell"></i>
+                                    <span class="badge badge-orange" style="height: 15px;
+    width: 15px;
+    margin-top: -14px;
+    margin-left: -16px;">{{messageNum}}</span>
+                                </a>
+                            </li>
                         </ul>
 
                     </div>
