@@ -336,17 +336,17 @@
                         <h4 class="modal-title">添加评价</h4>
                     </div>
                     <div class="modal-body">
-                        <my-stars ng-model="drLevel">
-                            <div>
-                                <ul class="my-stars-list">
-                                    <li class="my-stars-items" ng-mouseover="mouseoverStar(myStar)" ng-mouseleave="mouseleaveStar(myStar)" ng-click="stars(myStar)" ng-class="{myStarsSel: clickCnt > $index , myStarHover: hoverCnt > $index }" ng-repeat="myStar in myStars track by $index" title="{{ myStar }}星">
-                                        {{ myStar }}
-                                    </li>
-                                </ul>
-                            </div>
-                        </my-stars>
 
-                        <div class="form-group has-feedback clearfix ">
+                        <div class="form-group has-feedback clearfix">
+                            <span style="font-size:18px;"><div ng-app="app">
+                                <div class="well" ng-controller="starCtrl">
+                                    <div star rating-value="ratingVal" max="max" on-hover="onHover" on-leave="onLeave" readonly="{{readonly}}"></div>
+                                    <div>
+                                        <p>请评分： {{ratingVal}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </span>
                             <label class="control-label col-sm-2 pt0" >你的评价</label>
                             <div class="col-sm-10">
                                 <textarea id="evaluation" class="form-control" rows="3" style="position: relative;
@@ -378,7 +378,7 @@
                     <div class="king-layout1-content" style="    margin-left: 260px;margin-right: 80px;">
                         <ul class="list-group" >
                             <li class="list-group-item" ng-repeat="x in nowNews">
-                            <span class="badge king-info">{{x.time}}<a href="javascript:void(0);" ng-click="" id="">已读</a></span>
+                            <span class="badge king-info">{{x.time}}<a href="javascript:void(0);" ng-click="already_read()">已读</a></span>
                             <i class="fa fa-comment"></i>
                             <span>{{x.message}}</span>
                         </li>
@@ -407,43 +407,8 @@
                 }
             })
         });
-    })
-
-
-
-
-
-    app.directive('myStars', function () {
-        return {
-            require : '?ngModel', // ?ngModel
-            restrict : 'E',
-            replace : true,
-            templateUrl : 'ui/templateUrl/myStars.html',
-            scope: {ngModel : '='},
-            link: function ($scope, element, attrs, ngModel) {
-                $scope.myStars = [1,2,3,4,5];
-                $scope.clickCnt = 1;
-                $scope.$watch('ngModel', function(newValue) {
-                    var dataList = newValue;
-                    console.log(dataList);
-                    if(!dataList) return;
-                    $scope.myStar = dataList;
-                    $scope.clickCnt = dataList;
-                })
-                $scope.stars = function (myStar) {
-                    $scope.clickCnt = myStar;
-                    ngModel.$setViewValue(myStar);
-                }
-
-                $scope.mouseoverStar = function (myStar) {
-                    $scope.hoverCnt = myStar;
-                }
-                $scope.mouseleaveStar = function (myStar) {
-                    $scope.hoverCnt = 1;
-                }
-            }
-        }
     });
+
 
 </script>
 
