@@ -79,7 +79,7 @@ public class SLController {
       * @Param       : [lessonId] -- 课程id
       * @return      : 选这门课的学生数量
       */
-    @ApiOperation(value = "通过课程号获取选择这门课程的学生数量", notes = "通过课程号获取选择这门课程的学生数量",httpMethod = "GET")
+    @ApiOperation(value = "根据课程号获取选择这门课程的学生数量", notes = "根据课程号获取选择这门课程的学生数量",httpMethod = "GET")
     @ApiParam(name = "lessonId",value = "课程号")
     @GetMapping("/getStuNumByLessonId")
     public int getStuNumByLessonId(@RequestParam String lessonId){
@@ -117,7 +117,7 @@ public class SLController {
      * @Description : 通过学生账号和课程账号删除选课记录
      * @Param       : [stuId,lessonId] -- 学生账号、课程账号
      */
-    @ApiOperation(value = "通过学生账号和课程账号删除选课记录", notes = "通过学生账号和课程账号删除选课记录",httpMethod = "DELETE")
+    @ApiOperation(value = "根据学生账号和课程账号删除选课记录", notes = "根据学生账号和课程账号删除选课记录",httpMethod = "DELETE")
     @DeleteMapping("/stuId/lessonId")
     public void deleteSL(@RequestParam @ApiParam(value = "学生账号") String stuId ,
                          @RequestParam @ApiParam(value = "课程账号") String lessonId){

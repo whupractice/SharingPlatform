@@ -14,6 +14,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -40,8 +41,22 @@ public class StudentController {
       */
     @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "POST")
     @PostMapping(value = "/login")
-    public StudentEntity login(@RequestBody StudentEntity student) {
+    public String login(@RequestBody StudentEntity student) {
         return studentService.judgeLogin(student.getPhone(),student.getPwd());
+    }
+
+    @ApiOperation(value = "退出登录", notes = "退出登录",httpMethod = "DELETE")
+    @DeleteMapping(value = "/logout")
+    public boolean logout(HttpServletRequest request){
+        String token;
+        String requestHeader = request.getHeader("Authorization");
+        if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
+            token = requestHeader.substring(7);
+            studentService.logout(token);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
@@ -56,7 +71,7 @@ public class StudentController {
     @ApiOperation(value = "注册学生账号", notes = "注册学生账号",httpMethod = "POST")
     @PostMapping(value = "/register")
     @ApiParam(name = "stu",value = "学生实体,其中phone和pwd不能为空")
-    public boolean register(@RequestBody StudentEntity stu){
+    public String register(@RequestBody StudentEntity stu){
         return studentService.register(stu);
     }
 
@@ -89,14 +104,14 @@ public class StudentController {
       * @Description : 返回数据库中所有学生的信息
       * @return      : 所有学生信息
       */
-    @ApiOperation(value = "返回数据库中所有学生的信息", notes = "返回数据库中所有学生的信息",httpMethod = "GET")
+    @ApiOperation(value = "获取数据库中所有学生的信息", notes = "获取数据库中所有学生的信息",httpMethod = "GET")
     @GetMapping(value = "")
     public List<StudentEntity> getAllStudent(){
         return studentService.getAllStudent();
     }
 
 
-    @ApiOperation(value = "返回数据库中所有系统管理员的信息", notes = "返回数据库中所有系统管理员的信息",httpMethod = "GET")
+    @ApiOperation(value = "获取数据库中所有系统管理员的信息", notes = "获取数据库中所有系统管理员的信息",httpMethod = "GET")
     @GetMapping(value = "/manager")
     public List<StudentEntity> getAllManager() {
         return studentService.getAllManager();

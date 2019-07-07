@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import springfox.documentation.annotations.Cacheable;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @ Author     ：Theory
@@ -21,7 +25,15 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    private Map<String, UserDetails> tokenMap = new HashMap<>();
 
+    @Cacheable("user")
+    public UserDetails getUserFromToken(String token) {
+        if(token == null) {
+            return null;
+        }
+        return tokenMap.get(token);
+    }
 
     /**
       * @Author      : Theory
@@ -29,14 +41,27 @@ public class StudentService {
       * @Param       : [phone,id] -- 用户名、密码
       * @return      : 是否正确
       */
-    public StudentEntity judgeLogin(long phone,String pwd){
+    public String judgeLogin(long phone,String pwd){
         StudentEntity s =studentRepository.getStuById(phone);
+        UserDetails userDetails;
         if(s.getPwd().equals(pwd)){
-            return s;
+            if(Boolean.parseBoolean(String.valueOf(s.getIsManager()))){
+                userDetails = createUser(String.valueOf(phone),pwd,new String[]{"manager"});
+            } else if(Boolean.parseBoolean(String.valueOf(s.getIsLessonManager()))){
+                userDetails = createUser(String.valueOf(phone),pwd,new String[]{"lessonManager"});
+            } else {
+                userDetails = createUser(String.valueOf(phone),pwd,new String[]{"student"});
+            }
+            String token = UUID.randomUUID().toString();
+            tokenMap.put(token, userDetails);
+            return token;
         }else {
             return null;
         }
+    }
 
+    public void logout(String token) {
+        tokenMap.remove(token);
     }
 
 
@@ -90,15 +115,15 @@ public class StudentService {
       * @Param       : [stu]
       * @return      : boolean
       */
-    public boolean register(StudentEntity stu){
+    public String register(StudentEntity stu){
         stu.setNickName(String.valueOf(stu.getPhone()));
         StudentEntity stu1 = studentRepository.getStuById(stu.getPhone());
         StudentEntity stu2 = studentRepository.getStuByNickName(stu.getNickName());
         if(stu1==null && stu2==null) {
             studentRepository.save(stu);//向数据库中插入学生
-            return true;
+            return judgeLogin(stu.getPhone(),stu.getPwd());
         }
-        return false;
+        return null;
     }
 
 
@@ -146,6 +171,61 @@ public class StudentService {
       */
     public void deleteStudent(long phone){
         studentRepository.deleteById(phone);
+    }
+
+
+
+    private UserDetails createUser(String userName, String password, String[] roles){
+        return new UserDetails() {
+
+            //private static final long serialVersionUID = 6905138725952656074L;
+
+            @Override
+            public Collection<? extends GrantedAuthority> getAuthorities() {
+                Collection<GrantedAuthority> authorities = new ArrayList<>();
+
+//                //这是增加了一种名为query的权限，可以使用 @hasAuthority("query") 来判断
+//                SimpleGrantedAuthority authority = new SimpleGrantedAuthority("query");
+//                authorities.add(authority);
+
+                //这是增加到xxx角色，可以用hasRole("xxx")来判断；需要注意所有的角色在这里增加时必须以ROLE_前缀，使用时则没有ROLES_前缀
+                for(String role : roles) {
+                    SimpleGrantedAuthority sga = new SimpleGrantedAuthority("ROLE_" + role);
+                    authorities.add(sga);
+                }
+                return authorities;
+            }
+
+            @Override
+            public String getPassword() {
+                return password;
+            }
+
+            @Override
+            public String getUsername() {
+                return userName;
+            }
+
+            @Override
+            public boolean isAccountNonExpired() {
+                return true;
+            }
+
+            @Override
+            public boolean isAccountNonLocked() {
+                return true;
+            }
+
+            @Override
+            public boolean isCredentialsNonExpired() {
+                return true;
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return true;
+            }
+        };
     }
 
 }

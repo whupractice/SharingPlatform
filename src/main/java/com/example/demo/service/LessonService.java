@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.baseClass.Lesson;
 import com.example.demo.entity.LessonEntity;
 import com.example.demo.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import springfox.documentation.annotations.Cacheable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +82,7 @@ public class LessonService {
       * @return      : 一定数量的热门课程
       * TODO 查询有点慢，希望优化查询算法
       */
+    @Cacheable("hotLesson")
     public List<LessonEntity> getHotLesson(int num){
         Sort sort = new Sort(Sort.Direction.DESC, "welcome");
         List<LessonEntity> primList = lessonRepository.findAll(sort);//按照热度从高到低排序
