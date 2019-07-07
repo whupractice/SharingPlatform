@@ -7,7 +7,7 @@ var app = angular.module('myApp');
  */
 app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
-    $scope.currentSytemManager = null;//当前系统管理员
+    $scope.currentSystemManager = null;//当前系统管理员
 
     $scope.nowPage = 1;
 
@@ -33,7 +33,7 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
         $scope.getAllSystemManagers();//获取所有管理员信息
         $scope.getAllLessonManagers();//获取所有课程管理员信息
         $scope.getAllSchools();//获取所有学校
-        $scope.currentManager = Data.get();//获取当前管理员信息
+        $scope.currentSystemManager = Data.get();//获取当前管理员信息
     };
 
 
@@ -384,6 +384,15 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
                 alert("删除失败!");
             }
         })
+    };
+
+
+    //上传学校图片
+    $scope.uploadSImg = function() {
+        $("#schoolImgForm").ajaxForm(function (data) {
+            alert("上传成功！");
+            $('#schoolImgModal').modal('hide');
+        });
     };
 
 });

@@ -84,6 +84,15 @@ public class SchoolService {
         }
     }
 
+
+    //更新学校
+    public void updateSchool(SchoolEntity schoolEntity){
+        schoolRepository.save(schoolEntity);
+    }
+
+
+
+
     /**
       * @Author      : QinYingran
       * @Description : 根据学校id删除学校
@@ -94,6 +103,17 @@ public class SchoolService {
         schoolRepository.deleteById(schoolId);
     }
 
+
+    /**
+      * @Author      : Theory
+      * @Description : 根据id获取学校
+      * @Param       : [id] -- 学校id
+      * @return      : 获取到的学校
+      */
+    public SchoolEntity getSchoolById(String id){
+        long schoolId = Long.parseLong(id);
+        return schoolRepository.findById(schoolId).get();
+    }
 
 }
 

@@ -29,7 +29,7 @@
         <div class="row grid-responsive">
             <div class="column page-heading">
                 <div class="large-card">
-                    <h1 style="margin-bottom: 10px">Hey {{currentUser.nickName}}</h1>
+                    <h1 style="margin-bottom: 10px">Hey {{currentSystemManager.nickName}}</h1>
                     <p class="text-large">尊贵的系统管理员，伊万诺夫提醒您：
                         <span style="font-weight: bold">操作千万条，谨慎第一条，操作不规范，管理两行泪。</span></p>
                     <p style="float: right"> -- 最爱您的伊万诺夫</p>
@@ -357,6 +357,8 @@
                     <div class="panel-btns" style="margin-top: 40px">
                         <a class="king-btn king-radius king-primary" title="保存绑定关系"
                         data-toggle="modal" data-target="#addSModal">增添学校</a>
+                        <a class="king-btn king-radius king-primary" title="保存绑定关系"
+                           data-toggle="modal" data-target="#schoolImgModal">上传图片</a>
                     </div>
                     <div class="panel-body">
                         <div class="panel-content container">
@@ -409,6 +411,31 @@
                 </div>
             </div>
 
+            <div class="modal fade" id="schoolImgModal" tabindex="-1" role="dialog" aria-labelledby="schoolImgModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="schoolImgModalLabel">课程信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <form action="/school/imgUpload" method="post" enctype="multipart/form-data" id="schoolImgForm">
+                                            <label class="control-label">图片: </label>
+                                            <input type="file" class="form-control" name="img" accept="image/*">
+                                            <input type="text" value="{{page3School.schoolId}}" name="fileName" readonly>
+                                            <input type="submit" value="提交" ng-click="uploadSImg()">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
             <div class="modal fade" id="addSModal" tabindex="-1" role="dialog" aria-labelledby="addModeSLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -450,7 +477,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="control-label">学校名: </label>
+                                        <label class="control-label">学院名: </label>
                                         <input type="text" class="form-control" id="academyName"  required>
                                         <label class="control-label">学校名: </label>
                                         <select id="schools">

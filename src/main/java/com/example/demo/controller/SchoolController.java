@@ -6,8 +6,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -108,5 +111,29 @@ public class SchoolController {
     public void deleteSchool(@RequestParam("schoolId") long schoolId) {
         schoolService.deleteSchool(schoolId);
     }
+
+
+    @ApiOperation(value = "给学校上传图片", notes = "给学校上传图片",httpMethod = "POST")
+    @PostMapping("/imgUpload")
+    public void uploadImg(@RequestParam("img")@ApiParam(value = "img") MultipartFile file,
+                          @RequestParam("fileName")@ApiParam(value = "fileName") String fileName){
+        try {
+            File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
+            if(!path2.exists()) path2 = new File("");
+            File upload2 = new File(path2.getAbsolutePath(),"img/school/");
+            if(!upload2.exists()) upload2.mkdirs();
+            String path=upload2.getAbsolutePath()+"/"+fileName;
+            File img = new File(path);
+            if(!img.exists())
+                img.createNewFile();//不存在则创建新文件
+            file.transferTo(img);
+            SchoolEntity oldSchool = schoolService.getSchoolById(fileName);
+            oldSchool.setImgLink("../img/school/"+fileName);
+            schoolService.updateSchool(oldSchool);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 }
