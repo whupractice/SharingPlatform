@@ -436,11 +436,24 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
         });
     };
 
+    $scope.uploadTImg = function() {
+        $("#teacherImgForm").ajaxForm(function (data) {
+            alert("上传成功！");
+            $('#imgModal').modal('hide');
+        });
+    };
+
     $scope.uploadVideo = function() {
         $("#uploadVideoForm").ajaxForm(function (data) {
             alert("上传成功！");
             $('#uploadModal').modal('hide');
         });
+    };
+
+
+    //绑定当前选中的老师
+    $scope.bindT = function (x) {
+        $scope.currentT = x;
     };
 
 

@@ -211,7 +211,7 @@
                                         <form action="/lesson/videoUpload" method="post" enctype="multipart/form-data" id="uploadVideoForm">
                                             <label class="control-label">视频: </label>
                                             <input type="file" class="form-control" name="video" accept="video/*">
-                                            <input type="text" class="form-control" name="id">
+                                            <input type="text" class="form-control" name="id" required>
                                             <input type="text" value="{{currentL.lessonId}}" name="fileName">
                                             <input type="submit" value="提交" ng-click="uploadVideo()">
                                         </form>
@@ -377,7 +377,7 @@
                             <td>{{x.schoolName}}</td>
                             <td>{{x.academyName}}</td>
                             <td>
-                                <button class="btn btn-xs btn-primary" title="编辑">
+                                <button class="btn btn-xs btn-primary" title="上传" ng-click="bindT(x)" data-toggle="modal" data-target="#imgModal">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </button>
                                 <button class="btn btn-xs btn-danger" title="删除" ng-click="deleteT(x)">
@@ -427,6 +427,31 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" ng-click="addTeacher()">提交</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+            <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="imgModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="imgModalLabel">课程信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <form action="/teacher/imgUpload" method="post" enctype="multipart/form-data" id="teacherImgForm">
+                                            <label class="control-label">图片: </label>
+                                            <input type="file" class="form-control" name="img" accept="image/*">
+                                            <input type="text" value="{{currentT.teacherId}}" name="fileName" readonly>
+                                            <input type="submit" value="提交" ng-click="uploadTImg()">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->

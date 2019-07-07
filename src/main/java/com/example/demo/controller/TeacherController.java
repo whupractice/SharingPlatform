@@ -1,13 +1,17 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.LessonEntity;
 import com.example.demo.entity.TeacherEntity;
 import com.example.demo.service.TeacherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -109,6 +113,30 @@ public class TeacherController {
     @GetMapping("/schoolName")
     public List<TeacherEntity> getTeacherBySchool(@RequestParam(value = "schoolName") String schoolName){
         return teacherService.getTeacherBySchool(schoolName);
+    }
+
+
+    @ApiOperation(value = "上传教师图片",notes = "上传教师图片")
+    @PostMapping("/imgUpload")
+    public void uploadImg(@RequestParam("img")@ApiParam(value = "img") MultipartFile file,
+                          @RequestParam("fileName")@ApiParam(value = "fileName") String fileName){
+        try {
+            File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
+            if(!path2.exists()) path2 = new File("");
+            //如果上传目录为/static/img/lesson/，则可以如下获取：
+            File upload2 = new File(path2.getAbsolutePath(),"img/teacher/");
+            if(!upload2.exists()) upload2.mkdirs();
+            String path=upload2.getAbsolutePath()+"/"+fileName;
+            File img = new File(path);
+            if(!img.exists())
+                img.createNewFile();//不存在则创建新文件
+            file.transferTo(img);
+            TeacherEntity oldTeacher = teacherService.getTeacherById(fileName);
+            oldTeacher.setImgLink("../img/teacher/"+fileName);
+            teacherService.insertTeacher(oldTeacher);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

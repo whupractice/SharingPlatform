@@ -91,6 +91,8 @@ app.controller('categoryCtrl', function ($scope, $http, $state) {
             $scope.currentSubject = "管理学";
         }else if(subject==12){
             $scope.currentSubject = "艺术学";
+        } else if(subject==13){
+            $scope.currentSubject = "体育";
         }
         $scope.getLessons();
     };

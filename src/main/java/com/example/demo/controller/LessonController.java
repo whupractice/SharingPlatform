@@ -257,13 +257,13 @@ public class LessonController {
             //如果上传目录为/static/img/lesson/，则可以如下获取：
             File upload2 = new File(path2.getAbsolutePath(),"video");
             if(!upload2.exists()) upload2.mkdirs();
-            String path=upload2.getAbsolutePath()+"/"+fileName+"_"+id;
+            String path=upload2.getAbsolutePath()+"/"+fileName;
             File img = new File(path);
             if(!img.exists())
                 img.createNewFile();//不存在则创建新文件
             file.transferTo(img);
             LessonEntity oldLesson = lessonService.getByLessonId(fileName);
-            oldLesson.setVideoLink("../video/"+fileName+"_"+id);
+            oldLesson.setVideoLink("../video/"+fileName);
             lessonService.insertLesson(oldLesson);
         }catch (Exception e){
             e.printStackTrace();
