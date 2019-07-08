@@ -220,6 +220,13 @@ public class LessonController {
     }
 
 
+    @ApiOperation(value = "根据学生获取推荐课程",notes = "根据学生获取推荐课程",httpMethod = "GET")
+    @GetMapping("/tj")
+    public List<LessonEntity> getTjLessonByStuPhone(@RequestParam(value = "phone")
+                                                        @ApiParam(value = "phone") long phone){
+        return lessonService.getTjLessonByStuPhone(phone);
+    }
+
 
 
 

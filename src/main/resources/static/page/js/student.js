@@ -20,10 +20,13 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
     $scope.selectL = null;//当前选中的课程
 
+    $scope.tjLesson = null;//推荐课程
+
 
     //初始化学生信息
     $scope.initStudent = function () {
         $scope.currentStudent = Data.get();//获取当前学生信息
+        $scope.getTJlesson();//获取推荐课程
         $scope.getLessonByPhone();//获取当前课程
         $scope.getMessageByPhone();
     };
@@ -197,12 +200,12 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
     $scope.s_comment = function () {
         let evaTime	= $scope.selectL.evaTime;
-        let evaluation= $scope.selectL.evaluation;
+        let evaluation= $('#evaluation').val();
         let lessonId = $scope.selectL.lessonId;
         let lessonProcess =$scope.selectL.lessonProcess;
         let phone = $scope.currentStudent.phone;
         let praiseNum = $scope.selectL.praiseNum;
-        let star = $scope.ratingVal;
+        let star = $('#rating').text();
         $http({
             method: 'PUT',
             url: '/sl',
@@ -242,11 +245,44 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
     };
 
 
-});
+
+
+    //获取推荐课程
+    $scope.getTJlesson = function(){
+        let phone = $scope.currentStudent.phone;
+        $http({
+            method: 'GET',
+            url: '/lesson/tj',
+            params:{
+                "phone": phone
+            }
+        }).then(function successCallback(response) {
+            $scope.tjLesson = response.data;
+        })
+    };
+
+
+    /**
+     * @Author      : Theory
+     * @Description : 跳转到课程详情页
+     * @Param       : 被点击的课程
+     */
+    $scope.goDetail = function (lesson) {
+        $state.go('courseinfo', {
+            "lesson": lesson
+        });
+    };
 
 
 
-app.controller('starCtrl',function($scope){
+
+
+
+
+
+
+
+
     $scope.max = 5;
     $scope.ratingVal = 2;
     $scope.readonly = false;
@@ -259,8 +295,9 @@ app.controller('starCtrl',function($scope){
     $scope.onChange = function(val){
         $scope.ratingVal = val;
     }
-
 });
+
+
 
 app.directive('star', function () {
     return {

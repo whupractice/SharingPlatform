@@ -123,7 +123,7 @@ public class TeacherController {
         try {
             File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
             if(!path2.exists()) path2 = new File("");
-            //如果上传目录为/static/img/lesson/，则可以如下获取：
+            //如果上传目录为/static/img/teacher/，则可以如下获取：
             File upload2 = new File(path2.getAbsolutePath(),"img/teacher/");
             if(!upload2.exists()) upload2.mkdirs();
             String path=upload2.getAbsolutePath()+"/"+fileName;
