@@ -12,7 +12,6 @@
 
 </head>
 <body>
-<body>
 <!--HTML-->
 <div class="king-layout-container container" id="layoutPanel" style="margin-top: 15px;" ng-controller="studentCtrl" ng-init="initStudent()">
 
@@ -249,7 +248,7 @@
                         </td>
                         <td>
                             <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#scoreModal"
-                            ng-click="bindL(x)">
+                                    ng-click="bindL(x)">
                                 <i class="glyphicon glyphicon-edit"></i>
                                 <button class="btn btn-xs btn-danger" title="删除" data-toggle="modal" data-target="#deleteL_modal"
                                         ng-click="bindL(x)">
@@ -297,7 +296,35 @@
                     </tr>
                 </template>
                 <!-- 设置面板End -->
+
+
+
+
             </div>
+            <!--推荐课程-->
+            <div class="jk-uptodate">
+                <div class="img" style="width: 100%;text-align: center; margin-bottom: 20px">
+                    <img src="../img/tj-course.png" style="display: inline-block;vertical-align: top;min-width: 235px">
+                </div>
+
+                <ul style="width: 1070px">
+                    <li ng-repeat="x in tjLesson" class="uptodate">
+                        <a ng-click="goDetail(x)">
+                            <div class="uptodate-img">
+                                <img src="{{x.imgLink}}" alt="">
+                            </div>
+                            <p class="uptodate-title">{{x.lessonName}}</p>
+                            <p class="uptodate-info">
+                                {{x.subject}}
+                                <span>|</span>{{x.schoolName}}
+
+                            </p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <!--/推荐课程-->
         </div>
 
 <!--delete_modal-->
@@ -336,17 +363,17 @@
                         <h4 class="modal-title">添加评价</h4>
                     </div>
                     <div class="modal-body">
-                        <my-stars ng-model="drLevel">
-                            <div>
-                                <ul class="my-stars-list">
-                                    <li class="my-stars-items" ng-mouseover="mouseoverStar(myStar)" ng-mouseleave="mouseleaveStar(myStar)" ng-click="stars(myStar)" ng-class="{myStarsSel: clickCnt > $index , myStarHover: hoverCnt > $index }" ng-repeat="myStar in myStars track by $index" title="{{ myStar }}星">
-                                        {{ myStar }}
-                                    </li>
-                                </ul>
-                            </div>
-                        </my-stars>
 
-                        <div class="form-group has-feedback clearfix ">
+                        <div class="form-group has-feedback clearfix">
+                            <span style="font-size:18px;"><div>
+                                <div class="well">
+                                    <div star rating-value="ratingVal" max="max" on-hover="onHover" on-leave="onLeave" readonly="{{readonly}}"></div>
+                                    <div>
+                                        <p>请评分： <span id="rating">{{ratingVal}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            </span>
                             <label class="control-label col-sm-2 pt0" >你的评价</label>
                             <div class="col-sm-10">
                                 <textarea id="evaluation" class="form-control" rows="3" style="position: relative;
@@ -378,7 +405,7 @@
                     <div class="king-layout1-content" style="    margin-left: 260px;margin-right: 80px;">
                         <ul class="list-group" >
                             <li class="list-group-item" ng-repeat="x in nowNews">
-                            <span class="badge king-info">{{x.time}}<a href="javascript:void(0);" ng-click="" id="">已读</a></span>
+                            <span class="badge king-info">{{x.time}}<a href="javascript:void(0);" ng-click="already_read()">已读</a></span>
                             <i class="fa fa-comment"></i>
                             <span>{{x.message}}</span>
                         </li>
@@ -391,6 +418,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <!--JS-->
 <script>
@@ -407,48 +435,9 @@
                 }
             })
         });
-    })
-
-
-
-
-
-    app.directive('myStars', function () {
-        return {
-            require : '?ngModel', // ?ngModel
-            restrict : 'E',
-            replace : true,
-            templateUrl : 'ui/templateUrl/myStars.html',
-            scope: {ngModel : '='},
-            link: function ($scope, element, attrs, ngModel) {
-                $scope.myStars = [1,2,3,4,5];
-                $scope.clickCnt = 1;
-                $scope.$watch('ngModel', function(newValue) {
-                    var dataList = newValue;
-                    console.log(dataList);
-                    if(!dataList) return;
-                    $scope.myStar = dataList;
-                    $scope.clickCnt = dataList;
-                })
-                $scope.stars = function (myStar) {
-                    $scope.clickCnt = myStar;
-                    ngModel.$setViewValue(myStar);
-                }
-
-                $scope.mouseoverStar = function (myStar) {
-                    $scope.hoverCnt = myStar;
-                }
-                $scope.mouseleaveStar = function (myStar) {
-                    $scope.hoverCnt = 1;
-                }
-            }
-        }
     });
 
+
 </script>
-
-
-
-</body>
 </body>
 </html>
