@@ -23,9 +23,9 @@ API_index.factory('Data',function () {
 });
 
 
-API_index.config(function ($stateProvider,$urlRouterProvider) {
+API_index.config(function ($stateProvider,$urlRouterProvider,$locationProvider) {
 
-
+    $locationProvider.html5Mode(true);
     /**
       * @Author      : Theory
       * @Description : 设置路由
