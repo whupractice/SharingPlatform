@@ -3,14 +3,14 @@ var API_index = angular.module('myApp',['ui.router']);
 API_index.factory('Data',function () {
 
     //定义factory返回对象(学生)
-    var student = {};
+    var token = "";
 
     var _set = function (data) {
-        student = data;
+        token = data;
     };
 
     var _get = function () {
-        return student;
+        return token;
     };
 
     // Public APIs
@@ -18,7 +18,7 @@ API_index.factory('Data',function () {
     student.get = _get;
 
     // 在controller中通过调set()和get()方法可实现提交或获取参数的功能
-    return student;
+    return token;
 
 });
 

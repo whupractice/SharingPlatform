@@ -5,31 +5,47 @@ var app = angular.module('myApp');
  * @Description : 登陆注册控制器
  * @type        : Controller
  */
-app.controller('loginCtrl', function ($scope, $http, $state,Data) {   //Data是全局变量，保存当前用户
+app.controller('loginCtrl', function ($scope, $http, $state) {   //Data是全局变量，保存当前用户
 
+
+    $scope.currentToken = "";//用户token
 
     $scope.currentUser = null;
 
 
 
-    //
+    /**
+      * @Author      : Theory
+      * @Description : 登录
+      * @version     : 加了权限
+      */
     $scope.judgeLog = function(){
-
-        let user = $('#acct').val();
-        let pwd = $('#pwd').val();
-
+        var user = $('#acct').val();
+        var pwd = $('#pwd').val();
         $http({
             method: 'POST',
             url: '/student/login',
-            //如果swagger文档里参数是body类型，参数用data传递；若为query，参数用params
             data:{
                 "phone": user,
                 "pwd": pwd
             }
         }).then(function successCallback(response) {
             if(response.status==200 && response.data.length!=0){
-                $scope.currentUser = response.data;
-                Data.set($scope.currentUser);//设置全局用户为当前的currentuser
+                $scope.currentToken = response.data.token;//当前用户token
+                window.localStorage.setItem('token',$scope.currentToken);//保存用户当前token至localStorage
+                window.localStorage.setItem('phone',user);//保存用户电话到localStorage
+                $http({
+                    method: 'GET',
+                    url: '/student/info',
+                    headers: {
+                        'Authorization': $scope.currentToken
+                    },
+                    params:{
+                        "phone": user
+                    }
+                }).then(function successCallback(response) {
+                    $scope.currentUser = response.data;
+                });
                 $state.go('main');
             }
             else {
@@ -48,7 +64,6 @@ app.controller('loginCtrl', function ($scope, $http, $state,Data) {   //Data是�
             $http({
                 method: 'POST',
                 url: '/student/register',
-                //如果swagger文档里参数是body类型，参数用data传递；若为query，参数用params
                 data: {
                     "phone": user,
                     "pwd": pwd

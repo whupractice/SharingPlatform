@@ -6,6 +6,7 @@ import com.example.demo.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,8 +42,11 @@ public class StudentController {
       */
     @ApiOperation(value = "登陆验证", notes = "登陆验证",httpMethod = "POST")
     @PostMapping(value = "/login")
-    public String login(@RequestBody StudentEntity student) {
-        return studentService.judgeLogin(student.getPhone(),student.getPwd());
+    public Object login(@RequestBody StudentEntity student) {
+        String token = studentService.judgeLogin(student.getPhone(),student.getPwd());
+        String json = "{\"token\":"+"\""+token+"\"}";
+        JSONObject jsonObject = JSONObject.fromObject(json);
+        return jsonObject;
     }
 
     @ApiOperation(value = "退出登录", notes = "退出登录",httpMethod = "DELETE")
