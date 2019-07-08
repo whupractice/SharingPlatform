@@ -27,16 +27,16 @@ app.controller('teacherCtrl', function ($scope, $http, $stateParams,$state) {//$
 
 
     $scope.initTeacher = function () {
-        $scope.teacher = $stateParams.teacher;//获取传来的老师
-        // $http({
-        //     method: 'GET',
-        //     url: '/teacher/id',
-        //     params:{
-        //         "id" : $scope.teacher.id
-        //     }
-        // }).then(function successCallback(response) {
-        //     $scope.se = response.data;//获取返回的数据
-        // });
+        var teacherId = window.localStorage.getItem('teacherId');
+        $http({
+            method: 'GET',
+            url: '/teacher/id',
+            params:{
+                "id" : teacherId
+            }
+        }).then(function successCallback(response) {
+            $scope.teacher = response.data;//获取返回的数据
+        });
         $scope.getTLessons();
     };
 
@@ -49,9 +49,8 @@ app.controller('teacherCtrl', function ($scope, $http, $stateParams,$state) {//$
      * @Param       : 被点击的课程
      */
     $scope.goDetail_course = function (lesson) {
-        $state.go('courseinfo', {
-            "lesson": lesson
-        });
+        window.localStorage.setItem(lesson.lessonId);
+        $state.go('courseinfo');
     };
 
     //发送请求

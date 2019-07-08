@@ -5,7 +5,7 @@ var API_index = angular.module('myApp');
  * @Description : 主页面控制器
  * @type        : Controller
  */
-API_index.controller("mainCtrl", function ($scope, $http, $state,$stateParams) {
+API_index.controller("mainCtrl", function ($scope, $http, $state) {
 
     $scope.intervalId = null;
     $scope.currrentUser = null;//当前用户
@@ -66,15 +66,10 @@ API_index.controller("mainCtrl", function ($scope, $http, $state,$stateParams) {
      * @Param       : 被点击的课程
      */
     $scope.goDetail = function (lesson) {
-        $state.go('courseinfo', {
-            "lesson": lesson
-        });
+        window.localStorage.setItem('lessonId',lesson.lessonId);
+        $state.go('courseinfo');
     }
 
-});
-
-$(document).ready(function(){
-    $scope.initMain();
 });
 
 

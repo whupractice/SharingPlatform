@@ -38,12 +38,10 @@ API_index.config(function ($stateProvider,$urlRouterProvider,$locationProvider) 
         })
         .state('courseinfo',{
             url: '/couserinfo',
-            params:{"lesson": null},
             templateUrl: '/page/courseinfo.html'
         })
         .state('schoolcourse', {
             url: '/schoolcourse',
-            params:{"school": null},
             templateUrl: '/page/schoolcourse.html'
         }).state('login', {
             url: '/login',
@@ -57,7 +55,6 @@ API_index.config(function ($stateProvider,$urlRouterProvider,$locationProvider) 
         }).state('teacher',{
             url: '/teacher',
             templateUrl: '/page/teacher.html',
-            params:{"teacher": null}
         }).state('administer',{
             url: '/administer',
             templateUrl: '/page/administer.html'

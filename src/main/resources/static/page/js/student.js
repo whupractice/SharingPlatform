@@ -7,7 +7,7 @@ var app = angular.module('myApp');
  * @Description : 学生控制器
  * @type        : Controller
  */
-app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data是全局变量，保存当前用户
+app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全局变量，保存当前用户
 
 
     $scope.currentStudent = null;
@@ -25,7 +25,20 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
     //初始化学生信息
     $scope.initStudent = function () {
-        $scope.currentStudent = Data.get();//获取当前学生信息
+        var token = window.localStorage.getItem('token');
+        var phone = window.localStorage.getItem('phone');
+        $http({
+            method: 'GET',
+            url: '/student/info',
+            headers: {
+                'Authorization': token
+            },
+            params: {
+                "phone": phone
+            }
+        }).then(function successCallback(response) {
+            $scope.currentStudent = response.data;
+        });
         $scope.getTJlesson();//获取推荐课程
         $scope.getLessonByPhone();//获取当前课程
         $scope.getMessageByPhone();
@@ -57,20 +70,24 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
     //更新学生信息
     $scope.updateStuInfo = function () {
-        let phoneNumber = $scope.currentStudent.phone;
-        let realName=$scope.currentStudent.realName;
-        let nickName = $('#nickName').val();
-        let pwd = $scope.currentStudent.pwd;
-        let sex = $('#sex').find('option:selected').text();
-        let email = $('#email').val();
-        let birth = $('#birth').val();
-        let introduction = $('#introduction').val();
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
+        var realName=$scope.currentStudent.realName;
+        var nickName = $('#nickName').val();
+        var pwd = $scope.currentStudent.pwd;
+        var sex = $('#sex').find('option:selected').text();
+        var email = $('#email').val();
+        var birth = $('#birth').val();
+        var introduction = $('#introduction').val();
 
         $http({
             method: 'PUT',
             url: '/student',
+            headers: {
+                'Authorization': token
+            },
             data:{
-                "phone": phoneNumber,
+                "phone": phone,
                 "birth": birth,
                 "email": email,
                 "pwd":pwd,
@@ -92,9 +109,11 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
     //改变密码
     $scope.changePwd = function () {
-        let primPwd = $('#primPwd').val();
-        let newPwd = $('#newPwd').val();
-        let confirmPwd = $('#confirmPwd').val();
+        var primPwd = $('#primPwd').val();
+        var newPwd = $('#newPwd').val();
+        var confirmPwd = $('#confirmPwd').val();
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
 
         if(primPwd == newPwd){
             alert("前后密码一致，请重新输入！");
@@ -106,8 +125,11 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
             $http({
                 method: 'POST',
                 url: '/student/login',
+                headers: {
+                    'Authorization': token
+                },
                 data:{
-                    "phone": $scope.currentStudent.phone,
+                    "phone": phone,
                     "pwd": primPwd
                 }
             }).then(function successCallback(response) {
@@ -115,8 +137,11 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
                     $http({
                         method: 'PUT',
                         url: '/student',
+                        headers: {
+                            'Authorization': token
+                        },
                         data:{
-                            "phone": $scope.currentStudent.phone,
+                            "phone": phone,
                             "birth": $scope.currentStudent.birth,
                             "email": $scope.currentStudent.email,
                             "pwd":newPwd,
@@ -144,10 +169,14 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
     //根据学生电话号码查询所选课程
     $scope.getLessonByPhone = function () {
-        let phone = $scope.currentStudent.phone;
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'GET',
             url: '/sl/getLessonByStuId',
+            headers: {
+                'Authorization': token
+            },
             params:{
                 "stuId": phone
            }
@@ -169,16 +198,21 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
     //删除所选课程
     $scope.deleteLesson_ = function () {
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'DELETE',
             url: '/sl/stuId/lessonId',
+            headers: {
+                'Authorization': token
+            },
             params:{
-                "stuId": $scope.currentStudent.phone,
+                "stuId": phone,
                 "lessonId": $scope.selectL.lessonId
             }
         }).then(function successCallback(response) {
             if(response.status==200){
-                $('#deleteL_modal').modal('hide');
+                $('#devareL_modal').modal('hide');
                 $scope.getLessonByPhone();
             }
             else {
@@ -199,16 +233,20 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
     //给课程打分&评论
 
     $scope.s_comment = function () {
-        let evaTime	= $scope.selectL.evaTime;
-        let evaluation= $('#evaluation').val();
-        let lessonId = $scope.selectL.lessonId;
-        let lessonProcess =$scope.selectL.lessonProcess;
-        let phone = $scope.currentStudent.phone;
-        let praiseNum = $scope.selectL.praiseNum;
-        let star = $('#rating').text();
+        var evaTime	= $scope.selectL.evaTime;
+        var evaluation= $('#evaluation').val();
+        var lessonId = $scope.selectL.lessonId;
+        var lessonProcess =$scope.selectL.lessonProcess;
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
+        var praiseNum = $scope.selectL.praiseNum;
+        var star = $('#rating').text();
         $http({
             method: 'PUT',
             url: '/sl',
+            headers: {
+                'Authorization': token
+            },
             data:{
                 "evaTime": evaTime,
                 "evaluation": evaluation,
@@ -230,12 +268,17 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
     };
 
 
+
     //查看课程消息
     $scope.getMessageByPhone = function () {
-        let phone = $scope.currentStudent.phone;
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'GET',
             url: '/message/phone',
+            headers: {
+                'Authorization': token
+            },
             params:{
                 "phone": phone
             }
@@ -247,12 +290,17 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
 
 
 
+
     //获取推荐课程
     $scope.getTJlesson = function(){
-        let phone = $scope.currentStudent.phone;
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'GET',
             url: '/lesson/tj',
+            headers: {
+                'Authorization': token
+            },
             params:{
                 "phone": phone
             }
@@ -262,15 +310,17 @@ app.controller('studentCtrl', function ($scope, $http, $state,Data) {   //Data�
     };
 
 
+
+
+
     /**
      * @Author      : Theory
      * @Description : 跳转到课程详情页
      * @Param       : 被点击的课程
      */
     $scope.goDetail = function (lesson) {
-        $state.go('courseinfo', {
-            "lesson": lesson
-        });
+        window.localStorage.setItem('lessonId',lesson.lessonId);
+        $state.go('courseinfo');
     };
 
 

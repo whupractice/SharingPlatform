@@ -90,10 +90,10 @@ public class LessonController {
 
 
     @ApiOperation(value = "根据课程id获取课程", notes = "根据课程id获取课程",httpMethod = "GET")
-    @ApiParam(name = "schoolId",value = "课程id")
+    @ApiParam(name = "lessonId",value = "课程id")
     @GetMapping("/id")
-    public LessonEntity getByLessonId(@RequestParam String schoolId) {
-        return lessonService.getByLessonId(schoolId);
+    public LessonEntity getByLessonId(@RequestParam String lessonId) {
+        return lessonService.getByLessonId(lessonId);
     }
 
 

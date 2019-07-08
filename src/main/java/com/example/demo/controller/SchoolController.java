@@ -46,11 +46,12 @@ public class SchoolController {
 //    }
 
 
-    @ApiOperation(value = "根据id获取学校介绍", notes = "根据id获取学校介绍",httpMethod = "GET")
+
+    @ApiOperation(value = "根据id获取学校", notes = "根据id获取学校",httpMethod = "GET")
     @ApiParam(name = "id",value = "学校id")
-    @GetMapping("/getSchoolInfoById")
-    public String getSchoolInfoById (@RequestParam Long id) {
-        return schoolService.getSchoolInfoById(id);
+    @GetMapping("/getSchoolById")
+    public SchoolEntity getSchoolById (@RequestParam String id) {
+        return schoolService.getSchoolById(id);
     }
 
 
