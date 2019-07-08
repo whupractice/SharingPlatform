@@ -34,4 +34,7 @@ public interface StudentRepository extends JpaRepository<StudentEntity,Long>, Jp
     @Query(value = "select * from student where is_manager = 1",nativeQuery = true)
     List<StudentEntity> getAllManager();
 
+    @Query(value = "select nick_name from student where phone = ?1",nativeQuery = true)
+    Object getNickNameByPhone(long phone);
+
 }

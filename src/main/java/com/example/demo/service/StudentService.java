@@ -46,9 +46,9 @@ public class StudentService {
         UserDetails userDetails;
         if(s.getPwd().equals(pwd)){
             if(Boolean.parseBoolean(String.valueOf(s.getIsManager()))){
-                userDetails = createUser(String.valueOf(phone),pwd,new String[]{"manager"});
+                userDetails = createUser(String.valueOf(phone),pwd,new String[]{"manager","lessonManager","student"});
             } else if(Boolean.parseBoolean(String.valueOf(s.getIsLessonManager()))){
-                userDetails = createUser(String.valueOf(phone),pwd,new String[]{"lessonManager"});
+                userDetails = createUser(String.valueOf(phone),pwd,new String[]{"lessonManager","student"});
             } else {
                 userDetails = createUser(String.valueOf(phone),pwd,new String[]{"student"});
             }
@@ -62,6 +62,12 @@ public class StudentService {
 
     public void logout(String token) {
         tokenMap.remove(token);
+    }
+
+
+    public Object getNickNameByPhone(String phone) {
+        Long newPhone = Long.parseLong(phone);
+        return studentRepository.getNickNameByPhone(newPhone);
     }
 
 

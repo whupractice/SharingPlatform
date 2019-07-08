@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -73,6 +74,7 @@ public class TLController {
       * @Param       :
       * @return      :
       */
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "向数据库插入教师授课信息", notes = "向数据库插入教师授课信息",httpMethod = "POST")
     @ApiParam(name = "tl",value = "教师授课实体，其中teacherId、lessonId不能为空")
     @PostMapping("")
@@ -105,6 +107,7 @@ public class TLController {
         tlService.deleteTL(lessonId, teacherId);
     }
 
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "通过教师号删除教师授课记录", notes = "通过教师号删除教师授课记录",httpMethod = "DELETE")
     @DeleteMapping("/teacherId")
     public void deleteTLByTeacherId(@RequestParam @ApiParam(value = "教师账号") String teacherId) {

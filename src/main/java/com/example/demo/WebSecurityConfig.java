@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/academy","/init","/lesson","/message","/school","/sl","/student","/teacher","/tl").hasRole("manager")
+                .antMatchers("/academy/**","/init/**","/lesson/**","/message/**","/school/**","/sl/**","/student/**","/teacher/**","/tl/**").hasRole("manager")
                 .anyRequest().permitAll();
     }
 }

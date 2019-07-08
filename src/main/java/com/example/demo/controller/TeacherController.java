@@ -1,12 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.LessonEntity;
 import com.example.demo.entity.TeacherEntity;
 import com.example.demo.service.TeacherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -78,6 +78,7 @@ public class TeacherController {
       * @Param       : [teacherId]
       * @return      : void
       */
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "根据教师id删除教师", notes = "根据教师id删除教师",httpMethod = "DELETE")
     @ApiParam(name = "teacherId",value = "教师账号")
     @DeleteMapping("")
@@ -108,14 +109,14 @@ public class TeacherController {
     }
 
 
-
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "根据学校名查询老师", notes = "根据学校名查询老师",httpMethod = "GET")
     @GetMapping("/schoolName")
     public List<TeacherEntity> getTeacherBySchool(@RequestParam(value = "schoolName") String schoolName){
         return teacherService.getTeacherBySchool(schoolName);
     }
 
-
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "上传教师图片",notes = "上传教师图片")
     @PostMapping("/imgUpload")
     public void uploadImg(@RequestParam("img")@ApiParam(value = "img") MultipartFile file,
@@ -138,5 +139,4 @@ public class TeacherController {
             e.printStackTrace();
         }
     }
-
 }

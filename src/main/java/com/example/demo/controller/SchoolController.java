@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,6 +78,7 @@ public class SchoolController {
       * @Param       : [school]
       * @return      : void
       */
+    @PreAuthorize("hasRole('manager')")
     @ApiOperation(value = "向数据库插入学校", notes = "向数据库插入学校",httpMethod = "POST")
     @ApiParam(name = "school",value = "学校实体")
     @PostMapping("")
