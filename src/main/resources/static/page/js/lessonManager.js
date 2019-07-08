@@ -89,7 +89,7 @@ app.controller('lessonManagerCtrl', function ($scope, $http) {
 
         $http({
             method: 'PUT',
-            url: '/student',
+            url: '/student/updateLessonManager',
             headers: {
                 'Authorization': token
             },
@@ -110,6 +110,8 @@ app.controller('lessonManagerCtrl', function ($scope, $http) {
         }).then(function successCallback(response) {
             if(response.status == 200){
                 alert("修改成功！");
+                var token = response.data.token;
+                window.localStorage.setItem('token',token);
                 $scope.initLessonManager();
             }else{
                 alert("修改失败!");

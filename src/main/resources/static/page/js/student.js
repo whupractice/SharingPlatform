@@ -82,7 +82,7 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
 
         $http({
             method: 'PUT',
-            url: '/student',
+            url: '/student/updateStudent',
             headers: {
                 'Authorization': token
             },
@@ -97,11 +97,8 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
                 "sex": sex
             }
         }).then(function successCallback(response) {
-            if(response.status == 200){
-                alert("修改成功！");
-            }else{
-                alert("修改失败!");
-            }
+            var token = response.data.token;
+            window.localStorage.setItem('token',token);
         })
 
     };
@@ -123,20 +120,20 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
             return;
         }else{
             $http({
-                method: 'POST',
-                url: '/student/login',
+                method: 'GET',
+                url: '/student/getUserFromToken',
                 headers: {
                     'Authorization': token
                 },
-                data:{
-                    "phone": phone,
-                    "pwd": primPwd
+                params:{
+                    'token': token
                 }
             }).then(function successCallback(response) {
-                if(response.data.length != 0){
+                var pwd = response.data.pwd;
+                if(pwd==primPwd){
                     $http({
                         method: 'PUT',
-                        url: '/student',
+                        url: '/student/updateStudent',
                         headers: {
                             'Authorization': token
                         },
@@ -151,11 +148,9 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
                             "sex": $scope.currentStudent.sex
                         }
                     }).then(function successCallback(response) {
-                        if(response.status == 200){
-                            alert("修改成功！");
-                        }else{
-                            alert("修改失败!");
-                        }
+                        var token = response.data.token;
+                        window.localStorage.setItem('token',token);
+                        alert("修改成功！");
                     })
                 }
                 else {
@@ -188,9 +183,8 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
 
     //进入课程
     $scope.enterLesson = function (x) {
-        $state.go('courseinfo',{
-            "lesson": x
-        })
+        window.localStorage.setItem('lessonId',x.lessonId);
+        $state.go('courseinfo');
     };
 
 
@@ -233,6 +227,7 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
     //给课程打分&评论
 
     $scope.s_comment = function () {
+        var token = window.localStorage.getItem('token');
         var evaTime	= $scope.selectL.evaTime;
         var evaluation= $('#evaluation').val();
         var lessonId = $scope.selectL.lessonId;

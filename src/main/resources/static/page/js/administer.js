@@ -338,7 +338,7 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
         var academyName =$('#leAcademy').find('option:selected').text();//学院名
         $http({
             method: 'POST',
-            url: '/student/register',
+            url: '/student/registerLessonManager',
             headers: {
                 'Authorization': token
             },

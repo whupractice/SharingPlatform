@@ -34,18 +34,6 @@ app.controller('loginCtrl', function ($scope, $http, $state) {   //Data是全局
                 $scope.currentToken = response.data.token;//当前用户token
                 window.localStorage.setItem('token',$scope.currentToken);//保存用户当前token至localStorage
                 window.localStorage.setItem('phone',user);//保存用户电话到localStorage
-                $http({
-                    method: 'GET',
-                    url: '/student/info',
-                    headers: {
-                        'Authorization': $scope.currentToken
-                    },
-                    params:{
-                        "phone": user
-                    }
-                }).then(function successCallback(response) {
-                    $scope.currentUser = response.data;
-                });
                 $state.go('main');
             }
             else {

@@ -49,7 +49,7 @@ app.controller('teacherCtrl', function ($scope, $http, $stateParams,$state) {//$
      * @Param       : 被点击的课程
      */
     $scope.goDetail_course = function (lesson) {
-        window.localStorage.setItem(lesson.lessonId);
+        window.localStorage.setItem('lessonId',lesson.lessonId);
         $state.go('courseinfo');
     };
 

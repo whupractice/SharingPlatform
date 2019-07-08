@@ -71,9 +71,8 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             }
         }).then(function successCallback(response) {
             var school = response.data;
-            $state.go('schoolcourse',{
-                "school": school
-            })
+            window.localStorage.setItem('schoolId',school.schoolId);
+            $state.go('schoolcourse');
         });
     };
 
@@ -143,7 +142,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
                 var sl = $scope.sl[i];
                 $http({
                     method: 'GET',
-                    url: '/student/nickName',
+                    url: '/student/getNickName',
                     params: {
                         "phone": sl.phone
                     }

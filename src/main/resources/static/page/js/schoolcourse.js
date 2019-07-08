@@ -23,7 +23,7 @@ app.controller('schoolcourseCtrl', function ($scope, $http,$state) {
       * @Description : 初始化学校
       */
     $scope.initSchool = function () {
-        let schoolId = window.localStorage.getItem('schoolId');
+        var schoolId = window.localStorage.getItem('schoolId');
         $http({
             method: 'GET',
             url: "/school/getSchoolById",
