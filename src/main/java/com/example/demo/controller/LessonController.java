@@ -84,6 +84,7 @@ public class LessonController {
      * @Description : 获取所有课程
      * @return      : 所有课程list
      */
+    @PreAuthorize("hasRole('manager')")
     @ApiOperation(value = "获取所有课程", notes = "获取所有课程",httpMethod = "GET")
     @GetMapping("")
     public List<LessonEntity> getAllLesson(){
