@@ -5,26 +5,12 @@
     margin-top: 40px;
     position: relative;
     font-size: 12px;
-    background: #fff;
+    background: #21363f;
     box-sizing: border-box;
     padding-bottom: 20px;
     border-top: 1px solid #e4e4e4;
 }
-#footer .footer-content {
-    width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-}
-#footer .contact-way {
-    text-align: center;
-}
-#footer .contact-way {
-    box-sizing: border-box;
-    width: 240px;
-    z-index: 100;
-    background: #fff;
-    margin: 20px auto;
-}
+
 #footer .other-way a.weixin-icon {
     background-position: -28px 0px;
 }
@@ -35,18 +21,8 @@
     height: 18px;
     margin-right: 20px;
 }
-#footer nav {
-    border-bottom: 1px solid #f0f0f0;
-    padding: 0px 0px 20px 0px;
-}
-#footer nav a {
-    padding: 4px 10px;
-    color: #666;
-    text-decoration: none;
-}
 #footer .copyright {
     color: #999;
-    padding: 10px 0;
 }
 #footer .gotop {
     position: fixed;
