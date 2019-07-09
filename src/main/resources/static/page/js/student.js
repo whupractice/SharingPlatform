@@ -12,6 +12,8 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
 
     $scope.currentStudent = null;
 
+    $scope.skillLink = "";//技能图地址
+
     $scope.nowPage = 1;
 
     $scope.nowLesson = null;
@@ -38,11 +40,32 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
             }
         }).then(function successCallback(response) {
             $scope.currentStudent = response.data;
+            $scope.produceSkillImg();//生成技能图片
+            $scope.getLessonByPhone();//获取当前课程
+            $scope.getMessageByPhone();//获取消息
         });
-        $scope.getTJlesson();//获取推荐课程
-        $scope.getLessonByPhone();//获取当前课程
-        $scope.getMessageByPhone();
+
     };
+
+
+    //生成技能图片
+    $scope.produceSkillImg = function(){
+        var token = window.localStorage.getItem('token');
+        var phone = window.localStorage.getItem('phone');
+        $http({
+            method: 'GET',
+            url: '/student/skill',
+            headers: {
+                'Authorization': token
+            },
+            params: {
+                "phone": phone
+            }
+        }).then(function successCallback(response) {
+            $scope.skillLink = '../img/skill/'+phone+'.jpg';
+        });
+    };
+
 
 
     //跳转页面

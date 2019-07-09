@@ -146,4 +146,28 @@ ul.rating {
 .rating .filled {
     color: #ffee33;
 }
+#skill h5:before {
+    background: #ff6547;
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+}
+
+#skill {
+    margin-top: 50px;
+    margin-left: 150px;
+}
+
+#skill img{
+    width: 400px;
+}
+
+#skill_body{
+    margin-left: 100px;
+}
+
 

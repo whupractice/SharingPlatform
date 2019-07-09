@@ -83,6 +83,7 @@ public class StudentController {
     }
 
 
+    //不加限制
     @ApiOperation(value = "根据学生手机号获取昵称", notes = "根据学生手机号获取昵称",httpMethod = "GET")
     @GetMapping(value = "/getNickName")
     public Object getNickNameByPhone(@RequestParam @ApiParam(value = "学生手机号") String phone) {
@@ -273,6 +274,13 @@ public class StudentController {
 
 
 
+
+//    @PreAuthorize("hasRole('student')")
+    @ApiOperation(value = "获取学生的技能图",notes = "获取学生的技能图",httpMethod = "GET")
+    @GetMapping("/skill")
+    public void getSkillImg(@RequestParam(value = "phone") long phone){
+        studentService.getSkillImg(phone);
+    }
 
 
 

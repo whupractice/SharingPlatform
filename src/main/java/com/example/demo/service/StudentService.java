@@ -10,8 +10,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 import springfox.documentation.annotations.Cacheable;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 import java.util.*;
 
 /**
@@ -167,6 +171,29 @@ public class StudentService {
         }
         return false;
     }
+
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 根据学生电话调用python脚本绘制技能图
+      * @Param       : [phone] -- 学生电话
+      */
+    public void getSkillImg(long phone){
+        try {
+            File staticDir = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
+            File pyDir = new File(staticDir.getAbsolutePath(),"py\\");
+            String py = pyDir.getAbsolutePath()+"\\skill.py";
+            String arg_s = "python "+py+" "+phone;
+            Process proc = Runtime.getRuntime().exec(arg_s);
+            proc.waitFor();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 
