@@ -31,6 +31,29 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
 
 
+    //获取推荐课程
+    $scope.getTJlesson = function(){
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
+        if(phone==null){
+            return;
+        }
+        $http({
+            method: 'GET',
+            url: '/lesson/tj',
+            headers: {
+                'Authorization': token
+            },
+            params:{
+                "phone": phone
+            }
+        }).then(function successCallback(response) {
+            $scope.tjLesson = response.data;
+        })
+    };
+
+
+
     /**
       * @Author      : Theory
       * @Description : 初始化课程的信息
@@ -47,6 +70,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             $scope.lesson = response.data;
             $scope.getTeachers();//获取老师信息
             $scope.getComments();//获取评论
+            $scope.getTJlesson();//获取推荐课程
         });
 
     };
@@ -161,6 +185,9 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
         var lessonId = $scope.lesson.lessonId;//获取课程id
         var phone = window.localStorage.getItem('phone');
         var token = window.localStorage.getItem('token');
+        if(phone==null){
+            $state.go('login');
+        }
         $http({
             method: 'GET',
             url: '/student/info',
@@ -171,11 +198,8 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
                 "phone": phone
             }
         }).then(function successCallback(response) {
-           var student = response.data;
-            if(student.length==0){  //未登录则跳转登录界面
-                $state.go('login');
-            }
-            else if(student.isManager == 1 || student.isLessonManager == 1){
+            var student = response.data;
+            if(student.isManager == 1 || student.isLessonManager == 1){
                 alert("管理员不能选课！");
                 return;
             }

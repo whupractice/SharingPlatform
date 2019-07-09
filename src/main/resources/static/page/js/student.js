@@ -309,27 +309,6 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
 
 
 
-    //获取推荐课程
-    $scope.getTJlesson = function(){
-        var phone = window.localStorage.getItem('phone');
-        var token = window.localStorage.getItem('token');
-        $http({
-            method: 'GET',
-            url: '/lesson/tj',
-            headers: {
-                'Authorization': token
-            },
-            params:{
-                "phone": phone
-            }
-        }).then(function successCallback(response) {
-            $scope.tjLesson = response.data;
-        })
-    };
-
-
-
-
 
     /**
      * @Author      : Theory
