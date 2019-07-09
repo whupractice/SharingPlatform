@@ -95,7 +95,7 @@ public class SLService {
         return result;
     }
 
-    public Object getLessonPagesByStuIdPagesNum(String stuId,String num1){
+    public Object getLessonPagesNumByStuId(String stuId,String num1){
         long id = Long.parseLong(stuId);
         int num = Integer.parseInt(num1);
         List<LessonEntity> lessonEntities = slRepository.getLessonPagesByStuId(id);

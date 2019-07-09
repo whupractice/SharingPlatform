@@ -63,7 +63,6 @@ public class SLController {
 
     @PreAuthorize("hasRole('student')")
     @ApiOperation(value = "分页根据学生id获取课程信息", notes = "分页根据学生id获取课程信息",httpMethod = "GET")
-
     @GetMapping("/getLessonPagesByStuId")
     public List<LessonEntity> getLessonPagesByStuId(@RequestParam @ApiParam(value = "学生id") String stuId,
                                                     @RequestParam @ApiParam(value = "第几页") String page,
@@ -72,9 +71,12 @@ public class SLController {
     }
 
 
-    public Object getLessonPagesByStuIdPagesNum(@RequestParam @ApiParam(value = "学生id") String stuId,
+    @PreAuthorize("hasRole('student')")
+    @ApiOperation(value = "获取页数：分页根据学生id获取课程信息", notes = "获取页数：分页根据学生id获取课程信息",httpMethod = "GET")
+    @GetMapping("/getLessonPagesNumByStuId")
+    public Object getLessonPagesNumByStuId(@RequestParam @ApiParam(value = "学生id") String stuId,
                                                 @RequestParam @ApiParam(value = "学生id") String num) {
-        return slService.getLessonPagesByStuIdPagesNum(stuId,num);
+        return slService.getLessonPagesNumByStuId(stuId,num);
     }
 
 
