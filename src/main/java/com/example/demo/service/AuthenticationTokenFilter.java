@@ -24,8 +24,8 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
         // 下面的代码从Http Header的Authorization中获取token，也可以从其他header,cookie等中获取，看客户端怎么传递token
         String requestHeader = httpServletRequest.getHeader("Authorization");
-        if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
-            authToken = requestHeader.substring(7);
+        if (requestHeader != null /*&& requestHeader.startsWith("Bearer ")*/) {
+            authToken = requestHeader;//.substring(7);
         }
         if (authToken != null) {
             UserDetails user;
