@@ -7,6 +7,7 @@ import com.example.demo.keys.SLKeys;
 import com.example.demo.repository.LessonRepository;
 import com.example.demo.repository.SLRepository;
 import com.example.demo.repository.StudentRepository;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -73,6 +74,35 @@ public class SLService {
             lessonEntities.add(lessonRepository.getByLessonId(slEntity.getLessonId()));
         }
         return lessonEntities;
+    }
+
+    public List<LessonEntity> getLessonPagesByStuId(String stuId,String page1,String num1){
+        long id = Long.parseLong(stuId);
+        int page = Integer.parseInt(page1);
+        int num = Integer.parseInt(num1);
+        List<LessonEntity> lessonEntities = slRepository.getLessonPagesByStuId(id);
+        List<LessonEntity> result = null;
+        if(lessonEntities == null || lessonEntities.isEmpty()){
+            return null;
+        }
+        int i = page * num;
+        for(int j = 0; j < num; j++){
+            if(lessonEntities.size()<i+j){
+                return result;
+            }
+                result.add(lessonEntities.get(i+j));
+        }
+        return result;
+    }
+
+    public Object getLessonPagesByStuIdPagesNum(String stuId,String num1){
+        long id = Long.parseLong(stuId);
+        int num = Integer.parseInt(num1);
+        List<LessonEntity> lessonEntities = slRepository.getLessonPagesByStuId(id);
+        int result = lessonEntities.size() / num;
+        String json = "{\"numOfPages\":"+"\""+result+"\"}";
+        JSONObject jsonObject = JSONObject.fromObject(json);
+        return jsonObject;
     }
 
     /**

@@ -45,6 +45,7 @@ public class SLController {
         return slService.getSLByStuId(stuId);
     }
 
+    //不加限制
     @ApiOperation(value = "根据课程id获取学生选课信息", notes = "根据课程id获取学生选课信息",httpMethod = "GET")
     @ApiParam(name = "lessonId",value = "课程id")
     @GetMapping("/lessonId")
@@ -59,6 +60,23 @@ public class SLController {
     public List<LessonEntity> getLessonByStuId(@RequestParam String stuId) {
         return slService.getLessonByStuId(stuId);
     }
+
+    @PreAuthorize("hasRole('student')")
+    @ApiOperation(value = "分页根据学生id获取课程信息", notes = "分页根据学生id获取课程信息",httpMethod = "GET")
+
+    @GetMapping("/getLessonPagesByStuId")
+    public List<LessonEntity> getLessonPagesByStuId(@RequestParam @ApiParam(value = "学生id") String stuId,
+                                                    @RequestParam @ApiParam(value = "第几页") String page,
+                                                    @RequestParam @ApiParam(value = "每页有几个") String num) {
+        return slService.getLessonPagesByStuId(stuId,page,num);
+    }
+
+
+    public Object getLessonPagesByStuIdPagesNum(@RequestParam @ApiParam(value = "学生id") String stuId,
+                                                @RequestParam @ApiParam(value = "学生id") String num) {
+        return slService.getLessonPagesByStuIdPagesNum(stuId,num);
+    }
+
 
     @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "根据课程id获取学生信息", notes = "根据课程id获取学生信息",httpMethod = "GET")
