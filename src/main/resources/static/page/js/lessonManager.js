@@ -125,6 +125,7 @@ app.controller('lessonManagerCtrl', function ($scope, $http) {
 
     //分页获取当前管理员所在学院的课程
     $scope.getLessons = function () {
+        var token = window.localStorage.getItem('token');
         var p = $scope.currentP_-1;
         $http({
             method: 'GET',
@@ -136,7 +137,7 @@ app.controller('lessonManagerCtrl', function ($scope, $http) {
                 "schoolName": $scope.currentManager.schoolName
             }
         }).then(function successCallback(response) {
-            $scope.currentLesson = response.data.content;//获取返回的课程
+            $scope.currentLessons = response.data.content;//获取返回的课程
             $scope.totalP_ = response.data.totalPages;//获取最大页数
             $scope.Ps_ = [];
             if($scope.totalP_>5) {

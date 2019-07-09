@@ -85,6 +85,7 @@ API_index.controller("headCtrl", function ($scope, $http, $state,$interval) {
 
     //获取学生消息数量
     $scope.getMessageNum = function () {
+        var token = window.localStorage.getItem('token');
         var judge = $scope.isStu();
         if(judge==true) {
             var phone = $scope.currentUser.phone;
