@@ -70,6 +70,7 @@ API_index.controller("mainCtrl", function ($scope, $http, $state) {
         $state.go('courseinfo');
     }
 
+
 });
 
 
