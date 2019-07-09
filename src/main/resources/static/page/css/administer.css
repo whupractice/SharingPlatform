@@ -834,3 +834,9 @@ button, a {
     padding-top: 20px;
     padding-right: 20px;
 }
+
+.graph img{
+    height: 480px;
+    width: 600px;
+    margin: 10px;
+}

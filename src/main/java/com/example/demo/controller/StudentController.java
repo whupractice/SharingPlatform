@@ -286,10 +286,10 @@ public class StudentController {
 
 
     @PreAuthorize("hasRole('manager')")
-    @ApiOperation(value = "获取课程排行榜top",notes = "获取课程排行榜top",httpMethod = "GET")
-    @GetMapping("/rank")
-    public void getLessonRank(@RequestParam(value = "num") int num){
-        studentService.getLessonRank(num);
+    @ApiOperation(value = "获取各项图表数据",notes = "获取各项图表数据",httpMethod = "GET")
+    @GetMapping("/allGraph")
+    public void getAllGraph(){
+        studentService.getAllGraph();
     }
 
 }

@@ -49,6 +49,14 @@ API_index.controller("headCtrl", function ($scope, $http, $state,$interval) {
     };
 
 
+    //若为学生，去往学生界面
+    $scope.goStudent = function(){
+        if($scope.isStu()){
+            $state.go('student');
+        }
+    };
+
+
     //每一秒刷新页面，获取用户信息
     $interval(function(){
             $scope.initHead();

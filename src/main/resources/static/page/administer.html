@@ -7,9 +7,11 @@
     <link rel="stylesheet" type="text/css" href="../shared/css/milligram.min.css">
     <!--<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700" rel="stylesheet">-->
     <!--<link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk.css" rel="stylesheet">-->
+
 </head>
 
 <body>
+
 
 <div class="row" ng-controller="administerCtrl" ng-init="initManager()">
     <div id="sidebar" class="column" style="margin-top: 100px">
@@ -17,9 +19,9 @@
         <ul>
             <li><a ng-click="jump(1)"><em class="fa fa-university"></em> 系统管理员</a></li>
             <li><a ng-click="jump(2)"><em class="fa fa fa-th"></em> 课程管理员</a></li>
-            <li><a ng-click="jump(3)"><em class="fa fa-plus-square"></em> 学校</a></li>
+            <li><a ng-click="jump(3)"><em class="fa fa-plus-square"></em> 学校</a>
+            <li><a ng-click="jump(4)"><em class="fa fa-info-circle"></em> 相关信息</a></li>
         </ul>
-        <img src="../img/lessonRank.jpg">
     </div>
 
 
@@ -496,30 +498,16 @@
                 </div><!-- /.modal -->
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
 
 
+
+
+        <div ng-if="page_4()" style="display: inline-flex" class="graph">
+            <img src="../img/lessonRank.jpg" alt="课程排行top">
+            <img src="../img/subject.jpg" alt="学科课程数量图">
+
+        </div>
 
 
 
@@ -543,6 +531,8 @@
 
 <script src="js/chart.min.js"></script>
 <script src="js/chart-data.js"></script>
+
+
 <script>
     window.onload = function () {
         var chart1 = document.getElementById("line-chart").getContext("2d");

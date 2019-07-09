@@ -30,6 +30,7 @@ app.controller('administerCtrl', function ($scope, $http, $state) {
 
     //初始化管理员信息
     $scope.initManager = function () {
+        $scope.getLessonRank();
         $scope.getAllSystemManagers();//获取所有管理员信息
         $scope.getAllLessonManagers();//获取所有课程管理员信息
         $scope.getAllSchools();//获取所有学校
@@ -46,6 +47,20 @@ app.controller('administerCtrl', function ($scope, $http, $state) {
             }
         }).then(function successCallback(response) {
             $scope.currentSystemManager = response.data;
+        });
+    };
+
+
+    //获取课程排名图片
+    $scope.getLessonRank = function(){
+        var token = window.localStorage.getItem('token');
+        $http({
+            method: 'GET',
+            url: '/student/allGraph',
+            headers: {
+                'Authorization': token
+            }
+        }).then(function successCallback(response) {
         });
     };
 
@@ -67,6 +82,10 @@ app.controller('administerCtrl', function ($scope, $http, $state) {
     //第三面
     $scope.page_3 = function () {
         return $scope.nowPage == 3;
+    };
+    //第四面
+    $scope.page_4 = function () {
+        return $scope.nowPage ==4;
     };
 
 

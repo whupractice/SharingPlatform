@@ -198,14 +198,24 @@ public class StudentService {
      * @Description : 根据数量获取top榜
      * @Param       : [phone] -- 学生电话
      */
-    public void getLessonRank(int num){
+    public void getAllGraph(){
         try {
+            //课程排行图
             File staticDir = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
             File pyDir = new File(staticDir.getAbsolutePath(),"py\\");
             String py = pyDir.getAbsolutePath()+"\\lessonRank.py";
-            String arg_s = "python "+py+" "+num;
+            String arg_s = "python "+py+" "+10;
             Process proc = Runtime.getRuntime().exec(arg_s);
             proc.waitFor();
+
+
+            //学科课程数量图
+            py = pyDir.getAbsolutePath()+"\\subject.py";
+            arg_s = "python "+py;
+            proc = Runtime.getRuntime().exec(arg_s);
+            proc.waitFor();
+
+            //
         }
         catch (Exception e){
             e.printStackTrace();
