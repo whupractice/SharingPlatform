@@ -11,10 +11,10 @@ API_index.controller("mainCtrl", function ($scope, $http, $state) {
     $scope.currrentUser = null;//当前用户
 
     $scope.hotLesson = null;//热门课程
-    $scope.hotNum = 8;
+    $scope.hotNum = 10;
 
     $scope.excellentLesson = null;//精品（推荐）课程
-    $scope.excellentNum = 8;
+    $scope.excellentNum = 10;
 
 
 

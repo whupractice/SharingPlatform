@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>LC平台——最受学生欢迎的课程管理平台!</title>
     <link rel="stylesheet" type="text/css" href="../page/css/main.css">
@@ -8,10 +9,11 @@
 
 </head>
 <body>
+
 <div ng-controller="mainCtrl" ng-init="initMain()">
 
     <!--轮播图-->
-    <div class="row">
+    <div class="row" style="position: relative;top: 30px;">
         <div class="col-md-12">
             <div id="carousel" class="carousel slide">
                 <!-- 轮播（Carousel）指标 -->
@@ -21,15 +23,15 @@
                     <li data-target="#carousel" data-slide-to="2"></li>
                 </ol>
                 <!-- 轮播（Carousel）项目 -->
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="height: 600px;">
                     <div class="item active">
-                        <img src="../img/carousel3.jpg" alt="First slide">
+                        <img src="../img/timg-9.jpeg" alt="First slide">
                     </div>
                     <div class="item">
-                        <img src="../img/carousel1.jpg" alt="Second slide">
+                        <img src="../img/timg-10.jpeg" alt="Second slide">
                     </div>
                     <div class="item">
-                        <img src="../img/carousel2.jpg" alt="Third slide">
+                        <img src="../img/night2.jpeg" alt="Third slide">
                     </div>
                 </div>
                 <!-- 轮播（Carousel）导航 -->
@@ -44,21 +46,143 @@
             </div>
         </div>
     </div>
-
     <!--/轮播图-->
     <br>
+
+
+    <div>
+        <div class="container_bg" style="z-index: -100;float: bottom">
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div><div class="circle-container-bg">
+            <div class="circle"></div>
+        </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+
+        </div>
 
     <!--推荐课程-->
     <div class="jk-uptodate">
         <div class="img" style="width: 100%;text-align: center; margin-bottom: 20px">
-            <img src="../img/tj-course.png" style="display: inline-block;vertical-align: top; min-width: 235px">
+            <img src="../img/tj-course.png" style="display: inline-block;vertical-align: top;min-width: 250px;
+    min-height: 40px;">
         </div>
 
-        <ul style="width: 1070px">
+
+
+        <ul style="width: 1400px">
+            <div>
+                <img src="../img/timg-6.jpeg" style="position: relative; height: 500px;width: 330px;float: left;margin-right: 20px;">
+            </div>
             <li ng-repeat="x in excellentLesson" class="uptodate">
                 <a ng-click="goDetail(x)">
                     <div class="uptodate-img">
-                        <img src="{{x.imgLink}}" alt="">
+                        <img src="{{x.imgLink}}" alt="" style="width:100%;">
                     </div>
                     <p class="uptodate-title">{{x.lessonName}}</p>
                     <p class="uptodate-info">
@@ -71,20 +195,144 @@
 
         </ul>
     </div>
+
+        <br>
+        <br>
     <!--/推荐课程-->
 
+    <div>
+        <div class="container_bg" style="z-index: -100;float: bottom">
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div><div class="circle-container-bg">
+            <div class="circle"></div>
+        </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
 
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-container-bg">
+                <div class="circle"></div>
+            </div>
+
+        </div>
+<br>
+        <br>
     <!--热门课程-->
     <div class="jk-uptodate">
         <div class="img" style="width: 100%;text-align: center; margin-bottom: 20px">
-            <img src="../img/hot-course.png" style="display: inline-block;vertical-align: top;min-width: 235px">
+            <img src="../img/hot-course.png" style="display: inline-block;vertical-align: top;    min-width: 250px;
+    min-height: 40px;">
         </div>
 
-        <ul style="width: 1070px">
+        <div>
+            <img src="../img/timg-8.jpeg" style="position: relative; height: 500px;width: 330px;float: left;margin-right: 20px;">
+        </div>
+
+        <ul style="width: 1400px">
             <li ng-repeat="x in hotLesson" class="uptodate">
                 <a ng-click="goDetail(x)">
                     <div class="uptodate-img">
-                        <img src="{{x.imgLink}}" alt="">
+                        <img src="{{x.imgLink}}" alt="" style="width: 100%">
                     </div>
                     <p class="uptodate-title">{{x.lessonName}}</p>
                     <p class="uptodate-info">
@@ -100,7 +348,9 @@
     <br>
     <!--热门课程-->
 
+    </div>
 
+</div>
 </div>
 <script type="text/javascript" src="js/main.js"></script>
 </body>

@@ -133,6 +133,7 @@
     position: relative;
     /*left: 200px;*/
     max-width: 100%;
+    min-height: 550px;
 }
 .container2{
     margin-right: auto;
@@ -153,11 +154,11 @@
     width: 100%;
     max-height: 476px;
 }
-.carousel-inner>.item img{
-    height: 476px;
+.carousel-inner>.item img {
+    height: 600px;
     max-width: 100%;
     width: 100%;
-    max-height: 476px;
+    min-height: 100%;
 }
 
 .ct_banner_caption {
@@ -334,8 +335,9 @@ a {
 
 .jk-uptodate {
     position: relative;
-    width: 1000px;
+    width: 1320px;
     margin: 10px auto 0;
+    top: 50px;
 }
 
 .jk-uptodate ul {
@@ -359,7 +361,7 @@ a {
 .jk-uptodate .uptodate {
     display: inline-block;
     vertical-align: top;
-    width: 235px;
+    width: 330px;
     height: 240px;
     background: #fff;
     margin-right: 20px;
@@ -370,7 +372,7 @@ a {
 .jk-uptodate .uptodate-img {
     display: block;
     height: 157px;
-    width: 235px;
+    width: 330px;
     overflow: hidden;
 }
 .jk-uptodate img {
