@@ -24,9 +24,8 @@ app.controller('schoolsCtrl', function ($scope, $http, $state) {
 
     //进入学校详情页schoolcourse
     $scope.goSchool = function (school) {
-        $state.go('schoolcourse',{
-            "school": school
-        })
+        window.localStorage.setItem('schoolId',school.schoolId);
+        $state.go('schoolcourse');
     };
 
 

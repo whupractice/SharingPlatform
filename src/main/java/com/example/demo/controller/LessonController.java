@@ -149,7 +149,7 @@ public class LessonController {
         return lessonService.getAll(specification,pageable);
     }
 
-    @PreAuthorize("hasRole('lessonManager')")
+
     @ApiOperation(value = "分页根据学校名关键字获取课程列表", notes = "分页根据学校名关键字获取课程列表",httpMethod = "GET")
     @GetMapping("/pagesBySchoolName")
     public Page<LessonEntity> getLessonPagesBySchoolName(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,

@@ -28,13 +28,14 @@ app.controller('schoolcourseCtrl', function ($scope, $http,$state) {
             method: 'GET',
             url: "/school/getSchoolById",
             params:{
-                "schoolId" : schoolId
+                "id" : schoolId
             }
         }).then(function successCallback(response) {
             $scope.school = response.data;
+            $scope.selectPage_(1);
         });
 
-        $scope.selectPage_(1);
+
     };
 
 
