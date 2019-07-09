@@ -1,6 +1,6 @@
 .c-status {
     width: 100%;
-    background-color: #fff;
+    background-color: #6ba5959c;
     padding: 30px 0;
 }
 .c-status .wCenter {
@@ -22,7 +22,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 18px;
 }
 .c-status .wCenter .items .left {
     padding: 5px 8px;
@@ -30,8 +30,8 @@
     max-width: 100px;
     text-align: right;
     font-family: "Arial", "Microsoft Yahei" !important;
-    font-size: 14px;
-    color: #4A4A4A;
+    font-size: 20px;
+    color: #ececd4;
     letter-spacing: 0;
 }
 .c-status .wCenter .items .right {
@@ -58,4 +58,5 @@
     cursor: pointer;
     margin-right: 32px;
     margin-bottom: 20px;
+    color: #e7fffb;
 }

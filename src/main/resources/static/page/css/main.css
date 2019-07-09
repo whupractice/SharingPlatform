@@ -337,7 +337,7 @@ a {
     position: relative;
     width: 1320px;
     margin: 10px auto 0;
-    top: 50px;
+    top: 100px;
 }
 
 .jk-uptodate ul {
@@ -363,7 +363,7 @@ a {
     vertical-align: top;
     width: 330px;
     height: 240px;
-    background: #fff;
+    background: rgba(61, 114, 123, 0.56);
     margin-right: 20px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -374,6 +374,9 @@ a {
     height: 157px;
     width: 330px;
     overflow: hidden;
+    text-align: center;
+    box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+    -webkit-box-shadow: 10px 10px 10px #00000087;
 }
 .jk-uptodate img {
     vertical-align: middle;
@@ -390,8 +393,8 @@ a {
 
 .jk-uptodate .uptodate-title {
     padding: 10px 15px 0;
-    font-size: 13px;
-    color: #333;
+    font-size: 16px;
+    color: #f7f0c5;
     line-height: 18px;
     height: 46px;
     margin-bottom: 4px;
@@ -399,11 +402,11 @@ a {
     text-align: justify;
 }
 .jk-uptodate .uptodate-info {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 22px;
     height: 22px;
     overflow: hidden;
-    color: #999;
+    color: #f4f5ee;
     padding-left: 15px;
     text-align: justify;
 }

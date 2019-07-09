@@ -6,7 +6,7 @@
 </head>
 <body>
 <div ng-controller="categoryCtrl" ng-init="initCategory()">
-    <div class="c-status">
+    <div class="c-status" style="position: relative; top: 100px;">
         <div class="wCenter">
             <div class="items">
                 <div class="left">方向：</div>
@@ -19,10 +19,9 @@
                 <div class="left">课程：</div>
                 <div class="right">
                     <div data-name="tag" data-id="" class="item">全部</div>
-                    <div data-name="tag" data-id="4" class="item ">国家精品</div>
-                    <div data-name="tag" data-id="3" class="item ">省级精品</div>
-                    <div data-name="tag" data-id="2" class="item ">立项课程</div>
-                    <div data-name="tag" data-id="1" class="item ">普通MOOC</div>
+                    <div data-name="tag" data-id="4" class="item ">热门课程</div>
+                    <div data-name="tag" data-id="3" class="item ">精品课程</div>
+                    <div data-name="tag" data-id="2" class="item ">普通课程</div>
                 </div>
             </div>
 
@@ -76,12 +75,12 @@
 
 
     <!--挑选出的课程-->
-    <div class="jk-uptodate">
+    <div class="jk-uptodate" style="position: relative；top:20px">
         <ul style="width: 1500px">
             <li ng-repeat="x in selectLesson" class="uptodate">
                 <a ng-click="goDetail_2(x)">
                     <div class="uptodate-img">
-                        <img src="{{x.imgLink}}" alt="">
+                        <img src="{{x.imgLink}}" alt="" style="width: 100%;">
                     </div>
                     <p class="uptodate-title">{{x.lessonName}}</p>
                     <p class="uptodate-info">
@@ -95,7 +94,7 @@
         </ul>
     </div>
 
-    <div style="text-align: center"  >
+    <div style="text-align: center; position: relative;top:100px"  >
         <ul class="pagination">
             <li><a href ng-click="prevPage()">&laquo;</a></li>
             <li ng-repeat="page in pages">
