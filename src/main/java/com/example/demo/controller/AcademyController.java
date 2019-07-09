@@ -44,6 +44,7 @@ public class AcademyController {
         return academyService.getBySchoolName(schoolName);
     }
 
+
     @ApiOperation(value = "根据学校名和学院名获取学院列表", notes = "根据学校名和学院名获取学院列表",httpMethod = "GET")
 
     @GetMapping("/schoolNameAndAcademyName")

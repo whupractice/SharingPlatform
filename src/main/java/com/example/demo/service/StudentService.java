@@ -45,9 +45,9 @@ public class StudentService {
         StudentEntity s =studentRepository.getStuById(phone);
         UserDetails userDetails;
         if(s.getPwd().equals(pwd)){
-            if(Boolean.parseBoolean(String.valueOf(s.getIsManager()))){
+            if(s.getIsManager()==1){
                 userDetails = createUser(String.valueOf(phone),pwd,new String[]{"manager","lessonManager","student"});
-            } else if(Boolean.parseBoolean(String.valueOf(s.getIsLessonManager()))){
+            } else if(s.getIsLessonManager()==1){
                 userDetails = createUser(String.valueOf(phone),pwd,new String[]{"lessonManager","student"});
             } else {
                 userDetails = createUser(String.valueOf(phone),pwd,new String[]{"student"});

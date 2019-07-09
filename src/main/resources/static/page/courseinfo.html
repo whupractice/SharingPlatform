@@ -23,7 +23,7 @@
                 <div class="g-sd1 video-intro">
                     <div id="j-courseImg" class="m-recimg canlick">
                         <video width="320" height="240" controls>
-                            <source src="{{lesson.videoLink}}" type="video/mp4">
+                            <source src="{{lesson.videoLink}}" type="video/*">
                         </video>
                     </div>
                 </div>
@@ -209,7 +209,7 @@
                                     </div>
                                     <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">
                                         <div class="username">
-                                            <span class="bold">{{x.nickName}}</span>
+                                            <span class="bold">{{nickName}}</span>
                                         </div>
                                         <div class="info text-muted">
                                            {{x.evaluation}}

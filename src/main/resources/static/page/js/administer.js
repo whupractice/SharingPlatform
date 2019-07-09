@@ -5,7 +5,7 @@ var app = angular.module('myApp');
  * @Description : 管理员页面控制器
  * @type        : Controller
  */
-app.controller('administerCtrl', function ($scope, $http, $state,Data) {
+app.controller('administerCtrl', function ($scope, $http, $state) {
 
     $scope.currentSystemManager = null;//当前系统管理员
 
@@ -33,7 +33,20 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
         $scope.getAllSystemManagers();//获取所有管理员信息
         $scope.getAllLessonManagers();//获取所有课程管理员信息
         $scope.getAllSchools();//获取所有学校
-        $scope.currentSystemManager = Data.get();//获取当前管理员信息
+        var token = window.localStorage.getItem('token');
+        var phone = window.localStorage.getItem('phone');
+        $http({
+            method: 'GET',
+            url: '/student/info',
+            headers: {
+                'Authorization': token
+            },
+            params: {
+                "phone": phone
+            }
+        }).then(function successCallback(response) {
+            $scope.currentSystemManager = response.data;
+        });
     };
 
 

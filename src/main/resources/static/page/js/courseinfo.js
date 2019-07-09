@@ -45,9 +45,10 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             }
         }).then(function successCallback(response) {
             $scope.lesson = response.data;
+            $scope.getTeachers();//获取老师信息
+            $scope.getComments();//获取评论
         });
-        $scope.getTeachers();
-        $scope.getComments();
+
     };
 
 
