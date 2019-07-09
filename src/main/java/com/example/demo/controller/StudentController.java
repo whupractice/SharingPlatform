@@ -275,7 +275,7 @@ public class StudentController {
 
 
 
-//    @PreAuthorize("hasRole('student')")
+    @PreAuthorize("hasRole('student')")
     @ApiOperation(value = "获取学生的技能图",notes = "获取学生的技能图",httpMethod = "GET")
     @GetMapping("/skill")
     public void getSkillImg(@RequestParam(value = "phone") long phone){
@@ -285,5 +285,11 @@ public class StudentController {
 
 
 
+    @PreAuthorize("hasRole('manager')")
+    @ApiOperation(value = "获取课程排行榜top",notes = "获取课程排行榜top",httpMethod = "GET")
+    @GetMapping("/rank")
+    public void getLessonRank(@RequestParam(value = "num") int num){
+        studentService.getLessonRank(num);
+    }
 
 }
