@@ -12,11 +12,12 @@
     align-items: center;
     margin: 65px auto 15px;
     position: relative;
+    margin-top: 130px;
 }
 .s-school .title img {
     width: 40px;
     height: 35px;
-    margin-right: 8px;
+    margin-left: 30px;
 }
 .s-school .title span {
     display: inline-block;
@@ -39,6 +40,7 @@
     margin: 15px auto 0;
     height: 44px;
     position: relative;
+    margin-top: 40px;
 }
 .school-input input[type=text] {
     display: block;
@@ -102,7 +104,7 @@ input, button, textarea {
     width: 1180px !important;
     margin: 0 auto;
     display: flex;
-    margin-top: 20px;
+    margin-top: 60px;
     position: relative;
     flex-wrap: wrap;
 }
