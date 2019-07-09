@@ -13,7 +13,7 @@
 </head>
 <body>
 <!--HTML-->
-<div class="king-layout-container container" id="layoutPanel" style="margin-top: 15px;" ng-controller="studentCtrl" ng-init="initStudent()">
+<div class="king-layout-container container" id="layoutPanel" style="margin-top: 100px;" ng-controller="studentCtrl" ng-init="initStudent()">
 
     <!--  -->
     <div class="king-page-box">
@@ -87,14 +87,6 @@
                                 </div>
                             </div>
 
-<!--                        <div class="form-group clearfix ">-->
-<!--                            <label class="control-label col-sm-3 pt0 bk-h30 bk-lh30">头像：</label>-->
-<!--                            <div class="col-sm-6">-->
-<!--                                <button class="king-btn king-default king-file-btn king-btn-small bk-mt3 bk-block">选择文件-->
-<!--                                    <input type="file">-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                        </div>-->
                         <div class="form-group clearfix ">
                             <label class="col-sm-3 control-label bk-lh30 pt0">生日：</label>
                             <div class="col-sm-6">
@@ -201,25 +193,55 @@
 
 
         <div class="king-content-wrap">
-            <div class="king-layout1-content" style="margin-left:300px;margin-right:200px;margin-top:-280px;margin-bottom: 50px">
-                <section class="panel panel-box-1">
-                    <div class="panel-top bg-success1">
-                        <div class="divider divider"></div>
-                        <i class="fa fa-user f36"></i>
-                        <div class="divider divider"></div>
+            <div class="king-layout1-content" style="margin-left:300px;margin-right:200px;margin-top:-350px;margin-bottom: 50px">
+                <section class="panel panel-box-1" style="    margin-top: 100px;">
+                    <div>
+                        <p style="        font-size: 25px;
+    margin-top: 30px;
+    margin-left: 150px;">已学学时</p>
+                        <p style="        margin-left: 185px;
+    font-size: 22px;">572</p>
                     </div>
-                    <div class="list-justified-container">
-                        <ul class="list-justified text-center">
-                            <li>
-                                <p class="f24">575</p>
-                                <p class="text-muted">已学学时</p>
-                            </li>
-                            <li>
-                                <p class="f24">23</p>
-                                <p class="text-muted">已修学分</p>
-                            </li>
-                        </ul>
-                    </div>
+
+                   <div>
+                       <p style="        margin-top: -67px;
+    margin-left: 400px;
+    font-size: 25px;">已修学分</p>
+                       <p style="        font-size: 22px;
+    margin-left: 440px;">32</p>
+                   </div>
+<!--                  -->
+<!--                    <table>-->
+<!--                        <thead>-->
+<!--                        <tr>-->
+<!--                            <th>-->
+<!--                            <th style="width: 15%;"></th>-->
+<!--                            <th style="width: 15%;"></th>-->
+<!--                            </th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        <td style="width: 70px;">572</td>-->
+<!--                        <td style="width: 15%;">23</td>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                    <div class="panel-top bg-success1">-->
+<!--                        <div class="divider divider"></div>-->
+<!--                        <i class="fa fa-user f36"></i>-->
+<!--                        <div class="divider divider"></div>-->
+<!--                    </div>-->
+<!--                    <div class="list-justified-container">-->
+<!--                        <ul class="list-justified text-center">-->
+<!--                            <li>-->
+<!--                                <p class="f24">575</p>-->
+<!--                                <p class="text-muted">已学学时</p>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p class="f24">23</p>-->
+<!--                                <p class="text-muted">已修学分</p>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                 </section>
                 <br>
                 <table class="table mb0 pr15 ranger-box2  ">
@@ -421,23 +443,23 @@
 </div>
 </div>
 <!--JS-->
-<script>
-    $(function(){
-        var li = $('.navi li');
-        li.each(function(){
-            $(this).click(function(){
-                if( $(this).hasClass('c-open')){
-                    $(this).find('ul').slideUp(350);
-                    $(this).removeClass('c-open');
-                }else{
-                    $(this).find('ul').slideDown(350);
-                    $(this).addClass('c-open');
-                }
-            })
-        });
-    });
+<!--<script>-->
+    <!--$(function(){-->
+        <!--var li = $('.navi li');-->
+        <!--li.each(function(){-->
+            <!--$(this).click(function(){-->
+                <!--if( $(this).hasClass('c-open')){-->
+                    <!--$(this).find('ul').slideUp(300);-->
+                    <!--$(this).removeClass('c-open');-->
+                <!--}else{-->
+                    <!--$(this).find('ul').slideDown(300);-->
+                    <!--$(this).addClass('c-open');-->
+                <!--}-->
+            <!--})-->
+        <!--});-->
+    <!--});-->
 
 
-</script>
+<!--</script>-->
 </body>
 </html>

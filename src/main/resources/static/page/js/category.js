@@ -47,7 +47,6 @@ app.controller('categoryCtrl', function ($scope, $http, $state) {
     //修改状态
     $scope.setStatus = function (status) {
         $scope.currentPage = 1;
-        console.log($scope.currentPage);
         if(status==0){
             $scope.currentStatus = "全部";
         }else if(status==1){
@@ -64,7 +63,6 @@ app.controller('categoryCtrl', function ($scope, $http, $state) {
     //修改类别
     $scope.setSubject = function (subject) {
         $scope.currentPage = 1;
-        console.log($scope.currentPage);
         if(subject==0){
             $scope.currentSubject = "全部";
         }else if(subject==1){
@@ -100,7 +98,7 @@ app.controller('categoryCtrl', function ($scope, $http, $state) {
 
     //发送请求
     $scope.getLessons = function () {
-        let p = $scope.currentPage-1;
+        var p = $scope.currentPage-1;
         $http({
             method: 'GET',
             url: "/lesson/pages?page="+p,
@@ -113,12 +111,12 @@ app.controller('categoryCtrl', function ($scope, $http, $state) {
             $scope.totalPage = response.data.totalPages;//获取最大页数
             $scope.pages = [];
             if($scope.totalPage>5) {
-                let start = ($scope.currentPage>=3) ? $scope.currentPage-2 : 1;
-                let end = ($scope.currentPage<=$scope.totalPage-2) ? start+4 : $scope.totalPage;
-                for(let i = start;i<=end;i++)
+                var start = ($scope.currentPage>=3) ? $scope.currentPage-2 : 1;
+                var end = ($scope.currentPage<=$scope.totalPage-2) ? start+4 : $scope.totalPage;
+                for(var i = start;i<=end;i++)
                     $scope.pages.push(i);
             }else{
-                for(let i = 1;i<=$scope.totalPage;i++)
+                for(var i = 1;i<=$scope.totalPage;i++)
                     $scope.pages.push(i);
             }
         });
