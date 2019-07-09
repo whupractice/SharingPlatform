@@ -9,7 +9,11 @@ import com.example.demo.repository.SLRepository;
 import com.example.demo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,6 +116,32 @@ public class SLService {
       * @Param       : [sl] -- 学生选课记录
       */
     public void insertSL(SLEntity sl){
+
+        if(sl.getEvaluation()!=null){ // 执行脚本，进行敏感词过滤
+            StringBuffer res = new StringBuffer();
+            try {
+                File staticDir = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
+                File pyDir = new File(staticDir.getAbsolutePath(),"py\\");
+                String py = pyDir.getAbsolutePath()+"\\filter.py";
+                String arg_s = "python "+py+" "+sl.getEvaluation();
+                Process proc = Runtime.getRuntime().exec(arg_s);
+                BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream(),"GBK"));
+
+                String line = null;
+                while ((line = in.readLine()) != null)
+                {
+                    res.append(line);
+                }
+
+                in.close();
+                proc.waitFor();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            sl.setEvaluation(res.toString());
+        }
+
         slRepository.save(sl);
     }
 

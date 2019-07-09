@@ -5,7 +5,7 @@ var API_index = angular.module('myApp');
  * @Description : 主页面控制器
  * @type        : Controller
  */
-API_index.controller("headCtrl", function ($scope, $http, $state,Data,$interval) {
+API_index.controller("headCtrl", function ($scope, $http, $state,$interval) {
 
 
 
@@ -26,8 +26,26 @@ API_index.controller("headCtrl", function ($scope, $http, $state,Data,$interval)
       * @Description : 初始化导航栏
       */
     $scope.initHead = function () {
-      $scope.currentUser = Data.get();
-      $scope.getMessageNum();
+        //获取全局保留的token和phone
+        var token = window.localStorage.getItem('token');
+        var phone = window.localStorage.getItem('phone');
+        if(token!="") {
+            //获取用户信息
+            $http({
+                method: 'GET',
+                url: '/student/info',
+                headers: {
+                    'Authorization': token
+                },
+                params: {
+                    "phone": phone
+                }
+            }).then(function successCallback(response) {
+                $scope.currentUser = response.data;
+            });
+            //获取消息数量
+            $scope.getMessageNum();
+        }
     };
 
 
@@ -67,12 +85,16 @@ API_index.controller("headCtrl", function ($scope, $http, $state,Data,$interval)
 
     //获取学生消息数量
     $scope.getMessageNum = function () {
-        let judge = $scope.isStu();
+        var token = window.localStorage.getItem('token');
+        var judge = $scope.isStu();
         if(judge==true) {
-            let phone = $scope.currentUser.phone;
+            var phone = $scope.currentUser.phone;
             $http({
                 method: 'GET',
                 url: "/message/phone",
+                headers: {
+                    'Authorization': token
+                },
                 params: {
                     "phone": phone
                 }

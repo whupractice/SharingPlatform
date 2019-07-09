@@ -32,7 +32,7 @@ app.controller('schoolsCtrl', function ($scope, $http, $state) {
 
     //根据关键字搜索学校
     $scope.searchSchoolName = function () {
-        let keyword = $('#searchVal').val();
+        var keyword = $('#searchVal').val();
         $http({
             method: 'GET',
             url: '/school/keyword',

@@ -127,9 +127,8 @@ app.controller('categoryCtrl', function ($scope, $http, $state) {
 
     //跳转到课程详情页面
     $scope.goDetail_2 = function (lesson) {
-        $state.go('courseinfo', {
-            "lesson": lesson
-        });
+        window.localStorage.setItem('lessonId',lesson.lessonId);
+        $state.go('courseinfo');
     }
 
 });

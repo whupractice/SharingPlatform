@@ -5,7 +5,7 @@ var API_index = angular.module('myApp');
  * @Description : 主页面控制器
  * @type        : Controller
  */
-API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$stateParams,Data) {
+API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
 
     $scope.lesson = null;
@@ -22,7 +22,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
 
     $scope.currentScore = 4.3;
     $scope.f = 0.3;
-    $scope.student=null;
+    $scope.nickName="";
 
     $scope.RootUrl=null;
 
@@ -36,10 +36,18 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
       * @Description : 初始化课程的信息
       */
     $scope.initCourseInfo = function(){
-        $scope.lesson = $stateParams.lesson;//接收传来课程信息
-       $scope.getTeachers();
-       //$scope.getScores();
-       $scope.getComments();
+        var lessonId = window.localStorage.getItem('lessonId');
+        $http({
+            method: 'GET',
+            url: "/lesson/id",
+            params:{
+                "lessonId" : lessonId
+            }
+        }).then(function successCallback(response) {
+            $scope.lesson = response.data;
+            $scope.getTeachers();//获取老师信息
+            $scope.getComments();//获取评论
+        });
 
     };
 
@@ -63,10 +71,9 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
                 "schoolName" : $scope.lesson.schoolName
             }
         }).then(function successCallback(response) {
-            let school = response.data;
-            $state.go('schoolcourse',{
-                "school": school
-            })
+            var school = response.data;
+            window.localStorage.setItem('schoolId',school.schoolId);
+            $state.go('schoolcourse');
         });
     };
 
@@ -85,7 +92,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
 
 
     $scope.getTeachers = function () {
-        let lessonId = $scope.lesson.lessonId;//获取课程id
+        var lessonId = $scope.lesson.lessonId;//获取课程id
         $http({
             method: 'GET',
             url: '/tl/getTeacherByLessonId',
@@ -98,11 +105,10 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
         });
     };
 
-//跳转到教师页面
+    //跳转到教师页面
     $scope.jumpT = function (teacher) {
-        $state.go('teacher',{
-            "teacher" : teacher
-        });
+        window.localStorage.setItem(teacher.teacher);
+        $state.go('teacher');
     };
 
 
@@ -110,7 +116,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
     $scope.getScores=function () {
         var score=Math.floor(4.3);
         $scope.f = 4.3 - score;
-        for(let i=0;i<score;i++)
+        for(var i=0;i<score;i++)
         {
             $scope.scores.push(1);
         }
@@ -122,9 +128,9 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
         return $scope.f<=0.5;
     };
 
-//获取评论信息
+    //获取评论信息
     $scope.getComments=function () {
-        let lessonId = $scope.lesson.lessonId;//获取课程id
+        var lessonId = $scope.lesson.lessonId;//获取课程id
         $http({
             method:'GET',
             url:'/sl/lessonId',
@@ -133,86 +139,72 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state,$statePar
             }
         }).then(function successCallback(response) {
             $scope.sl=response.data;
-            for(let i = 0;i<$scope.sl.length;i++){
-                let sl = $scope.sl[i];
+            for(var i = 0;i<$scope.sl.length;i++){
+                var sl = $scope.sl[i];
                 $http({
                     method: 'GET',
-                    url: '/student/info',
+                    url: '/student/getNickName',
                     params: {
                         "phone": sl.phone
                     }
                 }).then(function successCallback(response) {
-                    ($scope.sl[i])["nickName"] = response.data.nickName;
+                        $scope.nickName = response.data.nickName;
                 })
             }
         })
     };
 
 
- //参加课程
+    //参加课程
     $scope.joinCourse=function () {
 
-        let lessonId = $scope.lesson.lessonId;//获取课程id
-        $scope.student = Data.get();
-        let phone = $scope.student.phone;
-
-        if($scope.student.phone==0){  //未登录则跳转登录界面
-            $state.go('login');
-        }
-        else if($scope.student.isManager == 1 || $scope.student.isLessonManager == 1){
-            alert("管理员不能选课！");
-            return;
-        }
-        else {
-            $http({
-                method: 'POST',
-                url: '/sl',
-                //如果swagger文档里参数是body类型，参数用data传递；若为query，参数用params
-                data: {
-                    "phone": phone,
-                    "lessonId": lessonId
-                }
-            }).then(function successCallback(response) {
-                if (response.status == 200) {
-                    alert("success");
-                    //TODO 跳转奥课程学习界面
-                } else {
-                    alert("插入失败");
-                }
-            })
-        }
-    };
-    $scope.getRootUrl = function () {
-
+        var lessonId = $scope.lesson.lessonId;//获取课程id
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'GET',
-            url: '/lesson/getRootUrl'
+            url: '/student/info',
+            headers: {
+                'Authorization': token
+            },
+            params: {
+                "phone": phone
+            }
         }).then(function successCallback(response) {
-
-            $scope.RootUrl=response.data.link+'carousel1.jpg/';
-            // if(response.status==200){
-            //     alert("GET请求成功");
-            // }
-            // else {
-            //     alert("GET请求失败");
-            // }
-        })
+           var student = response.data;
+            if(student.length==0){  //未登录则跳转登录界面
+                $state.go('login');
+            }
+            else if(student.isManager == 1 || student.isLessonManager == 1){
+                alert("管理员不能选课！");
+                return;
+            }
+            else {
+                $http({
+                    method: 'POST',
+                    url: '/sl',
+                    headers: {
+                        'Authorization': token
+                    },
+                    data: {
+                        "phone": phone,
+                        "lessonId": lessonId
+                    }
+                }).then(function successCallback(response) {
+                    if (response.status == 200) {
+                        alert("success");
+                        //TODO 跳转到课程学习界面
+                    } else {
+                        alert("插入失败");
+                    }
+                })
+            }
+        });
 
 
     };
 
-    //sharing
 
-
-
-    // var _title,_source,_sourceUrl,_pic,_showcount,_desc,_summary,_site,
-    //     _width = 600,
-    //     _height = 600,
-    //     _top = (screen.height-_height)/2,
-    //     _left = (screen.width-_width)/2,
-    //     _url = 'www.baidu.com',
-    //     _pic = '';
-    //分享到新浪微博
     $scope.shareToSinaWB=function (event){
         var _title,_source,_sourceUrl,_pic,_showcount,_desc,_summary,_site,
             _width = 600,

@@ -5,7 +5,7 @@ var app = angular.module('myApp');
  * @Description : 系统管理员页面控制器
  * @type        : Controller
  */
-app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
+app.controller('lessonManagerCtrl', function ($scope, $http) {
 
     $scope.currentManager = null;//当前课程管理员
 
@@ -33,10 +33,24 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //初始化管理员信息
     $scope.initLessonManager = function () {
-        $scope.currentManager = Data.get();//获取当前管理员信息
-        $scope.selectP_(1);
-        $scope.getTeachers();//获取老师信息
-        $scope.getAcademys();//获取学院信息
+        var token = window.localStorage.getItem('token');
+        var phone = window.localStorage.getItem('phone');
+        $http({
+            method: 'GET',
+            url: '/student/info',
+            headers: {
+                'Authorization': token
+            },
+            params: {
+                "phone": phone
+            }
+        }).then(function successCallback(response) {
+            $scope.currentManager = response.data;
+            $scope.selectP_(1);
+            $scope.getTeachers();//获取老师信息
+            $scope.getAcademys();//获取学院信息
+        });
+
     };
 
 
@@ -63,18 +77,22 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //更新课程管理员的信息
     $scope.updateLeMan = function () {
-        let phone = $scope.currentManager.phone;
-        let realName = $('#realName').val();
-        let nickName = $('#nickName').val();
-        let pwd = $('#pwd').val();
-        let sex = $('#sex').find('option:selected').text();
-        let email = $('#email').val();
-        let birth = $('#birth').val();
-        let introduction = $('#introduction').val();
+        var token = window.localStorage.getItem('token');
+        var phone = window.localStorage.getItem('phone');
+        var realName = $('#realName').val();
+        var nickName = $('#nickName').val();
+        var pwd = $('#pwd').val();
+        var sex = $('#sex').find('option:selected').text();
+        var email = $('#email').val();
+        var birth = $('#birth').val();
+        var introduction = $('#introduction').val();
 
         $http({
             method: 'PUT',
-            url: '/student',
+            url: '/student/updateLessonManager',
+            headers: {
+                'Authorization': token
+            },
             data:{
                 "phone": phone,
                 "birth": birth,
@@ -92,6 +110,8 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
         }).then(function successCallback(response) {
             if(response.status == 200){
                 alert("修改成功！");
+                var token = response.data.token;
+                window.localStorage.setItem('token',token);
                 $scope.initLessonManager();
             }else{
                 alert("修改失败!");
@@ -105,24 +125,28 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //分页获取当前管理员所在学院的课程
     $scope.getLessons = function () {
-        let p = $scope.currentP_-1;
+        var token = window.localStorage.getItem('token');
+        var p = $scope.currentP_-1;
         $http({
             method: 'GET',
             url: '/lesson/pagesBySchoolName?page='+p,
+            headers: {
+                'Authorization': token
+            },
             params: {
                 "schoolName": $scope.currentManager.schoolName
             }
         }).then(function successCallback(response) {
-            $scope.currentLesson = response.data.content;//获取返回的课程
+            $scope.currentLessons = response.data.content;//获取返回的课程
             $scope.totalP_ = response.data.totalPages;//获取最大页数
             $scope.Ps_ = [];
             if($scope.totalP_>5) {
-                let start = ($scope.currentP_>=3) ? $scope.currentP_-2 : 1;
-                let end = ($scope.currentP_<=$scope.totalP_-2) ? start+4 : $scope.totalP_;
-                for(let i = start;i<=end;i++)
+                var start = ($scope.currentP_>=3) ? $scope.currentP_-2 : 1;
+                var end = ($scope.currentP_<=$scope.totalP_-2) ? start+4 : $scope.totalP_;
+                for(var i = start;i<=end;i++)
                     $scope.Ps_.push(i);
             }else{
-                for(let i = 1;i<=$scope.totalP_;i++)
+                for(var i = 1;i<=$scope.totalP_;i++)
                     $scope.Ps_.push(i);
             }
         })
@@ -152,42 +176,25 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
         $scope.currentL = x;
     };
 
-    //删除课程
-    $scope.deleteLesson = function () {
-      let lessonId = $scope.currentL.lessonId;//课程id
-        $http({
-            method: 'DELETE',
-            url: '/lesson',
-            params: {
-                "lessonId": lessonId
-            }
-        }).then(function successCallback(response) {
-            if(response.status == 200){
-                alert("删除成功！");
-                $scope.selectP_(1);
-            }else{
-                alert("删除失败!");
-            }
-        })
-    };
 
 
 
     //添加课程
     $scope.addLesson = function () {
-        let lessonName = $('#addLessonName').val();
-        let subject = $('#addSubject').find('option:selected').text();
-        let startTime = $('#addStartTime').val();
-        let endTime = $('#addEndTime').val();
-        let credit =  $('#addCredit').find('option:selected').text();
-        let introduction = $('#addIntroduction').val();
-        let schoolName = $scope.currentManager.schoolName;
-        let academyName = $scope.currentManager.academyName;
-        let recommended_level = $('#addRecommend').find('option:selected').val();
+        var token = window.localStorage.getItem('token');
+        var lessonName = $('#addLessonName').val();
+        var subject = $('#addSubject').find('option:selected').text();
+        var startTime = $('#addStartTime').val();
+        var endTime = $('#addEndTime').val();
+        var credit =  $('#addCredit').find('option:selected').text();
+        var introduction = $('#addIntroduction').val();
+        var schoolName = $scope.currentManager.schoolName;
+        var academyName = $scope.currentManager.academyName;
+        var recommended_level = $('#addRecommend').find('option:selected').val();
 
-        let status = "";
+        var status = "";
 
-        let nowTime = $scope.getNowFormatDate();
+        var nowTime = $scope.getNowFormatDate();
         if($scope.compareDate(startTime,endTime)==false){
             alert("开始时间不能大于结束时间！");
         }else if($scope.compareDate(startTime,nowTime)==false){
@@ -201,6 +208,9 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
         $http({
             method: 'POST',
             url: '/lesson',
+            headers: {
+                'Authorization': token
+            },
             data:{
                 "academyName": academyName,
                 "credit": credit,
@@ -260,11 +270,16 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //删除当前课程
     $scope.deleteLesson =function () {
+        var token = window.localStorage.getItem('token');
+        var lessonId = $scope.currentL.lessonId;//课程id
         $http({
             method: 'DELETE',
             url: '/lesson',
+            headers: {
+                'Authorization': token
+            },
             params: {
-                "lessonId": $scope.currentL.lessonId
+                "lessonId": lessonId
             }
         }).then(function successCallback(response) {
             if(response.status == 200){
@@ -278,22 +293,29 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //向选了这门课的学生发消息
     $scope.send = function(){
-        let message = $('#message').val();
-        let lessonId = $scope.currentL.lessonId.toString();
+        var token = window.localStorage.getItem('token');
+        var message = $('#message').val();
+        var lessonId = $scope.currentL.lessonId.toString();
         $http({
             method: 'GET',
             url: '/sl/getStudentByLessonId',
+            headers: {
+                'Authorization': token
+            },
             params: {
                 "lessonId": lessonId
             }
         }).then(function successCallback(response) {
-            let stus = response.data;//获取选了这门课的所有学生
-            for(let i = 0;i<stus.length;i++){
-                let phone = stus[i].phone;
-                let time = $scope.getNowFormatDate();
+            var stus = response.data;//获取选了这门课的所有学生
+            for(var i = 0;i<stus.length;i++){
+                var phone = stus[i].phone;
+                var time = $scope.getNowFormatDate();
                 $http({
                     method: 'POST',
                     url: '/message',
+                    headers: {
+                        'Authorization': token
+                    },
                     data: {
                         "lessonId": $scope.currentL.lessonId,
                         "phone": phone,
@@ -312,9 +334,13 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //获取当前学校的所有教师
     $scope.getTeachers = function () {
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'GET',
             url: '/teacher/schoolName',
+            headers: {
+                'Authorization': token
+            },
             params: {
                 "schoolName": $scope.currentManager.schoolName
             }
@@ -325,9 +351,13 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //获取此学校的所有学院
     $scope.getAcademys = function () {
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'GET',
             url: '/academy/schoolName',
+            headers: {
+                'Authorization': token
+            },
             params: {
                 "schoolName": $scope.currentManager.schoolName
             }
@@ -339,16 +369,20 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //增添老师
     $scope.addTeacher = function () {
-        let teacherName = $('#addTName').val();
-        let job = $('#addTJob').val();
-        let academyName = $('#addTAcademy').find('option:selected').text();
-        let schoolName = $scope.currentManager.schoolName;
-        let teacherIntro = $('#addTIntro').val();
-        let lessonId = $('#addTLesson').find('option:selected').val();
+        var token = window.localStorage.getItem('token');
+        var teacherName = $('#addTName').val();
+        var job = $('#addTJob').val();
+        var academyName = $('#addTAcademy').find('option:selected').text();
+        var schoolName = $scope.currentManager.schoolName;
+        var teacherIntro = $('#addTIntro').val();
+        var lessonId = $('#addTLesson').find('option:selected').val();
 
         $http({
             method: 'POST',
             url: '/teacher',
+            headers: {
+                'Authorization': token
+            },
             data: {
                 "teacherName": teacherName,
                 "job":job,
@@ -358,10 +392,13 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
             }
         }).then(function successCallback(response) {
             if(response.status==200) {
-                let teacherId = response.data;
+                var teacherId = response.data;
                 $http({
                     method: 'POST',
                     url: '/tl',
+                    headers: {
+                        'Authorization': token
+                    },
                     data: {
                         "lessonId": lessonId,
                         "teacherId": teacherId
@@ -384,11 +421,15 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //获取当前学校和学院下的课程
     $scope.getAcademyLesson = function () {
-        let academyName = $('#addTAcademy').find('option:selected').text();
-        let schoolName = $scope.currentManager.schoolName;
+        var token = window.localStorage.getItem('token');
+        var academyName = $('#addTAcademy').find('option:selected').text();
+        var schoolName = $scope.currentManager.schoolName;
         $http({
             method: 'GET',
             url: '/lesson/schoolAndAcademy',
+            headers: {
+                'Authorization': token
+            },
             params: {
                 "schoolName": schoolName,
                 "academyName": academyName
@@ -401,9 +442,13 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
 
     //删除老师
     $scope.deleteT = function (x) {
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'DELETE',
             url: '/teacher',
+            headers: {
+                'Authorization': token
+            },
             params: {
                 "teacherId": x.teacherId
             }
@@ -412,6 +457,9 @@ app.controller('lessonManagerCtrl', function ($scope, $http, $state,Data) {
                 $http({
                     method: 'DELETE',
                     url: '/tl/teacherId',
+                    headers: {
+                        'Authorization': token
+                    },
                     params: {
                         "teacherId": x.teacherId
                     }

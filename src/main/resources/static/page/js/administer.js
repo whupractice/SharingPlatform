@@ -5,7 +5,7 @@ var app = angular.module('myApp');
  * @Description : 管理员页面控制器
  * @type        : Controller
  */
-app.controller('administerCtrl', function ($scope, $http, $state,Data) {
+app.controller('administerCtrl', function ($scope, $http, $state) {
 
     $scope.currentSystemManager = null;//当前系统管理员
 
@@ -33,7 +33,20 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
         $scope.getAllSystemManagers();//获取所有管理员信息
         $scope.getAllLessonManagers();//获取所有课程管理员信息
         $scope.getAllSchools();//获取所有学校
-        $scope.currentSystemManager = Data.get();//获取当前管理员信息
+        var token = window.localStorage.getItem('token');
+        var phone = window.localStorage.getItem('phone');
+        $http({
+            method: 'GET',
+            url: '/student/info',
+            headers: {
+                'Authorization': token
+            },
+            params: {
+                "phone": phone
+            }
+        }).then(function successCallback(response) {
+            $scope.currentSystemManager = response.data;
+        });
     };
 
 
@@ -59,8 +72,12 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //获取所有的系统管理员
     $scope.getAllSystemManagers = function () {
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'GET',
+            headers: {
+                'Authorization': token
+            },
             url: '/student/manager'
         }).then(function successCallback(response) {
             $scope.allSystemManager = response.data;
@@ -70,21 +87,25 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //分页获取所有的课程管理员
     $scope.getAllLessonManagers = function(){
-        let p = $scope.currentP-1;
+        var token = window.localStorage.getItem('token');
+        var p = $scope.currentP-1;
         $http({
             method: 'GET',
+            headers: {
+                'Authorization': token
+            },
             url: "/student/lessonManagerPages?page="+p
         }).then(function successCallback(response) {
             $scope.allLessonManager = response.data.content;//获取返回的课程
             $scope.totalP = response.data.totalPages;//获取最大页数
             $scope.Ps = [];
             if($scope.totalP>5) {
-                let start = ($scope.currentP>=3) ? $scope.currentP-2 : 1;
-                let end = ($scope.currentP<=$scope.totalP-2) ? start+4 : $scope.totalP;
-                for(let i = start;i<=end;i++)
+                var start = ($scope.currentP>=3) ? $scope.currentP-2 : 1;
+                var end = ($scope.currentP<=$scope.totalP-2) ? start+4 : $scope.totalP;
+                for(var i = start;i<=end;i++)
                     $scope.Ps.push(i);
             }else{
-                for(let i = 1;i<=$scope.totalP;i++)
+                for(var i = 1;i<=$scope.totalP;i++)
                     $scope.Ps.push(i);
             }
         });
@@ -103,7 +124,8 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //获取page2指定学校下的学院
     $scope.getAcademy = function(i){
-        let schoolName = "";
+        var token = window.localStorage.getItem('token');
+        var schoolName = "";
         if(i==0)
             schoolName = $('#allSchools').find('option:selected').text();
         else
@@ -111,6 +133,9 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
         $http({
             method: 'GET',
             url: '/academy/schoolName',
+            headers: {
+                'Authorization': token
+            },
             params:{
                 "schoolName":schoolName
             }
@@ -122,10 +147,14 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //获取page3指定学校下的学院
     $scope.getPage3Academy = function(x){
+        var token = window.localStorage.getItem('token');
         $scope.page3School = x;
         $http({
             method: 'GET',
             url: '/academy/schoolName',
+            headers: {
+                'Authorization': token
+            },
             params:{
                 "schoolName":x.schoolName
             }
@@ -174,9 +203,13 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //删除当前选中的系统管理员
     $scope.deleteSys = function (x) {
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'DELETE',
             url: '/student',
+            headers: {
+                'Authorization': token
+            },
             params:{
                 "phone": x.phone
             }
@@ -193,12 +226,16 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //按照搜索类型和关键词搜索课程管理员
     $scope.searchByType = function(){
-          let type = $('#keyType').find('option:selected').val();
-          let val = $('#searchVal').val();
+        var token = window.localStorage.getItem('token');
+          var type = $('#keyType').find('option:selected').val();
+          var val = $('#searchVal').val();
           if(type=="name"){
               $http({
                   method: 'GET',
                   url: '/student/lessonManagerPagesByName',
+                  headers: {
+                      'Authorization': token
+                  },
                   params:{
                       "realName":val
                   }
@@ -207,12 +244,12 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
                   $scope.totalP = response.data.totalPages;//获取最大页数
                   $scope.Ps = [];
                   if($scope.totalP>5) {
-                      let start = ($scope.currentP>=3) ? $scope.currentP-2 : 1;
-                      let end = ($scope.currentP<=$scope.totalP-2) ? start+4 : $scope.totalP;
-                      for(let i = start;i<=end;i++)
+                      var start = ($scope.currentP>=3) ? $scope.currentP-2 : 1;
+                      var end = ($scope.currentP<=$scope.totalP-2) ? start+4 : $scope.totalP;
+                      for(var i = start;i<=end;i++)
                           $scope.Ps.push(i);
                   }else{
-                      for(let i = 1;i<=$scope.totalP;i++)
+                      for(var i = 1;i<=$scope.totalP;i++)
                           $scope.Ps.push(i);
                   }
               })
@@ -220,6 +257,9 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
               $http({
                   method: 'GET',
                   url: '/student/lessonManagerPagesBySchool',
+                  headers: {
+                      'Authorization': token
+                  },
                   params:{
                       "schoolName":val
                   }
@@ -228,12 +268,12 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
                   $scope.totalP = response.data.totalPages;//获取最大页数
                   $scope.Ps = [];
                   if($scope.totalP>5) {
-                      let start = ($scope.currentP>=3) ? $scope.currentP-2 : 1;
-                      let end = ($scope.currentP<=$scope.totalP-2) ? start+4 : $scope.totalP;
-                      for(let i = start;i<=end;i++)
+                      var start = ($scope.currentP>=3) ? $scope.currentP-2 : 1;
+                      var end = ($scope.currentP<=$scope.totalP-2) ? start+4 : $scope.totalP;
+                      for(var i = start;i<=end;i++)
                           $scope.Ps.push(i);
                   }else{
-                      for(let i = 1;i<=$scope.totalP;i++)
+                      for(var i = 1;i<=$scope.totalP;i++)
                           $scope.Ps.push(i);
                   }
               })
@@ -243,12 +283,16 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //更新当前的课程管理员
     $scope.updateLessonMan = function () {
-        let realName = $('#relName_2').val();//真实姓名
-        let schoolName = $('#allSchools').find('option:selected').text();//学校名
-        let academyName =$('#allAcdemys').find('option:selected').text();//学院名
+        var token = window.localStorage.getItem('token');
+        var realName = $('#relName_2').val();//真实姓名
+        var schoolName = $('#allSchools').find('option:selected').text();//学校名
+        var academyName =$('#allAcdemys').find('option:selected').text();//学院名
         $http({
             method: 'PUT',
             url: '/student',
+            headers: {
+                'Authorization': token
+            },
             data:{
                 "phone": $scope.bindLeMan.phone,
                 "academyName": academyName,
@@ -275,9 +319,13 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //删除选定的课程管理员
     $scope.deleteLeMan = function () {
+        var token = window.localStorage.getItem('token');
         $http({
             method: 'DELETE',
             url: '/student',
+            headers: {
+                'Authorization': token
+            },
             params:{
                 "phone": $scope.bindLeMan.phone
             }
@@ -295,14 +343,18 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //添加课程管理员
     $scope.addLeMan = function () {
-        let phone = $('#lePhone').val();//电话
-        let realName = $('#leName').val();//真实姓名
-        let pwd = $('#lePwd').val();//电话
-        let schoolName = $('#leSchool').find('option:selected').text();//学校名
-        let academyName =$('#leAcademy').find('option:selected').text();//学院名
+        var token = window.localStorage.getItem('token');
+        var phone = $('#lePhone').val();//电话
+        var realName = $('#leName').val();//真实姓名
+        var pwd = $('#lePwd').val();//电话
+        var schoolName = $('#leSchool').find('option:selected').text();//学校名
+        var academyName =$('#leAcademy').find('option:selected').text();//学院名
         $http({
             method: 'POST',
-            url: '/student/register',
+            url: '/student/registerLessonManager',
+            headers: {
+                'Authorization': token
+            },
             data:{
                 "phone": phone,
                 "academyName": academyName,
@@ -325,11 +377,15 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //添加学校
     $scope.addSchool = function () {
-        let schoolName = $('#schoolName').val();
-        let schoolIntro = $('#schoolIntro').val();
+        var token = window.localStorage.getItem('token');
+        var schoolName = $('#schoolName').val();
+        var schoolIntro = $('#schoolIntro').val();
         $http({
             method: 'POST',
             url: '/school',
+            headers: {
+                'Authorization': token
+            },
             data:{
                 "schoolIntro": schoolIntro,
                 "schoolName": schoolName
@@ -348,11 +404,15 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //添加学院
     $scope.addAcademy = function () {
-        let academyName = $('#academyName').val();
-        let schoolName = $('#schools').find('option:selected').text();
+        var token = window.localStorage.getItem('token');
+        var academyName = $('#academyName').val();
+        var schoolName = $('#schools').find('option:selected').text();
         $http({
             method: 'POST',
             url: '/academy',
+            headers: {
+                'Authorization': token
+            },
             data:{
                 "academyName": academyName,
                 "schoolName": schoolName
@@ -371,10 +431,14 @@ app.controller('administerCtrl', function ($scope, $http, $state,Data) {
 
     //删除学院
     $scope.deleteAcademy = function () {
-        let academyId = $('input[name="selection"]:checked').val();//获取被选中的学院id
+        var token = window.localStorage.getItem('token');
+        var academyId = $('input[name="selection"]:checked').val();//获取被选中的学院id
         $http({
             method: 'DELETE',
             url: '/academy',
+            headers: {
+                'Authorization': token
+            },
             params:{"id": academyId}
         }).then(function successCallback(response) {
             if(response.status == 200){

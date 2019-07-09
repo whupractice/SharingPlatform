@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,6 +49,7 @@ public class MessageController {
         return messageService.getByPhoneAndLessonId(phone,lessonId);
     }
 
+    @PreAuthorize("hasRole('student')")
     @ApiOperation(value = "根据学生手机号获取消息列表", notes = "根据学生手机号获取消息列表",httpMethod = "GET")
     @GetMapping("/phone")
     public List<MessageEntity> getByPhone(@RequestParam @ApiParam(value = "学生手机号") String phone){

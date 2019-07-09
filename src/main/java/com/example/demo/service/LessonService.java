@@ -9,7 +9,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import springfox.documentation.annotations.Cacheable;
+import org.springframework.util.ResourceUtils;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +88,7 @@ public class LessonService {
       * @return      : 一定数量的热门课程
       * TODO 查询有点慢，希望优化查询算法
       */
+    @Cacheable("hotLesson")
     public List<LessonEntity> getHotLesson(int num){
         Sort sort = new Sort(Sort.Direction.DESC, "welcome");
         List<LessonEntity> primList = lessonRepository.findAll(sort);//按照热度从高到低排序
@@ -185,5 +192,43 @@ public class LessonService {
     public LessonEntity getLessonById(String id){
         long lessonId = Long.parseLong(id);
         return lessonRepository.findById(lessonId).get();
+    }
+
+
+    /**
+      * @Author      : Theory
+      * @Description : 根据学生电话返回被推荐的课程
+      * @Param       : [phone] -- 学生电话
+      * @return      : 被推荐的课程
+      */
+    public List<LessonEntity> getTjLessonByStuPhone(long phone){
+        try {
+            List<String> lessonIds = new ArrayList<>();//被推荐的课程号
+            List<LessonEntity> lessons = new ArrayList<>();//被推荐的课程
+
+            File staticDir = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20", " ").replace('/', '\\'));
+            File pyDir = new File(staticDir.getAbsolutePath(), "py\\");
+            String py = pyDir.getAbsolutePath() + "\\tj.py";
+            String arg_s = "python " + py + " " + phone;
+            Process proc = Runtime.getRuntime().exec(arg_s);
+            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream(), "GBK"));
+
+            String line;
+            while ((line = in.readLine()) != null) {
+                lessonIds.add(line);
+            }
+
+            in.close();
+            proc.waitFor();
+
+            for (String lessonId : lessonIds) {
+                LessonEntity temp = getByLessonId(lessonId);
+                lessons.add(temp);
+            }
+            return lessons;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -46,11 +47,12 @@ public class SchoolController {
 //    }
 
 
-    @ApiOperation(value = "根据id获取学校介绍", notes = "根据id获取学校介绍",httpMethod = "GET")
+
+    @ApiOperation(value = "根据id获取学校", notes = "根据id获取学校",httpMethod = "GET")
     @ApiParam(name = "id",value = "学校id")
-    @GetMapping("/getSchoolInfoById")
-    public String getSchoolInfoById (@RequestParam Long id) {
-        return schoolService.getSchoolInfoById(id);
+    @GetMapping("/getSchoolById")
+    public SchoolEntity getSchoolById (@RequestParam String id) {
+        return schoolService.getSchoolById(id);
     }
 
 
@@ -76,6 +78,7 @@ public class SchoolController {
       * @Param       : [school]
       * @return      : void
       */
+    @PreAuthorize("hasRole('manager')")
     @ApiOperation(value = "向数据库插入学校", notes = "向数据库插入学校",httpMethod = "POST")
     @ApiParam(name = "school",value = "学校实体")
     @PostMapping("")

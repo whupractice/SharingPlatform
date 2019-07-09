@@ -12,9 +12,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.File;
 import java.util.List;
 
@@ -82,6 +84,7 @@ public class LessonController {
      * @Description : 获取所有课程
      * @return      : 所有课程list
      */
+    @PreAuthorize("hasRole('manager')")
     @ApiOperation(value = "获取所有课程", notes = "获取所有课程",httpMethod = "GET")
     @GetMapping("")
     public List<LessonEntity> getAllLesson(){
@@ -90,10 +93,10 @@ public class LessonController {
 
 
     @ApiOperation(value = "根据课程id获取课程", notes = "根据课程id获取课程",httpMethod = "GET")
-    @ApiParam(name = "schoolId",value = "课程id")
+    @ApiParam(name = "lessonId",value = "课程id")
     @GetMapping("/id")
-    public LessonEntity getByLessonId(@RequestParam String schoolId) {
-        return lessonService.getByLessonId(schoolId);
+    public LessonEntity getByLessonId(@RequestParam String lessonId) {
+        return lessonService.getByLessonId(lessonId);
     }
 
 
@@ -146,6 +149,7 @@ public class LessonController {
         return lessonService.getAll(specification,pageable);
     }
 
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "分页根据学校名关键字获取课程列表", notes = "分页根据学校名关键字获取课程列表",httpMethod = "GET")
     @GetMapping("/pagesBySchoolName")
     public Page<LessonEntity> getLessonPagesBySchoolName(@PageableDefault(size = 12, sort = {"welcome"}, direction = Sort.Direction.DESC)@ApiParam(value = "分页信息") Pageable pageable,
@@ -168,6 +172,7 @@ public class LessonController {
      * @Description : 向数据库中插入课程
      * @Param       : [lesson] -- 课程
      */
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "向数据库中插入课程", notes = "向数据库中插入课程",httpMethod = "POST")
     @ApiParam(name = "lesson",value = "课程实体，其中lessonId、credit、isExcellent、shareNum、welcome不能为空")
     @PostMapping("")
@@ -195,6 +200,7 @@ public class LessonController {
      * @Description : 根据课程id删除课程
      * @Param       : [lessonId] -- 课程id
      */
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "根据课程id删除课程", notes = "根据课程id删除课程",httpMethod = "DELETE")
     @ApiParam(name = "lessonId",value = "课程号")
     @DeleteMapping("")
@@ -203,6 +209,7 @@ public class LessonController {
     }
 
 
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "根据学校和学院获取课程",notes = "根据学校和学院获取课程",httpMethod = "GET")
     @GetMapping("/schoolAndAcademy")
     public List<LessonEntity> getLessonsBySchoolAndAcademy(@RequestParam(value = "schoolName")@ApiParam(name="schoolName",value = "学校名") String schoolName,
@@ -219,6 +226,14 @@ public class LessonController {
         return lessonService.getAll(specification,pageable);
     }
 
+
+    @PreAuthorize("hasRole('student')")
+    @ApiOperation(value = "根据学生获取推荐课程",notes = "根据学生获取推荐课程",httpMethod = "GET")
+    @GetMapping("/tj")
+    public List<LessonEntity> getTjLessonByStuPhone(@RequestParam(value = "phone")
+                                                        @ApiParam(value = "phone") long phone){
+        return lessonService.getTjLessonByStuPhone(phone);
+    }
 
 
 
