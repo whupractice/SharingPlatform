@@ -58,6 +58,7 @@ public class AcademyService {
                 return false;
             }
         }
+        academyRepository.save(academyEntity);
         return true;
     }
 
