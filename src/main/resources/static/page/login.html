@@ -5,17 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-<div class="m-regForm" ng-controller="loginCtrl">
-    <div class="textLine">
-        <span>注册用户</span>
-        <span class="number">19,026,152<span class="font12">+</span></span>
-        <span class="sep"></span>
-        <span>安全运行</span>
-        <span class="number">3193<span class="font12">天+</span></span>
-        <span class="sep"></span>
-        <span>覆盖行业</span>
-        <span class="number">100<span class="font12">+</span></span>
-    </div>
+<div class="m-regForm" ng-controller="loginCtrl" style="margin-top: 200px;margin-bottom: 200px">
+
     <div class="regBox">
         <div class="u-borderTop u-borderTop-new">
 
@@ -46,11 +37,13 @@
         <br>
         <div class="bottomBar">
             <font class="msg" id="regMsg"></font>
-            <button class="u-bigBtn" ng-click="judgeLog()">用户登陆</button>
+            <button style="    margin-left: -56px;" class="u-bigBtn" ng-click="judgeLog()">用户登陆</button>
             <button class="u-bigBtn" data-toggle="modal" data-target="#infoModal_2">免费注册</button>
         </div>
         <div class="bottom" id="bottom_web" style="display: block;">
-            <a href="#!/findpwd" ui-sref="findpwd" class="link" id="forget_pwd" target="_blank" style="position:relative;left: 420px;">忘了密码？</a>
+            <a  href="#!/findpwd" ui-sref="findpwd" class="link" id="forget_pwd" target="_blank" style="    position: relative;
+    left: 360px;
+    bottom: -30px;">忘了密码？</a>
         </div>
 
         <div class="toLogin">
