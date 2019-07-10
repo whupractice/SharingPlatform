@@ -28,6 +28,8 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
     $scope.errorMessage=null;
 
+    $scope.nowStar = 7;
+
 
 
 
@@ -71,6 +73,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             $scope.getTeachers();//获取老师信息
             $scope.getComments();//获取评论
             $scope.getTJlesson();//获取推荐课程
+            $scope.showStars(7);
         });
 
     };
@@ -294,6 +297,22 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
         _shareUrl += '&site=' + encodeURIComponent(_site||'');   //参数site设置分享来源，可选参数
         _shareUrl += '&pics=' + encodeURIComponent(_pic||'');   //参数pics设置分享图片的路径，多张图片以＂|＂隔开，可选参数
         window.open(_shareUrl,'_blank','width='+_width+',height='+_height+',top='+_top+',left='+_left+',toolbar=no,menubar=no,scrollbars=no,resizable=1,location=no,status=0');
+    };
+
+
+
+
+
+    $scope.showStars = function (n){
+        var con_wid=document.getElementById("star_con").offsetWidth;
+        var del_star=document.getElementById("del_star");
+        console.log(con_wid);
+
+        //透明星星移动的像素
+        var del_move=(n*con_wid)/10;
+
+        del_star.style.backgroundPosition=-del_move+"px 0px";
+        del_star.style.left=del_move+"px";
     };
 
     });

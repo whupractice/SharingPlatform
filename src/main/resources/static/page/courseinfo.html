@@ -10,6 +10,31 @@
     <link rel="stylesheet" type="text/css" href="../page/css/courseinfo.css">
 
     <title>course information</title>
+
+    <style>
+        .star-vote{
+            width:120px;
+            height:20px;
+            position:relative;
+            overflow:hidden;
+        }
+        .star-vote>span{
+            position:absolute;
+            width:120px;
+            height:20px;
+            background-size:cover;
+            background-repeat:no-repeat;
+            left:0px;
+            top:0px;
+        }
+        .star-vote>.add-star{
+            background-image:url("../img/star2.png");
+        }
+        .star-vote>.del-star{
+            background-image:url("../img/star1.png");
+            background-color:white;
+        }
+    </style>
 </head>
 
 
@@ -63,17 +88,21 @@
                                         <div class="star">
                                             <span style="color:#e5ecdd;">课程星级: </span>
                                         </div>
-                                            <span data-class="star"><i class="fa fa-star" ></i></span>
-                                        </div>
-
-                                        <div  ng-if="judge()" class="star">
-
                                             <span data-class="star"><i class="fa fa-star"></i></span>
                                         </div>
-                                        <div ng-if="judge2()" class="star">
+                                    <div id="star_con" class="star-vote">
+                                        <span id="add_star" class="add-star"></span>
+                                        <span id="del_star" class="del-star" style="background-color: #89a09f;"></span>
+                                    </div>
 
-                                            <span data-class="star-half-o"><i class="fa fa-star-half-o"></i></span>
-                                        </div>
+<!--                                        <div  ng-if="judge()" class="star">-->
+
+<!--                                            <span data-class="star"><i class="fa fa-star"></i></span>-->
+<!--                                        </div>-->
+<!--                                        <div ng-if="judge2()" class="star">-->
+
+<!--                                            <span data-class="star-half-o"><i class="fa fa-star-half-o"></i></span>-->
+<!--                                        </div>-->
                                     <div>
                                         <span>{{ }}</span>
                                         <span style="color:#e5ecdd">分</span>
@@ -142,19 +171,15 @@
                     <ul class="nav nav-tabs primary">
                         <li class="active">
                             <a ng-click="jump(1)" data-toggle="tab" aria-expanded="true">
-                                <i class="fa fa-home"style="    font-size: 26px;"></i> 课程详情
+                                <i class="fa fa-home"></i> 课程详情
                             </a>
                         </li>
                         <li class="">
                             <a ng-click="jump(2)" data-toggle="tab" aria-expanded="false">
-                                <i class="fa fa-weixin"style="    font-size: 26px;"></i> 评论区
+                                <i class="fa fa-weixin"></i> 评论区
                             </a>
                         </li>
-                        <li class="">
-                            <a ng-click="jump(3)" data-toggle="tab" aria-expanded="false">
-                                <i class="fa fa-bars"style="    font-size: 26px;"></i>课程目录
-                            </a>
-                        </li>
+
                     </ul>
 
 
@@ -229,7 +254,27 @@
 
                         <div class="" id="profile-1" ng-if="CommentPage()">
                             <div class="uprofile-content">
+<!--                                <div class="enter_post col-md-12 col-sm-12 col-xs-12">-->
+
+<!--                                <div class="form-group">-->
+<!--                                    <div class="controls">-->
+<!--                                        <textarea class="form-control autogrow" id="field-7" placeholder="What's on your mind?" style="overflow: hidden; overflow-wrap: break-word; height: 70px;"></textarea>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="enter_post_btns col-md-12 col-sm-12 col-xs-12">-->
+<!--                                    <a href="#" class="btn btn-md pull-right btn-primary">Post</a>-->
+<!--                                    <a href="#" class="btn btn-md pull-right btn-link"><i class="fa fa-image"></i></a>-->
+<!--                                    <a href="#" class="btn btn-md pull-right btn-link"><i class="fa fa-map-marker"></i></a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
                                 <div class="clearfix"></div>
+
+
+
+
+
+
                                 <div ng-repeat="x in sl" ng-if="judgeC(x)" class="uprofile_wall_posts col-md-12 col-sm-12 col-xs-12">
                                     <br>
                                     <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
@@ -253,8 +298,6 @@
                                             </ul>
                                         </div>
 
-
-
                                         </div>
 
                                     </div>
@@ -262,36 +305,39 @@
                                 </div>
 
 
+
+
+
                             </div>
-
-                        <!-目录-->
-                        <div ng-if="CategoryPage()" style="color: #dfdcad;">
-                            <ul style="margin-top: 20px;
-    margin-left: 60px;">
-
-                                <li class="Cate" style="margin-bottom: 10px;">1.第一节</li>
-                                <li class="Cate"style="margin-bottom: 10px;">2.第二节</li>
-                                <li class="Cate"style="margin-bottom: 10px;">3.第三节</li>
-
-
-                            </ul>
-                            </div>
-
                         </div>
 
                     </div>
-
                 </div>
 
                         <div class="clearfix"><br></div>
                 </div>
-
             </div>
-
 <!--        </div>-->
     <!--课程信息-->
     </div>
 </div>
+
+<!--<script>-->
+<!--    window.onload=showStar(7);-->
+
+<!--    //n表示后台获取的星数-->
+<!--    function showStar(n){-->
+<!--        var con_wid=document.getElementById("star_con").offsetWidth;-->
+<!--        var del_star=document.getElementById("del_star");-->
+<!--        console.log(con_wid);-->
+
+<!--        //透明星星移动的像素-->
+<!--        var del_move=(n*con_wid)/10;-->
+
+<!--        del_star.style.backgroundPosition=-del_move+"px 0px";-->
+<!--        del_star.style.left=del_move+"px";-->
+<!--    }-->
+<!--</script>-->
 
 </body>
 </html>

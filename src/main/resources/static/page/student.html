@@ -229,22 +229,22 @@
                     <table class="table mb0 pr15 ranger-box2  " style="    background: #a6d4c657;">
                         <thead>
                         <tr>
-                            <th style="width: 70px;    border-color: transparent;">#</th>
-                            <th style="width: 15%;    border-color: transparent;">课程名</th>
-                            <th style="width: 15%;    border-color: transparent;">学院</th>
-                            <th style="width: 15%;    border-color: transparent;">学校</th>
-                            <th style="width: 15%;    border-color: transparent;">类别</th>
-                            <th style="width: 15%;    border-color: transparent;">进入课程</th>
-                            <th style="border-color: transparent;">操作</th>
+                            <th style="width: 70px;    border-color: transparent;color:#f7f0c6;">#</th>
+                            <th style="width: 15%;    border-color: transparent;color:#f7f0c6;">课程名</th>
+                            <th style="width: 15%;    border-color: transparent;color:#f7f0c6;">学校</th>
+                            <th style="width: 15%;    border-color: transparent;color:#f7f0c6;">类别</th>
+                            <th style="width: 15%;    border-color: transparent;color:#f7f0c6;">状态</th>
+                            <th style="width: 15%;    border-color: transparent;color:#f7f0c6;">进入课程</th>
+                            <th style="border-color: transparent;color:#f7f0c6;">操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="x in nowLesson">
-                            <td style="width: 70px;    border-color: transparent;">{{x.lessonId}}</td>
-                            <td style="width: 15%;    border-color: transparent;">{{x.lessonName}}</td>
-                            <td style="width: 15%;    border-color: transparent;">{{x.schoolName}}</td>
-                            <td style="width: 15%;    border-color: transparent;">{{x.academyName}}</td>
-                            <td style="width: 15%;    border-color: transparent;">{{x.status}}</td>
+                            <td style="width: 70px;    border-color: transparent;color:#f7f0c6;">{{x.lessonId}}</td>
+                            <td style="width: 15%;    border-color: transparent;color:#f7f0c6;">{{x.lessonName}}</td>
+                            <td style="width: 15%;    border-color: transparent;color:#f7f0c6;">{{x.schoolName}}</td>
+                            <td style="width: 15%;    border-color: transparent;color:#f7f0c6;">{{x.academyName}}</td>
+                            <td style="width: 15%;    border-color: transparent;color:#f7f0c6;">{{x.status}}</td>
                             <td style="border-color: transparent;">
                                 <button class="btn btn-xs btn-success" ng-click="enterLesson(x)">
                                     <i class="glypgicon glyphicon-ok"></i>
@@ -307,7 +307,7 @@
     border-color: transparent;color: #f7f0c6">&laquo;</a></li>
                             <li ng-repeat="page in pages">
                                 <a href ng-click="selectPage(page)" class="pageIndex" style="    background: #a6d4c657;
-    border-color: transparent;">{{page}}</a>
+    border-color: transparent;color:#f7f0c6;">{{page}}</a>
                             </li>
                             <li><a href ng-click="nextPage()" style="    background: #a6d4c657;
     border-color: transparent;color:#f7f0c6;">&raquo;</a></li>
