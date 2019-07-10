@@ -175,7 +175,7 @@
     border-color: white;
     color: #dfdcad;"
                 >搜索</button>
-                <div class="input-group pull-right king-input-group">
+                <div class="input-group pull-right king-input-group" style="z-index: 0;">
                     <input type="text" class="form-control pl30 king-form-control" placeholder="请输入关键字"
                     id="searchVal">
                 </div>
@@ -239,16 +239,19 @@
                                 </p>
                                 <ul class="pagination pagination-sm pull-left mt10" style="margin-top: 10px">
                                     <li class="disabled">
-                                        <a ng-click="pre()" aria-label="Previous">
-                                            <span aria-hidden="true">«</span>
+                                        <a ng-click="pre()" aria-label="Previous" style="    background: #a9f4de24;
+    border-color: transparent;">
+                                            <span aria-hidden="true" style="color: antiquewhite">«</span>
                                         </a>
                                     </li>
                                     <li ng-repeat="page in Ps">
-                                        <a href ng-click="selectP(page)" class="pageIndex">{{page}}</a>
+                                        <a href ng-click="selectP(page)" class="pageIndex" style="    background: #a9f4de24;
+    border-color: transparent;color: antiquewhite">{{page}}</a>
                                     </li>
                                     <li>
-                                        <a ng-click="next()" aria-label="Next">
-                                            <span aria-hidden="true">»</span>
+                                        <a ng-click="next()" aria-label="Next" style="    background: #a9f4de24;
+    border-color: transparent;color: antiquewhite">
+                                            <span aria-hidden="true" style="color: antiquewhite">»</span>
                                         </a>
                                     </li>
                                 </ul>

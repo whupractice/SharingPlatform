@@ -23,11 +23,11 @@
             <!-- sidebar start -->
             <div class="king-layout1-sidebar" style="width:216px;">
                 <div style="height:100%;" class="   f14">
-                    <div class="king-vertical-nav4">
+                    <div class="king-vertical-nav4" style="background: transparent;">
                         <div class="sidebar-inner">
                             <ul class="navi">
                                 <li class="has_submenu current open active c-open">
-                                    <a href="javascript:void(0);">
+                                    <a href="javascript:void(0);" style="background: transparent;color: #f7f0c6;">
                                         <i class="fa fa-wrench ">
                                         </i> <span>个人信息</span>
                                         <span class="pull-right">
@@ -71,16 +71,16 @@
                     <div class="king-layout1-content" style="margin-left: 216px;">
                         <form class="form-horizontal" style="margin-top: 60px">
                             <div class="form-group clearfix ">
-                                <label class="col-sm-3 control-label bk-lh30 pt0">昵称：</label>
+                                <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">昵称：</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control bk-valign-top" id="nickName"  style="position: relative;
-    top: -15px;" value="{{currentStudent.nickName}}">
+    top: -15px;background-color: transparent;color:#f7f0c6" value="{{currentStudent.nickName}}">
                                 </div>
                             </div>
                             <div class="form-group clearfix ">
-                                <label class="control-label col-sm-3 bk-lh30 pt0">性别：</label>
+                                <label class="control-label col-sm-3 bk-lh30 pt0" style="color: #f7f0c6;">性别：</label>
                                 <div class="col-sm-6">
-                                    <select id="sex">
+                                    <select id="sex" style="color: #f7f0c6">
                                         <option class="selected" value="male">男</option>
                                         <option value="female">女</option>
                                     </select>
@@ -88,31 +88,31 @@
                             </div>
 
                             <div class="form-group clearfix ">
-                                <label class="col-sm-3 control-label bk-lh30 pt0">生日：</label>
+                                <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">生日：</label>
                                 <div class="col-sm-6">
                                     <input type="date" class="form-control bk-valign-top" id="birth" value={{currentStudent.birth}} style="position: relative;
-    top: -15px;">
+    top: -15px;background-color: transparent;color:#f7f0c6">
                                 </div>
                             </div>
                             <div class="form-group clearfix ">
-                                <label class="col-sm-3 control-label bk-lh30 pt0">手机号：</label>
+                                <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">手机号：</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control bk-valign-top" id="phoneNumber" value={{currentStudent.phone}} style="position: relative;
-    top: -15px;" readonly>
+    top: -15px;background-color: transparent;color:#f7f0c6" readonly>
                                 </div>
                             </div>
                             <div class="form-group clearfix ">
-                                <label class="col-sm-3 control-label bk-lh30 pt0">邮箱：</label>
+                                <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">邮箱：</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control bk-valign-top" id="email" value={{currentStudent.email}} style="position: relative;
-    top: -15px;">
+    top: -15px;background-color: transparent;color:#f7f0c6">
                                 </div>
                             </div>
                             <div class="form-group clearfix ">
-                                <label class="col-sm-3 control-label bk-lh30 pt0">居住地：</label>
+                                <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">居住地：</label>
                                 <div class="col-sm-6">
                                     <select name="" id="place" class="form-control bk-valign-top" style="position: relative;
-    top: -15px;">
+    top: -15px;background-color: transparent;color:#f7f0c6">
                                         <option value="选择项1">中国</option>
                                         <option value="选择项2">美国</option>
                                         <option value="选择项3">法国</option>
@@ -121,10 +121,10 @@
                                 </div>
                             </div>
                             <div class="form-group clearfix ">
-                                <label class="col-sm-3 control-label bk-lh30 pt0">专业：</label>
+                                <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">专业：</label>
                                 <div class="col-sm-6">
                                     <select name="" id="profession" class="form-control bk-valign-top" style="position: relative;
-    top: -15px;">
+    top: -15px;background-color: transparent;color:#f7f0c6">
                                         <option value="选择项1">计算机</option>
                                         <option value="选择项2">艺术</option>
                                         <option value="选择项3">体育</option>
@@ -133,10 +133,10 @@
                                 </div>
                             </div>
                             <div class="form-group has-feedback clearfix ">
-                                <label class="control-label col-sm-3 pt0" >个人描述：</label>
+                                <label class="control-label col-sm-3 pt0"  style="color: #f7f0c6;">个人描述：</label>
                                 <div class="col-sm-6">
                                 <textarea id="introduction" class="form-control" rows="3" style="position: relative;
-    top: -15px;">{{currentStudent.introduction}}</textarea>
+    top: -15px;background-color: transparent;color:#f7f0c6">{{currentStudent.introduction}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group clearfix">
@@ -170,24 +170,24 @@
                 <div class="king-layout1-content" style="margin-left:300px;margin-right:200px;margin-top:-280px">
                     <form class="form-horizontal" style="margin-top: 25px">
                         <div class="form-group clearfix ">
-                            <label class="col-sm-3 control-label bk-lh30 pt0">原密码</label>
+                            <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">原密码</label>
                             <div class="col-sm-6">
                                 <input type="password" class="form-control bk-valign-top" id="primPwd" placeholder="请输入原本的密码" style="position: relative;
-    top: -15px;">
+    top: -15px;color: #f7f0c6;background-color: transparent">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
-                            <label class="col-sm-3 control-label bk-lh30 pt0">新密码</label>
+                            <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">新密码</label>
                             <div class="col-sm-6">
                                 <input type="password" class="form-control bk-valign-top" id="newPwd" placeholder="请输入新密码" style="position: relative;
-    top: -15px;">
+    top: -15px;color: #f7f0c6;background-color: transparent">
                             </div>
                         </div>
                         <div class="form-group clearfix ">
-                            <label class="col-sm-3 control-label bk-lh30 pt0">确认密码</label>
+                            <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">确认密码</label>
                             <div class="col-sm-6">
                                 <input type="password" class="form-control bk-valign-top" id="confirmPwd" placeholder="请再次输入新密码" style="position: relative;
-    top: -15px;">
+    top: -15px;color: #f7f0c6;background-color: transparent">
                             </div>
                         </div>
                         <div class="form-group clearfix">
@@ -207,83 +207,53 @@
 
             <div class="king-content-wrap">
                 <div class="king-layout1-content" style="margin-left:300px;margin-right:200px;margin-top:-350px;margin-bottom: 50px">
-                    <section class="panel panel-box-1" style="    margin-top: 100px;">
+                    <section class="panel panel-box-1" style="    margin-top: 100px;    background: #a6d4c657;">
                         <div>
                             <p style="        font-size: 25px;
     margin-top: 30px;
-    margin-left: 150px;">已学学时</p>
+    margin-left: 150px;color: #f7f0c6;">已学学时</p>
                             <p style="        margin-left: 185px;
-    font-size: 22px;">572</p>
+    font-size: 22px;color: #f7f0c6;">572</p>
                         </div>
 
                         <div>
                             <p style="        margin-top: -67px;
     margin-left: 400px;
-    font-size: 25px;">已修学分</p>
+    font-size: 25px;color: #f7f0c6;">已修学分</p>
                             <p style="        font-size: 22px;
-    margin-left: 440px;">32</p>
+    margin-left: 440px;color: #f7f0c6;">32</p>
                         </div>
-                        <!--                  -->
-                        <!--                    <table>-->
-                        <!--                        <thead>-->
-                        <!--                        <tr>-->
-                        <!--                            <th>-->
-                        <!--                            <th style="width: 15%;"></th>-->
-                        <!--                            <th style="width: 15%;"></th>-->
-                        <!--                            </th>-->
-                        <!--                        </tr>-->
-                        <!--                        </thead>-->
-                        <!--                        <tbody>-->
-                        <!--                        <td style="width: 70px;">572</td>-->
-                        <!--                        <td style="width: 15%;">23</td>-->
-                        <!--                        </tbody>-->
-                        <!--                    </table>-->
-                        <!--                    <div class="panel-top bg-success1">-->
-                        <!--                        <div class="divider divider"></div>-->
-                        <!--                        <i class="fa fa-user f36"></i>-->
-                        <!--                        <div class="divider divider"></div>-->
-                        <!--                    </div>-->
-                        <!--                    <div class="list-justified-container">-->
-                        <!--                        <ul class="list-justified text-center">-->
-                        <!--                            <li>-->
-                        <!--                                <p class="f24">575</p>-->
-                        <!--                                <p class="text-muted">已学学时</p>-->
-                        <!--                            </li>-->
-                        <!--                            <li>-->
-                        <!--                                <p class="f24">23</p>-->
-                        <!--                                <p class="text-muted">已修学分</p>-->
-                        <!--                            </li>-->
-                        <!--                        </ul>-->
-                        <!--                    </div>-->
+
                     </section>
                     <br>
-                    <table class="table mb0 pr15 ranger-box2  ">
+                    <table class="table mb0 pr15 ranger-box2  " style="    background: #a6d4c657;">
                         <thead>
                         <tr>
-                            <th style="width: 70px;">#</th>
-                            <th style="width: 15%;">课程名</th>
-                            <th style="width: 15%;">学院</th>
-                            <th style="width: 15%;">学校</th>
-                            <th style="width: 15%;">类别</th>
-                            <th style="width: 15%;">进入课程</th>
-                            <th>操作</th>
+                            <th style="width: 70px;    border-color: transparent;">#</th>
+                            <th style="width: 15%;    border-color: transparent;">课程名</th>
+                            <th style="width: 15%;    border-color: transparent;">学院</th>
+                            <th style="width: 15%;    border-color: transparent;">学校</th>
+                            <th style="width: 15%;    border-color: transparent;">类别</th>
+                            <th style="width: 15%;    border-color: transparent;">进入课程</th>
+                            <th style="border-color: transparent;">操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="x in nowLesson">
-                            <td style="width: 70px;">{{x.lessonId}}</td>
-                            <td style="width: 15%;">{{x.lessonName}}</td>
-                            <td style="width: 15%;">{{x.schoolName}}</td>
-                            <td style="width: 15%;">{{x.academyName}}</td>
-                            <td style="width: 15%;">{{x.status}}</td>
-                            <td>
+                            <td style="width: 70px;    border-color: transparent;">{{x.lessonId}}</td>
+                            <td style="width: 15%;    border-color: transparent;">{{x.lessonName}}</td>
+                            <td style="width: 15%;    border-color: transparent;">{{x.schoolName}}</td>
+                            <td style="width: 15%;    border-color: transparent;">{{x.academyName}}</td>
+                            <td style="width: 15%;    border-color: transparent;">{{x.status}}</td>
+                            <td style="border-color: transparent;">
                                 <button class="btn btn-xs btn-success" ng-click="enterLesson(x)">
                                     <i class="glypgicon glyphicon-ok"></i>
                                 </button>
                             </td>
-                            <td>
+                            <td style="border-color: transparent;">
                                 <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#scoreModal"
-                                        ng-click="bindL(x)">
+                                        ng-click="bindL(x)" style="    background-color: #e2a14394;
+    border-color: transparent;">
                                     <i class="glyphicon glyphicon-edit"></i>
                                     <button class="btn btn-xs btn-danger" title="删除" data-toggle="modal" data-target="#deleteL_modal"
                                             ng-click="bindL(x)">
@@ -331,15 +301,18 @@
                         </tr>
                     </template>
 
-                    <div style="text-align: center; position: relative;top:100px"  >
+                    <div style="text-align: center; position: relative;top:40px"  >
                         <ul class="pagination">
-                            <li><a href ng-click="prevPage()">&laquo;</a></li>
+                            <li><a href ng-click="prevPage()" style="    background: #a6d4c657;
+    border-color: transparent;color: #f7f0c6">&laquo;</a></li>
                             <li ng-repeat="page in pages">
-                                <a href ng-click="selectPage(page)" class="pageIndex">{{page}}</a>
+                                <a href ng-click="selectPage(page)" class="pageIndex" style="    background: #a6d4c657;
+    border-color: transparent;">{{page}}</a>
                             </li>
-                            <li><a href ng-click="nextPage()">&raquo;</a></li>
-                        </ul><br>
-                        <p>第<span>{{currentPage}}</span>页 / 共{{totalPage}}页</p>
+                            <li><a href ng-click="nextPage()" style="    background: #a6d4c657;
+    border-color: transparent;color:#f7f0c6;">&raquo;</a></li>
+                        </ul>
+                        <p style="color: #f7f0c6">第<span>{{currentPage}}</span>页 / 共{{totalPage}}页</p>
                     </div>
                     <!-- 设置面板End -->
 
@@ -427,10 +400,10 @@
                     <div class="king-content-wrap">
                         <div class="king-layout1-content" style="    margin-left: 260px;margin-right: 80px;">
                             <ul class="list-group" >
-                                <li class="list-group-item" ng-repeat="x in nowNews">
+                                <li class="list-group-item" ng-repeat="x in nowNews" style="background-color: #a6d4c657;border-color: transparent;">
                                     <span class="badge king-info">{{x.time}}<a href="javascript:void(0);" ng-click="already_read()">已读</a></span>
                                     <i class="fa fa-comment"></i>
-                                    <span>{{x.message}}</span>
+                                    <span style="color: #f7f0c6">{{x.message}}</span>
                                 </li>
                             </ul>
                             <!-- 设置面板Start -->

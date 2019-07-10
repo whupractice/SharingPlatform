@@ -2,8 +2,9 @@
     z-index: 11040;
 }
 .btn.btn-success {
-    background: rgba(102, 189, 120, 1.0);
+    background: rgba(171, 239, 185, 0.63);
     color: #ffffff;
+    border-color: transparent;
 }
 
 .table>tbody>tr>td{
@@ -20,7 +21,8 @@
     color: white;
 }
 .btn-danger {
-    background: rgba(240, 80, 80, 1.0);
+    background: rgba(240, 80, 80, 0.53);
+    border-color: transparent;
     color: white;
 }
 .btn {
@@ -338,7 +340,7 @@ select:focus {
     padding: 10px 20px; }
 
 .large-card {
-    background: #feefd83b;
+    background: #dbd2c424;
     padding: 30px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
     margin-bottom: 2.2rem; }

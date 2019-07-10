@@ -24,7 +24,7 @@
 
         <div class="row grid-responsive">
             <div class="column page-heading">
-                <div class="large-card" style="background: #feefd83b;">
+                <div class="large-card" style="background: #dbd2c424;">
                     <h1 style="margin-bottom: 10px;color: #dfdcad;">Hey {{currentManager.nickName}}</h1>
                     <p style="    color: #f0f8ff8a;" class="text-large">尊贵的课程管理员，伊万诺夫提醒您：
                         <span style="font-weight: bold">操作千万条，谨慎第一条，操作不规范，管理两行泪。</span></p>
@@ -37,7 +37,7 @@
         <div ng-if="_page_1()">
         <div class="panel panel-default bootstrap-admin-no-table-panel" style="background-color: #a9f4de24;">
             <div class="panel-heading" style="background-color: #dbd2c424;">
-                <div class="text-muted bootstrap-admin-box-title" style="color:#dfdcad;">示例 1</div>
+                <div class="text-muted bootstrap-admin-box-title" style="color:#dfdcad;">修改个人信息</div>
             </div>
             <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
                 <form class="form-horizontal">
@@ -355,13 +355,13 @@
 
 
 
-        <div ng-if="_page_3()" style="    background-color: #a9f4de24;
+        <div ng-if="_page_3()" style="    background-color:#a9f4de00;
     color: #dfdcad;">
 
 
             <div class="panel panel-default pannel-overflow panel-tables table7_demo" style="    background-color: #a9f4de24;
     color: #dfdcad;">
-                <div class="panel-heading"style="    background-color: #a9f4de24;
+                <div class="panel-heading"style="    background-color: #a9f4de00;
     color: #dfdcad;"> <i class="fa fa-list-ul"></i> 老师列表
                 </div>
                 <div class="panel-body panel-search-body" style="    margin-top: 40px;
@@ -372,33 +372,33 @@
                     <a class="king-btn king-radius king-default" title="数据导出">数据导出</a>
                 </div>
                 <div class="panel-content">
-                    <table style="    background-color: #a9f4de24;
+                    <table style="    background-color: #a9f4de00;
     color: #dfdcad;" class="table table-header-bg table-hover mb0" id="table_demo2">
                         <thead>
                         <tr>
                             <th style="    background-color: #a9f4de24;
-    color: #dfdcad;width: 100px">id</th>
+    color: #dfdcad;width: 100px;    border-color: transparent;">id</th>
                             <th style="    background-color: #a9f4de24;
-    color: #dfdcad;width:25%">姓名</th>
+    color: #dfdcad;width:25%;    border-color: transparent;">姓名</th>
                             <th style="    background-color: #a9f4de24;
-    color: #dfdcad;width:25%">职位</th>
+    color: #dfdcad;width:25%;    border-color: transparent;">职位</th>
                             <th style="    background-color: #a9f4de24;
-    color: #dfdcad;width:15%">学校</th>
+    color: #dfdcad;width:15%;    border-color: transparent;">学校</th>
                             <th style="    background-color: #a9f4de24;
-    color: #dfdcad;width:15%">学院</th>
+    color: #dfdcad;width:15%;    border-color: transparent;">学院</th>
                             <th style="    background-color: #a9f4de24;
-    color: #dfdcad;">操作</th>
+    color: #dfdcad;    border-color: transparent;">操作</th>
                         </tr>
                         </thead>
                         <tbody>
 
                         <tr ng-repeat="x in teachers">
-                            <td>{{x.teacherId}}</td>
-                            <td>{{x.teacherName}}</td>
-                            <td>{{x.job}}</td>
-                            <td>{{x.schoolName}}</td>
-                            <td>{{x.academyName}}</td>
-                            <td>
+                            <td style="color: #dfdcad;">{{x.teacherId}}</td>
+                            <td style="color: #dfdcad;">{{x.teacherName}}</td>
+                            <td style="color: #dfdcad;">{{x.job}}</td>
+                            <td style="color: #dfdcad;">{{x.schoolName}}</td>
+                            <td style="color: #dfdcad;">{{x.academyName}}</td>
+                            <td style="color: #dfdcad;">
                                 <button class="btn btn-xs btn-primary" title="上传" ng-click="bindT(x)" data-toggle="modal" data-target="#imgModal">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </button>
