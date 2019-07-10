@@ -138,7 +138,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
     //跳转到教师页面
     $scope.jumpT = function (teacher) {
-        window.localStorage.setItem('teacherId',teacher.teacher);
+        window.localStorage.setItem('teacherId',teacher.teacherId);
         $state.go('teacher');
     };
 

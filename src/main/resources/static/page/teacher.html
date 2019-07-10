@@ -5,8 +5,9 @@
     <title>Title</title>
 </head>
 
-<body >
-<!--    <div id="g-container" ng-controller="teacherCtrl" ng-init="initTeacher()">-->
+<body>
+    <div id="g-container" ng-controller="teacherCtrl" ng-init="initTeacher()">
+
 <!--        <div id="g-body">-->
 <!--            &lt;!&ndash;网页头部&ndash;&gt;-->
 <!--            <div class="g-wrap m-unibg">-->
@@ -37,15 +38,15 @@
 <div class="head" >
 <img  style="border-radius: 100%;    border-radius: 100%;
     margin-top: -350px;
-    margin-left: 250px;"   width="170px" src="../img/logo.jpg">
+    margin-left: 250px;"   width="170px" height="170px" src="{{teacher.imgLink}}">
 <p style="    margin-top: -251px;
 color: #eeb5b5;
     margin-left: 550px;
-    font-size: 60px;">蔡徐坤</p>
+    font-size: 60px;">{{teacher.teacherName}}</p>
     <p style="    margin-left: 550px;
     margin-top: 75px;
     color: #eeb5b5;
-    font-size: 20px;">我是出道时长两年半的个人偶像练习生，爱好唱跳rap和篮球</p>
+    font-size: 20px;">{{teacher.teacherIntro}}</p>
 </div>
 
         <!--显示课程-->
@@ -102,6 +103,6 @@ color: #eeb5b5;
             <!--</li>-->
         <!--</ul>-->
     <!--</div>-->
-
 </body>
+
 </html>

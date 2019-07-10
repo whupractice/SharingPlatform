@@ -54,7 +54,7 @@ API_index.config(function ($stateProvider,$urlRouterProvider,$locationProvider) 
             templateUrl: '/page/schools.html'
         }).state('teacher',{
             url: '/teacher',
-            templateUrl: '/page/teacher.html',
+            templateUrl: '/page/teacher.html'
         }).state('administer',{
             url: '/administer',
             templateUrl: '/page/administer.html'
