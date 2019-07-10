@@ -35,6 +35,9 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     $scope.link="";//当前视频链接
     $scope.nowStar = 7;
 
+    $scope.currentPage = 1;//当前集数
+    $scope.totalPage = 1; // 总集数 （根据 总记录数、每页记录数 计算 ）
+    $scope.pages = [];
 
 
 
@@ -75,12 +78,12 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             }
         }).then(function successCallback(response) {
             $scope.lesson = response.data;
-            for(var i = 0;i<$scope.lesson.videoNum;i++){
-                var name = i+1;
-                $scope.videoLink.link=$scope.lesson.videoLink+"_"+name;
-                $scope.videoLink.name = '第'+name+'节';
-                $scope.videoLinks.push($scope.videoLink);
+            $scope.link = $scope.lesson.videoLink+"_"+1;
+            $scope.pages=[];
+            for(var i = 1;i<=$scope.lesson.videoNum;i++){
+                $scope.pages.push(i);
             }
+            $scope.totalPage = $scope.lesson.videoNum;
             $scope.getTeachers();//获取老师信息
             $scope.getComments();//获取评论
             $scope.getTJlesson();//获取推荐课程
@@ -132,10 +135,6 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     //显示评论区
     $scope.CommentPage = function(){
         return $scope.now == 2;
-    };
-    //显示目录区
-    $scope.CategoryPage = function(){
-        return $scope.now == 3;
     };
 
 
@@ -266,55 +265,74 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
                 })
             }
         });
+    };
 
 
         //改变视频链接
-        $scope.changeVideo = function (x) {
-            $scope.link = x.link;
+        $scope.changeVideo = function (i) {
+            $scope.link = $scope.lesson.videoLink+"_"+i;
+        };
+
+        //选择集数
+        $scope._select = function (page) {
+            if ($scope.totalPage == 0 && (page < 1 || page > $scope.totalPage))
+                return;
+            $scope.currentPage = page;
+            $scope.changeVideo(page);
+        };
+
+        //上一集
+        $scope._prev = function () {
+            $scope._select($scope.currentPage-1);
+        };
+
+        //下一集
+        $scope._next = function () {
+            $scope._select($scope.currentPage+1);
         };
 
 
-    };
 
 
-    $scope.shareToSinaWB=function (event){
-        var _title,_source,_sourceUrl,_pic,_showcount,_desc,_summary,_site,
-            _width = 600,
-            _height = 600,
-            _top = (screen.height-_height)/2,
-            _left = (screen.width-_width)/2,
-            _url = 'www.baidu.com';
-            // _pic = '';
 
-        var _shareUrl = 'http://v.t.sina.com.cn/share/share.php?&appkey=895033136';     //真实的appkey，必选参数
-        _shareUrl += '&url='+ encodeURIComponent(_url||document.location);     //参数url设置分享的内容链接|默认当前页location，可选参数
-        _shareUrl += '&title=' + encodeURIComponent(_title||document.title);    //参数title设置分享的标题|默认当前页标题，可选参数
-        _shareUrl += '&source=' + encodeURIComponent(_source||'');
-        _shareUrl += '&sourceUrl=' + encodeURIComponent(_sourceUrl||'');
-        _shareUrl += '&content=' + 'utf-8';   //参数content设置页面编码gb2312|utf-8，可选参数
-        _shareUrl += '&pic=' + encodeURIComponent(_pic||'');  //参数pic设置图片链接|默认为空，可选参数
-        window.open(_shareUrl,'_blank','width='+_width+',height='+_height+',top='+_top+',left='+_left+',toolbar=no,menubar=no,scrollbars=no, resizable=1,location=no,status=0');
-    };
-    //分享到QQ空间
-    $scope.shareToQzone = function (event){
-        var _title,_source,_sourceUrl,_pic,_showcount,_desc,_summary,_site,
-            _width = 600,
-            _height = 600,
-            _top = (screen.height-_height)/2,
-            _left = (screen.width-_width)/2,
-            _url = 'http://localhost:8089/#!/couserinfo';
-            // _pic = '';
-
-        var _shareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?';
-        _shareUrl += 'url=' + encodeURIComponent(_url||document.location);   //参数url设置分享的内容链接|默认当前页location
-        _shareUrl += '&showcount=' + _showcount||0;      //参数showcount是否显示分享总数,显示：'1'，不显示：'0'，默认不显示
-        _shareUrl += '&desc=' + encodeURIComponent(_desc||'分享的描述');    //参数desc设置分享的描述，可选参数
-        _shareUrl += '&summary=' + encodeURIComponent(_summary||'分享摘要');    //参数summary设置分享摘要，可选参数
-        _shareUrl += '&title=' + encodeURIComponent(_title||document.title);    //参数title设置分享标题，可选参数
-        _shareUrl += '&site=' + encodeURIComponent(_site||'');   //参数site设置分享来源，可选参数
-        _shareUrl += '&pics=' + encodeURIComponent(_pic||'');   //参数pics设置分享图片的路径，多张图片以＂|＂隔开，可选参数
-        window.open(_shareUrl,'_blank','width='+_width+',height='+_height+',top='+_top+',left='+_left+',toolbar=no,menubar=no,scrollbars=no,resizable=1,location=no,status=0');
-    };
+    // $scope.shareToSinaWB=function (event){
+    //     var _title,_source,_sourceUrl,_pic,_showcount,_desc,_summary,_site,
+    //         _width = 600,
+    //         _height = 600,
+    //         _top = (screen.height-_height)/2,
+    //         _left = (screen.width-_width)/2,
+    //         _url = 'www.baidu.com';
+    //         // _pic = '';
+    //
+    //     var _shareUrl = 'http://v.t.sina.com.cn/share/share.php?&appkey=895033136';     //真实的appkey，必选参数
+    //     _shareUrl += '&url='+ encodeURIComponent(_url||document.location);     //参数url设置分享的内容链接|默认当前页location，可选参数
+    //     _shareUrl += '&title=' + encodeURIComponent(_title||document.title);    //参数title设置分享的标题|默认当前页标题，可选参数
+    //     _shareUrl += '&source=' + encodeURIComponent(_source||'');
+    //     _shareUrl += '&sourceUrl=' + encodeURIComponent(_sourceUrl||'');
+    //     _shareUrl += '&content=' + 'utf-8';   //参数content设置页面编码gb2312|utf-8，可选参数
+    //     _shareUrl += '&pic=' + encodeURIComponent(_pic||'');  //参数pic设置图片链接|默认为空，可选参数
+    //     window.open(_shareUrl,'_blank','width='+_width+',height='+_height+',top='+_top+',left='+_left+',toolbar=no,menubar=no,scrollbars=no, resizable=1,location=no,status=0');
+    // };
+    // //分享到QQ空间
+    // $scope.shareToQzone = function (event){
+    //     var _title,_source,_sourceUrl,_pic,_showcount,_desc,_summary,_site,
+    //         _width = 600,
+    //         _height = 600,
+    //         _top = (screen.height-_height)/2,
+    //         _left = (screen.width-_width)/2,
+    //         _url = 'http://localhost:8089/#!/couserinfo';
+    //         // _pic = '';
+    //
+    //     var _shareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?';
+    //     _shareUrl += 'url=' + encodeURIComponent(_url||document.location);   //参数url设置分享的内容链接|默认当前页location
+    //     _shareUrl += '&showcount=' + _showcount||0;      //参数showcount是否显示分享总数,显示：'1'，不显示：'0'，默认不显示
+    //     _shareUrl += '&desc=' + encodeURIComponent(_desc||'分享的描述');    //参数desc设置分享的描述，可选参数
+    //     _shareUrl += '&summary=' + encodeURIComponent(_summary||'分享摘要');    //参数summary设置分享摘要，可选参数
+    //     _shareUrl += '&title=' + encodeURIComponent(_title||document.title);    //参数title设置分享标题，可选参数
+    //     _shareUrl += '&site=' + encodeURIComponent(_site||'');   //参数site设置分享来源，可选参数
+    //     _shareUrl += '&pics=' + encodeURIComponent(_pic||'');   //参数pics设置分享图片的路径，多张图片以＂|＂隔开，可选参数
+    //     window.open(_shareUrl,'_blank','width='+_width+',height='+_height+',top='+_top+',left='+_left+',toolbar=no,menubar=no,scrollbars=no,resizable=1,location=no,status=0');
+    // };
 
 
 

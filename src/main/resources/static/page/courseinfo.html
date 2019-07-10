@@ -47,8 +47,17 @@
                 </div>
                 <div class="g-sd1 video-intro">
                     <div id="j-courseImg" class="m-recimg canlick">
-                        <video width="100%" height="100%" controls="true" src="{{lesson.videoLink}}">
+                        <video width="100%" height="100%" controls="true" src="{{link}}">
                         </video>
+
+                        <ul class="pagination">
+                            <li><a ng-click="_prev()">&laquo;</a></li>
+                            <li ng-repeat="page in pages">
+                                <a  ng-click="_select(page)" class="pageIndex">{{page}}</a>
+                            </li>
+                            <li><a ng-click="_next()">&raquo;</a></li>
+                        </ul><br>
+                        <p>第<span>{{currentPage}}</span>集 / 共{{totalPage}}集</p>
                     </div>
                 </div>
                 <div class="g-mn1 course-enroll-info-wrapper">
@@ -88,8 +97,7 @@
                                         <div class="star">
                                             <span style="color:#e5ecdd;">课程星级: </span>
                                         </div>
-                                            <span data-class="star"><i class="fa fa-star"></i></span>
-                                        </div>
+                                    </div>
                                     <div id="star_con" class="star-vote">
                                         <span id="add_star" class="add-star"></span>
                                         <span id="del_star" class="del-star" style="background-color: #89a09f;"></span>
