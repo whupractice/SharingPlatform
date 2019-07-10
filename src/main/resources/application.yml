@@ -5,7 +5,7 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
   resources:
-    static-locations: classpath:static/,file:static/
+    static-locations: classpath:/static/
   profiles:
     active: dev
   datasource:
