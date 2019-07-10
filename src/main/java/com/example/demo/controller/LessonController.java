@@ -186,6 +186,7 @@ public class LessonController {
      * @Description : 更新课程
      * @Param       : [lesson] -- 课程
      */
+    @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "更新课程", notes = "更新课程",httpMethod = "PUT")
     @ApiParam(name = "lesson",value = "课程实体，其中lessonId、credit、isExcellent、shareNum、welcome不能为空")
     @PutMapping("")
