@@ -137,7 +137,7 @@
         <!--课程信息-->　
         <div class="g-flow">
             <div class="b-40"></div>
-            <div class="g-wrap f-cb">
+            <div class="g-wrap f-cb" style="    margin-left: -200px;">
                 <div class="g-mn2">
                     <ul class="nav nav-tabs primary">
                         <li class="active">
@@ -154,17 +154,29 @@
                     </ul>
 
 
-                    <div class="tab-content primary">
+                    <div class="tab-content primary" style="    background-color: #a9f4de24;
+    color: #dfdcad;">
 
-                        <div class="tab-pane fade active in" id="home-1" ng-if="CoursePage()">
+                        <div style="    margin-left: 50px;
+    margin-top: 20px;" class="tab-pane fade active in" id="home-1" ng-if="CoursePage()">
 
                             <div>
                                 <span data-class="graduation-cap"><i class="fa fa-mortar-board"></i><span>授课学历</span></span>
-                                <p>本科</p>
+                                <p style="    margin-top: 15px;
+    margin-left: 40px;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    color: #9e7070;">本科</p>
                             </div>
                             <div>
                                 <span data-class="paper-plane-o"><i class="fa fa-paper-plane-o"></i><span>课程概述</span></span>
-                                <p>{{lesson.lessonIntro}}</p>
+                                <p style="    margin-top: 15px;
+    margin-left: 40px;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    color: #9e7070;">{{lesson.lessonIntro}}</p>
                             </div>
                             <div>
                                 <div class="g-sd2 m-sd2">
@@ -183,8 +195,18 @@
 
                                                         <div ng-repeat="x in teachers" id="img1">
                                                             <img class="f-fl" src="{{x.imgLink}}" width="75" height="75" ng-click="jumpT(x)">
-                                                            <p>{{x.teacherName}}</p>
-                                                            <p>{{x.schoolName}}</p>
+                                                            <p style="    margin-top: 15px;
+
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    color: #9e7070;">{{x.teacherName}}</p>
+                                                            <p style="    margin-top: 15px;
+
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    color: #9e7070;">{{x.schoolName}}</p>
                                                         </div>
 
                                                     </div>
@@ -224,14 +246,14 @@
 
 
 
-                                <div ng-repeat="x in sl"  class="uprofile_wall_posts col-md-12 col-sm-12 col-xs-12">
+                                <div ng-repeat="x in sl" ng-if="judgeC(x)" class="uprofile_wall_posts col-md-12 col-sm-12 col-xs-12">
                                     <br>
                                     <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
-                                        <img src="../img/bl.jpg" class="" alt="">
+                                        <img style="    margin-top: 8px;" src="../img/bl.jpg" class="" alt="">
                                     </div>
                                     <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">
                                         <div class="username">
-                                            <span class="bold">{{nickName}}</span>
+                                            <span class="bold" style="margin-left: 22px;">肖奈</span>
                                         </div>
                                         <div class="info text-muted">
                                            {{x.evaluation}}
@@ -239,8 +261,8 @@
                                         <div class="info-details">
                                             <ul class="list-unstyled list-inline">
                                                 <li><a  class="text-muted">{{x.evaTime}}</a></li>
-                                                <li><a  class="text-muted"><i class="fa fa-comment" style="color: #5bc0de"></i> 584</a></li>
-                                                <li><a class="text-orange"><i class="fa fa-heart"style="color: red"></i> 12k</a></li>
+                                                <li><a  class="text-muted"><i class="fa fa-comment" style="color: #5bc0de"></i> 0</a></li>
+                                                <li><a class="text-orange"><i class="fa fa-heart"style="color: red"></i> 0</a></li>
                                                 <li><a  class="text-info"><i class="fa fa-reply"style="color: #5bc0de"></i> Reply</a></li>
                                                 <li><a  class="text-warning"><i class="fa fa-star"style="color: #5bc0de"></i> Favourite</a></li>
                                                 <li><a  class="text-muted">More</a></li>

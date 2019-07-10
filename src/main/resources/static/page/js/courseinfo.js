@@ -143,6 +143,19 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     };
 
 
+    //判断是否有评论
+    $scope.judgeC=function(x){
+      if(x.evaluation==null || x.evaluation.length==0)
+      {
+          return false;
+      }
+      else
+      {
+          return true;
+      }
+    };
+
+
     //课程打分
     $scope.getScores=function () {
         var score=Math.floor(4.3);
@@ -242,8 +255,8 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             _height = 600,
             _top = (screen.height-_height)/2,
             _left = (screen.width-_width)/2,
-            _url = 'www.baidu.com',
-            _pic = '';
+            _url = 'www.baidu.com';
+            // _pic = '';
 
         var _shareUrl = 'http://v.t.sina.com.cn/share/share.php?&appkey=895033136';     //真实的appkey，必选参数
         _shareUrl += '&url='+ encodeURIComponent(_url||document.location);     //参数url设置分享的内容链接|默认当前页location，可选参数
@@ -261,8 +274,8 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             _height = 600,
             _top = (screen.height-_height)/2,
             _left = (screen.width-_width)/2,
-            _url = 'http://localhost:8089/#!/couserinfo',
-            _pic = '';
+            _url = 'http://localhost:8089/#!/couserinfo';
+            // _pic = '';
 
         var _shareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?';
         _shareUrl += 'url=' + encodeURIComponent(_url||document.location);   //参数url设置分享的内容链接|默认当前页location

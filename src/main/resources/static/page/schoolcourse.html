@@ -31,9 +31,9 @@
             <div class="g-sd1"></div>
             <div class="g-mn1">
                 <div class="g-mn1c m-cnt">
-                    <h1>{{school.schoolName}}</h1>
+                    <h1 style="color: #dfdcad;">{{school.schoolName}}</h1>
                     <br>
-                    <p class="f-f1 f-fc6" style="line-height: 1.8;">{{school.schoolIntro}}</p>
+                    <p class="f-f1 f-fc6" style="line-height: 1.8;color: #dfdcad;">{{school.schoolIntro}}</p>
                 </div>
             </div>
 
@@ -72,13 +72,16 @@
         </ul>
     </div>
 
-    <div style="text-align: center"  >
+    <div style="    margin-top: 250px;text-align: center"  >
         <ul class="pagination">
-            <li><a href ng-click="prevPage_()">&laquo;</a></li>
+            <li><a  style="    background-color: #a9f4de24;
+    color: #dfdcad;" href ng-click="prevPage_()">&laquo;</a></li>
             <li ng-repeat="page in pages">
-                <a href ng-click="selectPage_(page)" class="pageIndex">{{page}}</a>
+                <a  style="    background-color: #a9f4de24;
+    color: #dfdcad;" href ng-click="selectPage_(page)" class="pageIndex">{{page}}</a>
             </li>
-            <li><a href ng-click="nextPage_()">&raquo;</a></li>
+            <li><a  style="    background-color: #a9f4de24;
+    color: #dfdcad;" href ng-click="nextPage_()">&raquo;</a></li>
         </ul><br>
         <p>第<span>{{currentPage}}</span>页 / 共{{totalPage}}页</p>
     </div>
