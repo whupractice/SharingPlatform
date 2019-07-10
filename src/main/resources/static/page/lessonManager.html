@@ -131,8 +131,9 @@
 
 
         <div ng-if="_page_2()">
-            <div class="panel panel-default table7_demo king-table7-demo3">
-            <div class="panel-heading">
+            <div class="panel panel-default table7_demo king-table7-demo3" style="background-color: #a9f4de24;">
+            <div class="panel-heading" style="background-color: #dbd2c424;    color: #dfdcad;
+">
                 课程管理员列表
             </div>
             <div class="panel-body panel-search-body">
@@ -140,7 +141,8 @@
                         data-target="#addLModal">添加课程</button>
             </div>
             </div>
-            <table class="table table-bordered table7_demo">
+            <table style="background-color: #a9f4de24; color: #dfdcad;;
+"class="table table-bordered table7_demo">
                 <thead>
                 <tr>
                     <th>id</th>
@@ -181,15 +183,18 @@
             </table>
             <ul class="pagination pagination-sm pull-left mt10" style="margin-top: 10px">
                 <li class="disabled">
-                    <a ng-click="pre_()" aria-label="Previous">
+                    <a style="    background-color: #a9f4de24;
+    color: #dfdcad;" ng-click="pre_()" aria-label="Previous">
                         <span aria-hidden="true">«</span>
                     </a>
                 </li>
                 <li ng-repeat="page in Ps_">
-                    <a href ng-click="selectP_(page)" class="pageIndex">{{page}}</a>
+                    <a style="    background-color: #a9f4de24;
+    color: #dfdcad;" href ng-click="selectP_(page)" class="pageIndex">{{page}}</a>
                 </li>
                 <li>
-                    <a ng-click="next_()" aria-label="Next">
+                    <a style="    background-color: #a9f4de24;
+    color: #dfdcad;" ng-click="next_()" aria-label="Next">
                         <span aria-hidden="true">»</span>
                     </a>
                 </li>
@@ -350,28 +355,39 @@
 
 
 
-        <div ng-if="_page_3()">
+        <div ng-if="_page_3()" style="    background-color: #a9f4de24;
+    color: #dfdcad;">
 
 
-            <div class="panel panel-default pannel-overflow panel-tables table7_demo">
-                <div class="panel-heading"> <i class="fa fa-list-ul"></i> 老师列表
+            <div class="panel panel-default pannel-overflow panel-tables table7_demo" style="    background-color: #a9f4de24;
+    color: #dfdcad;">
+                <div class="panel-heading"style="    background-color: #a9f4de24;
+    color: #dfdcad;"> <i class="fa fa-list-ul"></i> 老师列表
                 </div>
-                <div class="panel-body panel-search-body" style="margin: 30px">
+                <div class="panel-body panel-search-body" style="    margin-top: 40px;
+    margin-bottom: 20px;">
                     <a class="king-btn king-radius king-primary" title="添加变量"
                     data-toggle="modal" data-target="#addTModal">添加老师</a>
                     <a class="king-btn king-radius king-default" title="数据导入">数据导入</a>
                     <a class="king-btn king-radius king-default" title="数据导出">数据导出</a>
                 </div>
                 <div class="panel-content">
-                    <table class="table table-header-bg table-hover mb0" id="table_demo2">
+                    <table style="    background-color: #a9f4de24;
+    color: #dfdcad;" class="table table-header-bg table-hover mb0" id="table_demo2">
                         <thead>
                         <tr>
-                            <th style="width: 100px">id</th>
-                            <th style="width:25%">姓名</th>
-                            <th style="width:25%">职位</th>
-                            <th style="width:15%">学校</th>
-                            <th style="width:15%">学院</th>
-                            <th>操作</th>
+                            <th style="    background-color: #a9f4de24;
+    color: #dfdcad;width: 100px">id</th>
+                            <th style="    background-color: #a9f4de24;
+    color: #dfdcad;width:25%">姓名</th>
+                            <th style="    background-color: #a9f4de24;
+    color: #dfdcad;width:25%">职位</th>
+                            <th style="    background-color: #a9f4de24;
+    color: #dfdcad;width:15%">学校</th>
+                            <th style="    background-color: #a9f4de24;
+    color: #dfdcad;width:15%">学院</th>
+                            <th style="    background-color: #a9f4de24;
+    color: #dfdcad;">操作</th>
                         </tr>
                         </thead>
                         <tbody>
