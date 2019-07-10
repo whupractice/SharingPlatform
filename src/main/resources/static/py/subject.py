@@ -42,7 +42,7 @@ plt.pie(x = values,# 绘图数据
     textprops = {'fontsize':12, 'color':'k'}, # 设置文本标签的属性值
     center = (0,0), # 设置饼图的原点
     frame = 1)# 是否显示饼图的图框，这里设置显示
-
+plt.figure(facecolor='#a9f4de24',edgecolor='black')
 # 删除x轴和y轴的刻度
 plt.xticks(())
 plt.yticks(())

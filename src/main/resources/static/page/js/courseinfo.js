@@ -23,7 +23,6 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
     $scope.currentScore = 4.3;
     $scope.f = 0.3;
-    $scope.nickName="";
 
     $scope.RootUrl=null;
 
@@ -184,17 +183,22 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
         }).then(function successCallback(response) {
             $scope.sl=response.data;
             for(var i = 0;i<$scope.sl.length;i++){
-                var sl = $scope.sl[i];
-                $http({
-                    method: 'GET',
-                    url: '/student/getNickName',
-                    params: {
-                        "phone": sl.phone
-                    }
-                }).then(function successCallback(response) {
-                        $scope.nickName = response.data.nickName;
-                })
+                $scope.getNickName(i);
             }
+        })
+    };
+
+
+    $scope.getNickName = function(i){
+        var sl = $scope.sl[i];
+        $http({
+            method: 'GET',
+            url: '/student/getNickName',
+            params: {
+                "phone": sl.phone
+            }
+        }).then(function successCallback(response) {
+            $scope.sl[i].nickName = response.data.nickName;
         })
     };
 

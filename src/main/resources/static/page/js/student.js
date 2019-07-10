@@ -211,66 +211,66 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
     };
 
 
-    //根据学生电话号码查询所选课程
-    // $scope.getLessonByPhone = function () {
-    //     var phone = window.localStorage.getItem('phone');
-    //     var token = window.localStorage.getItem('token');
-    //     $http({
-    //         method: 'GET',
-    //         url: '/sl/getLessonPagesNumByStuId',
-    //         headers: {
-    //             'Authorization': token
-    //         },
-    //         params:{
-    //             "num": 5,
-    //             "stuId": phone
-    //        }
-    //     }).then(function successCallback(response) {
-    //         $scope.totalPage = response.data.numOfPages;
-    //         $http({
-    //             method: 'GET',
-    //             url: '/sl/getLessonPagesByStuId',
-    //             headers: {
-    //                 'Authorization': token
-    //             },
-    //             params:{
-    //                 "num": 5,
-    //                 "stuId": phone,
-    //                 "page" : $scope.currentPage-1
-    //             }
-    //         }).then(function successCallback(response) {
-    //             $scope.nowLesson = response.data.content;//获取返回的课程
-    //             $scope.pages = [];
-    //             if($scope.totalPage>5) {
-    //                 var start = ($scope.currentPage>=3) ? $scope.currentPage-2 : 1;
-    //                 var end = ($scope.currentPage<=$scope.totalPage-2) ? start+4 : $scope.totalPage;
-    //                 for(var i = start;i<=end;i++)
-    //                     $scope.pages.push(i);
-    //             }else{
-    //                 for(var i = 1;i<=$scope.totalPage;i++)
-    //                     $scope.pages.push(i);
-    //             }
-    //         })
-    //     })
-    // };
-
-
-    $scope.getLessonByPhone = function(){
-            var phone = window.localStorage.getItem('phone');
-            var token = window.localStorage.getItem('token');
+    // 根据学生电话号码查询所选课程
+    $scope.getLessonByPhone = function () {
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
+        $http({
+            method: 'GET',
+            url: '/sl/getLessonPagesNumByStuId',
+            headers: {
+                'Authorization': token
+            },
+            params:{
+                "num": 5,
+                "stuId": phone
+           }
+        }).then(function successCallback(response) {
+            $scope.totalPage = response.data.numOfPages;
             $http({
                 method: 'GET',
-                url: '/sl/getLessonByStuId',
+                url: '/sl/getLessonPagesByStuId',
                 headers: {
                     'Authorization': token
                 },
                 params:{
-                    "stuId": phone
-               }
+                    "num": 5,
+                    "stuId": phone,
+                    "page" : $scope.currentPage-1
+                }
             }).then(function successCallback(response) {
-                $scope.nowLesson = response.data;
+                $scope.nowLesson = response.data;//获取返回的课程
+                $scope.pages = [];
+                if($scope.totalPage>5) {
+                    var start = ($scope.currentPage>=3) ? $scope.currentPage-2 : 1;
+                    var end = ($scope.currentPage<=$scope.totalPage-2) ? start+4 : $scope.totalPage;
+                    for(var i = start;i<=end;i++)
+                        $scope.pages.push(i);
+                }else{
+                    for(var i = 1;i<=$scope.totalPage;i++)
+                        $scope.pages.push(i);
+                }
             })
+        })
     };
+
+
+    // $scope.getLessonByPhone = function(){
+    //         var phone = window.localStorage.getItem('phone');
+    //         var token = window.localStorage.getItem('token');
+    //         $http({
+    //             method: 'GET',
+    //             url: '/sl/getLessonByStuId',
+    //             headers: {
+    //                 'Authorization': token
+    //             },
+    //             params:{
+    //                 "stuId": phone
+    //            }
+    //         }).then(function successCallback(response) {
+    //             $scope.nowLesson = response.data;
+    //         })
+    // };
 
     //进入课程
     $scope.enterLesson = function (x) {

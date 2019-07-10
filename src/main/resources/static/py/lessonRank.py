@@ -46,7 +46,7 @@ plt.xlim([0,10])
 # 为每个条形图添加数值标签
 for x,y in enumerate(values):
     plt.text(y+0.2,x,'%s' %y,va='center')
-
+plt.figure(facecolor='#a9f4de24',edgecolor='black')
 # 显示图形
 plt.savefig('target/classes/static/img/lessonRank.jpg')
     
