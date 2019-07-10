@@ -8,12 +8,12 @@
 </head>
 <body>
 <div class="row" ng-controller="lessonManagerCtrl" ng-init="initLessonManager()">
-    <div id="sidebar" class="column" style="margin-top: 100px">
-        <h5>Navigation</h5>
-        <ul>
-            <li><a ng-click="jump(1)"><em class="fa fa-university"></em> 个人信息</a></li>
-            <li><a ng-click="jump(2)"><em class="fa fa fa-th"></em> 课程</a></li>
-            <li><a ng-click="jump(3)"><em class="fa fa-plus-square"></em> 老师</a></li>
+    <div id="sidebar" class="column" style="margin-top: 100px;background: #dbd2c424;">
+<!--        <h5>Navigation</h5>-->
+        <ul style="margin-top: 50px;">
+            <li><a ng-click="jump(1)"><em class="fa fa-university" style="    color: #87989b;"></em> 个人信息</a></li>
+            <li><a ng-click="jump(2)"><em class="fa fa fa-th" style="    color: #87989b;"></em> 课程</a></li>
+            <li><a ng-click="jump(3)"><em class="fa fa-plus-square" style="    color: #87989b;"></em> 老师</a></li>
         </ul>
     </div>
 
@@ -24,94 +24,100 @@
 
         <div class="row grid-responsive">
             <div class="column page-heading">
-                <div class="large-card">
-                    <h1 style="margin-bottom: 10px">Hey {{currentManager.nickName}}</h1>
-                    <p class="text-large">尊贵的课程管理员，伊万诺夫提醒您：
+                <div class="large-card" style="background: #feefd83b;">
+                    <h1 style="margin-bottom: 10px;color: #dfdcad;">Hey {{currentManager.nickName}}</h1>
+                    <p style="    color: #f0f8ff8a;" class="text-large">尊贵的课程管理员，伊万诺夫提醒您：
                         <span style="font-weight: bold">操作千万条，谨慎第一条，操作不规范，管理两行泪。</span></p>
-                    <p style="float: right"> -- 最爱您的伊万诺夫</p>
+                    <p style="float: right;    color: #f0f8ff8a;"> -- 最爱您的伊万诺夫</p>
                 </div>
             </div>
         </div>
 
 
         <div ng-if="_page_1()">
-        <div class="panel panel-default bootstrap-admin-no-table-panel">
-            <div class="panel-heading">
-                <div class="text-muted bootstrap-admin-box-title">示例 1</div>
+        <div class="panel panel-default bootstrap-admin-no-table-panel" style="background-color: #a9f4de24;">
+            <div class="panel-heading" style="background-color: #dbd2c424;">
+                <div class="text-muted bootstrap-admin-box-title" style="color:#dfdcad;">示例 1</div>
             </div>
             <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
                 <form class="form-horizontal">
                     <fieldset>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">姓名</label>
+                            <label style="    color:#dfdcad;" class="col-lg-2 control-label">姓名</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="realName" type="text"
+                                <input style="    color: #dfdcad;"class="form-control" id="realName" type="text"
                                        value="{{currentManager.realName}}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label" >昵称</label>
+                            <label style="    color: #dfdcad;" class="col-lg-2 control-label" >昵称</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="nickName" type="text"
+                                <input style="    color:#dfdcad;" class="form-control" id="nickName" type="text"
                                 value="{{currentManager.nickName}}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label" >密码</label>
+                            <label style="    color: #dfdcad;" class="col-lg-2 control-label" >密码</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="pwd" type="text"
+                                <input style="    color: #dfdcad;" class="form-control" id="pwd" type="text"
                                        value="{{currentManager.pwd}}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label" >学校</label>
+                            <label style="    color: #dfdcad;" class="col-lg-2 control-label" >学校</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="schoolName" type="text"
+                                <input style="      background-color: #ff000000;  color: #dfdcad;" class="form-control" id="schoolName" type="text"
                                        value="{{currentManager.schoolName}}" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label" >学院</label>
+                            <label  style="    color: #dfdcad;" class="col-lg-2 control-label" >学院</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="academy" type="text"
+                                <input style="      background-color: #ff000000;  color: #dfdcad;" class="form-control" id="academy" type="text"
                                        value="{{currentManager.academyName}}" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label" >性别</label>
+                            <label style="    color: #dfdcad;" class="col-lg-2 control-label" >性别</label>
                             <div class="col-lg-8">
                                 <select id="sex">
-                                    <option class="selected" value="male">男</option>
-                                    <option  value="female">女</option>
+                                    <option style="    color:#dfdcad;" class="selected" value="male">男</option>
+                                    <option style="    color:#dfdcad;"  value="female">女</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">邮箱</label>
+                            <label style="    color: #dfdcad;" class="col-lg-2 control-label">邮箱</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="email" type="text"
+                                <input style="    color: #dfdcad;" class="form-control" id="email" type="text"
                                 value="{{currentManager.email}}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">生日</label>
+                            <label style="  color: #dfdcad;" class="col-lg-2 control-label">生日</label>
                             <div class="col-lg-8">
-                                <input class="form-control" id="birth" type="date"
+                                <input style="       background-color: #ff000000; color:#dfdcad;" class="form-control" id="birth" type="date"
                                 value="{{currentManager.birth}}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">个人简介</label>
+                            <label style="    color:#dfdcad;" class="col-lg-2 control-label">个人简介</label>
                             <div class="col-lg-8">
-                                <textarea class="form-control" rows="5" placeholder="个人简介"
+                                <textarea style="     background-color: #ff000000;   color:#dfdcad;" class="form-control" rows="5" placeholder="个人简介"
                                 id = "introduction">{{currentManager.introduction}}</textarea>
                             </div>
                         </div>
 
 
                         <div style="text-align: center;">
-                            <button type="submit" class="btn btn-success mr10" ng-click="updateLeMan()">保存</button>
-                            <button type="reset" class="btn btn-danger king-default">取消</button>
+                            <button style="    background-color: #bc9696;    width: 100px;
+    border-radius: 16px;
+    margin-left: -60px;
+    border-color: #bc9696;" type="submit" class="btn btn-success mr10" ng-click="updateLeMan()">保存</button>
+                            <button style="    background-color: #bc9696;width: 100px;
+    border-radius: 16px;
+    margin-left: 30px;
+    border-color: #bc9696;" type="reset" class="btn btn-danger king-default">取消</button>
                         </div>
                     </fieldset>
                 </form>
