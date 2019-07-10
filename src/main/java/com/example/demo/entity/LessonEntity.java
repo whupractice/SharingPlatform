@@ -55,6 +55,8 @@ public class LessonEntity {
 
     private String videoLink;//视频链接
 
+    private int videoNum;//视频数量
+
     @Column(length = 2000)
     private String lessonIntro;//课程简介
 
@@ -193,5 +195,14 @@ public class LessonEntity {
 
     public void setVideoLink(String videoLink) {
         this.videoLink = videoLink;
+    }
+
+
+    public int getVideoNum() {
+        return videoNum;
+    }
+
+    public void setVideoNum(int videoNum) {
+        this.videoNum = videoNum;
     }
 }

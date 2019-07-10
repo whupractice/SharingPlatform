@@ -28,6 +28,11 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
     $scope.errorMessage=null;
 
+    $scope.videoLinks = [];//视频链接和名字集合
+
+    $scope.videoLink={};
+
+    $scope.link="";//当前视频链接
     $scope.nowStar = 7;
 
 
@@ -70,6 +75,12 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             }
         }).then(function successCallback(response) {
             $scope.lesson = response.data;
+            for(var i = 0;i<$scope.lesson.videoNum;i++){
+                var name = i+1;
+                $scope.videoLink.link=$scope.lesson.videoLink+"_"+name;
+                $scope.videoLink.name = '第'+name+'节';
+                $scope.videoLinks.push($scope.videoLink);
+            }
             $scope.getTeachers();//获取老师信息
             $scope.getComments();//获取评论
             $scope.getTJlesson();//获取推荐课程
@@ -255,6 +266,12 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
                 })
             }
         });
+
+
+        //改变视频链接
+        $scope.changeVideo = function (x) {
+            $scope.link = x.link;
+        };
 
 
     };
