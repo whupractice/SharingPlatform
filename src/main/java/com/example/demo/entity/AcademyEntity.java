@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "academy")
 public class AcademyEntity {
-    AcademyEntity(){}
+    public AcademyEntity(){}
 
     @Id
     @GeneratedValue
