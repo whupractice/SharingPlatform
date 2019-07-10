@@ -131,13 +131,13 @@ public class LessonController {
         return lessonService.getBySchoolName(schoolName);
     }
 
-    @ApiOperation(value = "根据课程名模糊获取课程列表", notes = "根据课程名模糊获取课程列表",httpMethod = "GET")
-    @ApiParam(name = "keyword",value = "课程名关键词")
-    @GetMapping("/keyword")
-    public List<Object> getLessonByKeyword(@RequestParam String keyword) {
-
-        return lessonService.getLessonByKeyword(keyword);
-    }
+//    @ApiOperation(value = "根据课程名模糊获取课程列表", notes = "根据课程名模糊获取课程列表",httpMethod = "GET")
+//    @ApiParam(name = "keyword",value = "课程名关键词")
+//    @GetMapping("/keyword")
+//    public List<Object> getLessonByKeyword(@RequestParam String keyword) {
+//
+//        return lessonService.getLessonByKeyword(keyword);
+//    }
 
 
     @ApiOperation(value = "分页根据课程状态和学科获取课程列表", notes = "分页根据课程状态和学科获取课程列表",httpMethod = "GET")

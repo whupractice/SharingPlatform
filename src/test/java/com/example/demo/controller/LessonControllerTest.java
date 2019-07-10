@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -49,6 +50,7 @@ public class LessonControllerTest {
     public void getByLessonId() throws Exception{
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
+
         LessonEntity lessonEntity = new LessonEntity();
         lessonEntity.setLessonId(123);
         lessonEntity.setLessonName("体育课");
@@ -67,23 +69,80 @@ public class LessonControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("体育课")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void getExcellentLesson() {
+    public void getExcellentLesson() throws Exception {
+        List<LessonEntity> lessonEntities = new ArrayList<>();
+        LessonEntity lessonEntity = new LessonEntity();
+        lessonEntity.setLessonId(123);
+        lessonEntity.setLessonName("体育课");
+        lessonEntities.add(lessonEntity);
+        Mockito.when(lessonRepository.findAll()).thenReturn(lessonEntities);
+        mockMvc.perform(MockMvcRequestBuilders.get("/lesson/excellent"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("体育课")));
     }
 
     @Test
-    public void getHotLesson() {
+    public void getHotLesson() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        List<LessonEntity> lessonEntities = new ArrayList<>();
+        LessonEntity lessonEntity = new LessonEntity();
+        lessonEntity.setLessonId(123);
+        lessonEntity.setLessonName("体育课");
+        lessonEntities.add(lessonEntity);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            bitSet.set(0, true);
+            return lessonEntities;
+        }).when(lessonRepository).findAll(Mockito.any(Sort.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/lesson/hot")
+                .param("lessonNum","2"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("体育课")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void getBySchoolName() {
+    public void getBySchoolName() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        List<LessonEntity> lessonEntities = new ArrayList<>();
+        LessonEntity lessonEntity = new LessonEntity();
+        lessonEntity.setLessonId(123);
+        lessonEntity.setSchoolName("武汉大学");
+        lessonEntities.add(lessonEntity);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String id = (String) args[0];
+            Assert.assertEquals(id,"武汉大学");
+            bitSet.set(0, true);
+            return lessonEntities;
+        }).when(lessonRepository).getBySchoolName(Mockito.any(String.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/lesson/schoolName")
+                .param("schoolName","武汉大学"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("武汉大学")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
-    @Test
-    public void getLessonByKeyword() {
-    }
 
     @Test
     public void getLessonPages() {

@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import springfox.documentation.annotations.Cacheable;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
 import java.util.*;
 
 /**
@@ -69,7 +67,7 @@ public class StudentService {
     }
 
 
-    public Object getNickNameByPhone(String phone) {
+    public StudentEntity getNickNameByPhone(String phone) {
         Long newPhone = Long.parseLong(phone);
         return studentRepository.getNickNameByPhone(newPhone);
     }

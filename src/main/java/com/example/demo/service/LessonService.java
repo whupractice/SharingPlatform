@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.baseClass.Lesson;
 import com.example.demo.entity.LessonEntity;
 import com.example.demo.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +8,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import springfox.documentation.annotations.Cacheable;
 import org.springframework.util.ResourceUtils;
+import springfox.documentation.annotations.Cacheable;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,15 +59,15 @@ public class LessonService {
         return lessonRepository.getByLessonId(newId);
     }
 
-    /**
-      * @Author      : QinYingran
-      * @Description : 获得所有课程并去重
-      * @Param       : []
-      * @return      : 课程列表
-      */
-    public List<Object> getAllDistinctly() {
-        return lessonRepository.getAllDistinctly();
-    }
+//    /**
+//      * @Author      : QinYingran
+//      * @Description : 获得所有课程并去重
+//      * @Param       : []
+//      * @return      : 课程列表
+//      */
+//    public List<Object> getAllDistinctly() {
+//        return lessonRepository.getAllDistinctly();
+//    }
 
     /**
       * @Author      : Theory
@@ -117,10 +115,10 @@ public class LessonService {
       * @Param       : [keyWord]
       * @return      : 含有关键词的课程列表
       */
-    public List<Object> getLessonByKeyword(String keyword) {
-        keyword = "%"+keyword+"%";
-        return lessonRepository.getLessonByKeyword(keyword);
-    }
+//    public List<Object> getLessonByKeyword(String keyword) {
+//        keyword = "%"+keyword+"%";
+//        return lessonRepository.getLessonByKeyword(keyword);
+//    }
 
     /**
       * @Author      : QinYingran
