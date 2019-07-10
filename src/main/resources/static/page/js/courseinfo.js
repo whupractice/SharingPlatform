@@ -9,6 +9,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
 
     $scope.lesson = null;
+    $scope.tj_lesson = null;//推荐课程
 
     $scope.sl=null;//选课信息
     $scope.teacherNum = 0;
@@ -48,7 +49,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
                 "phone": phone
             }
         }).then(function successCallback(response) {
-            $scope.tjLesson = response.data;
+            $scope.tj_lesson = response.data;
         })
     };
 
@@ -73,6 +74,12 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             $scope.getTJlesson();//获取推荐课程
         });
 
+    };
+
+    //去往推荐课程
+    $scope.goTjLesson = function(x){
+        window.localStorage.setItem('lessonId',x.lessonId);
+        $state.go('courseinfo');
     };
 
 
@@ -131,7 +138,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
     //跳转到教师页面
     $scope.jumpT = function (teacher) {
-        window.localStorage.setItem('teacherId',teacher.teacher);
+        window.localStorage.setItem('teacherId',teacher.teacherId);
         $state.go('teacher');
     };
 

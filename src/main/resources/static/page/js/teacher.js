@@ -5,7 +5,7 @@ var app = angular.module('myApp');
  * @Description : 教师控制器
  * @type        : Controller
  */
-app.controller('teacherCtrl', function ($scope, $http, $stateParams,$state) {//$stateParams别的页面传来的参数
+app.controller('teacherCtrl', function ($scope, $http,$state) {//$stateParams别的页面传来的参数
 
     $scope.teacher = null;//教师
 
@@ -36,8 +36,8 @@ app.controller('teacherCtrl', function ($scope, $http, $stateParams,$state) {//$
             }
         }).then(function successCallback(response) {
             $scope.teacher = response.data;//获取返回的数据
+            $scope.getTLessons();
         });
-        $scope.getTLessons();
     };
 
 

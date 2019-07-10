@@ -22,7 +22,7 @@
                 </div>
                 <div class="g-sd1 video-intro">
                     <div id="j-courseImg" class="m-recimg canlick">
-                        <video width="100%" height="100%" controls>
+                        <video width="100%" height="100%" controls="controls">
                             <source src="{{lesson.videoLink}}" type="video/*">
                         </video>
                     </div>
@@ -120,14 +120,14 @@
         <div class="u-hot-course-title">为您推荐</div>
         <ul class="m-hot-course-box">
 
-            <li class="u-hot-course f-cb">
+            <li class="u-hot-course f-cb" ng-repeat="x in tj_lesson">
                 <div class="f-fl">
-                    <a target="_blank" href="#">
-                        <img src="http://edu-image.nosdn.127.net/5B8826377EE623C7B6328E8F8B8D2871.png?imageView&amp;thumbnail=510y288&amp;quality=100" width="130" height="80">
+                    <a ng-click="goTjLesson(x)">
+                        <img src="{{x.imgLink}}?imageView&amp;thumbnail=510y288&amp;quality=100" width="130" height="80">
                     </a>
                 </div>
                 <div class="f-fl" style="float: right;">
-                    <div class="title f-f0"><a target="_blank" href="#">Python语言程序设计</a></div>
+                    <div class="title f-f0"><a target="_blank" >{{x.lessonName}}</a></div>
                 </div>
             </li>
 
