@@ -61,7 +61,7 @@ public class SLController {
         return slService.getLessonByStuId(stuId);
     }
 
-    @PreAuthorize("hasRole('student')")
+//    @PreAuthorize("hasRole('student')")
     @ApiOperation(value = "分页根据学生id获取课程信息", notes = "分页根据学生id获取课程信息",httpMethod = "GET")
     @GetMapping("/getLessonPagesByStuId")
     public List<LessonEntity> getLessonPagesByStuId(@RequestParam @ApiParam(value = "学生id") String stuId,
@@ -71,7 +71,7 @@ public class SLController {
     }
 
 
-    @PreAuthorize("hasRole('student')")
+//    @PreAuthorize("hasRole('student')")
     @ApiOperation(value = "获取页数：分页根据学生id获取课程信息", notes = "获取页数：分页根据学生id获取课程信息",httpMethod = "GET")
     @GetMapping("/getLessonPagesNumByStuId")
     public Object getLessonPagesNumByStuId(@RequestParam @ApiParam(value = "学生id") String stuId,

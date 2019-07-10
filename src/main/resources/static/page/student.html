@@ -330,6 +330,17 @@
                             </td>
                         </tr>
                     </template>
+
+                    <div style="text-align: center; position: relative;top:100px"  >
+                        <ul class="pagination">
+                            <li><a href ng-click="prevPage()">&laquo;</a></li>
+                            <li ng-repeat="page in pages">
+                                <a href ng-click="selectPage(page)" class="pageIndex">{{page}}</a>
+                            </li>
+                            <li><a href ng-click="nextPage()">&raquo;</a></li>
+                        </ul><br>
+                        <p>第<span>{{currentPage}}</span>页 / 共{{totalPage}}页</p>
+                    </div>
                     <!-- 设置面板End -->
 
 
