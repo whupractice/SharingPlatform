@@ -283,7 +283,7 @@ select:focus {
     position: fixed;
     z-index: 0;
     width: 20% !important;
-    background: #fff;
+    background: #dbd2c424;
     padding: 10px 30px !important;
     box-shadow: 3px 0px 8px rgba(0, 0, 0, 0.05);
     height: 100%; }
@@ -302,7 +302,7 @@ select:focus {
 #sidebar ul li a {
     display: block;
     padding: 10px 20px;
-    color: #888; }
+    color: #dfdcad; }
 #sidebar ul li a .fa {
     margin-right: 5px; }
 #sidebar ul li a:hover {
@@ -314,6 +314,8 @@ select:focus {
     padding: 20px 3.5rem !important;
     margin-right: 12px;
     margin-top: 100px;
+    position: relative;
+    top: 20px;
 }
 #main-content .page-heading {
     margin-bottom: 20px; }
@@ -336,7 +338,7 @@ select:focus {
     padding: 10px 20px; }
 
 .large-card {
-    background: #fff;
+    background: #feefd83b;
     padding: 30px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
     margin-bottom: 2.2rem; }

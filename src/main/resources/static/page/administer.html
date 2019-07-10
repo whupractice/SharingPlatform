@@ -15,7 +15,8 @@
 
 <div class="row" ng-controller="administerCtrl" ng-init="initManager()">
     <div id="sidebar" class="column" style="margin-top: 100px">
-        <h5>Navigation</h5>
+        <br>
+        <br>
         <ul>
             <li><a ng-click="jump(1)"><em class="fa fa-university"></em> 系统管理员</a></li>
             <li><a ng-click="jump(2)"><em class="fa fa fa-th"></em> 课程管理员</a></li>
@@ -32,39 +33,38 @@
         <div class="row grid-responsive">
             <div class="column page-heading">
                 <div class="large-card">
-                    <h1 style="margin-bottom: 10px">Hey {{currentSystemManager.nickName}}</h1>
-                    <p class="text-large">尊贵的系统管理员，伊万诺夫提醒您：
-                        <span style="font-weight: bold">操作千万条，谨慎第一条，操作不规范，管理两行泪。</span></p>
-                    <p style="float: right"> -- 最爱您的伊万诺夫</p>
+                    <h1 style="color: #dfdcad;margin-bottom: 10px">Hey {{currentSystemManager.nickName}}</h1>
+                    <p class="text-large" style="color: #f0f8ff8a">尊贵的系统管理员，伊万诺夫提醒您：
+                        <span style="font-weight: bold";style="color: #f0f8ff8a">操作千万条，谨慎第一条，操作不规范，管理两行泪。</span></p>
+                    <p style="float: right;color: #f0f8ff8a"> -- 最爱您的伊万诺夫</p>
                 </div>
             </div>
         </div>
 
         <div ng-if="page_1()">
         <!--系统管理员-->
-        <h5 class="mt-2" style="margin-bottom: 20px">系统管理员</h5>
-        <div class="panel panel-default table7_demo king-table7-demo3">
-            <div class="panel-heading">
+        <div class="panel panel-default table7_demo king-table7-demo3" style="background-color:#a9f4de24;border-color: #a9f4de24;">
+            <div class="panel-heading" style="background: #dbd2c424;color: #dfdcad;border-color: #a9f4de24;">
                 系统管理员列表
             </div>
             <div>
-                <table class="table table-hover mb0">
-                    <thead>
+                <table class="table table-hover mb0" style="background: #ffffff00;color: #dfdcad;">
+                    <thead style="background-color: #ffffff00;">
                     <tr class="active">
-                        <th style="width:150px">姓名</th>
-                        <th style="width:250px">昵称</th>
-                        <th style="width:100px">性别</th>
-                        <th style="width:300px">身份</th>
-                        <th style="width: 200px">操作</th>
+                        <th style="width:150px;background-color: #ffffff00;border-color: #ffffff00">姓名</th>
+                        <th style="width:250px;background-color: #ffffff00;border-color: #ffffff00">昵称</th>
+                        <th style="width:100px;background-color: #ffffff00;border-color: #ffffff00">性别</th>
+                        <th style="width:300px;background-color: #ffffff00;border-color: #ffffff00">身份</th>
+                        <th style="width:200px;background-color: #ffffff00;border-color: #ffffff00">操作</th>
                     </tr>
                     </thead>
-                    <tbody id="datas">
+                    <tbody id="datas" style="border-color: #ffffff00">
                     <tr ng-repeat="x in allSystemManager"  style="display: table-row; opacity: 1;">
-                        <td>{{x.realName}}</td>
-                        <td>{{x.nickName}}</td>
-                        <td>{{x.sex}}</td>
-                        <td>系统管理员</td>
-                        <td>
+                        <td style="border-color: #ffffff00">{{x.realName}}</td>
+                        <td style="border-color: #ffffff00">{{x.nickName}}</td>
+                        <td style="border-color: #ffffff00">{{x.sex}}</td>
+                        <td style="border-color: #ffffff00">系统管理员</td>
+                        <td style="border-color: #ffffff00">
                             <button class="btn btn-info" data-toggle="modal" data-target="#infoModal"
                             ng-click="bindingSys(x)">详情</button>
                             <button class="btn btn-danger" ng-click="deleteSys(x)">注销</button>
@@ -162,14 +162,18 @@
 
         <div ng-if="page_2()">
 
-        <h5 class="mt-2" style="margin-bottom: 20px">课程管理员</h5>
-        <div class="panel panel-default table7_demo king-table7-demo3">
-            <div class="panel-heading">
+        <div class="panel panel-default table7_demo king-table7-demo3" style="background:#a9f4de24;border-color:#a9f4de24;">
+            <div class="panel-heading" style="background: #dbd2c424;color: #dfdcad;border-color: #a9f4de24;">
                 课程管理员列表
             </div>
             <div class="panel-body panel-search-body">
 
-                <button class="btn btn-primary pull-right" ng-click="searchByType()"
+                <button class="btn btn-primary pull-right" ng-click="searchByType()" style="    position: relative;
+    left: 10px;
+    top: 10px;
+    background-color: #00ffff00;
+    border-color: white;
+    color: #dfdcad;"
                 >搜索</button>
                 <div class="input-group pull-right king-input-group">
                     <input type="text" class="form-control pl30 king-form-control" placeholder="请输入关键字"
@@ -179,7 +183,13 @@
                 <button class="king-btn king-radius king-primary" title="添加变量" data-toggle="modal"
                 data-target="#addLModal">添加成员</button>
                 <div class="form-group pull-right">
-                    <select id="keyType" class="form-control service-sub-title">
+                    <select id="keyType" class="form-control service-sub-title" style="    min-height: 40px;
+    min-width: 60px;
+    background-color: #f8f9f900;
+    color: antiquewhite;
+    text-align-last: center;
+    position: relative;
+    right: 20px;">
                         <option value="name" selected="selected">姓名</option>
                         <option value="school">学校</option>
                     </select>
@@ -187,23 +197,32 @@
 
             </div>
             <div>
-                <table class="table table-hover mb0">
-                    <thead>
-                    <tr class="active">
-                        <th style="width:150px">姓名</th>
-                        <th style="width:100px">学校</th>
-                        <th style="width:100px">学院</th>
-                        <th style="width:300px">身份</th>
-                        <th style="width: 200px">操作</th>
+                <table class="table table-hover mb0" style="
+    background: #dbd2c424;
+    color: #dfdcad;">
+                    <thead style="    background: #dbd2c400;"
+                    <tr class="active" style="    background: #dbd2c400;
+    color: #dfdcad;
+    border-color: #a9f4de24;">
+                        <th style="width:150px;    background: #e2d9cb00;
+    border-color: #ffffff00;">姓名</th>
+                        <th style="width:100px;    background: #e2d9cb00;
+    border-color: #ffffff00;">学校</th>
+                        <th style="width:100px;    background: #e2d9cb00;
+    border-color: #ffffff00;">学院</th>
+                        <th style="width:300px;    background: #e2d9cb00;
+    border-color: #ffffff00;">身份</th>
+                        <th style="width: 200px;    background: #e2d9cb00;
+    border-color: #ffffff00;">操作</th>
                     </tr>
                     </thead>
                     <tbody id="datas_2">
                     <tr ng-repeat="x in allLessonManager" style="display: table-row; opacity: 1;">
-                        <td>{{x.realName}}</td>
-                        <td>{{x.schoolName}}</td>
-                        <td>{{x.academyName}}</td>
-                        <td>课程管理员</td>
-                        <td>
+                        <td style="border-bottom-color: transparent;">{{x.realName}}</td>
+                        <td style="border-bottom-color: transparent;">{{x.schoolName}}</td>
+                        <td style="border-bottom-color: transparent;">{{x.academyName}}</td>
+                        <td style="border-bottom-color: transparent;">课程管理员</td>
+                        <td style="border-bottom-color: transparent;">
                             <button class="btn btn-info" data-toggle="modal" data-target="#infoModal_2"
                             ng-click="bindingLeMan(x)">修改</button>
                             <button class="btn btn-danger" data-toggle="modal" data-target="#deleteLModal"
@@ -212,10 +231,10 @@
                     </tr>
                     </tbody>
                     <tfoot>
-                    <tr>
-                        <td colspan="5">
+                    <tr style="background: transparent;">
+                        <td colspan="5" style="background: transparent;border-bottom-color: transparent;">
                             <div class="pull-right king-page-box">
-                                <p class="pull-left mt15 mr15">
+                                <p class="pull-left mt15 mr15" style="color: #dddaab;">
                                     共<span id="total_2">{{totalP}}</span>条记录，当前第{{currentP}}页
                                 </p>
                                 <ul class="pagination pagination-sm pull-left mt10" style="margin-top: 10px">
@@ -353,30 +372,35 @@
         <div ng-if="page_3()">
 
             <div class="container-fluid">
-                <div class="panel panel-default pannel-overflow panel-list">
-                    <div class="panel-heading">
+                <div class="panel panel-default pannel-overflow panel-list" style="background-color: #a9f4de24;
+    border-color: transparent;">
+                    <div class="panel-heading" style="background-color: #a9f4de24;
+    border-color: transparent;color: #dfdcad">
                         <i class="fa fa-list-ul"></i>已注册学校列表
                     </div>
-                    <div class="panel-btns" style="margin-top: 40px">
+                    <div class="panel-btns" style="margin-top: 40px;    background-color: #a9f4de24;
+    border-color: transparent;">
                         <a class="king-btn king-radius king-primary" title="保存绑定关系"
                         data-toggle="modal" data-target="#addSModal">增添学校</a>
                         <a class="king-btn king-radius king-primary" title="保存绑定关系"
                            data-toggle="modal" data-target="#schoolImgModal">上传图片</a>
                     </div>
-                    <div class="panel-body">
-                        <div class="panel-content container">
-                            <ul style="list-style: none">
-                                <li ng-repeat="x in allSchools">
-                                    <a ng-click="getPage3Academy(x)">
-                                        <i class="fa fa-bank"></i>{{x.schoolName}}
+                    <div class="panel-body" >
+                        <div class="panel-content container" >
+                            <ul style="list-style: none;">
+                                <li ng-repeat="x in allSchools" >
+                                    <a ng-click="getPage3Academy(x)" style="color: #dfdcad">
+                                        <i class="fa fa-bank" ></i>{{x.schoolName}}
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default pannel-overflow panel-tables">
-                    <div class="panel-heading">
+                <div class="panel panel-default pannel-overflow panel-tables" style="    background-color: #a9f4de24;
+    border-color: transparent;">
+                    <div class="panel-heading" style="    background-color: #a9f4de24;
+    border-color: transparent;color: #dfdcad">
                         <i class="fa fa-list-ul"></i>已注册学院列表
                     </div>
                     <div class="panel-btns">
@@ -384,26 +408,33 @@
                         data-target="#addAModal">增添学院</a>
                         <a class="king-btn king-radius king-danger" title="保存绑定关系" style="color: white"
                         ng-click="deleteAcademy()">删除学院</a>
-                        <span class="hint-info"><i class="hint"></i>勾选配置文件以进行绑定，反选以进行解绑</span>
+                        <span class="hint-info" style="color: #dfdcad"><i class="hint"></i>勾选配置文件以进行绑定，反选以进行解绑</span>
                     </div>
                     <div class="panel-body">
                         <div class="panel-content">
                             <div class="table-group">
-                                <table class="table table-out-bordered table-header-bg table-hover">
+                                <table class="table table-out-bordered table-header-bg table-hover" style="    background-color: #a9f4de00;
+    border-color: transparent;">
                                     <thead>
                                     <tr>
-                                        <th style="width:38px;text-align:center;"><input type="radio" value=""></th>
-                                        <th>学院名</th>
-                                        <th>所属大学</th>
+                                        <th style="width:38px;text-align:center;    background-color: #a9f4de00;
+    border-color: transparent;"><input type="radio" value=""></th>
+                                        <th style="    background-color: #a9f4de00;
+    border-color: transparent;color: #dfdcad">学院名</th>
+                                        <th  style="    background-color: #a9f4de00;
+    border-color: transparent;color: #dfdcad">所属大学</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
                                     <tr ng-repeat="x in bindSchoolAcademys">
-                                        <td align="center">
+                                        <td align="center" style="    background-color: #a9f4de00;
+    border-color: transparent;">
                                             <input type="radio" name="selection" value="{{x.academyId}}"></td>
-                                        <td>{{x.academyName}}</td>
-                                        <td>{{x.schoolName}}</td>
+                                        <td style="    background-color: #a9f4de00;
+    border-color: transparent;color: #dfdcad">{{x.academyName}}</td>
+                                        <td style="    background-color: #a9f4de00;
+    border-color: transparent;color: #dfdcad">{{x.schoolName}}</td>
 
                                     </tr>
                                     </tbody>
