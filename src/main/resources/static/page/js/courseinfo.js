@@ -119,6 +119,10 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     $scope.CommentPage = function(){
         return $scope.now == 2;
     };
+    //显示目录区
+    $scope.CategoryPage = function(){
+        return $scope.now == 3;
+    };
 
 
     $scope.getTeachers = function () {

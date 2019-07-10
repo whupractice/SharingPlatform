@@ -63,7 +63,7 @@
                                         <div class="star">
                                             <span style="color:#e5ecdd;">课程星级: </span>
                                         </div>
-                                            <span data-class="star"><i class="fa fa-star"></i></span>
+                                            <span data-class="star"><i class="fa fa-star" ></i></span>
                                         </div>
 
                                         <div  ng-if="judge()" class="star">
@@ -142,15 +142,19 @@
                     <ul class="nav nav-tabs primary">
                         <li class="active">
                             <a ng-click="jump(1)" data-toggle="tab" aria-expanded="true">
-                                <i class="fa fa-home"></i> 课程详情
+                                <i class="fa fa-home"style="    font-size: 26px;"></i> 课程详情
                             </a>
                         </li>
                         <li class="">
                             <a ng-click="jump(2)" data-toggle="tab" aria-expanded="false">
-                                <i class="fa fa-weixin"></i> 评论区
+                                <i class="fa fa-weixin"style="    font-size: 26px;"></i> 评论区
                             </a>
                         </li>
-
+                        <li class="">
+                            <a ng-click="jump(3)" data-toggle="tab" aria-expanded="false">
+                                <i class="fa fa-bars"style="    font-size: 26px;"></i>课程目录
+                            </a>
+                        </li>
                     </ul>
 
 
@@ -225,27 +229,7 @@
 
                         <div class="" id="profile-1" ng-if="CommentPage()">
                             <div class="uprofile-content">
-<!--                                <div class="enter_post col-md-12 col-sm-12 col-xs-12">-->
-
-<!--                                <div class="form-group">-->
-<!--                                    <div class="controls">-->
-<!--                                        <textarea class="form-control autogrow" id="field-7" placeholder="What's on your mind?" style="overflow: hidden; overflow-wrap: break-word; height: 70px;"></textarea>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="enter_post_btns col-md-12 col-sm-12 col-xs-12">-->
-<!--                                    <a href="#" class="btn btn-md pull-right btn-primary">Post</a>-->
-<!--                                    <a href="#" class="btn btn-md pull-right btn-link"><i class="fa fa-image"></i></a>-->
-<!--                                    <a href="#" class="btn btn-md pull-right btn-link"><i class="fa fa-map-marker"></i></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-
                                 <div class="clearfix"></div>
-
-
-
-
-
-
                                 <div ng-repeat="x in sl" ng-if="judgeC(x)" class="uprofile_wall_posts col-md-12 col-sm-12 col-xs-12">
                                     <br>
                                     <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
@@ -270,66 +254,7 @@
                                         </div>
 
 
-<!--                                        <div class="comment">-->
-<!--                                            <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">-->
-<!--                                                <img data-src-retina="data/profile/avatar-3.png" data-src="data/profile/avatar-3.png" src="data/profile/avatar-3.png" alt="">-->
-<!--                                            </div>-->
-<!--&lt;!&ndash;                                            <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="username">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <span class="bold">Fin</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="info text-muted">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    Perfect info for the project. Great work :)&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="info-details">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <ul class="list-unstyled list-inline">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <li><a href="#" class="text-muted">10 Minutes ago</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <li><a href="#" class="text-orange"><i class="fa fa-heart-o"></i> Like</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <li><a href="#" class="text-muted">More</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
 
-<!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                                            <div class="clearfix"></div>-->
-<!--                                        </div>-->
-
-
-<!--                                        <div class="comment">-->
-<!--                                            <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">-->
-<!--                                                <img data-src-retina="data/profile/avatar-4.png" data-src="data/profile/avatar-4.png" src="data/profile/avatar-4.png" alt="">-->
-<!--                                            </div>-->
-<!--&lt;!&ndash;                                            <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="username">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <span class="bold">Arun</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="info text-muted">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    Keep it up. Much appreciated effort.&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="info-details">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <ul class="list-unstyled list-inline">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <li><a href="#" class="text-muted">8 Minutes ago</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <li><a href="#" class="text-orange"><i class="fa fa-heart"></i> Liked</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <li><a href="#" class="text-muted">More</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                                            <div class="clearfix"></div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="comment comment-input">-->
-
-<!--                                            <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">-->
-<!--                                                <img data-src-retina="data/profile/profile.png" data-src="data/profile/profile.png" src="data/profile/profile.png" alt="">-->
-<!--                                            </div>-->
-<!--                                            <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">-->
-<!--                                                <div class="input-group primary  col-md-6">-->
-<!--                                                    <input type="text" class="form-control" placeholder="Post a comment">-->
-<!--                                                    <span class="input-group-addon">-->
-<!--                                                                    <i class="fa fa-rocket"></i>-->
-<!--                                                                </span>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
                                         </div>
 
                                     </div>
@@ -337,18 +262,32 @@
                                 </div>
 
 
-
-
-
                             </div>
+
+                        <!-目录-->
+                        <div ng-if="CategoryPage()" style="color: #dfdcad;">
+                            <ul style="margin-top: 20px;
+    margin-left: 60px;">
+
+                                <li class="Cate" style="margin-bottom: 10px;">1.第一节</li>
+                                <li class="Cate"style="margin-bottom: 10px;">2.第二节</li>
+                                <li class="Cate"style="margin-bottom: 10px;">3.第三节</li>
+
+
+                            </ul>
+                            </div>
+
                         </div>
 
                     </div>
+
                 </div>
 
                         <div class="clearfix"><br></div>
                 </div>
+
             </div>
+
 <!--        </div>-->
     <!--课程信息-->
     </div>
