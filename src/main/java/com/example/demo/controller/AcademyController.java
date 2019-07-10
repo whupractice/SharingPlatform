@@ -38,7 +38,7 @@ public class AcademyController {
 
     @PreAuthorize("hasRole('lessonManager')")
     @ApiOperation(value = "根据学校名获取学院列表", notes = "根据学校名获取学院列表",httpMethod = "GET")
-    @ApiParam(name = "schoolName",value = "学校名")
+    @ApiParam(name = "/schoolName",value = "学校名")
     @GetMapping("/schoolName")
     public List<AcademyEntity> getBySchoolName(@RequestParam String schoolName) {
         return academyService.getBySchoolName(schoolName);
@@ -46,7 +46,6 @@ public class AcademyController {
 
 
     @ApiOperation(value = "根据学校名和学院名获取学院列表", notes = "根据学校名和学院名获取学院列表",httpMethod = "GET")
-
     @GetMapping("/schoolNameAndAcademyName")
     public List<AcademyEntity> getBySchoolNameAndAcademyName(@RequestParam @ApiParam(name = "schoolName",value = "学校名") String schoolName,
                                                              @RequestParam @ApiParam(name = "academyName",value = "学院名") String academyName) {

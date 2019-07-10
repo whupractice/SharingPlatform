@@ -80,7 +80,7 @@ public class SLService {
         long id = Long.parseLong(stuId);
         int page = Integer.parseInt(page1);
         int num = Integer.parseInt(num1);
-        List<LessonEntity> lessonEntities = slRepository.getLessonPagesByStuId(id);
+        List<LessonEntity> lessonEntities = lessonRepository.getLessonPagesByStuId(id);
         List<LessonEntity> result = new ArrayList();
         if(lessonEntities == null || lessonEntities.isEmpty()){
             return null;
@@ -98,7 +98,7 @@ public class SLService {
     public Object getLessonPagesNumByStuId(String stuId,String num1){
         long id = Long.parseLong(stuId);
         int num = Integer.parseInt(num1);
-        List<LessonEntity> lessonEntities = slRepository.getLessonPagesByStuId(id);
+        List<LessonEntity> lessonEntities = lessonRepository.getLessonPagesByStuId(id);
         int result = lessonEntities.size() / num;
         String json = "{\"numOfPages\":"+"\""+result+"\"}";
         JSONObject jsonObject = JSONObject.fromObject(json);

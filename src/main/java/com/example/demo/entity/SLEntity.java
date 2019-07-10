@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import com.example.demo.keys.SLKeys;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -29,8 +30,10 @@ public class SLEntity {
 
     private String evaluation;//评价
 
+    @ApiModelProperty(value = "星级",example = "1")
     private int star;//星级
 
+    @ApiModelProperty(value = "赞数",example = "1")
     private int praiseNum;//赞数
 
     private String evaTime;//评价时间

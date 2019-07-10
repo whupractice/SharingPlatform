@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -62,18 +63,19 @@ public class AcademyControllerTest {
     }
 
     @Test
+    @WithMockUser(roles={"lessonManager"})
     public void getBySchoolName() throws Exception{
         List<AcademyEntity> academyEntities = new ArrayList<>();
         AcademyEntity academyEntity = new AcademyEntity();
         academyEntity.setAcademyId(123);
         academyEntity.setSchoolName("武汉大学");
         academyEntities.add(academyEntity);
-        Mockito.when(academyRepository.getByAcademyName("武汉大学")).thenReturn(academyEntities);
+        Mockito.when(academyRepository.getBySchoolName("武汉大学")).thenReturn(academyEntities);
         mockMvc.perform(MockMvcRequestBuilders.get("/academy/schoolName")
                 .param("schoolName","武汉大学"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("计算机学院")));
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("武汉大学")));
     }
 
     @Test
@@ -84,7 +86,7 @@ public class AcademyControllerTest {
         academyEntity.setAcademyName("计算机学院");
         academyEntity.setSchoolName("武汉大学");
         academyEntities.add(academyEntity);
-        Mockito.when(academyRepository.getByAcademyName("武汉大学")).thenReturn(academyEntities);
+        Mockito.when(academyRepository.getBySchoolNameAndAcademyName("武汉大学","计算机学院")).thenReturn(academyEntities);
         mockMvc.perform(MockMvcRequestBuilders.get("/academy/schoolNameAndAcademyName")
                 .param("schoolName","武汉大学")
                 .param("academyName","计算机学院"))
@@ -95,6 +97,7 @@ public class AcademyControllerTest {
     }
 
     @Test
+    @WithMockUser(roles={"manager"})
     public void insertAcademy() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
@@ -118,6 +121,7 @@ public class AcademyControllerTest {
     }
 
     @Test
+    @WithMockUser(roles={"manager"})
     public void deleteByAcademyId() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
