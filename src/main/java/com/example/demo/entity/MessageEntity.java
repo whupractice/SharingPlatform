@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "message")
 public class MessageEntity {
-    MessageEntity(){}
+    public MessageEntity(){}
     @Id
     @GeneratedValue
     private long messageId;//消息号
