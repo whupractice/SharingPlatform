@@ -66,7 +66,7 @@ public class SchoolController {
 
 
     @ApiOperation(value = "根据名称查询学校", notes = "根据名称查询学校",httpMethod = "GET")
-    @ApiParam(name = "schoolName",value = "学校名关键词")
+    @ApiParam(name = "schoolName",value = "学校名")
     @GetMapping("/schoolName")
     public SchoolEntity getSchoolByName(@RequestParam(value = "schoolName") String schoolName) {
         return schoolService.getSchoolByName(schoolName);
@@ -96,8 +96,8 @@ public class SchoolController {
     @ApiOperation(value = "更新学校", notes = "更新学校",httpMethod = "PUT")
     @ApiParam(name = "school",value = "学校实体,其中schoolId不能为空")
     @PutMapping("")
-    public void updateSchool(@RequestBody SchoolEntity school) {
-        schoolService.insertSchool(school);
+    public boolean updateSchool(@RequestBody SchoolEntity school) {
+        return schoolService.insertSchool(school);
     }
 
 

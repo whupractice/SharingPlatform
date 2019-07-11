@@ -124,23 +124,23 @@ public class LessonControllerTest {
         List<LessonEntity> lessonEntities = new ArrayList<>();
         LessonEntity lessonEntity = new LessonEntity();
         lessonEntity.setLessonId(123);
-        lessonEntity.setSchoolName("武汉大学");
+        lessonEntity.setSchoolName("加里敦大学");
         lessonEntities.add(lessonEntity);
 
         Mockito.doAnswer(invocationOnMock -> {
             Object[] args = invocationOnMock.getArguments();
             String school = (String) args[0];
-            Assert.assertEquals(school,"武汉大学");
+            Assert.assertEquals(school,"加里敦大学");
             bitSet.set(0, true);
             return lessonEntities;
         }).when(lessonRepository).getBySchoolName(Mockito.any(String.class));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/lesson/schoolName")
-                .param("schoolName","武汉大学"))
+                .param("schoolName","加里敦大学"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
-                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("武汉大学")));
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("加里敦大学")));
 
         Assert.assertTrue(bitSet.get(0));
     }
@@ -160,19 +160,19 @@ public class LessonControllerTest {
     @Test
     public void getLessonPagesBySchoolName() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/lesson/pagesBySchoolName")
-                .param("schoolName","武汉大学"))
+                .param("schoolName","加里敦大学"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("武汉大学")));
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("加里敦大学")));
     }
 
     @Test
     public void getLessonPagesByLessonName() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/lesson/pagesByLessonName")
-                .param("lessonName","篮球课"))
+                .param("lessonName","篮球"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("篮球课")));
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("篮球")));
     }
 
     @Test
@@ -185,13 +185,13 @@ public class LessonControllerTest {
             Object[] args = invocationOnMock.getArguments();
             LessonEntity lessonEntity = (LessonEntity) args[0];
             Assert.assertEquals(lessonEntity.getLessonId(),123);
-            Assert.assertEquals(lessonEntity.getLessonName(),"篮球课");
-            Assert.assertEquals(lessonEntity.getSchoolName(),"武汉大学");
+            Assert.assertEquals(lessonEntity.getLessonName(),"篮球");
+            Assert.assertEquals(lessonEntity.getSchoolName(),"加里敦大学");
             bitSet.set(0, true);
             return null;
         }).when(lessonRepository).save(Mockito.any(LessonEntity.class));
 
-        String jsonData = "{\"lessonId\":\"123\",\"lessonName\":\"篮球课\",\"schoolName\":\"武汉大学\"}";
+        String jsonData = "{\"lessonId\":\"123\",\"lessonName\":\"篮球\",\"schoolName\":\"加里敦大学\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/lesson")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonData))
                 .andDo(MockMvcResultHandlers.print())
@@ -209,13 +209,13 @@ public class LessonControllerTest {
             Object[] args = invocationOnMock.getArguments();
             LessonEntity lessonEntity = (LessonEntity) args[0];
             Assert.assertEquals(lessonEntity.getLessonId(),123);
-            Assert.assertEquals(lessonEntity.getLessonName(),"篮球课");
-            Assert.assertEquals(lessonEntity.getSchoolName(),"武汉大学");
+            Assert.assertEquals(lessonEntity.getLessonName(),"篮球");
+            Assert.assertEquals(lessonEntity.getSchoolName(),"加里敦大学");
             bitSet.set(0, true);
             return null;
         }).when(lessonRepository).save(Mockito.any(LessonEntity.class));
 
-        String jsonData = "{\"lessonId\":\"123\",\"lessonName\":\"篮球课\",\"schoolName\":\"武汉大学\"}";
+        String jsonData = "{\"lessonId\":\"123\",\"lessonName\":\"篮球\",\"schoolName\":\"加里敦大学\"}";
         mockMvc.perform(MockMvcRequestBuilders.put("/lesson")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonData))
                 .andDo(MockMvcResultHandlers.print())
@@ -252,37 +252,44 @@ public class LessonControllerTest {
         List<LessonEntity> lessonEntities = new ArrayList<>();
         LessonEntity lessonEntity = new LessonEntity();
         lessonEntity.setLessonId(123);
-        lessonEntity.setSchoolName("武汉大学");
-        lessonEntity.setAcademyName("计算机学院");
+        lessonEntity.setSchoolName("加里敦大学");
+        lessonEntity.setAcademyName("自动化学院");
         lessonEntities.add(lessonEntity);
 
         Mockito.doAnswer(invocationOnMock -> {
             Object[] args = invocationOnMock.getArguments();
-            Assert.assertEquals(args[0],"武汉大学");
-            Assert.assertEquals(args[1],"计算机学院");
+            Assert.assertEquals(args[0],"加里敦大学");
+            Assert.assertEquals(args[1],"自动化学院");
             bitSet.set(0, true);
             return lessonEntities;
         }).when(lessonRepository).getLessonsBySchoolAndAcademy(Mockito.any(String.class),Mockito.any(String.class));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/lesson/schoolAndAcademy")
-                .param("schoolName","武汉大学")
-                .param("academyName","计算机学院"))
+                .param("schoolName","加里敦大学")
+                .param("academyName","自动化学院"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
-                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("武汉大学")))
-                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("计算机学院")));
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("加里敦大学")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("自动化学院")));
 
         Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void getLessonPagesBySchoolAndAcademy() {
-
+    public void getLessonPagesBySchoolAndAcademy() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/lesson/pagesBySchoolAndAcademy")
+                .param("schoolName","加里敦大学")
+                .param("academyName","自动化学院"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("加里敦大学")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("自动化学院")));
     }
 
     @Test
     public void getTjLessonByStuPhone() {
+
     }
 
     @Test

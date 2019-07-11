@@ -40,8 +40,11 @@ public class AcademyControllerTest {
         academyEntity.setAcademyId(123);
         academyEntity.setAcademyName("计算机学院");
         academyEntities.add(academyEntity);
+
         Mockito.when(academyRepository.findAll()).thenReturn(academyEntities);
-        mockMvc.perform(MockMvcRequestBuilders.get("/academy")).andDo(MockMvcResultHandlers.print())
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/academy"))
+                .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("计算机学院")));
@@ -55,8 +58,10 @@ public class AcademyControllerTest {
         academyEntity.setAcademyName("计算机学院");
         academyEntities.add(academyEntity);
         Mockito.when(academyRepository.getByAcademyName("计算机学院")).thenReturn(academyEntities);
-        mockMvc.perform(MockMvcRequestBuilders.get("/academy/academyName")
+        mockMvc.perform(MockMvcRequestBuilders
+                .get("/academy/academyName")
                 .param("academyName","计算机学院"))
+
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("计算机学院")));
