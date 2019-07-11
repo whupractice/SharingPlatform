@@ -45,6 +45,8 @@ public class StudentEntity {
 
     private String introduction;//个人介绍
 
+    private String imgLink;//图片链接
+
 
     public long getPhone() {
         return phone;
@@ -140,5 +142,13 @@ public class StudentEntity {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+
+    public void setImgLink(String imgLinkl) {
+        this.imgLink = imgLinkl;
     }
 }

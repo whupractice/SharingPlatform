@@ -244,7 +244,6 @@ public class LessonController {
     public void uploadImg(@RequestParam("img")@ApiParam(value = "img") MultipartFile file,
                        @RequestParam("fileName")@ApiParam(value = "fileName") String fileName){
         try {
-            String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"template";
             File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
             if(!path2.exists()) path2 = new File("");
             //如果上传目录为/static/img/lesson/，则可以如下获取：

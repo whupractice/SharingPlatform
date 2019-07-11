@@ -15,9 +15,12 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -291,5 +294,31 @@ public class StudentController {
     public void getAllGraph(){
         studentService.getAllGraph();
     }
+
+
+
+    @PreAuthorize("hasRole('student')")
+    @ApiOperation(value = "上传学生图片",notes = "上传学生图片",httpMethod = "POST")
+    @PostMapping("/imgUpload")
+    public void uploadImg(@RequestParam("img")@ApiParam(value = "img") MultipartFile file,
+                          @RequestParam("fileName")@ApiParam(value = "fileName") String fileName) {
+        try {
+            File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
+            if(!path2.exists()) path2 = new File("");
+            File upload2 = new File(path2.getAbsolutePath(),"img/student/");
+            if(!upload2.exists()) upload2.mkdirs();
+            String path=upload2.getAbsolutePath()+"/"+fileName;
+            File img = new File(path);
+            if(!img.exists())
+                img.createNewFile();//不存在则创建新文件
+            file.transferTo(img);
+            StudentEntity oldStu = studentService.getStuById(fileName);
+            oldStu.setImgLink("../img/student/"+fileName);
+            studentService.insertStudent(oldStu);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 }
