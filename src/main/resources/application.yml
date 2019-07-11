@@ -1,23 +1,3 @@
-#spring:
-#  servlet:
-#    multipart:
-#      enabled: true
-#      max-file-size: 100MB
-#      max-request-size: 100MB
-#  resources:
-#    static-locations: classpath:/static/
-#  profiles:
-#    active: dev
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://39.96.88.130/sharingdb?serverTimezone=GMT&characterEncoding=utf-8
-#    username: xsy
-#    password: 123
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: true
-
 spring:
   servlet:
     multipart:
@@ -30,10 +10,30 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/sharingdb?serverTimezone=GMT&characterEncoding=utf-8
-    username: root
-    password: root
+    url: jdbc:mysql://39.96.88.130/sharingdb?serverTimezone=GMT&characterEncoding=utf-8
+    username: xsy
+    password: 123
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+#
+#spring:
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 100MB
+#      max-request-size: 100MB
+#  resources:
+#    static-locations: classpath:/static/
+#  profiles:
+#    active: dev
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/sharingdb?serverTimezone=GMT&characterEncoding=utf-8
+#    username: root
+#    password: root
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
