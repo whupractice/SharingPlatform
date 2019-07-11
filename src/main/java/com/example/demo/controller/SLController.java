@@ -105,7 +105,7 @@ public class SLController {
     @ApiOperation(value = "根据课程号获取选择这门课程的学生数量", notes = "根据课程号获取选择这门课程的学生数量",httpMethod = "GET")
     @ApiParam(name = "lessonId",value = "课程号")
     @GetMapping("/getStuNumByLessonId")
-    public int getStuNumByLessonId(@RequestParam String lessonId){
+    public Object getStuNumByLessonId(@RequestParam String lessonId){
         return slService.getStuNumByLessonId(lessonId);
     }
 

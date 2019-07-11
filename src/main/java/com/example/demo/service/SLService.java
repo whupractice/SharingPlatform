@@ -133,9 +133,12 @@ public class SLService {
       * @Param       : [lessonId] -- 课程号
       * @return      : 这门课的选课学生数量
       */
-    public int getStuNumByLessonId(String lessonId){
+    public Object getStuNumByLessonId(String lessonId){
         long newId = Long.parseLong(lessonId);
-        return slRepository.getStuNumByLessonId(newId);
+        int num = slRepository.getStuNumByLessonId(newId);
+        String jsonData = "{\"num\":\""+num+"\"}";
+        JSONObject jsonObject = JSONObject.fromObject(jsonData);
+        return jsonObject;
     }
 
 

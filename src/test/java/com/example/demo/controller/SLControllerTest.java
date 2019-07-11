@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.LessonEntity;
 import com.example.demo.entity.SLEntity;
 import com.example.demo.entity.StudentEntity;
+import com.example.demo.keys.SLKeys;
 import com.example.demo.repository.LessonRepository;
 import com.example.demo.repository.SLRepository;
 import com.example.demo.repository.StudentRepository;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -236,19 +238,94 @@ public class SLControllerTest {
     }
 
     @Test
-    public void getStuNumByLessonId() {
+    public void getStuNumByLessonId() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
 
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long id = (long)args[0];
+            Assert.assertEquals(id,456);
+            bitSet.set(0, true);
+            return 8;
+        }).when(slRepository).getStuNumByLessonId(Mockito.any(long.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/sl/getStuNumByLessonId")
+                .param("lessonId","456"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("8")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("num")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void insertSL() {
+    public void insertSL() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            SLEntity slEntity = (SLEntity) args[0];
+            Assert.assertEquals(slEntity.getPhone(),123);
+            Assert.assertEquals(slEntity.getLessonId(),456);
+            bitSet.set(0, true);
+            return null;
+        }).when(slRepository).save(Mockito.any(SLEntity.class));
+
+        String jsonData = "{\"phone\":\"123\",\"lessonId\":\"456\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/sl")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void updateSL() {
+    public void updateSL() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            SLEntity slEntity = (SLEntity) args[0];
+            Assert.assertEquals(slEntity.getPhone(),123);
+            Assert.assertEquals(slEntity.getLessonId(),456);
+            bitSet.set(0, true);
+            return null;
+        }).when(slRepository).save(Mockito.any(SLEntity.class));
+
+        String jsonData = "{\"phone\":\"123\",\"lessonId\":\"456\"}";
+        mockMvc.perform(MockMvcRequestBuilders.put("/sl")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void deleteSL() {
+    public void deleteSL() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            SLKeys slKeys = (SLKeys)args[0];
+            Assert.assertEquals(slKeys.getPhone(),123);
+            Assert.assertEquals(slKeys.getLessonId(),456);
+            bitSet.set(0, true);
+            return null;
+        }).when(slRepository).deleteById(Mockito.any(SLKeys.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/sl/stuId/lessonId")
+                .param("stuId","123")
+                .param("lessonId","456"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
     }
 }
