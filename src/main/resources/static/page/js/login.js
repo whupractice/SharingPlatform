@@ -54,7 +54,8 @@ app.controller('loginCtrl', function ($scope, $http, $state) {   //Data是全局
                 url: '/student/register',
                 data: {
                     "phone": user,
-                    "pwd": pwd
+                    "pwd": pwd,
+                    "imgLink": "../img/user.jpg"
                 }
             }).then(function successCallback(response) {
                 if (response.data == true) {

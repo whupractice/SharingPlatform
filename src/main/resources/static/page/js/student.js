@@ -121,36 +121,40 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
 
     //更新学生信息
     $scope.updateStuInfo = function () {
-        var phone = window.localStorage.getItem('phone');
-        var token = window.localStorage.getItem('token');
-        var realName=$scope.currentStudent.realName;
-        var nickName = $('#nickName').val();
-        var pwd = $scope.currentStudent.pwd;
-        var sex = $('#sex').find('option:selected').text();
-        var email = $('#email').val();
-        var birth = $('#birth').val();
-        var introduction = $('#introduction').val();
+        // var phone = window.localStorage.getItem('phone');
+        // var token = window.localStorage.getItem('token');
+        // var realName=$scope.currentStudent.realName;
+        // var nickName = $('#nickName').val();
+        // var pwd = $scope.currentStudent.pwd;
+        // var sex = $('#sex').find('option:selected').text();
+        // var email = $('#email').val();
+        // var birth = $('#birth').val();
+        // var introduction = $('#introduction').val();
+        //
+        // $http({
+        //     method: 'PUT',
+        //     url: '/student/updateStudent',
+        //     headers: {
+        //         'Authorization': token
+        //     },
+        //     data:{
+        //         "phone": phone,
+        //         "birth": birth,
+        //         "email": email,
+        //         "pwd":pwd,
+        //         "realName":realName,
+        //         "nickName": nickName,
+        //         "introduction":introduction,
+        //         "sex": sex
+        //     }
+        // }).then(function successCallback(response) {
+        //     var token = response.data.token;
+        //     window.localStorage.setItem('token',token);
+        // })
 
-        $http({
-            method: 'PUT',
-            url: '/student/updateStudent',
-            headers: {
-                'Authorization': token
-            },
-            data:{
-                "phone": phone,
-                "birth": birth,
-                "email": email,
-                "pwd":pwd,
-                "realName":realName,
-                "nickName": nickName,
-                "introduction":introduction,
-                "sex": sex
-            }
-        }).then(function successCallback(response) {
-            var token = response.data.token;
-            window.localStorage.setItem('token',token);
-        })
+        $("#stuForm").ajaxForm(function (data) {
+            alert("上传成功！");
+        });
 
     };
 

@@ -232,6 +232,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             }
         }).then(function successCallback(response) {
             $scope.sl[i].nickName = response.data.nickName;
+            $scope.sl[i].imgLink = response.data.imgLink;
         })
     };
 

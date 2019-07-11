@@ -295,11 +295,15 @@ public class StudentController {
 
 
 
-    @PreAuthorize("hasRole('student')")
-    @ApiOperation(value = "上传学生图片",notes = "上传学生图片",httpMethod = "POST")
+    @ApiOperation(value = "上传学生图片和信息",notes = "上传学生图片和信息",httpMethod = "POST")
     @PostMapping("/imgUpload")
     public void uploadImg(@RequestParam("img")@ApiParam(value = "img") MultipartFile file,
-                          @RequestParam("fileName")@ApiParam(value = "fileName") String fileName) {
+                          @RequestParam("fileName")@ApiParam(value = "fileName") String fileName,
+                          @RequestParam("nickName")@ApiParam(value = "nickName") String nickName,
+                          @RequestParam("sex")@ApiParam(value = "sex") String sex,
+                          @RequestParam("introduction")@ApiParam(value = "introduction") String introduction,
+                          @RequestParam("birth")@ApiParam(value = "birth") String birth,
+                          @RequestParam("email")@ApiParam(value = "email")String email) {
         try {
             File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
             if(!path2.exists()) path2 = new File("");
@@ -312,6 +316,11 @@ public class StudentController {
             file.transferTo(img);
             StudentEntity oldStu = studentService.getStuById(fileName);
             oldStu.setImgLink("../img/student/"+fileName);
+            oldStu.setNickName(nickName);
+            oldStu.setEmail(email);
+            oldStu.setBirth(birth);
+            oldStu.setIntroduction(introduction);
+            oldStu.setSex(sex);
             studentService.insertStudent(oldStu);
         }catch (Exception e){
             e.printStackTrace();

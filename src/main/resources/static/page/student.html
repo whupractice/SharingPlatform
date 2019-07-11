@@ -70,20 +70,20 @@
             <div ng-if="_page_1_()">
                 <div class="king-content-wrap">
                     <div class="king-layout1-content" style="margin-left: 216px;">
-                        <form class="form-horizontal" style="margin-top: 60px">
+                        <form class="form-horizontal" style="margin-top: 60px" id="stuForm" action="/student/imgUpload" method="post">
                             <div class="form-group clearfix ">
                                 <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">昵称：</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control bk-valign-top" id="nickName"  style="position: relative;
-    top: -15px;background-color: transparent;color:#f7f0c6" value="{{currentStudent.nickName}}">
+    top: -15px;background-color: transparent;color:#f7f0c6" value="{{currentStudent.nickName}}" name="nickName">
                                 </div>
                             </div>
                             <!--头像-->
                             <div class="form-group clearfix " >
 
                                 <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">头像：</label>
-                                <input type="file" id="file" >
-                                <img class="f-fl" src="{{}}" width="75" height="75" id="btnReadPicture" style="position: relative;left: 250px;">
+                                <input type="file" id="file" name="img">
+                                <img class="f-fl" src="{{currentStudent.imgLink}}" width="75" height="75" id="btnReadPicture" style="position: relative;left: 250px;">
                             </div>
                             <div id="result"></div>
 
@@ -92,9 +92,9 @@
                             <div class="form-group clearfix ">
                                 <label class="control-label col-sm-3 bk-lh30 pt0" style="color: #f7f0c6;">性别：</label>
                                 <div class="col-sm-6">
-                                    <select id="sex" style="color: #f7f0c6">
-                                        <option class="selected" value="male">男</option>
-                                        <option value="female">女</option>
+                                    <select id="sex" style="color: #f7f0c6" name="sex">
+                                        <option class="selected" value="男" >男</option>
+                                        <option value="女">女</option>
                                     </select>
                                 </div>
                             </div>
@@ -103,64 +103,64 @@
                                 <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">生日：</label>
                                 <div class="col-sm-6">
                                     <input type="date" class="form-control bk-valign-top" id="birth" value={{currentStudent.birth}} style="position: relative;
-    top: -15px;background-color: transparent;color:#f7f0c6">
+    top: -15px;background-color: transparent;color:#f7f0c6" name="birth">
                                 </div>
                             </div>
                             <div class="form-group clearfix ">
                                 <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">手机号：</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control bk-valign-top" id="phoneNumber" value={{currentStudent.phone}} style="position: relative;
-    top: -15px;background-color: transparent;color:#f7f0c6" readonly>
+    top: -15px;background-color: transparent;color:#f7f0c6" readonly name="fileName">
                                 </div>
                             </div>
                             <div class="form-group clearfix ">
                                 <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">邮箱：</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control bk-valign-top" id="email" value={{currentStudent.email}} style="position: relative;
-    top: -15px;background-color: transparent;color:#f7f0c6">
+    top: -15px;background-color: transparent;color:#f7f0c6" name="email">
                                 </div>
                             </div>
-                            <div class="form-group clearfix ">
-                                <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">居住地：</label>
-                                <div class="col-sm-6">
-                                    <select name="" id="place" class="form-control bk-valign-top" style="position: relative;
-    top: -15px;background-color: transparent;color:#f7f0c6">
-                                        <option value="选择项1">中国</option>
-                                        <option value="选择项2">美国</option>
-                                        <option value="选择项3">法国</option>
-                                        <option value="选择项4">英国</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group clearfix ">
-                                <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">专业：</label>
-                                <div class="col-sm-6">
-                                    <select name="" id="profession" class="form-control bk-valign-top" style="position: relative;
-    top: -15px;background-color: transparent;color:#f7f0c6">
-                                        <option value="选择项1">计算机</option>
-                                        <option value="选择项2">艺术</option>
-                                        <option value="选择项3">体育</option>
-                                        <option value="选择项4">博彩</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <!--<div class="form-group clearfix ">-->
+                                <!--<label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">居住地：</label>-->
+                                <!--<div class="col-sm-6">-->
+                                    <!--<select name="" id="place" class="form-control bk-valign-top" style="position: relative;-->
+    <!--top: -15px;background-color: transparent;color:#f7f0c6">-->
+                                        <!--<option value="选择项1">中国</option>-->
+                                        <!--<option value="选择项2">美国</option>-->
+                                        <!--<option value="选择项3">法国</option>-->
+                                        <!--<option value="选择项4">英国</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="form-group clearfix ">-->
+                                <!--<label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">专业：</label>-->
+                                <!--<div class="col-sm-6">-->
+                                    <!--<select name="" id="profession" class="form-control bk-valign-top" style="position: relative;-->
+    <!--top: -15px;background-color: transparent;color:#f7f0c6">-->
+                                        <!--<option value="选择项1">计算机</option>-->
+                                        <!--<option value="选择项2">艺术</option>-->
+                                        <!--<option value="选择项3">体育</option>-->
+                                        <!--<option value="选择项4">博彩</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
                             <div class="form-group has-feedback clearfix ">
                                 <label class="control-label col-sm-3 pt0"  style="color: #f7f0c6;">个人描述：</label>
                                 <div class="col-sm-6">
                                 <textarea id="introduction" class="form-control" rows="3" style="position: relative;
-    top: -15px;background-color: transparent;color:#f7f0c6">{{currentStudent.introduction}}</textarea>
+    top: -15px;background-color: transparent;color:#f7f0c6" name="introduction">{{currentStudent.introduction}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group clearfix">
                                 <div class="col-sm-9 col-sm-offset-3">
-                                    <button  ng-click="updateStuInfo()" type="button" class="king-btn mr10  king-success">提交</button>
+                                    <input type="submit"  ng-click="updateStuInfo()" class="king-btn mr10  king-success">提交</input>
                                     <button type="button" class="king-btn king-default ">取消</button>
                                 </div>
                             </div>
                         </form>
                         <div id = "skill">
                             <div id="skill_head">
-                                <h5>技能</h5>
+                                <h5 style="color: #f7f0c6">技能</h5>
                             </div>
                             <div id="skill_body">
                                 <img src="{{skillLink}}">
