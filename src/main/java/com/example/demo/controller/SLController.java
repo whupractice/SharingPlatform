@@ -7,6 +7,7 @@ import com.example.demo.service.SLService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,7 @@ public class SLController {
       * @Param       : [studId] -- 学生账号
       * @return      : 选课记录list
       */
+    @Authorization("hasRole('student')")
     @ApiOperation(value = "根据学生id获取学生选课信息", notes = "根据学生id获取学生选课信息",httpMethod = "GET")
     @ApiParam(name = "stuId",value = "学生id")
     @GetMapping("/stuId")

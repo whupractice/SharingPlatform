@@ -93,6 +93,7 @@ public class SchoolController {
       * @Param       : [school]
       * @return      : void
       */
+    @PreAuthorize("hasRole('manager')")
     @ApiOperation(value = "更新学校", notes = "更新学校",httpMethod = "PUT")
     @ApiParam(name = "school",value = "学校实体,其中schoolId不能为空")
     @PutMapping("")
@@ -108,6 +109,7 @@ public class SchoolController {
       * @Param       : [schoolId]
       * @return      : void
       */
+    @PreAuthorize("hasRole('manager')")
     @ApiOperation(value = "根据id删除学校", notes = "根据id删除学校",httpMethod = "DELETE")
     @ApiParam(name = "schoolId",value = "schoolId")
     @DeleteMapping("")

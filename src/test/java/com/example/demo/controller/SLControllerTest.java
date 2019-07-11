@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -54,6 +55,7 @@ public class SLControllerTest {
     }
 
     @Test
+    @WithMockUser(roles={"student"})
     public void getSLByStuId() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
@@ -112,6 +114,7 @@ public class SLControllerTest {
     }
 
     @Test
+    @WithMockUser(roles={"student"})
     public void getLessonByStuId() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
@@ -155,15 +158,18 @@ public class SLControllerTest {
     }
 
     @Test
+    @WithMockUser(roles={"student"})
     public void getLessonPagesByStuId() {
 
     }
 
     @Test
+    @WithMockUser(roles={"student"})
     public void getLessonPagesNumByStuId() {
     }
 
     @Test
+    @WithMockUser(roles={"lessonManager"})
     public void getStudentByLessonId() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
@@ -261,6 +267,7 @@ public class SLControllerTest {
     }
 
     @Test
+    @WithMockUser(roles={"student"})
     public void insertSL() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
@@ -284,6 +291,7 @@ public class SLControllerTest {
     }
 
     @Test
+    @WithMockUser(roles={"student"})
     public void updateSL() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
@@ -307,6 +315,7 @@ public class SLControllerTest {
     }
 
     @Test
+    @WithMockUser(roles={"student"})
     public void deleteSL() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
