@@ -39,6 +39,9 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     $scope.totalPage = 1; // 总集数 （根据 总记录数、每页记录数 计算 ）
     $scope.pages = [];
 
+    $scope.stuNum = 0;//这门课的学生数量
+    $scope.hasSelect = false;
+
 
 
     //获取推荐课程
@@ -78,7 +81,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             }
         }).then(function successCallback(response) {
             $scope.lesson = response.data;
-            $scope.link = $scope.lesson.videoLink+"_"+1;
+            $scope.hasLesson();//判断是否选择了这门课
             $scope.pages=[];
             for(var i = 1;i<=$scope.lesson.videoNum;i++){
                 $scope.pages.push(i);
@@ -87,6 +90,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             $scope.getTeachers();//获取老师信息
             $scope.getComments();//获取评论
             $scope.getTJlesson();//获取推荐课程
+            $scope.getStuNum();//获取此课程学生数量
             $scope.showStars(7);
         });
 
@@ -105,7 +109,16 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
       * @Description : 获取此门课程的学习人数
       */
     $scope.getStuNum = function () {
-        //TODO
+        var lessonId = window.localStorage.getItem('lessonId');
+        $http({
+            method: 'GET',
+            url: "/sl/getStuNumByLessonId",
+            params:{
+                "lessonId" : lessonId
+            }
+        }).then(function successCallback(response) {
+            $scope.stuNum = response.data.num;
+        });
     };
 
 
@@ -151,6 +164,8 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             $scope.teacherNum = $scope.teachers.length;
         });
     };
+
+
 
     //跳转到教师页面
     $scope.jumpT = function (teacher) {
@@ -222,7 +237,6 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
     //参加课程
     $scope.joinCourse=function () {
-
         var lessonId = $scope.lesson.lessonId;//获取课程id
         var phone = window.localStorage.getItem('phone');
         var token = window.localStorage.getItem('token');
@@ -268,15 +282,43 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     };
 
 
+    //判断该学生是否有选择这门课程
+    $scope.hasLesson = function(){
+        var phone = window.localStorage.getItem('phone');
+        var token = window.localStorage.getItem('token');
+        $http({
+            method: 'GET',
+            url: '/sl/stuId',
+            headers: {
+                'Authorization': token
+            },
+            params: {
+                "stuId": phone
+            }
+        }).then(function successCallback(response) {
+            var lessonsInfo = response.data;
+            var lessonId = window.localStorage.getItem('lessonId');
+            for(var i = 0;i < lessonsInfo.length; i++){
+                if(lessonId == lessonsInfo[i].lessonId) {
+                    $scope.hasSelect = true;
+                    $scope.changeVideo(1);
+                }
+            }
+        });
+    };
+
         //改变视频链接
         $scope.changeVideo = function (i) {
-            $scope.link = $scope.lesson.videoLink+"_"+i;
+            // TODO 权限判断
+            if($scope.hasSelect == true)
+                $scope.link = $scope.lesson.videoLink+"_"+i;
         };
 
         //选择集数
         $scope._select = function (page) {
             if ($scope.totalPage == 0 && (page < 1 || page > $scope.totalPage))
                 return;
+
             $scope.currentPage = page;
             $scope.changeVideo(page);
         };
