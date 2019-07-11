@@ -101,7 +101,7 @@ public class SLControllerTest {
             Assert.assertEquals(id,456);
             bitSet.set(0, true);
             return slEntities;
-        }).when(slRepository).getSLByStuId(Mockito.any(long.class));
+        }).when(slRepository).getSLByLessonId(Mockito.any(long.class));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/sl/lessonId")
                 .param("lessonId","456"))

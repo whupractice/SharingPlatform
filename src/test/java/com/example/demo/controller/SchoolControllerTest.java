@@ -105,18 +105,19 @@ public class SchoolControllerTest {
     public void getSchoolByName() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
-
+        List<SchoolEntity> schoolEntities = new ArrayList<>();
         SchoolEntity schoolEntity = new SchoolEntity();
         schoolEntity.setSchoolId(123);
         schoolEntity.setSchoolName("加里敦大学");
+        schoolEntities.add(schoolEntity);
 
         Mockito.doAnswer(invocationOnMock -> {
             Object[] args = invocationOnMock.getArguments();
             String id = (String)args[0];
             Assert.assertEquals(id,"加里敦大学");
             bitSet.set(0, true);
-            return schoolEntity;
-        }).when(schoolRepository).getSchoolByKeyword(Mockito.any(String.class));
+            return schoolEntities;
+        }).when(schoolRepository).getDuplicates(Mockito.any(String.class));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/school/schoolName")
                 .param("schoolName","加里敦大学"))
