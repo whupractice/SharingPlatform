@@ -20,6 +20,13 @@ API_index.controller("headCtrl", function ($scope, $http, $state,$interval) {
         $state.go('login');
     };
 
+    //退出账号
+    $scope.exit_ = function () {
+        window.localStorage.clear();//清除数据
+        $scope.currentUser = null;
+        $state.go('login');
+    };
+
 
     /**
       * @Author      : Theory
@@ -63,12 +70,19 @@ API_index.controller("headCtrl", function ($scope, $http, $state,$interval) {
     },1000);
 
 
-    //判断角色类型
+    //判断是否有用户
     $scope.hasUser = function () {
-        if($scope.currentUser.nickName.length == 0)//没有用户
-            return 0;
-        else if($scope.currentUser.isManager == 1)
-            return 1;
+        if($scope.currentUser == null)//没有用户
+            return false;
+        else
+            return true;
+    };
+
+    $scope.hasNoUser = function(){
+        if($scope.currentUser==null)//没有用户
+            return true;
+        else
+            return false;
     };
 
     //是否是系统管理员

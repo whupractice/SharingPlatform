@@ -60,13 +60,17 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a ui-sref="login">
-                                        <i class="fa fa-road" style="color: #a4c1e6"></i>&nbsp;&nbsp; 登陆/注册/切换账号</a></li>
-                                    <li class="divider"></li>
+                                    <li ng-if="hasNoUser()"><a ui-sref="login">
+                                        <i class="fa fa-road" style="color: #a4c1e6"></i>&nbsp;&nbsp; 登陆|注册</a></li>
+                                    <li class="divider" ng-if="hasNoUser()"></li>
+
+                                    <li ng-if="hasUser()"><a ng-click="exit_()">
+                                        <i class="fa fa-road" style="color: #a4c1e6"></i>&nbsp;&nbsp; 退出账号</a></li>
+                                    <li class="divider" ng-if="hasUser()"></li>
 
                                     <li ng-if="isSysManager()" ui-sref="administer" ><a>
                                         <i class="fa fa-road" style="color: #a4c1e6"></i>&nbsp;&nbsp; 系统管理员界面</a>
-                                    </
+                                    </li>
                                     <li class="divider" ng-if="isSysManager()"></li>
 
                                     <li ng-if="isLeManager()" ui-sref="lessonManager"><a>

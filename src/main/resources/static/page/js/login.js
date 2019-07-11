@@ -14,6 +14,9 @@ app.controller('loginCtrl', function ($scope, $http, $state) {   //Data是全局
 
 
 
+
+
+
     /**
       * @Author      : Theory
       * @Description : 登录
