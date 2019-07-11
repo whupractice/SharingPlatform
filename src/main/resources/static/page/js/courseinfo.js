@@ -187,21 +187,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     };
 
 
-    //课程打分
-    $scope.getScores=function () {
-        var score=Math.floor(4.3);
-        $scope.f = 4.3 - score;
-        for(var i=0;i<score;i++)
-        {
-            $scope.scores.push(1);
-        }
-            };
-    $scope.judge=function () {
-        return $scope.f>0.5;
-    };
-    $scope.judge2=function () {
-        return $scope.f<=0.5;
-    };
+
 
     //获取评论信息
     $scope.getComments=function () {

@@ -69,6 +69,8 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
             $scope.produceSkillImg();//生成技能图片
             $scope.getLessonByPhone();//获取当前课程
             $scope.getMessageByPhone();//获取消息
+
+
         });
 
     };
@@ -372,6 +374,11 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
             $scope.nowNews = response.data;
         })
     };
+
+
+    //上传头像
+
+
 
 
 

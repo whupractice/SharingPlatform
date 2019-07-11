@@ -51,13 +51,13 @@
                         </video>
 
                         <ul class="pagination">
-                            <li><a ng-click="_prev()">&laquo;</a></li>
+                            <li><a ng-click="_prev()" style="background-color: rgb(239, 238, 216)">&laquo;</a></li>
                             <li ng-repeat="page in pages">
-                                <a  ng-click="_select(page)" class="pageIndex">{{page}}</a>
+                                <a  ng-click="_select(page)" class="pageIndex" style="background-color: rgb(239, 238, 216)">{{page}}</a>
                             </li>
-                            <li><a ng-click="_next()">&raquo;</a></li>
-                        </ul><br>
-                        <p>第<span>{{currentPage}}</span>集 / 共{{totalPage}}集</p>
+                            <li><a ng-click="_next()" style="background-color: rgb(239, 238, 216)">&raquo;</a></li>
+                        </ul>
+                        <p style="color: rgb(239, 238, 216)">第<span>{{currentPage}}</span>集 / 共{{totalPage}}集</p>
                     </div>
                 </div>
                 <div class="g-mn1 course-enroll-info-wrapper">
@@ -111,7 +111,7 @@
 
 <!--                                            <span data-class="star-half-o"><i class="fa fa-star-half-o"></i></span>-->
 <!--                                        </div>-->
-                                    <div>
+                                    <div style="    position: relative;top: -21px;left: 180px;">
                                         <span>{{ }}</span>
                                         <span style="color:#e5ecdd">分</span>
                                     </div>
@@ -151,6 +151,8 @@
         </div>
 
         <!--课程图片-->
+
+
     <!--为您推荐-->
     <div style="position: absolute;right: 100px;top: 500px;width: 200px;">
         <div class="u-hot-course-title">为您推荐</div>
@@ -329,6 +331,7 @@
     <!--课程信息-->
     </div>
 </div>
+
 
 <!--<script>-->
 <!--    window.onload=showStar(7);-->

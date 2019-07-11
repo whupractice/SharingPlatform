@@ -10,6 +10,7 @@
     <!--    <link rel="stylesheet" type="text/css" href="../shared/css/bootstrap/css/bootstrap.min.css">-->
     <title>Title</title>
 
+
 </head>
 <body>
 <!--HTML-->
@@ -77,6 +78,17 @@
     top: -15px;background-color: transparent;color:#f7f0c6" value="{{currentStudent.nickName}}">
                                 </div>
                             </div>
+                            <!--头像-->
+                            <div class="form-group clearfix " >
+
+                                <label class="col-sm-3 control-label bk-lh30 pt0" style="color: #f7f0c6;">头像：</label>
+                                <input type="file" id="file" >
+                                <img class="f-fl" src="{{}}" width="75" height="75" id="btnReadPicture" style="position: relative;left: 250px;">
+                            </div>
+                            <div id="result"></div>
+
+
+
                             <div class="form-group clearfix ">
                                 <label class="control-label col-sm-3 bk-lh30 pt0" style="color: #f7f0c6;">性别：</label>
                                 <div class="col-sm-6">
@@ -416,24 +428,7 @@
         </div>
     </div>
 </div>
-<!--JS-->
-<!--<script>-->
-<!--$(function(){-->
-<!--var li = $('.navi li');-->
-<!--li.each(function(){-->
-<!--$(this).click(function(){-->
-<!--if( $(this).hasClass('c-open')){-->
-<!--$(this).find('ul').slideUp(300);-->
-<!--$(this).removeClass('c-open');-->
-<!--}else{-->
-<!--$(this).find('ul').slideDown(300);-->
-<!--$(this).addClass('c-open');-->
-<!--}-->
-<!--})-->
-<!--});-->
-<!--});-->
 
 
-<!--</script>-->
 </body>
 </html>
