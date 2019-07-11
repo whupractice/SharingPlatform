@@ -161,7 +161,7 @@ public class StudentService {
         StudentEntity stu1 = studentRepository.getStuById(stu.getPhone());
         StudentEntity stu2 = studentRepository.getStuByNickName(stu.getNickName());
         if(stu1!=null) {
-            if(stu2!=null && stu2.getNickName()!=stu1.getNickName()){
+            if(stu2!=null && !stu2.getNickName().equals(stu1.getNickName())){
                 return false;
             }
             studentRepository.save(stu);//向数据库中插入学生

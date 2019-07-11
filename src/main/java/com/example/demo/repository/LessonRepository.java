@@ -61,4 +61,6 @@ public interface LessonRepository extends JpaRepository<LessonEntity,Long>, JpaS
 
     @Query(value = "select * from lesson where lesson.lesson_id in (select sl.lesson_id from sl where sl.phone = ?1)",nativeQuery = true)
     List<LessonEntity> getLessonPagesByStuId(long stuId);
+
+
 }

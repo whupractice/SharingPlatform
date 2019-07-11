@@ -76,8 +76,8 @@ public class StudentController {
     public boolean logout(HttpServletRequest request){
         String token;
         String requestHeader = request.getHeader("Authorization");
-        if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
-            token = requestHeader.substring(7);
+        if (requestHeader != null) {
+            token = requestHeader;
             studentService.logout(token);
             return true;
         } else {
@@ -105,7 +105,7 @@ public class StudentController {
     @PostMapping(value = "/register")
     @ApiParam(name = "stu",value = "学生实体,其中phone和pwd不能为空")
     public Object register(@RequestBody StudentEntity stu){
-        if(stu.getIsLessonManager()==0&&stu.getIsManager()==0){
+        if(stu.getIsLessonManager()!=1&&stu.getIsManager()!=1){
             return doRegister(stu);
         }
         return null;
@@ -115,7 +115,7 @@ public class StudentController {
     @PostMapping(value = "/registerLessonManager")
     @ApiParam(name = "stu",value = "课程管理员实体,其中phone和pwd不能为空")
     public Object registerLessonManager(@RequestBody StudentEntity stu){
-        if(stu.getIsLessonManager()==1&&stu.getIsManager()==0){
+        if(stu.getIsLessonManager()==1&&stu.getIsManager()!=1){
             return doRegister(stu);
         }
         return null;
@@ -125,7 +125,7 @@ public class StudentController {
     @PostMapping(value = "/registerManager")
     @ApiParam(name = "stu",value = "系统管理员实体,其中phone和pwd不能为空")
     public Object registerManager(@RequestBody StudentEntity stu){
-        if(stu.getIsLessonManager()==0&&stu.getIsManager()==1){
+        if(stu.getIsLessonManager()!=1&&stu.getIsManager()==1){
             return doRegister(stu);
         }
         return null;
@@ -134,8 +134,7 @@ public class StudentController {
     private Object doRegister(StudentEntity stu){
         String token = studentService.register(stu);
         String json = "{\"token\":"+"\""+token+"\"}";
-        JSONObject jsonObject = JSONObject.fromObject(json);
-        return jsonObject;
+        return JSONObject.fromObject(json);
     }
 
 
@@ -193,7 +192,7 @@ public class StudentController {
     @ApiParam(name = "stu",value = "学生实体,其中phone和pwd不能为空")
     @PutMapping("/updateStudent")
     public Object updateStudent(@RequestBody StudentEntity stu){
-        if(stu.getIsLessonManager()==0&&stu.getIsManager()==0){
+        if(stu.getIsLessonManager()!=1&&stu.getIsManager()!=1){
             return doUpdate(stu);
         }
         return null;
@@ -204,7 +203,7 @@ public class StudentController {
     @ApiParam(name = "stu",value = "课程管理员实体,其中phone和pwd不能为空")
     @PutMapping("/updateLessonManager")
     public Object updateLessonManager(@RequestBody StudentEntity stu){
-        if(stu.getIsLessonManager()==1&&stu.getIsManager()==0){
+        if(stu.getIsLessonManager()==1&&stu.getIsManager()!=1){
             return doUpdate(stu);
         }
         return null;
@@ -215,7 +214,7 @@ public class StudentController {
     @ApiParam(name = "stu",value = "系统管理员实体,其中phone和pwd不能为空")
     @PutMapping("/updateManager")
     public Object updateManager(@RequestBody StudentEntity stu){
-        if(stu.getIsLessonManager()==0&&stu.getIsManager()==1){
+        if(stu.getIsLessonManager()!=1&&stu.getIsManager()==1){
             return doUpdate(stu);
         }
         return null;
@@ -225,8 +224,7 @@ public class StudentController {
         if(studentService.insertStudent(student)){
             String token = studentService.judgeLogin(student.getPhone(),student.getPwd());
             String json = "{\"token\":"+"\""+token+"\"}";
-            JSONObject jsonObject = JSONObject.fromObject(json);
-            return jsonObject;
+            return JSONObject.fromObject(json);
         }
         return null;
     }
@@ -241,7 +239,7 @@ public class StudentController {
     @ApiOperation(value = "删除数据库中学生信息", notes = "删除数据库中学生信息",httpMethod = "DELETE")
     @ApiParam(name = "studentId",value = "学生账号")
     @DeleteMapping("")
-    public void deleteLesson(@RequestParam("phone") long phone){
+    public void deleteStudent(@RequestParam("phone") long phone){
         studentService.deleteStudent(phone);
     }
 

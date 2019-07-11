@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.SLEntity;
+import com.example.demo.entity.StudentEntity;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StudentService;
 import org.hamcrest.Matchers;
@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -42,20 +43,14 @@ public class StudentControllerTest {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
 
-        List<SLEntity> slEntities = new ArrayList<>();
-        SLEntity slEntity = new SLEntity();
-        slEntity.setPhone(123);
-        slEntity.setLessonId(456);
-        slEntities.add(slEntity);
-
-        //UserDetails userDetails = createUser()
+        UserDetails userDetails = createUser("123","456",new String[]{"student"});
 
         Mockito.doAnswer(invocationOnMock -> {
             Object[] args = invocationOnMock.getArguments();
             String id = (String) args[0];
             Assert.assertEquals(id,"123");
             bitSet.set(0, true);
-            return slEntities;
+            return userDetails;
         }).when(studentService).getUserFromToken(Mockito.any(String.class));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/student/getUserFromToken")
@@ -69,51 +64,400 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void login() {
+    public void login() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setPwd("456");
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long phone = (long) args[0];
+            Assert.assertEquals(phone,123);
+            bitSet.set(0, true);
+            return studentEntity;
+        }).when(studentRepository).getStuById(Mockito.any(long.class));
+
+        String jsonData = "{\"phone\":\"123\",\"pwd\":\"456\",\"isManager\":\"0\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/student/login")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void logout() {
+    public void logout() throws Exception {
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/student/logout")
+                .with(request -> {
+                    request.addHeader("Authorization","123");
+                    return request;
+                }))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
-    public void getNickNameByPhone() {
+    public void getNickNameByPhone() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setNickName("456");
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long phone = (long) args[0];
+            Assert.assertEquals(phone,123);
+            bitSet.set(0, true);
+            return studentEntity;
+        }).when(studentRepository).getNickNameByPhone(Mockito.any(long.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/student/getNickName")
+                .param("phone","123"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("456")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void register() {
+    public void register() throws Exception {
+        BitSet bitSet = new BitSet(4);
+        bitSet.set(0, false);
+        bitSet.set(1, false);
+        bitSet.set(2, false);
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setPwd("456");
+        studentEntity.setNickName("123");
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long phone = (long) args[0];
+            Assert.assertEquals(phone,123);
+            if(!bitSet.get(0)){
+                bitSet.set(0, true);
+                return null;
+            }else {
+                return studentEntity;
+            }
+        }).when(studentRepository).getStuById(Mockito.any(long.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String nickName = (String) args[0];
+            Assert.assertEquals(nickName,"123");
+            bitSet.set(1, true);
+            return null;
+        }).when(studentRepository).getStuByNickName(Mockito.any(String.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            StudentEntity student = (StudentEntity) args[0];
+            Assert.assertEquals(student.getNickName(),"123");
+            Assert.assertEquals(student.getPwd(),"456");
+            bitSet.set(2, true);
+            return null;
+        }).when(studentRepository).save(Mockito.any(StudentEntity.class));
+
+        String jsonData = "{\"phone\":\"123\",\"pwd\":\"456\",\"isManager\":\"0\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/student/register")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
+        Assert.assertTrue(bitSet.get(1));
+        Assert.assertTrue(bitSet.get(2));
     }
 
     @Test
-    public void registerLessonManager() {
+    public void registerLessonManager() throws Exception {
+        BitSet bitSet = new BitSet(4);
+        bitSet.set(0, false);
+        bitSet.set(1, false);
+        bitSet.set(2, false);
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setPwd("456");
+        studentEntity.setNickName("123");
+        studentEntity.setIsLessonManager(1);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long phone = (long) args[0];
+            Assert.assertEquals(phone,123);
+            if(!bitSet.get(0)){
+                bitSet.set(0, true);
+                return null;
+            }else {
+                return studentEntity;
+            }
+        }).when(studentRepository).getStuById(Mockito.any(long.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String nickName = (String) args[0];
+            Assert.assertEquals(nickName,"123");
+            bitSet.set(1, true);
+            return null;
+        }).when(studentRepository).getStuByNickName(Mockito.any(String.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            StudentEntity student = (StudentEntity) args[0];
+            Assert.assertEquals(student.getNickName(),"123");
+            Assert.assertEquals(student.getPwd(),"456");
+            bitSet.set(2, true);
+            return null;
+        }).when(studentRepository).save(Mockito.any(StudentEntity.class));
+
+        String jsonData = "{\"phone\":\"123\",\"pwd\":\"456\",\"isLessonManager\":\"1\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/student/registerLessonManager")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
+        Assert.assertTrue(bitSet.get(1));
+        Assert.assertTrue(bitSet.get(2));
     }
 
     @Test
-    public void registerManager() {
+    public void registerManager() throws Exception {
+        BitSet bitSet = new BitSet(4);
+        bitSet.set(0, false);
+        bitSet.set(1, false);
+        bitSet.set(2, false);
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setPwd("456");
+        studentEntity.setNickName("123");
+        studentEntity.setIsManager(1);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long phone = (long) args[0];
+            Assert.assertEquals(phone,123);
+            if(!bitSet.get(0)){
+                bitSet.set(0, true);
+                return null;
+            }else {
+                return studentEntity;
+            }
+        }).when(studentRepository).getStuById(Mockito.any(long.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String nickName = (String) args[0];
+            Assert.assertEquals(nickName,"123");
+            bitSet.set(1, true);
+            return null;
+        }).when(studentRepository).getStuByNickName(Mockito.any(String.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            StudentEntity student = (StudentEntity) args[0];
+            Assert.assertEquals(student.getNickName(),"123");
+            Assert.assertEquals(student.getPwd(),"456");
+            bitSet.set(2, true);
+            return null;
+        }).when(studentRepository).save(Mockito.any(StudentEntity.class));
+
+        String jsonData = "{\"phone\":\"123\",\"pwd\":\"456\",\"isManager\":\"1\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/student/registerManager")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
+        Assert.assertTrue(bitSet.get(1));
+        Assert.assertTrue(bitSet.get(2));
     }
 
     @Test
-    public void getStuById() {
+    public void getStuById() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setNickName("别摸我");
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long id = (long)args[0];
+            Assert.assertEquals(id,123);
+            bitSet.set(0, true);
+            return studentEntity;
+        }).when(studentRepository).getStuById(Mockito.any(long.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/student/info")
+                .param("phone","123"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("别摸我")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void getStuByNickName() {
+    public void getStuByNickName() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setNickName("别摸我");
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String nickName = (String)args[0];
+            Assert.assertEquals(nickName,"别摸我");
+            bitSet.set(0, true);
+            return studentEntity;
+        }).when(studentRepository).getStuByNickName(Mockito.any(String.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/student/nickName")
+                .param("nickName","别摸我"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("别摸我")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void getStuBySchoolName() {
+    public void getStuBySchoolName() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        List<StudentEntity> studentEntities = new ArrayList<>();
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setNickName("别摸我");
+        studentEntity.setSchoolName("加里敦大学");
+        studentEntities.add(studentEntity);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String schoolName = (String)args[0];
+            Assert.assertEquals(schoolName,"加里敦大学");
+            bitSet.set(0, true);
+            return studentEntities;
+        }).when(studentRepository).getStuBySchoolName(Mockito.any(String.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/student/schoolName")
+                .param("schoolName","加里敦大学"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("别摸我")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("加里敦大学")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void getAllStudent() {
+    public void getAllStudent() throws Exception {
+        List<StudentEntity> studentEntities = new ArrayList<>();
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setNickName("别摸我");
+        studentEntities.add(studentEntity);
+        Mockito.when(studentRepository.findAll()).thenReturn(studentEntities);
+        mockMvc.perform(MockMvcRequestBuilders.get("/student"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("别摸我")));
     }
 
     @Test
-    public void getAllManager() {
+    public void getAllManager() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        List<StudentEntity> studentEntities = new ArrayList<>();
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(456);
+        studentEntity.setIsManager(1);
+        studentEntities.add(studentEntity);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            bitSet.set(0, true);
+            return studentEntities;
+        }).when(studentRepository).getAllManager();
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/student/manager"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("456")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("1")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test
-    public void updateStudent() {
+    public void updateStudent() throws Exception {
+        BitSet bitSet = new BitSet(4);
+        bitSet.set(0, false);
+        bitSet.set(1, false);
+        bitSet.set(2, false);
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setPwd("456");
+        studentEntity.setNickName("123");
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long phone = (long) args[0];
+            Assert.assertEquals(phone,123);
+            bitSet.set(0, true);
+            return studentEntity;
+        }).when(studentRepository).getStuById(Mockito.any(long.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String nickName = (String) args[0];
+            Assert.assertEquals(nickName,"123");
+            bitSet.set(1, true);
+            return null;
+        }).when(studentRepository).getStuByNickName(Mockito.any(String.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            StudentEntity student = (StudentEntity) args[0];
+            Assert.assertEquals(student.getNickName(),"123");
+            Assert.assertEquals(student.getPhone(),"123");
+            Assert.assertEquals(student.getPwd(),"456");
+            bitSet.set(2, true);
+            return null;
+        }).when(studentRepository).save(Mockito.any(StudentEntity.class));
+
+        String jsonData = "{\"phone\":\"123\",\"pwd\":\"456\",\"nickName\":\"123\",\"isManager\":\"0\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/student/updateStudent")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
+        Assert.assertTrue(bitSet.get(1));
+        Assert.assertTrue(bitSet.get(2));
     }
 
     @Test
@@ -125,7 +469,7 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void deleteLesson() {
+    public void deleteStudent() {
     }
 
     @Test
