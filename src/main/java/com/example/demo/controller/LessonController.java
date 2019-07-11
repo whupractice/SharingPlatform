@@ -205,7 +205,7 @@ public class LessonController {
     @ApiOperation(value = "根据课程id删除课程", notes = "根据课程id删除课程",httpMethod = "DELETE")
     @ApiParam(name = "lessonId",value = "课程号")
     @DeleteMapping("")
-    public void deleteLesson(@RequestParam("lessonId") long lessonId){
+    public void deleteLesson(@RequestParam("lessonId") String lessonId){
         lessonService.deleteLesson(lessonId);
     }
 

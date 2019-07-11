@@ -82,7 +82,7 @@ public class TeacherController {
     @ApiOperation(value = "根据教师id删除教师", notes = "根据教师id删除教师",httpMethod = "DELETE")
     @ApiParam(name = "teacherId",value = "教师账号")
     @DeleteMapping("")
-    public void deleteTeacher(@RequestParam("teacherId") long teacherId) {
+    public void deleteTeacher(@RequestParam("teacherId") String teacherId) {
         teacherService.deleteTeacher(teacherId);
     }
 

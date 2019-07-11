@@ -14,6 +14,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 /**
@@ -82,7 +83,7 @@ public class MessageController {
     @ApiOperation(value = "根据id删除学生课程消息", notes = "根据id删除学生课程消息",httpMethod = "DELETE")
     @ApiParam(name = "id",value = "学生课程消息id")
     @DeleteMapping("")
-    public void deleteMessage(@RequestParam long id) {
+    public void deleteMessage(@RequestParam String id) {
         messageService.deleteMessage(id);
     }
 }

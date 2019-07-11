@@ -99,8 +99,9 @@ public class SchoolService {
       * @Param       :
       * @return      :
       */
-    public void deleteSchool(long schoolId) {
-        schoolRepository.deleteById(schoolId);
+    public void deleteSchool(String schoolId) {
+        long id = Long.parseLong(schoolId);
+        schoolRepository.deleteById(id);
     }
 
 

@@ -25,7 +25,7 @@ import java.util.*;
 public class StudentService {
 
     @Autowired
-    private StudentRepository studentRepository;
+    StudentRepository studentRepository;
 
     private Map<String, UserDetails> tokenMap = new HashMap<>();
 

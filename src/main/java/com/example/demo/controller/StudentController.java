@@ -237,9 +237,9 @@ public class StudentController {
      */
     @PreAuthorize("hasRole('manager')")
     @ApiOperation(value = "删除数据库中学生信息", notes = "删除数据库中学生信息",httpMethod = "DELETE")
-    @ApiParam(name = "phone",value = "学生账号")
+    @ApiParam(name = "phone",value = "学生手机号")
     @DeleteMapping("")
-    public void deleteStudent(@RequestParam("phone") String phone){
+    public void deleteStudent(@RequestParam String phone){
         studentService.deleteStudent(phone);
     }
 

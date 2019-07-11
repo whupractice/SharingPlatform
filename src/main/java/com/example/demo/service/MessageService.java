@@ -60,8 +60,9 @@ public class MessageService {
       * @Param       : [id]
       * @return      : void
       */
-    public void deleteMessage(long id) {
-        messageRepository.deleteById(id);
+    public void deleteMessage(String id) {
+        long newId = Long.parseLong(id);
+        messageRepository.deleteById(newId);
     }
 
 

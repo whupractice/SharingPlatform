@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.baseClass.Teacher;
 import com.example.demo.entity.TeacherEntity;
 import com.example.demo.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +55,9 @@ public class TeacherService {
       * @Param       :
       * @return      :
       */
-    public void deleteTeacher(long id) {
-        teacherRepository.deleteById(id);
+    public void deleteTeacher(String id) {
+        long newId = Long.parseLong(id);
+        teacherRepository.deleteById(newId);
     }
 
 

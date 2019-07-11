@@ -113,7 +113,7 @@ public class SchoolController {
     @ApiOperation(value = "根据id删除学校", notes = "根据id删除学校",httpMethod = "DELETE")
     @ApiParam(name = "schoolId",value = "schoolId")
     @DeleteMapping("")
-    public void deleteSchool(@RequestParam("schoolId") long schoolId) {
+    public void deleteSchool(@RequestParam("schoolId") String schoolId) {
         schoolService.deleteSchool(schoolId);
     }
 

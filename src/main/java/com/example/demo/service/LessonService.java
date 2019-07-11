@@ -1,9 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.LessonEntity;
-import com.example.demo.entity.SLEntity;
 import com.example.demo.repository.LessonRepository;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -187,8 +185,9 @@ public class LessonService {
       * @Param       : [lessonId] -- 课程id号
       * @return      : void
       */
-    public void deleteLesson(long lessonId){
-        lessonRepository.deleteById(lessonId);
+    public void deleteLesson(String lessonId){
+        long id = Long.parseLong(lessonId);
+        lessonRepository.deleteById(id);
     }
 
 
