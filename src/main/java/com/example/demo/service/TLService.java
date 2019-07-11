@@ -102,7 +102,7 @@ public class TLService {
       * @Param       :
       * @return      :
       */
-    public void deleteTL(String teacherId,String lessonId) {
+    public void deleteTL(String lessonId,String teacherId) {
         long newId = Long.parseLong(teacherId);
         long newId2 = Long.parseLong(lessonId);
         tlRepository.deleteById(new TLKeys(newId,newId2));

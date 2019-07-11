@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -469,7 +470,24 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void deleteStudent() {
+    @WithMockUser(roles={"manager"})
+    public void deleteStudent() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            Assert.assertEquals((long)args[0],123);
+            bitSet.set(0, true);
+            return null;
+        }).when(studentRepository).deleteById(Mockito.any(long.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/student")
+                .param("phone","123"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+        Assert.assertTrue(bitSet.get(0));
+
     }
 
     @Test

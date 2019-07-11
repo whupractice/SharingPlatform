@@ -249,15 +249,16 @@ public class TLControllerTest {
             Object[] args = invocationOnMock.getArguments();
             TLKeys tlKeys = (TLKeys)args[0];
 
-            Assert.assertEquals(tlKeys.getTeacherId(),123);
-            Assert.assertEquals(tlKeys.getLessonId(),456);
+            Assert.assertEquals(tlKeys.getTeacherId(),456);
+            Assert.assertEquals(tlKeys.getLessonId(),123);
             bitSet.set(0, true);
             return null;
         }).when(tlRepository).deleteById(Mockito.any(TLKeys.class));
 
-        mockMvc.perform(MockMvcRequestBuilders.delete("/tl")
-                .param("teacherId","123")
-                .param("lessonId","456"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/tl/lessonId/teacherId")
+                .param("lessonId","123")
+                .param("teacherId","456"))
+
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
@@ -266,8 +267,36 @@ public class TLControllerTest {
     }
 
     @Test
-    public void deleteTLByTeacherId() {
+    @WithMockUser(roles={"lessonManager"})
+    public void deleteTLByTeacherId() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
 
+        List<TLEntity> tlEntities = new ArrayList<>();
+        TLEntity tlEntity = new TLEntity();
+        tlEntity.setTeacherId(123);
+        tlEntities.add(tlEntity);
 
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long id = (long)args[0];
+            Assert.assertEquals(id,123);
+            bitSet.set(0, true);
+            return tlEntities;
+        }).when(tlRepository).getAllByTeacherId(Mockito.any(long.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            TLEntity tlEntity1 = (TLEntity) args[0];
+            Assert.assertEquals(tlEntity1.getTeacherId(),123);
+            bitSet.set(0, true);
+            return null;
+        }).when(tlRepository).delete(Mockito.any(TLEntity.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/tl/teacherId")
+                .param("teacherId","123"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+        Assert.assertTrue(bitSet.get(0));
     }
 }

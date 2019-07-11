@@ -229,8 +229,9 @@ public class StudentService {
       * @Description : 根据学生账号删除学生id
       * @Param       : [id] -- 学生账号
       */
-    public void deleteStudent(long phone){
-        studentRepository.deleteById(phone);
+    public void deleteStudent(String phone){
+        long id = Long.parseLong(phone);
+        studentRepository.deleteById(id);
     }
 
 
