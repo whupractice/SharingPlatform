@@ -78,7 +78,16 @@ public class LessonService {
       * @return      : 精品课程列表
       */
     public List<LessonEntity> getExcellentLesson(){
-        return lessonRepository.getExcellentClass();
+
+        List<LessonEntity>lessons =  lessonRepository.getExcellentClass();
+        List<LessonEntity> finalList = new ArrayList<>();//最终的热门课程列表
+        int n = (10 >= lessons.size())? lessons.size() : 10;
+        /*选择n个最热门课程*/
+        for(int i = 0;i < n;i++) {
+            finalList.add(lessons.get(i));
+        }
+        return finalList;
+
     }
 
 

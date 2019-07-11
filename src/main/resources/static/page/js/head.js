@@ -95,6 +95,7 @@ API_index.controller("headCtrl", function ($scope, $http, $state,$interval) {
     $scope.getMessageNum = function () {
         var token = window.localStorage.getItem('token');
         var judge = $scope.isStu();
+        $scope.messageNum = 0;
         if(judge==true) {
             var phone = $scope.currentUser.phone;
             $http({
