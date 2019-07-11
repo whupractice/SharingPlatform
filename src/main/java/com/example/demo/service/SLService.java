@@ -190,5 +190,27 @@ public class SLService {
         long newId2 = Long.parseLong(lessonId);
         slRepository.deleteById(new SLKeys(newId,newId2));
     }
+
+    /**
+     * @Author      : Theory
+     * @Description : 根据课程号获取课程评分
+     * @Param       : [lessonId] -- 课程号
+     * @return      : 课程评分
+     */
+    public Object getLessonScores(long lessonId){
+        List<SLEntity> sls = slRepository.getSLByLessonId(lessonId);
+        float sum = 0;
+        int num = 0;
+        for(SLEntity sl : sls){
+            if(sl.getStar()!=0){
+                sum+=sl.getStar();
+                num++;
+            }
+        }
+        float score = sum/num;
+        String json = "{\"score\":"+score+"}";
+        JSONObject jsonObject = JSONObject.fromObject(json);
+        return jsonObject;
+    }
     
 }

@@ -152,4 +152,19 @@ public class SLController {
         slService.deleteSL(stuId,lessonId);
     }
 
+    /**
+     * @Author      : Theory
+     * @Description : 通过课程号获取课程的评分
+     * @Param       : [lessonId] -- 课程id
+     * @return      : 课程评分
+     */
+    @ApiOperation(value = "通过课程号获取课程的评分", notes = "通过课程号获取课程的评分",httpMethod = "GET")
+    @ApiParam(name = "lessonId",value = "课程号")
+    @GetMapping("/score")
+    public Object getScore(@RequestParam long lessonId){
+        return slService.getLessonScores(lessonId);
+    }
+
+
+
 }

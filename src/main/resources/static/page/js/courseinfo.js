@@ -33,7 +33,6 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     $scope.videoLink={};
 
     $scope.link="";//当前视频链接
-    $scope.nowStar = 7;
 
     $scope.currentPage = 1;//当前集数
     $scope.totalPage = 1; // 总集数 （根据 总记录数、每页记录数 计算 ）
@@ -42,6 +41,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     $scope.stuNum = 0;//这门课的学生数量
     $scope.hasSelect = false;
 
+    $scope.score = 0;//课程评分
 
 
     //获取推荐课程
@@ -91,7 +91,7 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
             $scope.getComments();//获取评论
             $scope.getTJlesson();//获取推荐课程
             $scope.getStuNum();//获取此课程学生数量
-            $scope.showStars(7);
+            $scope.getScores();//获取课程分数
         });
 
     };
@@ -187,6 +187,21 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
     };
 
 
+    //课程打分
+    $scope.getScores=function () {
+        var lessonId = window.localStorage.getItem('lessonId');
+        $http({
+            method:'GET',
+            url:'/sl/score',
+            params:{
+                "lessonId" : lessonId
+            }
+        }).then(function successCallback(response) {
+            $scope.score = response.data.score;
+            $scope.score = $scope.score.toFixed(2);
+            $scope.showStars($scope.score*2);
+        })
+    };
 
 
     //获取评论信息
@@ -295,7 +310,6 @@ API_index.controller("courseinfoCtrl", function ($scope, $http, $state) {
 
         //改变视频链接
         $scope.changeVideo = function (i) {
-            // TODO 权限判断
             if($scope.hasSelect == true)
                 $scope.link = $scope.lesson.videoLink+"_"+i;
         };

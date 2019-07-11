@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.LessonEntity;
+import com.example.demo.entity.SLEntity;
 import com.example.demo.repository.LessonRepository;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class LessonService {
 
     @Autowired
     LessonRepository lessonRepository;
+
 
 
     /**
@@ -230,5 +232,8 @@ public class LessonService {
             return null;
         }
     }
+
+
+
 
 }
