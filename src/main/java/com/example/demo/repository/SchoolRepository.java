@@ -33,5 +33,9 @@ public interface SchoolRepository extends JpaRepository<SchoolEntity,Long> {
     @Query(value = "select * from school where school_name = ?1",nativeQuery = true)
     List<SchoolEntity> getSchoolByName(String name);
 
+    //根据课程id查询课程
+    @Query(value = "select * from school where school_id = ?1",nativeQuery = true)
+    SchoolEntity getSchoolById(long id);
+
 }
 

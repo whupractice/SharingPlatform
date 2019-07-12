@@ -60,7 +60,7 @@ public class SchoolControllerTest {
             Assert.assertEquals(id,123);
             bitSet.set(0, true);
             return schoolEntity;
-        }).when(schoolRepository).findById(Mockito.any(long.class));
+        }).when(schoolRepository).getSchoolById(Mockito.any(long.class));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/school/getSchoolById")
                 .param("id","123"))
@@ -86,7 +86,7 @@ public class SchoolControllerTest {
         Mockito.doAnswer(invocationOnMock -> {
             Object[] args = invocationOnMock.getArguments();
             String id = (String)args[0];
-            Assert.assertEquals(id,"加里敦");
+            Assert.assertEquals(id,"%加里敦%");
             bitSet.set(0, true);
             return schoolEntities;
         }).when(schoolRepository).getSchoolByKeyword(Mockito.any(String.class));

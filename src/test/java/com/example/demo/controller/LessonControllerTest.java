@@ -77,17 +77,27 @@ public class LessonControllerTest {
 
     @Test
     public void getExcellentLesson() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
         List<LessonEntity> lessonEntities = new ArrayList<>();
         LessonEntity lessonEntity = new LessonEntity();
         lessonEntity.setLessonId(123);
         lessonEntity.setLessonName("体育课");
         lessonEntities.add(lessonEntity);
-        Mockito.when(lessonRepository.findAll()).thenReturn(lessonEntities);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            bitSet.set(0, true);
+            return lessonEntities;
+        }).when(lessonRepository).getExcellentClass();
+
         mockMvc.perform(MockMvcRequestBuilders.get("/lesson/excellent"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("123")))
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("体育课")));
+
+        Assert.assertTrue(bitSet.get(0));
     }
 
     @Test

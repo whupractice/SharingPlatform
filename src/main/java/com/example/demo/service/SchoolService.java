@@ -113,7 +113,7 @@ public class SchoolService {
       */
     public SchoolEntity getSchoolById(String id){
         long schoolId = Long.parseLong(id);
-        return schoolRepository.findById(schoolId).get();
+        return schoolRepository.getSchoolById(schoolId);
     }
 
 }

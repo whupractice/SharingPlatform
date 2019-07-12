@@ -49,8 +49,7 @@ public class StudentController {
         String phone = userDetails.getUsername();
         String pwd = userDetails.getPassword();
         String json = "{\"phone\":"+"\""+phone+"\",\"pwd\":"+"\""+pwd+"\"}";
-        JSONObject jsonObject = JSONObject.fromObject(json);
-        return jsonObject;
+        return JSONObject.fromObject(json);
     }
 
     /**
