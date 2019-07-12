@@ -158,17 +158,6 @@ public class SLControllerTest {
     }
 
     @Test
-    @WithMockUser(roles={"student"})
-    public void getLessonPagesByStuId() {
-
-    }
-
-    @Test
-    @WithMockUser(roles={"student"})
-    public void getLessonPagesNumByStuId() {
-    }
-
-    @Test
     @WithMockUser(roles={"lessonManager"})
     public void getStudentByLessonId() throws Exception {
         BitSet bitSet = new BitSet(1);

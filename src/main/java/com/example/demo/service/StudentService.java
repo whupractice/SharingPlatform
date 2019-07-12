@@ -10,10 +10,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 import springfox.documentation.annotations.Cacheable;
 
-import java.io.File;
 import java.util.*;
 
 /**
@@ -68,7 +66,7 @@ public class StudentService {
 
 
     public StudentEntity getNickNameByPhone(String phone) {
-        Long newPhone = Long.parseLong(phone);
+        long newPhone = Long.parseLong(phone);
         return studentRepository.getNickNameByPhone(newPhone);
     }
 
@@ -173,29 +171,12 @@ public class StudentService {
 
 
     /**
-      * @Author      : Theory
-      * @Description : 根据学生电话调用python脚本绘制技能图
-      * @Param       : [phone] -- 学生电话
-      */
-    public void getSkillImg(long phone){
-        try {
-            String py = "File/py/skill.py";
-            String arg_s = "python "+py+" "+phone;
-            Process proc = Runtime.getRuntime().exec(arg_s);
-            proc.waitFor();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * @Author      : Theory
      * @Description : 根据数量获取top榜
      * @Param       : [phone] -- 学生电话
      */
     public void getAllGraph(){
-        try {
+//        try {
 //            //课程排行图
 //            String py = "File/py/lessonRank.py";
 //            String arg_s = "python "+py+" "+10;
@@ -208,12 +189,10 @@ public class StudentService {
 //            arg_s = "python "+py;
 //            proc = Runtime.getRuntime().exec(arg_s);
 //            proc.waitFor();
-
-            //
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
 

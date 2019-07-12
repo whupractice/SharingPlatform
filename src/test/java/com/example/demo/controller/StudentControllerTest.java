@@ -568,21 +568,6 @@ public class StudentControllerTest {
     }
 
     @Test
-    @WithMockUser(roles={"manager"})
-    public void getLessonManagerPages() {
-    }
-
-    @Test
-    @WithMockUser(roles={"manager"})
-    public void getLessonManagerPagesByName() {
-    }
-
-    @Test
-    @WithMockUser(roles={"manager"})
-    public void getLessonManagerPagesBySchool() {
-    }
-
-    @Test
     @WithMockUser(roles={"student"})
     public void getSkillImg() {
     }

@@ -27,15 +27,6 @@ public class SchoolService {
         return schoolRepository.findAll();
     }
 
-    /**
-      * @Author      : QinYingran
-      * @Description : 获取所有学校列表2
-      * @Param       : []
-      * @return      : 学校列表
-      */
-    public List<Object> getAllDistinctly() {
-        return schoolRepository.getAllDistinctly();
-    }
 
 
     //根据姓名获取学校
@@ -45,16 +36,6 @@ public class SchoolService {
             return schools.get(0);
 
         return null;
-    }
-
-    /**
-      * @Author      : QinYingran
-      * @Description : 根据id获取学校介绍
-      * @Param       : 学校id
-      * @return      : 特定学校的介绍
-      */
-    public String getSchoolInfoById (Long id) {
-        return schoolRepository.getSchoolInfoById(id);
     }
 
     /**
@@ -82,12 +63,6 @@ public class SchoolService {
             schoolRepository.save(school);
             return true;
         }
-    }
-
-
-    //更新学校
-    public void updateSchool(SchoolEntity schoolEntity){
-        schoolRepository.save(schoolEntity);
     }
 
 

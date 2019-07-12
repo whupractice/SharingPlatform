@@ -109,15 +109,6 @@ public class MessageControllerTest {
     }
 
     @Test
-    public void getPagesByPhoneAndLessonId() {
-
-    }
-
-    @Test
-    public void getPagesByPhone() {
-    }
-
-    @Test
     public void insertMessage() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
