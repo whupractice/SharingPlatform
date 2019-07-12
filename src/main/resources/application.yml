@@ -4,8 +4,6 @@ spring:
       enabled: true
       max-file-size: 100MB
       max-request-size: 100MB
-  resources:
-    static-locations: classpath:/static/
   profiles:
     active: dev
   datasource:
@@ -24,8 +22,6 @@ spring:
 #      enabled: true
 #      max-file-size: 100MB
 #      max-request-size: 100MB
-#  resources:
-#    static-locations: classpath:/static/
 #  profiles:
 #    active: dev
 #  datasource:

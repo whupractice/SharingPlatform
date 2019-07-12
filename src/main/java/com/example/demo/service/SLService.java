@@ -153,9 +153,7 @@ public class SLService {
         if(sl.getEvaluation()!=null){ // 执行脚本，进行敏感词过滤
             StringBuffer res = new StringBuffer();
             try {
-                File staticDir = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
-                File pyDir = new File(staticDir.getAbsolutePath(),"py\\");
-                String py = pyDir.getAbsolutePath()+"\\filter.py";
+                String py = "File/py/filter.py";
                 String arg_s = "python "+py+" "+sl.getEvaluation();
                 Process proc = Runtime.getRuntime().exec(arg_s);
                 BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream(),"GBK"));

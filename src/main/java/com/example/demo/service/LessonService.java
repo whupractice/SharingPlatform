@@ -214,9 +214,7 @@ public class LessonService {
             List<String> lessonIds = new ArrayList<>();//被推荐的课程号
             List<LessonEntity> lessons = new ArrayList<>();//被推荐的课程
 
-            File staticDir = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20", " ").replace('/', '\\'));
-            File pyDir = new File(staticDir.getAbsolutePath(), "py\\");
-            String py = pyDir.getAbsolutePath() + "\\tj.py";
+            String py = "File/py/tj.py";
             String arg_s = "python " + py + " " + phone;
             Process proc = Runtime.getRuntime().exec(arg_s);
             BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream(), "GBK"));

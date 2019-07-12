@@ -21,6 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -304,17 +308,32 @@ public class StudentController {
                           @RequestParam("birth")@ApiParam(value = "birth") String birth,
                           @RequestParam("email")@ApiParam(value = "email")String email) {
         try {
-            File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
-            if(!path2.exists()) path2 = new File("");
-            File upload2 = new File(path2.getAbsolutePath(),"img/student/");
-            if(!upload2.exists()) upload2.mkdirs();
-            String path=upload2.getAbsolutePath()+"/"+fileName;
-            File img = new File(path);
-            if(!img.exists())
-                img.createNewFile();//不存在则创建新文件
-            file.transferTo(img);
+//            File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
+//            if(!path2.exists()) path2 = new File("");
+//            File upload2 = new File(path2.getAbsolutePath(),"img/student/");
+//            if(!upload2.exists()) upload2.mkdirs();
+//            String path=upload2.getAbsolutePath()+"/"+fileName;
+//            File img = new File(path);
+//            if(!img.exists())
+//                img.createNewFile();//不存在则创建新文件
+//            file.transferTo(img);
+//            StudentEntity oldStu = studentService.getStuById(fileName);
+//            oldStu.setImgLink("../img/student/"+fileName);
+//            oldStu.setNickName(nickName);
+//            oldStu.setEmail(email);
+//            oldStu.setBirth(birth);
+//            oldStu.setIntroduction(introduction);
+//            oldStu.setSex(sex);
+//            studentService.insertStudent(oldStu);
+            String UPLOAD_PATH = "File/img/student";
+            InputStream inputStream = file.getInputStream();
+            Path directory = Paths.get(UPLOAD_PATH);
+            if(!Files.exists(directory)){
+                Files.createDirectories(directory);
+            }
+            Files.copy(inputStream, directory.resolve(fileName));
             StudentEntity oldStu = studentService.getStuById(fileName);
-            oldStu.setImgLink("../img/student/"+fileName);
+            oldStu.setImgLink("../File/img/student/"+fileName);
             oldStu.setNickName(nickName);
             oldStu.setEmail(email);
             oldStu.setBirth(birth);

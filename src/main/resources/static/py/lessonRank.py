@@ -17,6 +17,7 @@ for i in range(len(res)):
     lessons.append(res[i][0])
     values.append(res[i][1])
 
+
 length = int(sys.argv[1]) if int(sys.argv[1])<len(res) else len(res)
 
 for i in range(len(res)-1):
@@ -27,7 +28,7 @@ for i in range(len(res)-1):
 
 lessons = lessons[-length:]
 values = values[-length:]
-    
+
 # 中文乱码的处理
 plt.rcParams['font.sans-serif'] =['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
@@ -46,7 +47,7 @@ plt.xlim([0,10])
 # 为每个条形图添加数值标签
 for x,y in enumerate(values):
     plt.text(y+0.2,x,'%s' %y,va='center')
-plt.figure(facecolor='#a9f4de24',edgecolor='black')
+
 # 显示图形
-plt.savefig('target/classes/static/img/lessonRank.jpg')
+plt.savefig('C:/Users/Administrator.000/Desktop/File/img/lessonRank.jpg')
     

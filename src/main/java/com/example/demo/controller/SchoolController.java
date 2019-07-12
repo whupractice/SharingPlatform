@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -123,18 +127,26 @@ public class SchoolController {
     public void uploadImg(@RequestParam("img")@ApiParam(value = "img") MultipartFile file,
                           @RequestParam("fileName")@ApiParam(value = "fileName") String fileName){
         try {
-            File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
-            if(!path2.exists()) path2 = new File("");
-            File upload2 = new File(path2.getAbsolutePath(),"img/school/");
-            if(!upload2.exists()) upload2.mkdirs();
-            String path=upload2.getAbsolutePath()+"/"+fileName;
-            File img = new File(path);
-            if(!img.exists())
-                img.createNewFile();//不存在则创建新文件
-            file.transferTo(img);
+//            File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
+//            if(!path2.exists()) path2 = new File("");
+//            File upload2 = new File(path2.getAbsolutePath(),"img/school/");
+//            if(!upload2.exists()) upload2.mkdirs();
+//            String path=upload2.getAbsolutePath()+"/"+fileName;
+//            File img = new File(path);
+//            if(!img.exists())
+//                img.createNewFile();//不存在则创建新文件
+//            file.transferTo(img);
+//            SchoolEntity oldSchool = schoolService.getSchoolById(fileName);
+//            oldSchool.setImgLink("../img/school/"+fileName);
+            String UPLOAD_PATH = "File/img/school";
+            InputStream inputStream = file.getInputStream();
+            Path directory = Paths.get(UPLOAD_PATH);
+            if(!Files.exists(directory)){
+                Files.createDirectories(directory);
+            }
+            Files.copy(inputStream, directory.resolve(fileName));
             SchoolEntity oldSchool = schoolService.getSchoolById(fileName);
-            oldSchool.setImgLink("../img/school/"+fileName);
-            schoolService.updateSchool(oldSchool);
+            oldSchool.setImgLink("../File/img/school/"+fileName);
         }catch (Exception e){
             e.printStackTrace();
         }

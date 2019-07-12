@@ -90,7 +90,7 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
                 "phone": phone
             }
         }).then(function successCallback(response) {
-            $scope.skillLink = '../img/skill/'+phone+'.jpg';
+            $scope.skillLink = 'File/img/skill/'+phone+'.jpg';
         });
     };
 

@@ -179,9 +179,7 @@ public class StudentService {
       */
     public void getSkillImg(long phone){
         try {
-            File staticDir = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
-            File pyDir = new File(staticDir.getAbsolutePath(),"py\\");
-            String py = pyDir.getAbsolutePath()+"\\skill.py";
+            String py = "File/py/skill.py";
             String arg_s = "python "+py+" "+phone;
             Process proc = Runtime.getRuntime().exec(arg_s);
             proc.waitFor();
@@ -198,20 +196,18 @@ public class StudentService {
      */
     public void getAllGraph(){
         try {
-            //课程排行图
-            File staticDir = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
-            File pyDir = new File(staticDir.getAbsolutePath(),"py\\");
-            String py = pyDir.getAbsolutePath()+"\\lessonRank.py";
-            String arg_s = "python "+py+" "+10;
-            Process proc = Runtime.getRuntime().exec(arg_s);
-            proc.waitFor();
-
-
-            //学科课程数量图
-            py = pyDir.getAbsolutePath()+"\\subject.py";
-            arg_s = "python "+py;
-            proc = Runtime.getRuntime().exec(arg_s);
-            proc.waitFor();
+//            //课程排行图
+//            String py = "File/py/lessonRank.py";
+//            String arg_s = "python "+py+" "+10;
+//            Process proc = Runtime.getRuntime().exec(arg_s);
+//            proc.waitFor();
+//
+//
+//            //学科课程数量图
+//            py = "File/py/subject.py";
+//            arg_s = "python "+py;
+//            proc = Runtime.getRuntime().exec(arg_s);
+//            proc.waitFor();
 
             //
         }

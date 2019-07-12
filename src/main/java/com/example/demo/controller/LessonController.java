@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 
@@ -244,19 +248,32 @@ public class LessonController {
     public void uploadImg(@RequestParam("img")@ApiParam(value = "img") MultipartFile file,
                        @RequestParam("fileName")@ApiParam(value = "fileName") String fileName){
         try {
-            File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
-            if(!path2.exists()) path2 = new File("");
-            //如果上传目录为/static/img/lesson/，则可以如下获取：
-            File upload2 = new File(path2.getAbsolutePath(),"img/lesson/");
-            if(!upload2.exists()) upload2.mkdirs();
-            String path=upload2.getAbsolutePath()+"/"+fileName;
-            File img = new File(path);
-            if(!img.exists())
-                img.createNewFile();//不存在则创建新文件
-            file.transferTo(img);
+//            String UPLOAD_PATH = "File/img/lesson";
+//            Path directory = Paths.get(UPLOAD_PATH);
+//            if(!Files.exists(directory)){
+//                Files.createDirectories(directory);
+//            }
+//
+//            String path=UPLOAD_PATH+"/"+fileName;
+//            File img = new File(path);
+//            if(!img.exists())
+//                img.createNewFile();//不存在则创建新文件
+//            file.transferTo(img);
+//            LessonEntity oldLesson = lessonService.getByLessonId(fileName);
+//            oldLesson.setImgLink("../File/img/lesson/"+fileName);
+//            lessonService.insertLesson(oldLesson);
+
+            String UPLOAD_PATH = "File/img/lesson";
+            InputStream inputStream = file.getInputStream();
+            Path directory = Paths.get(UPLOAD_PATH);
+            if(!Files.exists(directory)){
+                Files.createDirectories(directory);
+            }
+            Files.copy(inputStream, directory.resolve(fileName));
             LessonEntity oldLesson = lessonService.getByLessonId(fileName);
-            oldLesson.setImgLink("../img/lesson/"+fileName);
+            oldLesson.setImgLink("../File/img/lesson/"+fileName);
             lessonService.insertLesson(oldLesson);
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -265,22 +282,34 @@ public class LessonController {
     @ApiOperation(value = "上传课程视频",notes = "上传课程视频")
     @PostMapping("/videoUpload")
     public void uploadVideo(@RequestParam("video")@ApiParam(value = "video") MultipartFile file,
-                       @RequestParam("id")@ApiParam(value = "id") String id,
                        @RequestParam("fileName")@ApiParam(value = "fileName") String fileName){
         try {
-            File path2 = new File(ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\'));
-            if(!path2.exists()) path2 = new File("");
-            //如果上传目录为/static/img/lesson/，则可以如下获取：
-            File upload2 = new File(path2.getAbsolutePath(),"video");
-            if(!upload2.exists()) upload2.mkdirs();
-            String path=upload2.getAbsolutePath()+"/"+fileName+"_"+id;
-            File img = new File(path);
-            if(!img.exists())
-                img.createNewFile();//不存在则创建新文件
-            file.transferTo(img);
+//            String UPLOAD_PATH = "File/image/upload";
+//            Path directory = Paths.get(UPLOAD_PATH);
+//            if(!Files.exists(directory)){
+//                Files.createDirectories(directory);
+//            }
+//
+//            String path=UPLOAD_PATH+"/"+fileName+"_"+id;
+//            File img = new File(path);
+//            if(!img.exists())
+//                img.createNewFile();//不存在则创建新文件
+//            file.transferTo(img);
+//            LessonEntity oldLesson = lessonService.getByLessonId(fileName);
+//            oldLesson.setVideoLink("../video/"+fileName);
+//            oldLesson.setVideoNum(oldLesson.getVideoNum()+1);
+//            lessonService.insertLesson(oldLesson);
+
+            String UPLOAD_PATH = "File/video/";
+            InputStream inputStream = file.getInputStream();
+            Path directory = Paths.get(UPLOAD_PATH);
+            if(!Files.exists(directory)){
+                Files.createDirectories(directory);
+            }
+            Files.copy(inputStream, directory.resolve(fileName));
             LessonEntity oldLesson = lessonService.getByLessonId(fileName);
-            oldLesson.setVideoLink("../video/"+fileName);
-            oldLesson.setVideoNum(oldLesson.getVideoNum()+1);
+            int id = oldLesson.getVideoNum()+1;
+            oldLesson.setVideoLink("../File/video/"+fileName+"_"+id);
             lessonService.insertLesson(oldLesson);
         }catch (Exception e){
             e.printStackTrace();
