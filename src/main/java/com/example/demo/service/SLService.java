@@ -10,10 +10,8 @@ import com.example.demo.repository.StudentRepository;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +85,7 @@ public class SLService {
         }
         int i = page * num;
         for(int j = 0; j < num; j++){
-            if(lessonEntities.size()<i+j){
+            if(lessonEntities.size()<=i+j){
                 return result;
             }
                 result.add(lessonEntities.get(i+j));
@@ -207,8 +205,7 @@ public class SLService {
         }
         float score = sum/num;
         String json = "{\"score\":"+score+"}";
-        JSONObject jsonObject = JSONObject.fromObject(json);
-        return jsonObject;
+        return JSONObject.fromObject(json);
     }
     
 }

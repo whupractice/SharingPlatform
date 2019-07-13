@@ -265,12 +265,11 @@ public class SLControllerTest {
             Object[] args = invocationOnMock.getArguments();
             SLEntity slEntity = (SLEntity) args[0];
             Assert.assertEquals(slEntity.getPhone(),123);
-            Assert.assertEquals(slEntity.getLessonId(),456);
             bitSet.set(0, true);
             return null;
         }).when(slRepository).save(Mockito.any(SLEntity.class));
 
-        String jsonData = "{\"phone\":\"123\",\"lessonId\":\"456\"}";
+        String jsonData = "{\"phone\":\"123\",\"evaluation\":\"456\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/sl")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonData))
                 .andDo(MockMvcResultHandlers.print())

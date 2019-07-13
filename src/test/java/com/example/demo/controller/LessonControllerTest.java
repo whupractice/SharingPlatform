@@ -257,13 +257,10 @@ public class LessonControllerTest {
         Assert.assertTrue(bitSet.get(0));
     }
 
-    @Test
-    public void getTjLessonByStuPhone() {
-
-    }
 
     @Test
     public void uploadImg() {
+
     }
 
     @Test

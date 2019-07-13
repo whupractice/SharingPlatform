@@ -15,12 +15,10 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -70,8 +68,7 @@ public class StudentController {
             return null;
         }
         String json = "{\"token\":"+"\""+token+"\"}";
-        JSONObject jsonObject = JSONObject.fromObject(json);
-        return jsonObject;
+        return JSONObject.fromObject(json);
     }
 
     @ApiOperation(value = "退出登录", notes = "退出登录",httpMethod = "DELETE")

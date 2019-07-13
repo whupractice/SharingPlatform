@@ -2,16 +2,22 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.StudentEntity;
 import com.example.demo.repository.StudentRepository;
+import com.example.demo.service.StudentService;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -19,9 +25,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,13 +38,33 @@ public class StudentControllerTest {
 //    @MockBean
 //    StudentService studentService;
 
+    @InjectMocks
+    private StudentService studentService = new StudentService();
+    @InjectMocks
+    private StudentController studentController = new StudentController();
+
     @Test
     public void getUserFromToken() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/student/getUserFromToken")
                 .param("token","123"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 
+    @Test
+    public void getUserFromToken2() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/student/getUserFromToken")
+                .param("token",""))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void getUserFromToken3() {
+        tokenMap.put("123",userDetails);
+        studentController.studentService = studentService;
+        String jsonString = studentController.getUserFromToken("123").toString();
+        Assert.assertEquals(jsonString,"{\"phone\":\"123\",\"pwd\":\"456\"}");
     }
 
     @Test
@@ -61,6 +85,32 @@ public class StudentControllerTest {
         }).when(studentRepository).getStuById(Mockito.any(long.class));
 
         String jsonData = "{\"phone\":\"123\",\"pwd\":\"456\",\"isManager\":\"0\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/student/login")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
+    }
+
+    @Test
+    public void login2() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhone(123);
+        studentEntity.setPwd("456");
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            long phone = (long) args[0];
+            Assert.assertEquals(phone,123);
+            bitSet.set(0, true);
+            return studentEntity;
+        }).when(studentRepository).getStuById(Mockito.any(long.class));
+
+        String jsonData = "{\"phone\":\"123\",\"pwd\":\"789\",\"isManager\":\"0\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/student/login")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonData))
                 .andDo(MockMvcResultHandlers.print())
@@ -586,7 +636,6 @@ public class StudentControllerTest {
 
 
 /*
-//不能写非test函数？ 不能调用其他地方的函数？
     private UserDetails createUser(String userName, String password, String[] roles){
         return new UserDetails() {
 
@@ -639,4 +688,47 @@ public class StudentControllerTest {
             }
         };
     }*/
+
+    @Spy
+    private Map<String, UserDetails> tokenMap = new HashMap<>();
+
+    private UserDetails userDetails = new UserDetails() {
+        @Override
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+            Collection<GrantedAuthority> authorities = new ArrayList<>();
+            SimpleGrantedAuthority sga = new SimpleGrantedAuthority("ROLE_" + "student");
+            authorities.add(sga);
+            return authorities;
+        }
+
+        @Override
+        public String getPassword() {
+            return "456";
+        }
+
+        @Override
+        public String getUsername() {
+            return "123";
+        }
+
+        @Override
+        public boolean isAccountNonExpired() {
+            return true;
+        }
+
+        @Override
+        public boolean isAccountNonLocked() {
+            return true;
+        }
+
+        @Override
+        public boolean isCredentialsNonExpired() {
+            return true;
+        }
+
+        @Override
+        public boolean isEnabled() {
+            return true;
+        }
+    };
 }

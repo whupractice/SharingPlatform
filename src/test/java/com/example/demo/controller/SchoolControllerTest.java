@@ -130,19 +130,89 @@ public class SchoolControllerTest {
     }
 
     @Test
+    public void getSchoolByName2() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+        List<SchoolEntity> schoolEntities = new ArrayList<>();
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String id = (String)args[0];
+            Assert.assertEquals(id,"加里敦大学");
+            bitSet.set(0, true);
+            return schoolEntities;
+        }).when(schoolRepository).getDuplicates(Mockito.any(String.class));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/school/schoolName")
+                .param("schoolName","加里敦大学"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
+    }
+
+    @Test
     @WithMockUser(roles={"manager"})
     public void insertSchool() throws Exception {
         BitSet bitSet = new BitSet(1);
         bitSet.set(0, false);
 
+        List<SchoolEntity> schoolEntities = new ArrayList<>();
+
         Mockito.doAnswer(invocationOnMock -> {
             Object[] args = invocationOnMock.getArguments();
-            SchoolEntity schoolEntity = (SchoolEntity) args[0];
-            Assert.assertEquals(schoolEntity.getSchoolId(),123);
-            Assert.assertEquals(schoolEntity.getSchoolName(),"加里敦大学");
+            SchoolEntity school = (SchoolEntity) args[0];
+            Assert.assertEquals(school.getSchoolId(),123);
+            Assert.assertEquals(school.getSchoolName(),"加里敦大学");
             bitSet.set(0, true);
             return null;
         }).when(schoolRepository).save(Mockito.any(SchoolEntity.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String id = (String)args[0];
+            Assert.assertEquals(id,"加里敦大学");
+            bitSet.set(0, true);
+            return schoolEntities;
+        }).when(schoolRepository).getSchoolByName(Mockito.any(String.class));
+
+        String jsonData = "{\"schoolId\":\"123\",\"schoolName\":\"加里敦大学\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/school")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Assert.assertTrue(bitSet.get(0));
+    }
+
+    @Test
+    @WithMockUser(roles={"manager"})
+    public void insertSchool2() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        List<SchoolEntity> schoolEntities = new ArrayList<>();
+        SchoolEntity schoolEntity = new SchoolEntity();
+        schoolEntity.setSchoolId(123);
+        schoolEntity.setSchoolName("加里敦大学");
+        schoolEntities.add(schoolEntity);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            SchoolEntity school = (SchoolEntity) args[0];
+            Assert.assertEquals(school.getSchoolId(),123);
+            Assert.assertEquals(school.getSchoolName(),"加里敦大学");
+            bitSet.set(0, true);
+            return null;
+        }).when(schoolRepository).save(Mockito.any(SchoolEntity.class));
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String id = (String)args[0];
+            Assert.assertEquals(id,"加里敦大学");
+            bitSet.set(0, true);
+            return schoolEntities;
+        }).when(schoolRepository).getSchoolByName(Mockito.any(String.class));
 
         String jsonData = "{\"schoolId\":\"123\",\"schoolName\":\"加里敦大学\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/school")

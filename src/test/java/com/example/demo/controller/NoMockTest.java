@@ -68,6 +68,16 @@ public class NoMockTest {
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("自动化学院")));
     }
 
+    @Test
+    @WithMockUser(roles={"student"})
+    public void getTjLessonByStuPhone() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/lesson/tj")
+                .param("phone","15629083301"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+        //.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("体育课")));
+    }
+
 
     //MessageController
     @Test
@@ -105,6 +115,28 @@ public class NoMockTest {
 
     @Test
     @WithMockUser(roles={"student"})
+    public void getLessonPagesByStuId2() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/sl/getLessonPagesByStuId")
+                .param("stuId","6526634563")
+                .param("num","1")
+                .param("page","0"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    @WithMockUser(roles={"student"})
+    public void getLessonPagesByStuId3() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/sl/getLessonPagesByStuId")
+                .param("stuId","15629083301")
+                .param("num","3")
+                .param("page","1"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    @WithMockUser(roles={"student"})
     public void getLessonPagesNumByStuId() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/sl/getLessonPagesNumByStuId")
                 .param("stuId","15629083301")
@@ -112,6 +144,15 @@ public class NoMockTest {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("4")));
+    }
+
+    @Test
+    public void getScore() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/sl/score")
+                .param("lessonId","4"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("score")));
     }
 
 
@@ -144,6 +185,24 @@ public class NoMockTest {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("15642512301")));
+    }
+
+
+    @Test
+    @WithMockUser(roles={"student"})
+    public void getSkillImg() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/student/skill")
+                .param("phone","15629083302"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    @WithMockUser(roles={"manager"})
+    public void getAllGraph() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/student/allGraph"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 }

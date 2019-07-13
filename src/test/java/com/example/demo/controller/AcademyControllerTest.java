@@ -104,8 +104,11 @@ public class AcademyControllerTest {
     @Test
     @WithMockUser(roles={"manager"})
     public void insertAcademy() throws Exception {
-        BitSet bitSet = new BitSet(1);
+        BitSet bitSet = new BitSet(2);
         bitSet.set(0, false);
+        bitSet.set(1, false);
+
+        List<AcademyEntity> academyEntities = new ArrayList<>();
 
         Mockito.doAnswer(invocationOnMock -> {
             Object[] args = invocationOnMock.getArguments();
@@ -117,11 +120,50 @@ public class AcademyControllerTest {
             return null;
         }).when(academyRepository).save(Mockito.any(AcademyEntity.class));
 
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String academyName = (String) args[0];
+            Assert.assertEquals(academyName,"计算机学院");
+            bitSet.set(1, true);
+            return academyEntities;
+        }).when(academyRepository).getByAcademyName(Mockito.any(String.class));
+
         String jsonData = "{\"academyId\":\"123\",\"academyName\":\"计算机学院\",\"schoolName\":\"武汉大学\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/academy")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonData))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
+        Assert.assertTrue(bitSet.get(0));
+        Assert.assertTrue(bitSet.get(1));
+    }
+
+    @Test
+    @WithMockUser(roles={"manager"})
+    public void insertAcademy2() throws Exception {
+        BitSet bitSet = new BitSet(1);
+        bitSet.set(0, false);
+
+        List<AcademyEntity> academyEntities = new ArrayList<>();
+        AcademyEntity academyEntity = new AcademyEntity();
+        academyEntity.setAcademyId(123);
+        academyEntity.setAcademyName("计算机学院");
+        academyEntity.setSchoolName("武汉大学");
+        academyEntities.add(academyEntity);
+
+        Mockito.doAnswer(invocationOnMock -> {
+            Object[] args = invocationOnMock.getArguments();
+            String academyName = (String) args[0];
+            Assert.assertEquals(academyName,"计算机学院");
+            bitSet.set(0, true);
+            return academyEntities;
+        }).when(academyRepository).getByAcademyName(Mockito.any(String.class));
+
+        String jsonData = "{\"academyId\":\"123\",\"academyName\":\"计算机学院\",\"schoolName\":\"武汉大学\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/academy")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonData))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
         Assert.assertTrue(bitSet.get(0));
     }
 

@@ -66,7 +66,7 @@ public class StudentService {
 
 
     public StudentEntity getNickNameByPhone(String phone) {
-        long newPhone = Long.parseLong(phone);
+        Long newPhone = Long.parseLong(phone);
         return studentRepository.getNickNameByPhone(newPhone);
     }
 
