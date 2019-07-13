@@ -8,11 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 import springfox.documentation.annotations.Cacheable;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,47 +116,6 @@ public class LessonService {
         return lessonRepository.getBySchoolName(schoolName);
     }
 
-    /**
-      * @Author      : QinYingran
-      * @Description : 根据关键词查询课程
-      * @Param       : [keyWord]
-      * @return      : 含有关键词的课程列表
-      */
-//    public List<Object> getLessonByKeyword(String keyword) {
-//        keyword = "%"+keyword+"%";
-//        return lessonRepository.getLessonByKeyword(keyword);
-//    }
-
-    /**
-      * @Author      : QinYingran
-      * @Description : 根据状态查询课程
-      * @Param       : [status]
-      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
-      */
-    public List<LessonEntity> getByStatus(String status) {
-        return lessonRepository.getByStatus(status);
-    }
-
-    /**
-      * @Author      : QinYingran
-      * @Description : 根据学科查询课程
-      * @Param       : [subject]
-      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
-      */
-    public List<LessonEntity> getBySubject(String subject) {
-        return lessonRepository.getBySubject(subject);
-    }
-
-    /**
-      * @Author      : QinYingran
-      * @Description : 根据状态和学科查询课程
-      * @Param       : [status, subject]
-      * @return      : java.util.List<com.example.demo.entity.LessonEntity>
-      */
-    public List<LessonEntity> getByStatusAndSubject(String status,String subject) {
-        return lessonRepository.getByStatusAndSubject(status,subject);
-    }
-
 
 
     //根据学校和学院查询课程
@@ -189,18 +146,6 @@ public class LessonService {
         lessonRepository.deleteById(id);
     }
 
-
-
-    /**
-      * @Author      : Theory
-      * @Description : 根据id返回课程
-      * @Param       : [id]--课程号
-      * @return      : 课程
-      */
-    public LessonEntity getLessonById(String id){
-        long lessonId = Long.parseLong(id);
-        return lessonRepository.findById(lessonId).get();
-    }
 
 
     /**

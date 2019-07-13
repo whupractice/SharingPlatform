@@ -22,7 +22,7 @@ public class SpecUtil {
             //用于暂时存放查询条件的集合
             List<Predicate> predicatesList = new ArrayList<>();
 
-            Predicate predicate = cb.like(root.get("phone"), "%" + phone + "%");
+            Predicate predicate = cb.equal(root.get("phone"),  Long.parseLong(phone));
             predicatesList.add(predicate);
 
             Predicate[] predicates = new Predicate[predicatesList.size()];
@@ -35,10 +35,10 @@ public class SpecUtil {
             //用于暂时存放查询条件的集合
             List<Predicate> predicatesList = new ArrayList<>();
 
-            Predicate predicate = cb.like(root.get("phone"), "%" + phone + "%");
+            Predicate predicate = cb.equal(root.get("phone"), Long.parseLong(phone));
             predicatesList.add(predicate);
 
-            Predicate predicate1 = cb.like(root.get("lessonId"), "%" + lessonId + "%");
+            Predicate predicate1 = cb.equal(root.get("lessonId"), Long.parseLong(lessonId));
             predicatesList.add(predicate1);
 
             Predicate[] predicates = new Predicate[predicatesList.size()];

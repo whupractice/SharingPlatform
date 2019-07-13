@@ -30,16 +30,6 @@ public class TeacherService {
 
     /**
       * @Author      : QinYingran
-      * @Description : 获取所有教师
-      * @Param       : []
-      * @return      : 所有教师列表
-      */
-    public List<Object> getAllDistinctly() {
-        return teacherRepository.getAllDistinctly();
-    }
-
-    /**
-      * @Author      : QinYingran
       * @Description :
       * @Param       : 向数据库插入教师
       * @return      :
