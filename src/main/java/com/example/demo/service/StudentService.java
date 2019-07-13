@@ -169,6 +169,24 @@ public class StudentService {
     }
 
 
+    /**
+      * @Author      : Theory
+      * @Description : 获取学生技能图
+      * @Param       : [phone] -- 学生电话
+      */
+    public void getSkillImg(long phone){
+        try {
+            String py = "File/py/skill.py";
+            String arg_s = "python "+py+" "+phone;
+            Process proc = Runtime.getRuntime().exec(arg_s);
+            proc.waitFor();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
 
     /**
      * @Author      : Theory
