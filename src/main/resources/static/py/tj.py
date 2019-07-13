@@ -7,9 +7,9 @@ import pandas as pd
 from math import *
 import sys
 
-conn = pymysql.connect(host='39.96.88.130',
-                       port=3306, user='xsy', 
-                       passwd='123', db='sharingdb', charset='utf8')
+conn = pymysql.connect(host='127.0.0.1:3306',
+                       port=3306, user='root',
+                       passwd='root', db='sharingdb', charset='utf8')
 t = pd.read_sql(sql="select lesson_id, phone, star from sl",con=conn)
 data = {} #保存每位用户上的课程和评价的星数
 

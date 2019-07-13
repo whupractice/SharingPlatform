@@ -4,9 +4,9 @@ import pymysql
 import pandas as pd
 import sys
 
-conn = pymysql.connect(host='39.96.88.130',
-                       port=3306, user='xsy', 
-                       passwd='123', db='sharingdb', charset='utf8')
+conn = pymysql.connect(host='127.0.0.1:3306',
+                       port=3306, user='root',
+                       passwd='root', db='sharingdb', charset='utf8')
 cursor = conn.cursor()
 cursor.execute(
     'select lesson_name, count(lesson_id) from sl_view group by lesson_id')

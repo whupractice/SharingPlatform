@@ -48,8 +48,12 @@ app.controller('loginCtrl', function ($scope, $http, $state) {   //Data是全局
 
     $scope.register = function(){
 
-        let user = $('#phone_number').val();
-        let pwd = $('#code1').val();
+        var user = $('#phone_number').val();
+        var pwd = $('#code1').val();
+        if(user.length == 0 || pwd.length == 0){
+            alert("用户名和密码不能为空！")
+            return;
+        }
         if ( pwd == $('#code2').val()){
 
             $http({
@@ -61,9 +65,8 @@ app.controller('loginCtrl', function ($scope, $http, $state) {   //Data是全局
                     "imgLink": "../img/user.jpg"
                 }
             }).then(function successCallback(response) {
-                if (response.data == true) {
+                if (response.data != null) {
                     alert('账号注册成功')
-
                 } else {
                     alert("账号注册失败")
                 }

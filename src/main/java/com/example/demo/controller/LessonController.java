@@ -306,10 +306,14 @@ public class LessonController {
             if(!Files.exists(directory)){
                 Files.createDirectories(directory);
             }
-            Files.copy(inputStream, directory.resolve(fileName));
             LessonEntity oldLesson = lessonService.getByLessonId(fileName);
             int id = oldLesson.getVideoNum()+1;
-            oldLesson.setVideoLink("../File/video/"+fileName+"_"+id);
+            oldLesson.setVideoLink("../File/video/"+fileName);
+            oldLesson.setVideoNum(oldLesson.getVideoNum()+1);
+            Files.copy(inputStream, directory.resolve(fileName+"_"+id));
+
+
+
             lessonService.insertLesson(oldLesson);
         }catch (Exception e){
             e.printStackTrace();

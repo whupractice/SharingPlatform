@@ -61,9 +61,9 @@ class ac_automation(object):
 
 if __name__ == '__main__':
     ac = ac_automation()
-    conn = pymysql.connect(host='39.96.88.130',
-                       port=3306, user='xsy',
-                       passwd='123', db='sharingdb', charset='utf8')
+    conn = pymysql.connect(host='127.0.0.1:3306',
+                       port=3306, user='root',
+                       passwd='root', db='sharingdb', charset='utf8')
     t = pd.read_sql(sql="select word from senstive",con=conn)
     ac.readKeys(t)
     text = sys.argv[1]

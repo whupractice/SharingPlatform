@@ -352,6 +352,7 @@ app.controller('studentCtrl', function ($scope, $http, $state) {   //Data是全�
             if(response.status==200){
                 $('#scoreModal').modal('hide');
                 $scope.getLessonByPhone();
+                alert("评论成功！");
             }
             else {
                 alert("评论失败！");

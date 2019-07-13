@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import pymysql
 import pandas as pd
 
-conn = pymysql.connect(host='39.96.88.130',
-                       port=3306, user='xsy', 
-                       passwd='123', db='sharingdb', charset='utf8')
+conn = pymysql.connect(host='127.0.0.1:3306',
+                       port=3306, user='root',
+                       passwd='root', db='sharingdb', charset='utf8')
 cursor = conn.cursor()
 cursor.execute(
     'select distinct subject, count(lesson_id) from lesson group by subject')
